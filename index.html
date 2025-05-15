@@ -2,73 +2,42 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Kat-Haus</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kat-Haus - Gatificación</title>
   <style>
     body {
-      background-color: #b2cee2;
       margin: 0;
-      padding: 0;
-      font-family: sans-serif;
-      text-align: center;
-      position: relative;
-      min-height: 100vh;
-    }
-
-    .logo-container {
+      background-color: #b2cee2;
+      font-family: 'Arial', sans-serif;
       display: flex;
-      justify-content: center;
-      margin-top: 30px;
+      flex-direction: column;
+      align-items: center;
     }
 
-    img {
+    .logo {
       width: 80%;
       max-width: 400px;
-      height: auto;
-      opacity: 0;
-      transition: opacity 2.5s ease-in-out;
+      margin-top: 20px;
+      animation: fadein 2.5s ease-in-out;
     }
 
-    .visible {
-      opacity: 1;
-    }
-
-    @media (min-width: 768px) {
-      img {
-        width: 40%;
-        max-width: 300px;
-      }
-    }
-
-    #contador {
-      position: absolute;
-      bottom: 20px;
-      width: 100%;
+    .leyenda {
       text-align: center;
-      font-size: 14px;
+      margin-top: 20px;
+      font-size: 1.2rem;
+      max-width: 600px;
       color: #333;
+    }
+
+    @keyframes fadein {
+      0% { opacity: 0; transform: translateY(-20px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
-  <div class="logo-container">
-    <img id="logo" src="https://i.ibb.co/5XRwdBQK/Logo-2024-copia.png" alt="Kat-Haus Logo">
-  </div>
 
-  <div id="contador">Visitantes: ...</div>
+  <img class="logo" src="https://i.ibb.co/5XRwdBQK/Logo-2024-copia.png" alt="Logo Kat-Haus">
 
-  <script>
-    // Activar fade-in
-    window.addEventListener('load', () => {
-      document.getElementById('logo').classList.add('visible');
-    });
-
-    // Contador de visitas
-    fetch('https://api.countapi.xyz/hit/kat-haus/visitas')
-      .then(res => res.json())
-      .then(data => {
-        document.getElementById('contador').innerText = 'Visitantes: ' + data.value;
-      });
-  </script>
-</body>
-</html>
+  <div class="leyenda">
+    ¿Listo para empezar a diseñar el circuito felino de tus sueños?<br
