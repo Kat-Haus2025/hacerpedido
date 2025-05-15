@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Elegir Presupuesto</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #b2cee2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    img.logo {
+      width: 100%;
+      max-width: 350px;
+      margin: 20px auto 10px auto;
+      display: block;
+    }
+
+    h2 {
+      text-align: center;
+      color: #2c3e50;
+      font-size: 1.4rem;
+      margin: 10px 20px 30px 20px;
+    }
+
+    .option-group {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      width: 90%;
+      max-width: 400px;
+      margin-bottom: 40px;
+    }
+
+    .option-btn {
+      padding: 16px;
+      font-size: 1.1rem;
+      background-color: #34495e;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .option-btn:hover {
+      background-color: #2c3e50;
+    }
+
+    @media (min-width: 600px) {
+      .option-group {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .option-btn {
+        flex: 1 0 40%;
+        margin: 5px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <img src="https://i.ibb.co/5XRwdBQK/Logo-2024-copia.png" class="logo" alt="Logo Kat Haus">
+
+  <h2>Ahora elige el presupuesto con el que quieres trabajar.</h2>
+
+  <div class="option-group" id="presupuestos">
+    <button class="option-btn" data-value="Deidad">Deidad</button>
+    <button class="option-btn" data-value="Emperador">Emperador</button>
+    <button class="option-btn" data-value="Magnate">Magnate</button>
+    <button class="option-btn" data-value="Aristócrata">Aristócrata</button>
+    <button class="option-btn" data-value="Oficinista">Oficinista</button>
+    <button class="option-btn" data-value="Estudiante">Estudiante</button>
+  </div>
+
+  <script>
+    const buttons = document.querySelectorAll(".option-btn");
+    const espacio = localStorage.getItem("espacioSeleccionado") || "No especificado";
+
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const presupuesto = btn.dataset.value;
+        localStorage.setItem("presupuestoSeleccionado", presupuesto);
+
+        // Armar mensaje para WhatsApp
+        const msg = `Hola! Estoy interesado en gatificar mi hogar.\nEspacio: ${espacio}\nPresupuesto: ${presupuesto}`;
+        const encodedMsg = encodeURIComponent(msg);
+        const telefono = "593XXXXXXXXX"; // ← Reemplaza con tu número con código de país
+        const enlace = `https://wa.me/${telefono}?text=${encodedMsg}`;
+
+        window.location.href = enlace;
+      });
+    });
+  </script>
+</body>
+</html>
