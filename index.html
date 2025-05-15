@@ -10,18 +10,38 @@
       margin: 0;
       padding: 0;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       height: 100vh;
+      font-family: sans-serif;
+      text-align: center;
     }
 
     img {
       max-width: 80%;
       height: auto;
     }
+
+    #contador {
+      position: absolute;
+      bottom: 20px;
+      font-size: 14px;
+      color: #333;
+    }
   </style>
 </head>
 <body>
   <img src="https://i.ibb.co/5XRwdBQK/Logo-2024-copia.png" alt="Kat-Haus Logo">
+
+  <div id="contador">Visitantes: ...</div>
+
+  <script>
+    fetch('https://api.countapi.xyz/hit/kat-haus/visitas')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('contador').innerText = 'Visitantes: ' + data.value;
+      });
+  </script>
 </body>
 </html>
