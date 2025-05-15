@@ -1,111 +1,129 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Kat-Haus</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kat-Haus: elige tu espacio</title>
   <style>
     body {
       margin: 0;
       background-color: #b2cee2;
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Quicksand', sans-serif;
       color: #2c3e50;
       text-align: center;
     }
+
     .logo {
       margin-top: 20px;
-      animation: fadeIn 2.5s ease;
-      width: 220px;
+      width: 50%;
+      max-width: 300px;
+      animation: fadeIn 2.5s ease-in-out;
     }
-    .slogan {
-      margin-top: 10px;
-      font-size: 1.3rem;
-      font-weight: 500;
-      padding: 0 20px;
+
+    .intro-text {
+      margin: 20px auto 40px;
+      font-size: 1.2rem;
+      max-width: 500px;
     }
 
     .selector-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 24px;
-      max-width: 800px;
-      margin: 30px auto;
-      padding: 0 20px;
+      gap: 20px;
+      padding: 0 20px 40px;
+      justify-items: center;
     }
 
     .selector-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .selector-item:hover {
+      transform: scale(1.05);
     }
 
     .selector-img {
       width: 100%;
-      max-width: 180px;
+      max-width: 160px;
       border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      transition: transform 0.3s ease;
-    }
-
-    .selector-img:hover {
-      transform: scale(1.05);
-      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
 
     .city-label {
-      margin-top: 8px;
+      margin-top: 10px;
       font-weight: bold;
     }
 
-    @keyframes fadeIn {
-      0% { opacity: 0; transform: translateY(-10px); }
-      100% { opacity: 1; transform: translateY(0); }
+    .visitas {
+      margin: 30px 0 10px;
+      font-size: 0.9rem;
+      color: #555;
     }
 
-    @media (max-width: 500px) {
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
       .logo {
-        width: 160px;
-      }
-      .slogan {
-        font-size: 1.1rem;
+        width: 80%;
       }
     }
   </style>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <img class="logo" src="https://i.ibb.co/5XRwdBQK/Logo-2024-copia.png" alt="Kat-Haus Logo">
 
-  <div class="slogan">
-    ¿Listo para empezar a diseñar el circuito felino de tus sueños?<p>
-    Elige las dimensiones del espacio que vamos a gatificar:
+  <img class="logo" src="https://i.ibb.co/5XRwdBQK/Logo-2024-copia.png" alt="Kat-Haus Logo" />
+
+  <div class="intro-text">
+    ¿Listo para empezar a diseñar el circuito felino de tus sueños?<br>
+    <strong>Elige el espacio que vamos a gatificar:</strong>
   </div>
 
-  <div class="selector-grid">
-    <div class="selector-item">
+  <div class="selector-grid"> 
+    <div class="selector-item" onclick="elegirEspacio('Oslo')">
       <img class="selector-img" src="https://i.ibb.co/S7VzGVLp/01.png" alt="Oslo">
       <div class="city-label">Oslo</div>
     </div>
-    <div class="selector-item">
+    <div class="selector-item" onclick="elegirEspacio('Lisboa')">
       <img class="selector-img" src="https://i.ibb.co/g1k6GR8/02.png" alt="Lisboa">
       <div class="city-label">Lisboa</div>
     </div>
-    <div class="selector-item">
+    <div class="selector-item" onclick="elegirEspacio('Florencia')">
       <img class="selector-img" src="https://i.ibb.co/jZzTZPff/03.png" alt="Florencia">
       <div class="city-label">Florencia</div>
     </div>
-    <div class="selector-item">
+    <div class="selector-item" onclick="elegirEspacio('Barcelona')">
       <img class="selector-img" src="https://i.ibb.co/FbkBhB7n/04.png" alt="Barcelona">
       <div class="city-label">Barcelona</div>
     </div>
-    <div class="selector-item">
+    <div class="selector-item" onclick="elegirEspacio('Ámsterdam')">
       <img class="selector-img" src="https://i.ibb.co/HTsh2ZSY/05.png" alt="Ámsterdam">
       <div class="city-label">Ámsterdam</div>
     </div>
-    <div class="selector-item">
+    <div class="selector-item" onclick="elegirEspacio('París')">
       <img class="selector-img" src="https://i.ibb.co/21CYzp3v/06.png" alt="París">
       <div class="city-label">París</div>
     </div>
   </div>
+
+  <div class="visitas">Visitas: <span id="contador">...</span></div>
+
+  <script>
+    function elegirEspacio(ciudad) {
+      localStorage.setItem('espacioElegido', ciudad);
+      window.location.href = "tiers.html";
+    }
+
+    // Contador de visitas local
+    const contadorKey = 'visitasKatHaus';
+    let visitas = localStorage.getItem(contadorKey);
+    visitas = visitas ? parseInt(visitas) + 1 : 1;
+    localStorage.setItem(contadorKey, visitas);
+    document.getElementById("contador").textContent = visitas;
+  </script>
+
 </body>
 </html>
