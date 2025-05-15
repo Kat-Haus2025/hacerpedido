@@ -2,42 +2,73 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <title>Kat-Haus - Gatificación personalizada</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kat-Haus - Gatificación</title>
+
+  <!-- Fuente Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
   <style>
     body {
       margin: 0;
       background-color: #b2cee2;
-      font-family: 'Arial', sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      font-family: 'Poppins', sans-serif;
+      color: #2c3e50;
+      text-align: center;
     }
 
     .logo {
       width: 80%;
       max-width: 400px;
       margin-top: 20px;
-      animation: fadein 2.5s ease-in-out;
+      animation: fadeIn 2.5s ease-in;
     }
 
-    .leyenda {
-      text-align: center;
-      margin-top: 20px;
+    .tagline {
+      margin-top: 15px;
       font-size: 1.2rem;
-      max-width: 600px;
-      color: #333;
+      font-weight: 500;
     }
 
-    @keyframes fadein {
-      0% { opacity: 0; transform: translateY(-20px); }
-      100% { opacity: 1; transform: translateY(0); }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .visits {
+      margin-top: 40px;
+      font-size: 0.9rem;
+      opacity: 0.7;
     }
   </style>
 </head>
 <body>
 
-  <img class="logo" src="https://i.ibb.co/5XRwdBQK/Logo-2024-copia.png" alt="Logo Kat-Haus">
+  <img class="logo" src="https://i.ibb.co/5XRwdBQK/Logo-2024-copia.png" alt="Kat-Haus Logo">
 
-  <div class="leyenda">
-    ¿Listo para empezar a diseñar el circuito felino de tus sueños?<br
+  <p class="tagline">
+    ¿Listo para empezar a diseñar el circuito felino de tus sueños?<br>
+    Elige el espacio que vamos a gatificar.
+  </p>
+
+  <!-- Reproductor MP3 opcional -->
+  <!-- 
+  <audio autoplay loop>
+    <source src="URL-DE-TU-MP3.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio HTML5.
+  </audio>
+  -->
+
+  <!-- Contador de visitas simple con JavaScript -->
+  <p class="visits" id="visit-counter">Visitantes: cargando...</p>
+
+  <script>
+    // Contador usando localStorage como ejemplo local (no persistente entre dispositivos)
+    let visits = localStorage.getItem('kat_haus_visits') || 0;
+    visits++;
+    localStorage.setItem('kat_haus_visits', visits);
+    document.getElementById('visit-counter').textContent = "Visitantes: " + visits;
+  </script>
+
+</body>
+</html>
