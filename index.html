@@ -37,6 +37,13 @@
       color: ##f9cd00;
     }
 
+    .intro-heading {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #f9cd00;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
+}
+
     .selector-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -108,9 +115,9 @@
 
 <div class="intro-text" id="elige">
   <br>
-  <strong>Elige las dimensiones del espacio que vamos a gatificar:</strong><p>
+  <strong class="intro-heading">Elige las dimensiones del espacio que vamos a gatificar:</strong>
+  <p></p>
 </div>
-  </div>
 
   <div class="selector-grid"> 
     <div class="selector-item" onclick="elegirEspacio('Oslo')">
