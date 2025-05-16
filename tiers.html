@@ -6,16 +6,16 @@
   <title>Kat-Haus: elige tu presupuesto</title>
   <style>
     body {
-     margin: 0;
-  font-family: 'Quicksand', sans-serif;
-  color: #2c3e50;
-  text-align: center;
+      margin: 0;
+      font-family: 'Quicksand', sans-serif;
+      color: #2c3e50;
+      text-align: center;
 
-  /* fondo estático */
-  background-image: src='verdef.jpg';
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+      /* fondo estático */
+      background-image: url('verdef.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
     }
 
     .logo {
@@ -61,19 +61,12 @@
       border-radius: 12px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
-.tier-label strong {
-  font-weight: bold;
-  color: #ffffff;
-  display: block;
-  font-size: 1.1rem;
-}
-
-    }
 
     .tier-label strong {
       font-weight: bold;
-       color: #ffffff
+      color: #ffffff;
       display: block;
+      font-size: 1.1rem;
     }
 
     .tier-desc {
@@ -104,58 +97,58 @@
   </style>
 </head>
 <body>
-<p></p>
-<img class="header-img" src="https://i.ibb.co/jvLVjqkY/Sin-t-tulo-2-copia.png" alt="Selecciona">
+  <p></p>
+  <img class="header-img" src="https://i.ibb.co/jvLVjqkY/Sin-t-tulo-2-copia.png" alt="Selecciona">
 
- <div class="tier-grid"> 
-  <div class="tier-item" onclick="elegirTier('Deidad')">
-    <img class="tier-img" src="https://i.ibb.co/ynd3SYs8/deidad.jpg" alt="Deidad">
-    <div class="tier-label"><strong>Michi Deidad</strong><span class="tier-desc">(No conoce ningún límite)</span></div>
+  <div class="tier-grid"> 
+    <div class="tier-item" onclick="elegirTier('Deidad')">
+      <img class="tier-img" src="https://i.ibb.co/ynd3SYs8/deidad.jpg" alt="Deidad">
+      <div class="tier-label"><strong>Michi Deidad</strong><span class="tier-desc">(No conoce ningún límite)</span></div>
+    </div>
+    <div class="tier-item" onclick="elegirTier('Emperador')">
+      <img class="tier-img" src="https://i.ibb.co/TBjTfgSV/emperador.jpg" alt="Emperador">
+      <div class="tier-label"><strong>Michi Emperador</strong><span class="tier-desc">$400-$500</span></div>
+    </div>
+    <div class="tier-item" onclick="elegirTier('Magnate')">
+      <img class="tier-img" src="https://i.ibb.co/GQTvpgPp/magnate.jpg" alt="Magnate">
+      <div class="tier-label"><strong>Michi Magnate</strong><span class="tier-desc">$300-$399</span></div>
+    </div>
+    <div class="tier-item" onclick="elegirTier('Aristócrata')">
+      <img class="tier-img" src="https://i.ibb.co/tTMS1ycP/aristocrata.jpg" alt="Aristócrata">
+      <div class="tier-label"><strong>Miichi Aristócrata</strong><span class="tier-desc">$200-$299</span></div>
+    </div>
+    <div class="tier-item" onclick="elegirTier('Oficinista')">
+      <img class="tier-img" src="https://i.ibb.co/7NN7rt6q/oficinista.jpg" alt="Oficinista">
+      <div class="tier-label"><strong>Michi Oficinista</strong><span class="tier-desc">$150-$199</span></div>
+    </div>
+    <div class="tier-item" onclick="elegirTier('Estudiante')">
+      <img class="tier-img" src="https://i.ibb.co/PGHMs1Vb/estudiane.jpg" alt="Estudiante">
+      <div class="tier-label"><strong>Michi Estudiante</strong><span class="tier-desc">$100-$149</span></div>
+    </div>
   </div>
-  <div class="tier-item" onclick="elegirTier('Emperador')">
-    <img class="tier-img" src="https://i.ibb.co/TBjTfgSV/emperador.jpg" alt="Emperador">
-    <div class="tier-label"><strong>Michi Emperador</strong><span class="tier-desc">$400-$500</span></div>
-  </div>
-  <div class="tier-item" onclick="elegirTier('Magnate')">
-    <img class="tier-img" src="https://i.ibb.co/GQTvpgPp/magnate.jpg" alt="Magnate">
-    <div class="tier-label"><strong>Michi Magnate</strong><span class="tier-desc">$300-$399</span></div>
-  </div>
-  <div class="tier-item" onclick="elegirTier('Aristócrata')">
-    <img class="tier-img" src="https://i.ibb.co/tTMS1ycP/aristocrata.jpg" alt="Aristócrata">
-    <div class="tier-label"><strong>Miichi Aristócrata</strong><span class="tier-desc">$200-$299</span></div>
-  </div>
-  <div class="tier-item" onclick="elegirTier('Oficinista')">
-    <img class="tier-img" src="https://i.ibb.co/7NN7rt6q/oficinista.jpg" alt="Oficinista">
-    <div class="tier-label"><strong>Michi Oficinista</strong><span class="tier-desc">$150-$199</span></div>
-  </div>
-  <div class="tier-item" onclick="elegirTier('Estudiante')">
-    <img class="tier-img" src="https://i.ibb.co/PGHMs1Vb/estudiane.jpg" alt="Estudiante">
-    <div class="tier-label"><strong>Michi Estudiante</strong><span class="tier-desc">$100-$149</span></div>
-  </div>
-</div>
 
-<script>
-  function elegirTier(tier) {
-    const espacio = localStorage.getItem('espacioElegido') || 'sin definir';
-    const mensaje = `Hola! Estoy interesado en un circuito de Kat-Haus para el espacio "${espacio}" con el presupuesto "${tier}". ¿Cómo empezamos?`;
-    const url = `https://wa.me/593963372269?text=${encodeURIComponent(mensaje)}`;
-    window.location.href = url;
-  }
+  <script>
+    function elegirTier(tier) {
+      const espacio = localStorage.getItem('espacioElegido') || 'sin definir';
+      const mensaje = `Hola! Estoy interesado en un circuito de Kat-Haus para el espacio "${espacio}" con el presupuesto "${tier}". ¿Cómo empezamos?`;
+      const url = `https://wa.me/593963372269?text=${encodeURIComponent(mensaje)}`;
+      window.location.href = url;
+    }
 
-  // Animación en secuencia
-  window.addEventListener('load', () => {
-    const imgs = document.querySelectorAll('.tier-img');
-    imgs.forEach((img, index) => {
-      setTimeout(() => {
-        img.classList.add('pop');
-        // Remueve la clase después de que la animación termina para que no se repita
-        setTimeout(() => img.classList.remove('pop'), 600);
-      }, index * 150); // 150ms de delay entre cada imagen
+    // Animación en secuencia
+    window.addEventListener('load', () => {
+      const imgs = document.querySelectorAll('.tier-img');
+      imgs.forEach((img, index) => {
+        setTimeout(() => {
+          img.classList.add('pop');
+          setTimeout(() => img.classList.remove('pop'), 600);
+        }, index * 150);
+      });
     });
-  });
-</script>
-<div class="tier-label"><strong>Quito-Ecuador / 09-6337-2269<br>
-Kat-Haus / 2025</strong>
-</div>
+  </script>
+
+  <div class="tier-label" style="margin-top: 40px;">
+    <strong>Quito - Ecuador / 09-6337-2269<br>Kat-Haus / 2025</strong>
+  </div>
 </body>
 </html>
