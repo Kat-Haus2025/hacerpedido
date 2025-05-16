@@ -106,7 +106,7 @@
   Tu navegador no soporta la reproducción de video.
 </video>
 
-<div class="intro-text">
+<div class="intro-text" id="elige">
   <br>
   <strong>Elige las dimensiones del espacio que vamos a gatificar:</strong><p>
 </div>
@@ -167,6 +167,13 @@
   <source src="https://raw.githubusercontent.com/Kat-Haus2025/hacerpedido/main/Satie-Gymnop%C3%A9die-No.-1.mp3" type="audio/mpeg">
  
 </audio>
-
+<script>
+  // Esperar 3 segundos y luego hacer scroll al elemento con id "elige"
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      document.getElementById("elige").scrollIntoView({ behavior: "smooth" });
+    }, 3000);
+  });
+</script>
 </body>
 </html>
