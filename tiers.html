@@ -7,7 +7,7 @@
   <style>
     body {
       margin: 0;
-      background-color: #0a601e;
+      background-color: #666666;
       font-family: 'Quicksand', sans-serif;
       color: #2c3e50;
       text-align: center;
@@ -24,6 +24,13 @@
       margin: 20px auto 40px;
       font-size: 1.2rem;
       max-width: 500px;
+    }
+
+    .header-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin-bottom: 20px;
     }
 
     .tier-grid {
@@ -52,7 +59,16 @@
 
     .tier-label {
       margin-top: 10px;
+    }
+
+    .tier-label strong {
       font-weight: bold;
+      display: block;
+    }
+
+    .tier-desc {
+      color: #666;
+      font-weight: normal;
     }
 
     @keyframes fadeIn {
@@ -69,44 +85,44 @@
 </head>
 <body>
 
-<img src="https://i.ibb.co/jvLVjqkY/Sin-t-tulo-2-copia.png" alt="Selecciona">
+<img class="header-img" src="https://i.ibb.co/jvLVjqkY/Sin-t-tulo-2-copia.png" alt="Selecciona">
 
  <div class="tier-grid"> 
   <div class="tier-item" onclick="elegirTier('Deidad')">
     <img class="tier-img" src="https://i.ibb.co/ynd3SYs8/deidad.jpg" alt="Deidad">
-    <div class="tier-label"><strong>Deidad</strong><br><span class="tier-desc">(No conoce ningún límite)</span></div>
+    <div class="tier-label"><strong>Deidad</strong><span class="tier-desc">(No conoce ningún límite)</span></div>
   </div>
   <div class="tier-item" onclick="elegirTier('Emperador')">
     <img class="tier-img" src="https://i.ibb.co/TBjTfgSV/emperador.jpg" alt="Emperador">
-    <div class="tier-label"><strong>Emperador</strong><br><span class="tier-desc">$400-$500</span></div>
+    <div class="tier-label"><strong>Emperador</strong><span class="tier-desc">$400-$500</span></div>
   </div>
   <div class="tier-item" onclick="elegirTier('Magnate')">
     <img class="tier-img" src="https://i.ibb.co/GQTvpgPp/magnate.jpg" alt="Magnate">
-    <div class="tier-label"><strong>Magnate</strong><br><span class="tier-desc">$300-$399</span></div>
+    <div class="tier-label"><strong>Magnate</strong><span class="tier-desc">$300-$399</span></div>
   </div>
   <div class="tier-item" onclick="elegirTier('Aristócrata')">
     <img class="tier-img" src="https://i.ibb.co/tTMS1ycP/aristocrata.jpg" alt="Aristócrata">
-    <div class="tier-label"><strong>Aristócrata</strong><br><span class="tier-desc">$200-$299</span></div>
+    <div class="tier-label"><strong>Aristócrata</strong><span class="tier-desc">$200-$299</span></div>
   </div>
   <div class="tier-item" onclick="elegirTier('Oficinista')">
     <img class="tier-img" src="https://i.ibb.co/7NN7rt6q/oficinista.jpg" alt="Oficinista">
-    <div class="tier-label"><strong>Oficinista</strong><br><span class="tier-desc">$150-$199</span></div>
+    <div class="tier-label"><strong>Oficinista</strong><span class="tier-desc">$150-$199</span></div>
   </div>
   <div class="tier-item" onclick="elegirTier('Estudiante')">
     <img class="tier-img" src="https://i.ibb.co/PGHMs1Vb/estudiane.jpg" alt="Estudiante">
-    <div class="tier-label"><strong>Estudiante</strong><br><span class="tier-desc">$100-$149</span></div>
+    <div class="tier-label"><strong>Estudiante</strong><span class="tier-desc">$100-$149</span></div>
   </div>
 </div>
 
-
-  <script>
-    function elegirTier(tier) {
-      const espacio = localStorage.getItem('espacioElegido') || 'sin definir';
-      const mensaje = `Hola! Estoy interesado en un circuito de Kat-Haus para el espacio "${espacio}" con el presupuesto "${tier}". ¿Cómo empezamos?`;
-      const url = `https://wa.me/593963372269?text=${encodeURIComponent(mensaje)}`;
-      window.location.href = url;
-    }
-  </script>
+<script>
+  function elegirTier(tier) {
+    const espacio = localStorage.getItem('espacioElegido') || 'sin definir';
+    const mensaje = `Hola! Estoy interesado en un circuito de Kat-Haus para el espacio "${espacio}" con el presupuesto "${tier}". ¿Cómo empezamos?`;
+    const url = `https://wa.me/593963372269?text=${encodeURIComponent(mensaje)}`;
+    window.location.href = url;
+  }
+</script>
 
 </body>
 </html>
+b
