@@ -1,190 +1,44 @@
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Kat-Haus: Circuitos Felinos Personalizados.</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-  <style>
-.intro-text {
-    margin: 2;
-    padding: 6;
-    line-height: 1.8;
-  }
-  video {
-    display: block;
-    margin: 0;
-    padding: 0;
-  }
-    
-    body {
-      margin: 0;
-      background: linear-gradient(to bottom right, #d5e9f7, #f1f7fb);
-      font-family: 'Poppins', sans-serif;
-      color: #2c3e50;
-      text-align: center;
-    }
-
-    .logo {
-      margin-top: 30px;
-      width: 80%;
-      max-width: 280px;
-      animation: fadeIn 2s ease;
-      filter: drop-shadow(0 3px 6px rgba(0,0,0,0.15));
-    }
-
-
-    .intro-text strong {
-      color: ##f9cd00;
-    }
-
-    .intro-heading {
-  font-size: 1.4rem;
-  font-weight: 400;
-  color: #251408;
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
-}
-
-    .selector-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 24px;
-      padding: 0 20px 50px;
-      justify-items: center;
-    }
-
-    .selector-item {
-      cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border-radius: 16px;
-    }
-
-    .selector-item:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-    }
-
-    .selector-img {
-      width: 100%;
-      max-width: 160px;
-      border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-
-    .city-label {
-      margin-top: 10px;
-      font-weight: 600;
-      font-size: 1rem;
-      color: #2c3e50;
-    }
-
-    .visitas {
-      margin: 40px 0 20px;
-      font-size: 0.9rem;
-      color: #7f8c8d;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    @media (max-width: 600px) {
-      .logo {
-        width: 80%;
-      }
-    }
-  </style>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3FXBZW63KV"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-3FXBZW63KV');
-</script>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejemplo Quito y Provincia</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <img class="logo" src="start.PNG" alt="Kat-Haus Logo" />
+<body class="bg-gray-100 text-gray-800">
 
-<video autoplay muted loop playsinline width="100%" height="auto" style="max-height:400px; object-fit: cover; display: block; margin: 0; padding: 0;">
-  <source src="banner0001-0240.mp4" type="video/mp4">
-  Tu navegador no soporta la reproducción de video.
-</video>
-
-<div class="intro-text" id="elige">
-  <img src="choose.png" alt="Elige las dimensiones" style="max-width: 100%; height: auto;" />
-</div>
-
-
-  <div class="selector-grid"> 
-    <div class="selector-item" onclick="elegirEspacio('Oslo')">
-      <img class="selector-img" src="https://i.ibb.co/S7VzGVLp/01.png" alt="Oslo">
-      <div class="city-label">Oslo</div>
+  <!-- Header -->
+  <header class="bg-blue-600 text-white py-4 shadow-md">
+    <div class="container mx-auto px-4">
+      <h1 class="text-2xl font-bold">Mi Sitio</h1>
     </div>
-    <div class="selector-item" onclick="elegirEspacio('Lisboa')">
-      <img class="selector-img" src="https://i.ibb.co/g1k6GR8/02.png" alt="Lisboa">
-      <div class="city-label">Lisboa</div>
-    </div>
-    <div class="selector-item" onclick="elegirEspacio('Florencia')">
-      <img class="selector-img" src="https://i.ibb.co/jZzTZPff/03.png" alt="Florencia">
-      <div class="city-label">Florencia</div>
-    </div>
-    <div class="selector-item" onclick="elegirEspacio('Barcelona')">
-      <img class="selector-img" src="https://i.ibb.co/FbkBhB7n/04.png" alt="Barcelona">
-      <div class="city-label">Barcelona</div>
-    </div>
-    <div class="selector-item" onclick="elegirEspacio('Ámsterdam')">
-      <img class="selector-img" src="https://i.ibb.co/HTsh2ZSY/05.png" alt="Ámsterdam">
-      <div class="city-label">Ámsterdam</div>
-    </div>
-    <div class="selector-item" onclick="elegirEspacio('París')">
-      <img class="selector-img" src="https://i.ibb.co/21CYzp3v/06.png" alt="París">
-      <div class="city-label">París</div>
-    </div>
-  </div>
+  </header>
 
-<div style="margin-top: 50px; padding: 20px; background-color: rgba(0,0,0,0.5); color: #f8f8f8; font-size: 0.9rem; max-width: 700px; margin-left: auto; margin-right: auto; border-radius: 10px; display: flex; align-items: flex-start; gap: 10px;">
- 
-  <span style="text-align: justify;">
-    <strong>Nota:</strong> La dimensión de tu espacio disponible no tiene que ser exactamente igual a las imágenes aquí mostradas. Estas son solo una referencia visual. Todos nuestros circuitos están diseñados para expandirse o comprimirse hasta un <strong>20%</strong> para adaptarse al espacio físico real.
-  </span>
-</div>
+  <!-- Video -->
+  <section class="container mx-auto px-4 mt-6">
+    <video class="w-full rounded-lg shadow-md" controls>
+      <source src="tu-video.mp4" type="video/mp4">
+      Tu navegador no soporta la reproducción de video.
+    </video>
+  </section>
 
-</div>
+  <!-- Imágenes clickeables -->
+  <section class="container mx-auto px-4 my-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+    
+    <!-- Imagen Quito -->
+    <a href="/quito" class="block hover:scale-105 transition-transform duration-300">
+      <img src="imagen-quito.jpg" alt="Quito" class="w-full h-64 object-cover rounded-lg shadow-md">
+      <h2 class="mt-2 text-center text-xl font-semibold">Quito</h2>
+    </a>
 
-  <div class="visitas">Visitas: <span id="contador">...</span></div>
+    <!-- Imagen Provincia -->
+    <a href="/provincia" class="block hover:scale-105 transition-transform duration-300">
+      <img src="imagen-provincia.jpg" alt="Provincia" class="w-full h-64 object-cover rounded-lg shadow-md">
+      <h2 class="mt-2 text-center text-xl font-semibold">Provincia</h2>
+    </a>
 
-  <script>
-    function elegirEspacio(ciudad) {
-      localStorage.setItem('espacioElegido', ciudad);
-      window.location.href = "tiers.html";
-    }
-
-    // Contador de visitas local
-    const contadorKey = 'visitasKatHaus';
-    let visitas = localStorage.getItem(contadorKey);
-    visitas = visitas ? parseInt(visitas) + 1 : 1;
-    localStorage.setItem(contadorKey, visitas);
-    document.getElementById("contador").textContent = visitas;
-  </script>
-  <audio autoplay loop>
-  <source src="satie.mp3" type="audio/mpeg">
- 
-</audio>
-<script>
-  // Esperar 3 segundos y luego hacer scroll al elemento con id "elige"
-  window.addEventListener("load", () => {
-    setTimeout(() => {
-      document.getElementById("elige").scrollIntoView({ behavior: "smooth" });
-    }, 5000);
-  });
-</script>
-
-  <footer style="margin-top: 60px; padding: 20px; font-size: 0.85rem; color: #7f8c8d;">
-  © 2025 Kat-Haus. Todos los derechos reservados. — Diseñamos felicidad para ti y tus gatos.
-</footer>
+  </section>
 
 </body>
 </html>
