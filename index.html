@@ -17,7 +17,7 @@
 
   <!-- Video -->
   <section class="container mx-auto px-4 mt-6">
-    <video class="w-full rounded-lg shadow-md" controls>
+    <video class="w-full rounded-lg shadow-md" autoplay loop muted playsinline>
       <source src="banner0001-0240.mp4" type="video/mp4">
       Tu navegador no soporta la reproducción de video.
     </video>
@@ -28,17 +28,10 @@
     
     <!-- Imagen Quito -->
     <a href="/quito" class="block hover:scale-105 transition-transform duration-300">
-      <img src="quito.png" alt="Quito" class="w-full h-64 object-cover rounded-lg shadow-md">
+      <div class="aspect-square overflow-hidden rounded-xl shadow-md">
+        <img src="quito.png" alt="Quito" class="w-full h-full object-cover">
+      </div>
       <h2 class="mt-2 text-center text-xl font-semibold">Quito</h2>
     </a>
 
-    <!-- Imagen Provincia -->
-    <a href="/provincia" class="block hover:scale-105 transition-transform duration-300">
-      <img src="provincia.png" alt="Provincia" class="w-full h-64 object-cover rounded-lg shadow-md">
-      <h2 class="mt-2 text-center text-xl font-semibold">Provincia</h2>
-    </a>
-
-  </section>
-
-</body>
-</html>
+    <!-- I
