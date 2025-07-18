@@ -43,7 +43,7 @@
 <body class="bg-[#fde68a] min-h-screen text-gray-800 flex flex-col justify-center items-center p-4">
 
   <div class="w-full max-w-xl bg-white rounded-2xl shadow-lg p-6">
-    <h1 class="text-2xl font-bold text-center text-[#5d2b10] mb-6">¡Gatifica tu hogar hoy!</h1>
+    <h1 class="text-2xl font-bold text-center text-[#5d2b10] mb-6">¡Tu hogar está a punto de convertirse en el territorio favorito de tus michis!</h1>
 
     <form id="katForm" class="space-y-4">
       <input type="number" id="michis" name="michis" placeholder="¿Cuántos michis habitan tu hogar?" required class="w-full p-3 border rounded-xl" />
@@ -57,7 +57,7 @@
             <img src="predis.png" alt="Circuito Pre-Diseñado" />
             <span>
              <strong>Pre-Diseñado</strong><p>
-              Circuitos probados y aprobados por nuestros michis, cubriendo opciones entre $99 y $350. La manera <strong>más rápida y sencilla</strong> de iniciarte en la Gatificación.
+              Circuitos probados y aprobados por nuestros michis, cubriendo opciones <strong> entre $99 y $350</strong>. La manera <strong>más rápida y sencilla</strong> de iniciarte en la Gatificación.
             </span>
           </label>
         </div>
@@ -88,7 +88,7 @@
       const tipo = document.querySelector('input[name="tipo"]:checked');
 
       if (!michis || !ubicacion || !tipo) {
-        alert("Por favor completa todos los campos.");
+        alert("Por favor completa todos los campos y elige el método de gatificación.");
         return;
       }
 
