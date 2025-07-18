@@ -36,6 +36,7 @@
       font-weight: 600;
       color: #B45123;
       padding: 0.5rem 0;
+      text-align: center;
     }
   </style>
 </head>
@@ -45,25 +46,29 @@
     <h1 class="text-2xl font-bold text-center text-[#5d2b10] mb-6">¡Gatifica tu hogar hoy!</h1>
 
     <form id="katForm" class="space-y-4">
-      <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required class="w-full p-3 border rounded-xl" />
-      <input type="text" id="ciudad" name="ciudad" placeholder="Ciudad o sector" required class="w-full p-3 border rounded-xl" />
+      <input type="number" id="michis" name="michis" placeholder="¿Cuántos michis habitan tu hogar?" required class="w-full p-3 border rounded-xl" />
+      <input type="text" id="ubicacion" name="ubicacion" placeholder="¿Vives en Quito o en otra ciudad?" required class="w-full p-3 border rounded-xl" />
 
       <p class="font-semibold mt-4 text-[#5d2b10]">Selecciona un tipo de circuito:</p>
-      <div class="grid grid-cols-2 gap-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <input type="radio" id="prediseñado" name="tipo" value="Pre-Diseñado" required />
           <label for="prediseñado">
             <img src="predis.png" alt="Circuito Pre-Diseñado" />
-            <span>Pre-Diseñado<br>
-            Circuitos probados y aprobados por nuestros michis, cubriendo opciones entre $99 y $350, la manera más rápida y sencilla de iniciarte en la GAtificación.</span>
+            <span>
+              Pre-Diseñado<br>
+              Circuitos probados y aprobados por nuestros michis, cubriendo opciones entre $99 y $350. La manera más rápida y sencilla de iniciarte en la Gatificación.
+            </span>
           </label>
         </div>
         <div>
           <input type="radio" id="personalizado" name="tipo" value="Personalizado" />
           <label for="personalizado">
             <img src="disenador.jpg" alt="Circuito Personalizado" />
-            <span>Personalizado<br>
-            Nuestro servicio Premium, la opción ideal para michis con gustos exigentes y humanos para quienes el presupuesto no es un obstáculo. </span>
+            <span>
+              Personalizado<br>
+              Nuestro servicio Premium, ideal para michis con gustos exigentes y humanos para quienes el presupuesto no es un obstáculo.
+            </span>
           </label>
         </div>
       </div>
@@ -72,23 +77,22 @@
         <button type="button" onclick="enviarWhatsApp()" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-xl">
           Continuar por WhatsApp
         </button>
- 
       </div>
     </form>
   </div>
 
   <script>
     function enviarWhatsApp() {
-      const nombre = document.getElementById("nombre").value.trim();
-      const ciudad = document.getElementById("ciudad").value.trim();
+      const michis = document.getElementById("michis").value.trim();
+      const ubicacion = document.getElementById("ubicacion").value.trim();
       const tipo = document.querySelector('input[name="tipo"]:checked');
 
-      if (!nombre || !ciudad || !tipo) {
+      if (!michis || !ubicacion || !tipo) {
         alert("Por favor completa todos los campos.");
         return;
       }
 
-      const mensaje = `Hola, soy ${nombre} desde ${ciudad} y quiero un circuito ${tipo.value}.`;
+      const mensaje = `Hola! Tengo ${michis} michi(s) y vivo en ${ubicacion}. Estoy interesado en un circuito ${tipo.value}.`;
       const link = `https://wa.me/593963372269?text=${encodeURIComponent(mensaje)}`;
       window.open(link, '_blank');
     }
