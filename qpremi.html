@@ -6,12 +6,10 @@
   <title>Elige tu circuito - Kat-Haus</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    /* Fuente Uchiyama si quieres agregarla, sino borra esta línea */
     @import url('https://fonts.googleapis.com/css2?family=Uchiyama&display=swap');
     body {
       font-family: 'Uchiyama', cursive, sans-serif;
     }
-    /* Estilos para radio buttons ocultos y custom */
     input[type="radio"] {
       display: none;
     }
@@ -29,22 +27,28 @@
       background-color: #FFF7ED;
     }
     input[type="radio"]:checked + label {
-      border-color: #D97706; /* color cálido borde */
+      border-color: #D97706;
       box-shadow: 0 0 15px #D97706;
       background-color: #FFF3D3;
     }
-    label img {
-      border-radius: 1rem;
+    /* Contenedor cuadrado para la imagen */
+    label > div.img-container {
       width: 100%;
-      height: 180px;
-      object-fit: cover;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      border-radius: 1rem;
       margin-bottom: 0.5rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+    label img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       transition: transform 0.3s ease;
     }
     label:hover img {
       transform: scale(1.05);
     }
-    /* Texto debajo de la imagen */
     label span {
       font-weight: 700;
       color: #B45123;
@@ -67,7 +71,9 @@
         <div>
           <input type="radio" id="circuito1" name="circuito" value="Circuito Múnich" />
           <label for="circuito1">
-            <img src="06.png" alt="Circuito Múnich" />
+            <div class="img-container">
+              <img src="06.png" alt="Circuito Múnich" />
+            </div>
             <span>Circuito Múnich</span>
           </label>
         </div>
@@ -75,7 +81,9 @@
         <div>
           <input type="radio" id="circuito2" name="circuito" value="Circuito Dresde" />
           <label for="circuito2">
-            <img src="05.png" alt="Circuito Dresde" />
+            <div class="img-container">
+              <img src="05.png" alt="Circuito Dresde" />
+            </div>
             <span>Circuito Dresde</span>
           </label>
         </div>
@@ -83,7 +91,9 @@
         <div>
           <input type="radio" id="circuito3" name="circuito" value="Circuito Hamburgo" />
           <label for="circuito3">
-            <img src="04.png" alt="Circuito Hamburgo" />
+            <div class="img-container">
+              <img src="04.png" alt="Circuito Hamburgo" />
+            </div>
             <span>Circuito Hamburgo</span>
           </label>
         </div>
@@ -91,7 +101,9 @@
         <div>
           <input type="radio" id="circuito4" name="circuito" value="Circuito Dortmund" />
           <label for="circuito4">
-            <img src="03.png" alt="Circuito Dortmund" />
+            <div class="img-container">
+              <img src="03.png" alt="Circuito Dortmund" />
+            </div>
             <span>Circuito Dortmund</span>
           </label>
         </div>
@@ -99,7 +111,9 @@
         <div>
           <input type="radio" id="circuito5" name="circuito" value="Circuito Essen" />
           <label for="circuito5">
-            <img src="02.png" alt="Circuito Essen" />
+            <div class="img-container">
+              <img src="02.png" alt="Circuito Essen" />
+            </div>
             <span>Circuito Essen</span>
           </label>
         </div>
@@ -107,7 +121,9 @@
         <div>
           <input type="radio" id="circuito6" name="circuito" value="Circuito Leipzig" />
           <label for="circuito6">
-            <img src="01.png" alt="Circuito Leipzig" />
+            <div class="img-container">
+              <img src="01.png" alt="Circuito Leipzig" />
+            </div>
             <span>Circuito Leipzig</span>
           </label>
         </div>
