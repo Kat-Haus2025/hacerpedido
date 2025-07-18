@@ -5,6 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bienvenido a Kat-Haus</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes pop {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    .animate-pop {
+      animation: pop 0.8s ease-out;
+    }
+  </style>
 </head>
 <body class="bg-[#afdcf3] text-gray-800">
 
@@ -27,15 +38,15 @@
   <section class="container mx-auto px-4 my-10 grid grid-cols-1 md:grid-cols-2 gap-6">
     
     <!-- Imagen Quito -->
-    <a href="/quito.html" class="block hover:scale-105 transition-transform duration-300">
-      <div class="aspect-square overflow-hidden rounded-xl shadow-md">
+    <a href="/quito.html" class="block transition-transform duration-300 hover:scale-105">
+      <div class="aspect-square overflow-hidden rounded-xl shadow-md animate-pop">
         <img src="quito.png" alt="Quito" class="w-full h-full object-cover">
       </div>
     </a>
 
     <!-- Imagen Provincia -->
-    <a href="/provincia.html" class="block hover:scale-105 transition-transform duration-300">
-      <div class="aspect-square overflow-hidden rounded-xl shadow-md">
+    <a href="/provincia.html" class="block transition-transform duration-300 hover:scale-105">
+      <div class="aspect-square overflow-hidden rounded-xl shadow-md animate-pop">
         <img src="provincia.png" alt="Provincia" class="w-full h-full object-cover">
       </div>
     </a>
@@ -43,7 +54,6 @@
   </section>
 
   <!-- Notas al pie -->
-
   </footer>
 
 </body>
