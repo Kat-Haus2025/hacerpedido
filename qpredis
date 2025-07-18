@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Modelos Pre-diseñados - Kat-Haus</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#afdcf3] text-gray-800 min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="bg-[#5d2b10] text-white py-4 shadow-md">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-2xl font-bold">Modelos Pre-diseñados - Kat-Haus</h1>
+    </div>
+  </header>
+
+  <!-- Contenido principal -->
+  <main class="flex-grow container mx-auto px-4 py-10 max-w-6xl">
+    <h2 class="text-3xl font-bold text-[#B45123] mb-8 text-center">Elige tu circuito gatuno</h2>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+
+      <!-- Diseño 1 -->
+      <div class="bg-[#FFF7ED] rounded-xl shadow-lg p-6 border-l-4 border-[#D97706] flex flex-col items-center text-center">
+        <img src="diseno1.png" alt="Diseño 1" class="mb-4 rounded-lg w-full h-48 object-cover shadow-md" />
+        <h3 class="text-xl font-semibold text-[#B45123] mb-2">Diseño Selva</h3>
+        <a 
+          href="https://wa.me/593999999999?text=Hola%20Kat%20Haus%2C%20me%20interesa%20el%20Dise%C3%B1o%20Selva%20de%20los%20modelos%20pre-dise%C3%B1ados."
+          target="_blank" rel="noopener noreferrer"
+          class="mt-auto inline-block bg-[#D97706] text-white px-4 py-2 rounded-lg hover:bg-[#B45300]"
+        >
+          Solicitar
+        </a>
+      </div>
+
+      <!-- Diseño 2 -->
+      <div class="bg-[#FFF7ED] rounded-xl shadow-lg p-6 border-l-4 border-[#D97706] flex flex-col items-center text-center">
+        <img src="diseno2.png" alt="Diseño 2" class="mb-4 rounded-lg w-full h-48 object-cover shadow-md" />
+        <h3 class="text-xl font-semibold text-[#B45123] mb-2">Diseño Montaña</h3>
+        <a 
+          href="https://wa.me/593999999999?text=Hola%20Kat%20Haus%2C%20me%20interesa%20el%20Dise%C3%B1o%20Montaña%20de%20los%20modelos%20pre-dise%C3%B1ados."
+          target="_blank" rel="noopener noreferrer"
+          class="mt-auto inline-block bg-[#D97706] text-white px-4 py-2 rounded-lg hover:bg-[#B45300]"
+        >
+          Solicitar
+        </a>
+      </div>
+
+      <!-- Diseño 3 -->
+      <div class="bg-[#FFF7ED] rounded-xl shadow-lg p-6 border-l-4 border-[#D97706] flex flex-col items-center text-center">
+        <img src="diseno3.png" alt="Diseño 3" class="mb-4 rounded-lg w-full h-48 object-cover shadow-md" />
+        <h3 class="text-xl font-semibold text-[#B45123] mb-2">Diseño Playa</h3>
+        <a 
+          href="https://wa.me/593999999999?text=Hola%20Kat%20Haus%2C%20me%20interesa%20el%20Dise%C3%B1o%20Playa%20de%20los%20modelos%20pre-dise%C3%B1ados."
+          target="_blank" rel="noopener noreferrer"
+          class="mt-auto inline-block bg-[#D97706] text-white px-4 py-2 rounded-lg hover:bg-[#B45300]"
+        >
+          Solicitar
+        </a>
+      </div>
+
+      <!-- Diseño 4 -->
+      <div class="bg-[#FFF1E6] rounded-xl shadow-lg p-6 border-l-4 border-[#8B2E0E] flex flex-col items-center text-center">
+        <img src="diseno4.png" alt="Diseño 4" class="mb-4 rounded-lg w-full h-48 object-cover shadow-md" />
+        <h3 class="text-xl font-semibold text-[#8B2E0E] mb-2">Diseño Ciudad</h3>
+        <a 
+          href="https://wa.me/593999999999?text=Hola%20Kat%20Haus%2C%20me%20interesa%20el%20Dise%C3%B1o%20Ciudad%20de%20los%20modelos%20pre-dise%C3%B1ados."
+          target="_blank" rel="noopener noreferrer"
+          class="mt-auto inline-block bg-[#8B2E0E] text-white px-4 py-2 rounded-lg hover:bg-[#6B2309]"
+        >
+          Solicitar
+        </a>
+      </div>
+
+      <!-- Diseño 5 -->
+      <div class="bg-[#FFF1E6] rounded-xl shadow-lg p-6 border-l-4 border-[#8B2E0E] flex flex-col items-center text-center">
+        <img src="diseno5.png" alt="Diseño 5" class="mb-4 rounded-lg w-full h-48 object-cover shadow-md" />
+        <h3 class="text-xl font-semibold text-[#8B2E0E] mb-2">Diseño Bosque</h3>
+        <a 
+          href="https://wa.me/593999999999?text=Hola%20Kat%20Haus%2C%20me%20interesa%20el%20Dise%C3%B1o%20Bosque%20de%20los%20modelos%20pre-dise%C3%B1ados."
+          target="_blank" rel="noopener noreferrer"
+          class="mt-auto inline-block bg-[#8B2E0E] text-white px-4 py-2 rounded-lg hover:bg-[#6B2309]"
+        >
+          Solicitar
+        </a>
+      </div>
+
+      <!-- Diseño 6 -->
+      <div class="bg-[#FFF1E6] rounded-xl shadow-lg p-6 border-l-4 border-[#8B2E0E] flex flex-col items-center text-center">
+        <img src="diseno6.png" alt="Diseño 6" class="mb-4 rounded-lg w-full h-48 object-cover shadow-md" />
+        <h3 class="text-xl font-semibold text-[#8B2E0E] mb-2">Diseño Desierto</h3>
+        <a 
+          href="https://wa.me/593999999999?text=Hola%20Kat%20Haus%2C%20me%20interesa%20el%20Dise%C3%B1o%20Desierto%20de%20los%20modelos%20pre-dise%C3%B1ados."
+          target="_blank" rel="noopener noreferrer"
+          class="mt-auto inline-block bg-[#8B2E0E] text-white px-4 py-2 rounded-lg hover:bg-[#6B2309]"
+        >
+          Solicitar
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-[#5d2b10] text-white py-6 mt-12">
+    <div class="container mx-auto px-4 text-center text-sm">
+      &copy; <span id="year"></span> Kat-Haus. Todos los derechos reservados.
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
