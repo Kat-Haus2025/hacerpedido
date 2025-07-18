@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contacto y Pago - Kat-Haus</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#afdcf3] min-h-screen flex flex-col">
+
+  <header class="bg-[#5d2b10] text-white py-4 shadow-md">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-2xl font-bold">Confirma tus datos y elige pago</h1>
+    </div>
+  </header>
+
+  <main class="flex-grow container mx-auto max-w-lg px-6 py-10 bg-white rounded-lg shadow-md mt-10">
+    <form id="paymentForm" class="space-y-6" onsubmit="return false;">
+
+      <div>
+        <label for="name" class="block font-semibold text-[#5d2b10] mb-1">Nombre completo</label>
+        <input type="text" id="name" name="name" required class="w-full border border-gray-300 rounded-md p-2" />
+      </div>
+
+      <div>
+        <label for="phone" class="block font-semibold text-[#5d2b10] mb-1">Teléfono (sin espacios ni símbolos)</label>
+        <input type="tel" id="phone" name="phone" required pattern="[0-9]{7,15}" class="w-full border border-gray-300 rounded-md p-2" />
+      </div>
+
+      <div>
+        <label for="sector" class="block font-semibold text-[#5d2b10] mb-1">Sector de la ciudad</label>
+        <input type="text" id="sector" name="sector" required class="w-full border border-gray-300 rounded-md p-2" />
+      </div>
+
+      <p class="text-[#5d2b10] font-semibold">
+        Total a pagar con transferencia bancaria: <span class="font-bold">$351.00</span><br/>
+        Pago con tarjeta vía PayPal tendrá instrucciones para el pago.
+      </p>
+
+      <div class="flex flex-col gap-4 mt-6">
+
+        <button id="transferBtn" class="bg-[#D97706] text-white px-4 py-2 rounded-lg hover:bg-[#B45300] font-semibold" type="button">
+          Pagar con Transferencia Bancaria
+        </button>
+
+        <button id="paypalBtn" class="bg-[#8B2E0E] text-white px-4 py-2 rounded-lg hover:bg-[#6B2309] font-semibold" type="button">
+          Pagar con Tarjeta de Crédito vía PayPal (+9%)
+        </button>
+
+      </div>
+    </form>
+  </main>
+
+  <footer class="bg-[#5d2b10] text-white py-6 mt-12 text-center text-sm">
+    &copy; <span id="year"></span> Kat-Haus. Todos los derechos reservados.
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const whatsappNumber = "593963372269"; // Cambia al número real, sin signos ni espacios
+
+    const form = document.getElementById('paymentForm');
+    const transferBtn = document.getElementById('transferBtn');
+    const paypalBtn = document.getElementById('paypalBtn');
+
+    function generateWhatsAppLink(data) {
+      const text = `Hola Kat Haus, soy ${data.name}, teléfono ${data.phone}, vivo en ${data.sector} y deseo pagar el Circuito Múnich con instalación a domicilio mediante ${data.method}. Gracias.`;
+      return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
+    }
+
+    transferBtn.addEventListener('click', () => {
+      if (!form.reportValidity()) return;
+      const data = {
+        name: form.name.value.trim(),
+        phone: form.phone.value.trim(),
+        sector: form.sector.value.trim(),
+        method: 'transferencia bancaria por $331.00'
+      };
+      const url = generateWhatsAppLink(data);
+      window.open(url, '_blank');
+    });
+
+    paypalBtn.addEventListener('click', () => {
+      if (!form.reportValidity()) return;
+      const data = {
+        name: form.name.value.trim(),
+        phone: form.phone.value.trim(),
+        sector: form.sector.value.trim(),
+        method: 'tarjeta de crédito vía PayPal con recargo del 9%'
+      };
+      const url = generateWhatsAppLink(data);
+      window.open(url, '_blank');
+    });
+  </script>
+
+</body>
+</html>
