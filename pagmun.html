@@ -58,14 +58,14 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    const whatsappNumber = "593999999999"; // Cambia al número real, sin signos ni espacios
+    const whatsappNumber = "593963372269"; // Cambia al número real, sin signos ni espacios
 
     const form = document.getElementById('paymentForm');
     const transferBtn = document.getElementById('transferBtn');
     const paypalBtn = document.getElementById('paypalBtn');
 
     function generateWhatsAppLink(data) {
-      const text = `Hola Kat Haus, soy ${data.name}, teléfono ${data.phone}, vivo en ${data.sector} y deseo pagar mediante ${data.method}. Gracias.`;
+      const text = `Hola Kat Haus, soy ${data.name}, teléfono ${data.phone}, vivo en ${data.sector} y deseo pagar el Circuito Múnich con instalación a domicilio mediante ${data.method}. Gracias.`;
       return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
     }
 
