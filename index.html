@@ -61,13 +61,14 @@
     const provincia = document.getElementById('provincia');
     const galeria = document.getElementById('galeria');
 
-    provincia.addEventListener('animationend', () => {
-      const top = galeria.offsetTop;
-      window.scrollTo({
-        top: top - 20,
-        behavior: 'smooth'
-      });
-    });
+provincia.addEventListener('animationend', () => {
+  const top = galeria.offsetTop;
+  window.scrollTo({
+    top: top + 20, // ahora se mueve un poco más abajo
+    behavior: 'smooth'
+  });
+});
+
   </script>
 
 </body>
