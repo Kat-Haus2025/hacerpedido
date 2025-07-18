@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contacto y Pago - Kat-Haus</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://www.paypal.com/sdk/js?client-id=TU_CLIENT_ID&currency=USD"></script>
+</head>
+<body class="bg-[#afdcf3] min-h-screen flex flex-col">
+
+  <header class="bg-[#5d2b10] text-white py-4 shadow-md">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-2xl font-bold">Confirma tus datos y elige pago</h1>
+    </div>
+  </header>
+
+  <main class="flex-grow container mx-auto max-w-lg px-6 py-10 bg-white rounded-lg shadow-md mt-10">
+    <form id="paymentForm" class="space-y-6">
+
+      <div>
+        <label for="name" class="block font-semibold text-[#5d2b10] mb-1">Nombre completo</label>
+        <input type="text" id="name" name="name" required class="w-full border border-gray-300 rounded-md p-2" />
+      </div>
+
+      <div>
+        <label for="phone" class="block font-semibold text-[#5d2b10] mb-1">Teléfono (sin espacios ni símbolos)</label>
+        <input type="tel" id="phone" name="phone" required pattern="[0-9]{7,15}" class="w-full border border-gray-300 rounded-md p-2" />
+      </div>
+
+      <div>
+        <label for="sector" class="block font-semibold text-[#5d2b10] mb-1">Sector de la ciudad</label>
+        <input type="text" id="sector" name="sector" required class="w-full border border-gray-300 rounded-md p-2" />
+      </div>
+
+      <p class="text-[#5d2b10] font-semibold">
+        Total a pagar: <span class="font-bold">$145.00</span><br/>
+        Pago con tarjeta vía PayPal tiene un recargo del 9% (<span id="totalPaypal">$158.05</span>)
+      </p>
+
+      <!-- Botones -->
+      <div class="flex flex-col gap-4 mt-4">
+
+        <button type="button" id="transferBtn" class="bg-[#D97706] text-white px-4 py-2 rounded-lg hover:bg-[#B45300] font-semibold">
+          Pagar con Transferencia Bancaria
+        </button>
+
+        <div id="paypal-button-container"></div>
+      </div>
+    </form>
+  </main>
+
+  <footer class="bg-[#5d2b10] text-white py-6 mt-12 text-center text-sm">
+    &copy; <span id="year"></span> Kat-Haus. Todos los derechos reservados.
+  </footer>
+
+  <script>
+    // Mostrar año actual
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const baseAmount = 145;
+    const paypalTotal = (baseAmount * 1.09).toFixed(2);
+    document.getElementById('totalPaypal').textContent = `$${paypalTotal}`;
+
+    const form = document.getElementById('paymentForm');
+    const transferBtn = document.getElementById('transferBtn');
+
+    // Número de WhatsApp (cambia al tuyo con código país sin +)
+    const whatsappNumber = "593999999999";
+
+    function generateWhatsAppLink(data) {
+      // Escapa y arma el texto para WhatsApp
+      const text = `Hola Kat Haus, soy ${data.name}, teléfono ${data.phone}, vivo en ${data.sector} y deseo coordinar pago por ${data.method}. Gracias.`;
+      return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
+    }
+
+    transferBtn.addEventListener('click', () => {
+      if (!form.reportValidity()) return;
+      const data = {
+        name: form.name.value.trim(),
+        phone: form.phone.value.trim(),
+        sector: form.sector.value.trim(),
+        method: 'transferencia bancaria'
+      };
+      const url = generateWhatsAppLink(data);
+      window.open(url, '_blank');
+    });
+
+    // PayPal button
+    paypal.Buttons({
+      style: {
+        shape: 'rect',
+        color: 'gold',
+        layout: 'vertical',
+        label: 'paypal'
+      },
+      onClick: function(data, actions) {
+        if (!form.reportValidity()) {
+          return actions.reject();
+        }
+        return actions.resolve();
+      },
+      createOrder: function(data, actions) {
+        return actions.order.create({
+          purchase_units: [{
+            amount: {
+              value: paypalTotal
+            },
+            description: 'Circuito Kat-Haus + Instalación'
+          }]
+        });
+      },
+      onApprove: function(data, actions) {
+        return actions.order.capture().then(function(details) {
+          alert(`Pago exitoso, gracias ${details.payer.name.given_name}! Nos pondremos en contacto pronto.`);
+          // Aquí podrías enviar info a backend, por ejemplo
+          // También abrimos WhatsApp con datos para coordinar
+          const dataToSend = {
+            name: form.name.value.trim(),
+            phone: form.phone.value.trim(),
+            sector: form.sector.value.trim(),
+            method: 'tarjeta de crédito vía PayPal'
+          };
+          const url = generateWhatsAppLink(dataToSend);
+          window.open(url, '_blank');
+          form.reset();
+        });
+      },
+      onError: function(err) {
+        alert('Error en el proceso de pago, intenta más tarde.');
+        console.error(err);
+      }
+    }).render('#paypal-button-container');
+  </script>
+</body>
+</html>
