@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pago y Reserva - Kat-Haus</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://www.paypal.com/sdk/js?client-id=TU_CLIENT_ID&currency=USD"></script>
+</head>
+<body class="bg-[#afdcf3] min-h-screen flex flex-col">
+
+  <header class="bg-[#5d2b10] text-white py-4 shadow-md">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-2xl font-bold">Reserva tu instalación y paga con PayPal</h1>
+    </div>
+  </header>
+
+  <main class="flex-grow container mx-auto max-w-lg px-6 py-10 bg-white rounded-lg shadow-md mt-10">
+    <form id="installForm" class="space-y-6">
+      <div>
+        <label for="name" class="block font-semibold text-[#5d2b10] mb-1">Nombre completo</label>
+        <input type="text" id="name" name="name" required class="w-full border border-gray-300 rounded-md p-2" />
+      </div>
+      <div>
+        <label for="phone" class="block font-semibold text-[#5d2b10] mb-1">Teléfono</label>
+        <input type="tel" id="phone" name="phone" required class="w-full border border-gray-300 rounded-md p-2" />
+      </div>
+      <div>
+        <label for="address" class="block font-semibold text-[#5d2b10] mb-1">Dirección para instalación</label>
+        <textarea id="address" name="address" required class="w-full border border-gray-300 rounded-md p-2" rows="3"></textarea>
+      </div>
+      <div>
+        <label for="date" class="block font-semibold text-[#5d2b10] mb-1">Fecha preferida para instalación</label>
+        <input type="date" id="date" name="date" required class="w-full border border-gray-300 rounded-md p-2" />
+      </div>
+
+      <div>
+        <p class="text-[#5d2b10] font-semibold mb-1">Monto a pagar: <span class="font-bold">$145.00</span></p>
+      </div>
+
+      <!-- Contenedor para botón PayPal -->
+      <div id="paypal-button-container"></div>
+    </form>
+  </main>
+
+  <footer class="bg-[#5d2b10] text-white py-6 mt-12 text-center text-sm">
+    &copy; <span id="year"></span> Kat-Haus. Todos los derechos reservados.
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // PayPal buttons config
+    paypal.Buttons({
+      style: {
+        shape: 'rect',
+        color: 'gold',
+        layout: 'vertical',
+        label: 'paypal'
+      },
+      onClick: function(data, actions) {
+        // Validar formulario antes de permitir pago
+        const form = document.getElementById('installForm');
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return actions.reject();
+        }
+        return actions.resolve();
+      },
+      createOrder: function(data, actions) {
+        // Crear orden con monto fijo $145
+        return actions.order.create({
+          purchase_units: [{
+            amount: {
+              value: '145.00'
+            },
+            description: 'Circuito Kat-Haus con instalación'
+          }]
+        });
+      },
+      onApprove: function(data, actions) {
+        return actions.order.capture().then(function(details) {
+          alert('Pago completado por ' + details.payer.name.given_name + '. ¡Gracias por confiar en Kat-Haus!');
+          // Aquí puedes enviar datos del formulario a tu backend para guardar la cita y pago
+          // Ejemplo: enviar con fetch a API propia
+          // Por ahora solo reseteamos formulario:
+          document.getElementById('installForm').reset();
+        });
+      },
+      onError: function(err) {
+        alert('Error en el pago, por favor intenta más tarde.');
+        console.error(err);
+      }
+    }).render('#paypal-button-container');
+  </script>
+
+</body>
+</html>
