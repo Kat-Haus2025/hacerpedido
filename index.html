@@ -39,7 +39,7 @@
   </p>
 
   <!-- Imágenes clickeables -->
-  <section class="container mx-auto px-4 my-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+  <section id="galeria" class="container mx-auto px-4 my-10 grid grid-cols-1 md:grid-cols-2 gap-6">
     
     <!-- Imagen Quito -->
     <a id="quito" href="/quito.html" class="block transition-transform duration-300 hover:scale-105">
@@ -58,12 +58,15 @@
   </section>
 
   <script>
-    // Espera que termine la animación de "Provincia"
     const provincia = document.getElementById('provincia');
-    const quito = document.getElementById('quito');
+    const galeria = document.getElementById('galeria');
 
     provincia.addEventListener('animationend', () => {
-      quito.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      const top = galeria.offsetTop;
+      window.scrollTo({
+        top: top - 20, // pequeño ajuste para que no quede pegado arriba
+        behavior: 'smooth'
+      });
     });
   </script>
 
