@@ -21,46 +21,58 @@
     }
   </style>
 </head>
-<body class="bg-[#afdcf3] text-gray-800">
+<body class="bg-[#fff3e0] text-[#5d2b10]">
 
+  <!-- Imagen principal -->
+  <div class="text-center mt-4 mb-[10px]">
+    <img src="donde.png" alt="Dónde está Kat-Haus" class="mx-auto">
+  </div>
 
-  <br class="text-center">
-    <img src="donde.png" alt="Quito" class="mx-auto">
- 
-
-  <!-- Imágenes clickeables -->
-  <section id="galeria" class="container mx-auto px-2 mt-0 mb-2 scale-[0.85] grid grid-cols-1 md:grid-cols-2 gap-1">
+  <!-- Galería de selección -->
+  <section id="galeria" class="container mx-auto px-2 scale-[0.85] grid grid-cols-1 md:grid-cols-2 gap-1">
     
     <!-- Imagen Quito -->
     <a id="quito" href="/quito.html" class="block transition-transform duration-300 hover:scale-105">
-      <div class="aspect-square overflow-hidden rounded-xl shadow-md animate-pop">
+      <div class="aspect-square overflow-hidden rounded-xl shadow-md animate-pop bg-[#ffe0b2]">
         <img src="quito.png" alt="Quito" class="w-full h-full object-cover">
       </div>
     </a>
 
     <!-- Imagen Provincia -->
     <a href="/provincia.html" class="block transition-transform duration-300 hover:scale-105">
-      <div id="provincia" class="aspect-square overflow-hidden rounded-xl shadow-md animate-pop-delay">
+      <div id="provincia" class="aspect-square overflow-hidden rounded-xl shadow-md animate-pop-delay bg-[#ffe0b2]">
         <img src="provincia.png" alt="Provincia" class="w-full h-full object-cover">
-         </br>
       </div>
     </a>
 
   </section>
 
+  <!-- Script para scroll animado -->
   <script>
     const provincia = document.getElementById('provincia');
     const galeria = document.getElementById('galeria');
 
-provincia.addEventListener('animationend', () => {
-  const top = galeria.offsetTop;
-  window.scrollTo({
-    top: top + 20, // ahora se mueve un poco más abajo
-    behavior: 'smooth'
-  });
-});
-
+    provincia.addEventListener('animationend', () => {
+      const top = galeria.offsetTop;
+      window.scrollTo({
+        top: top + 20,
+        behavior: 'smooth'
+      });
+    });
   </script>
-<a href="https://visitorbadge.io/status?path=https%3A%2F%2Fgithub.com%2FKat-Haus2025%2Fhacerpedido%2Fblob%2Fmain%2Findex.html"><img src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2FKat-Haus2025%2Fhacerpedido%2Fblob%2Fmain%2Findex.html&label=Visitante&countColor=%23263759&style=plastic" /></a>
+
+  <!-- Información de contacto -->
+  <footer class="bg-[#d97706] text-white mt-10 py-4 text-center text-sm rounded-t-xl">
+    <p class="mb-1">📞 Teléfono: <a href="tel:+593963372269" class="underline hover:text-[#fff7ed]">+593 96 337 2269</a></p>
+    <p>📷 Instagram: <a href="https://instagram.com/kathaus.ec" target="_blank" class="underline hover:text-[#fff7ed]">@kathaus.ec</a></p>
+  </footer>
+
+  <!-- Contador de visitas -->
+  <div class="text-center my-2">
+    <a href="https://visitorbadge.io/status?path=https%3A%2F%2Fgithub.com%2FKat-Haus2025%2Fhacerpedido%2Fblob%2Fmain%2Findex.html">
+      <img src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2FKat-Haus2025%2Fhacerpedido%2Fblob%2Fmain%2Findex.html&label=Visitante&countColor=%23263759&style=plastic" alt="Contador de visitantes">
+    </a>
+  </div>
+
 </body>
 </html>
