@@ -9,7 +9,9 @@
     input[type="radio"] {
       display: none;
     }
+
     label {
+      position: relative;
       cursor: pointer;
       transition: all 0.3s ease;
       border-radius: 1rem;
@@ -20,22 +22,44 @@
       align-items: center;
       background-color: #FFF7ED;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding-top: 2rem;
     }
+
+    /* Círculo visual del botón radio */
+    label::before {
+      content: '';
+      position: absolute;
+      top: 0.75rem;
+      left: 0.75rem;
+      width: 1rem;
+      height: 1rem;
+      border-radius: 9999px;
+      border: 2px solid #D97706;
+      background-color: white;
+      transition: background-color 0.3s ease;
+    }
+
+    input[type="radio"]:checked + label::before {
+      background-color: #D97706;
+    }
+
     input[type="radio"]:checked + label {
       border-color: #D97706;
       box-shadow: 0 0 15px #D97706;
       background-color: #FFF3D3;
     }
+
     label img {
       width: 100%;
       height: 180px;
       object-fit: cover;
       border-radius: 1rem;
     }
+
     label span {
       font-weight: 600;
       color: #B45123;
-      padding: 0.5rem 0;
+      padding: 0.5rem 1rem;
       text-align: center;
     }
   </style>
@@ -43,7 +67,9 @@
 <body class="bg-[#fde68a] min-h-screen text-gray-800 flex flex-col justify-center items-center p-4">
 
   <div class="w-full max-w-xl bg-white rounded-2xl shadow-lg p-6">
-    <h1 class="text-2xl font-bold text-center text-[#5d2b10] mb-6">¡Tu hogar está a punto de convertirse en el territorio favorito de tus michis!</h1>
+    <h1 class="text-2xl font-bold text-center text-[#5d2b10] mb-6">
+      ¡Tu hogar está a punto de convertirse en el territorio favorito de tus michis!
+    </h1>
 
     <form id="katForm" class="space-y-4">
       <input type="number" id="michis" name="michis" placeholder="¿Cuántos michis habitan tu hogar?" required class="w-full p-3 border rounded-xl" />
@@ -51,23 +77,29 @@
 
       <p class="font-semibold mt-4 text-[#5d2b10]">Selecciona el método de Gatificación:</p>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div> <span><strong>Pre-Diseñado</strong></span>
+        <!-- Opción Pre-Diseñado -->
+        <div>
           <input type="radio" id="prediseñado" name="tipo" value="Pre-Diseñado" required />
           <label for="prediseñado">
+            <span><strong>Pre-Diseñado</strong></span>
             <img src="predis.png" alt="Circuito Pre-Diseñado" />
             <span>
-             
-              Circuitos probados y aprobados por nuestros michis, cubriendo rangos <strong> entre $99 y $350</strong>. La manera <strong>más rápida y sencilla</strong> de iniciarte en la Gatificación.
+              Circuitos <strong>probados y aprobados</strong> por nuestros michis,<br>
+              cubriendo rangos <strong>entre $99 y $350</strong>.<br>
+              La manera <strong>más rápida y sencilla</strong> de iniciarte en la Gatificación.
             </span>
           </label>
         </div>
-        <div>   <div> <span><strong>Pre-Diseñado</strong></span>
+
+        <!-- Opción Personalizado -->
+        <div>
           <input type="radio" id="personalizado" name="tipo" value="Personalizado" />
           <label for="personalizado">
+            <span><strong>Personalizado</strong></span>
             <img src="disenador.jpg" alt="Circuito Personalizado" />
             <span>
-          
-              Nuestro servicio <strong>Premium</strong>, ideal para michis con gustos exigentes y humanos <strong>para quienes el presupuesto no es un obstáculo.</strong>
+              Nuestro servicio <strong>Premium</strong>, ideal para michis con <strong>gustos exigentes</strong> y humanos<br>
+              <strong>para quienes el presupuesto no es un obstáculo.</strong>
             </span>
           </label>
         </div>
