@@ -15,6 +15,10 @@
     .animate-pop {
       animation: pop 0.8s ease-out;
     }
+
+    .animate-pop-delay {
+      animation: pop 0.8s ease-out 0.8s both;
+    }
   </style>
 </head>
 <body class="bg-[#afdcf3] text-gray-800">
@@ -46,15 +50,12 @@
 
     <!-- Imagen Provincia -->
     <a href="/provincia.html" class="block transition-transform duration-300 hover:scale-105">
-      <div class="aspect-square overflow-hidden rounded-xl shadow-md animate-pop">
+      <div class="aspect-square overflow-hidden rounded-xl shadow-md animate-pop-delay">
         <img src="provincia.png" alt="Provincia" class="w-full h-full object-cover">
       </div>
     </a>
 
   </section>
-
-  <!-- Notas al pie -->
-  </footer>
 
 </body>
 </html>
