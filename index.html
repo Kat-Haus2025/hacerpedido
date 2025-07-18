@@ -8,9 +8,7 @@
   <style>
     @keyframes pop {
       0% { transform: scale(1); }
-      25% { transform: scale(1.1); }
-      50% { transform: scale(1); }
-      75% { transform: scale(1.1); }
+      50% { transform: scale(1.1); }
       100% { transform: scale(1); }
     }
 
@@ -44,7 +42,7 @@
   <section class="container mx-auto px-4 my-10 grid grid-cols-1 md:grid-cols-2 gap-6">
     
     <!-- Imagen Quito -->
-    <a href="/quito.html" class="block transition-transform duration-300 hover:scale-105">
+    <a id="quito" href="/quito.html" class="block transition-transform duration-300 hover:scale-105">
       <div class="aspect-square overflow-hidden rounded-xl shadow-md animate-pop">
         <img src="quito.png" alt="Quito" class="w-full h-full object-cover">
       </div>
@@ -52,14 +50,22 @@
 
     <!-- Imagen Provincia -->
     <a href="/provincia.html" class="block transition-transform duration-300 hover:scale-105">
-      <div class="aspect-square overflow-hidden rounded-xl shadow-md animate-pop-delay">
+      <div id="provincia" class="aspect-square overflow-hidden rounded-xl shadow-md animate-pop-delay">
         <img src="provincia.png" alt="Provincia" class="w-full h-full object-cover">
       </div>
     </a>
 
   </section>
-<br>
-  <img src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2FKat-Haus2025%2Fhacerpedido%2Fblob%2Fmain%2Findex.html&label=Visitante&countColor=%23263759&style=plastic" alt="Visitantes">
+
+  <script>
+    // Espera que termine la animación de "Provincia"
+    const provincia = document.getElementById('provincia');
+    const quito = document.getElementById('quito');
+
+    provincia.addEventListener('animationend', () => {
+      quito.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  </script>
 
 </body>
 </html>
