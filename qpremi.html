@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Elige tu circuito - Kat-Haus</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Fuente Uchiyama si quieres agregarla, sino borra esta línea */
+    @import url('https://fonts.googleapis.com/css2?family=Uchiyama&display=swap');
+    body {
+      font-family: 'Uchiyama', cursive, sans-serif;
+    }
+    /* Estilos para radio buttons ocultos y custom */
+    input[type="radio"] {
+      display: none;
+    }
+    label {
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border-radius: 1rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      overflow: hidden;
+      border: 4px solid transparent;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0.5rem;
+      background-color: #FFF7ED;
+    }
+    input[type="radio"]:checked + label {
+      border-color: #D97706; /* color cálido borde */
+      box-shadow: 0 0 15px #D97706;
+      background-color: #FFF3D3;
+    }
+    label img {
+      border-radius: 1rem;
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      margin-bottom: 0.5rem;
+      transition: transform 0.3s ease;
+    }
+    label:hover img {
+      transform: scale(1.05);
+    }
+    /* Texto debajo de la imagen */
+    label span {
+      font-weight: 700;
+      color: #B45123;
+      font-size: 1.1rem;
+    }
+  </style>
+</head>
+<body class="bg-[#afdcf3] min-h-screen flex flex-col">
+
+  <header class="bg-[#5d2b10] text-white py-4 shadow-md">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-2xl font-bold">Selecciona un circuito gatuno</h1>
+    </div>
+  </header>
+
+  <main class="flex-grow container mx-auto px-4 py-10 max-w-6xl">
+    <form>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+
+        <div>
+          <input type="radio" id="circuito1" name="circuito" value="Circuito Múnich" />
+          <label for="circuito1">
+            <img src="06.png" alt="Circuito Múnich" />
+            <span>Circuito Múnich</span>
+          </label>
+        </div>
+
+        <div>
+          <input type="radio" id="circuito2" name="circuito" value="Circuito Dresde" />
+          <labe
