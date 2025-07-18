@@ -39,7 +39,7 @@
   </p>
 
   <!-- Imágenes clickeables -->
-  <section id="galeria" class="container mx-auto px-4 my-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+  <section id="galeria" class="container mx-auto px-2 my-6 scale-[0.85] grid grid-cols-1 md:grid-cols-2 gap-4">
     
     <!-- Imagen Quito -->
     <a id="quito" href="/quito.html" class="block transition-transform duration-300 hover:scale-105">
@@ -64,7 +64,7 @@
     provincia.addEventListener('animationend', () => {
       const top = galeria.offsetTop;
       window.scrollTo({
-        top: top - 20, // pequeño ajuste para que no quede pegado arriba
+        top: top - 20,
         behavior: 'smooth'
       });
     });
