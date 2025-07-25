@@ -159,18 +159,22 @@
 
     anguloActual = anguloFinal;
 
-    setTimeout(() => {
-      let anguloResultado = anguloFinal % 360;
-      if (anguloResultado < 0) anguloResultado += 360;
+   setTimeout(() => {
+  let anguloResultado = anguloFinal % 360;
+  if (anguloResultado < 0) anguloResultado += 360;
 
-      const gradosPorSegmento = 360 / premios.length;
-      let indice = Math.floor(((anguloResultado + gradosPorSegmento / 2) % 360) / gradosPorSegmento);
-      indice = (premios.length - indice) % premios.length;
+  // *** OFFSET de 100° para cuadrante superior derecho ***
+  const offset = 100;
+  anguloResultado = (anguloResultado + offset) % 360;
 
-      mensaje.textContent = `¡Ganaste: ${premios[indice]}!`;
-      textos[indice].classList.add('activo');
-      indiceGanador = indice;
-    }, 4000);
+  const gradosPorSegmento = 360 / premios.length;
+  let indice = Math.floor(((anguloResultado + gradosPorSegmento / 2) % 360) / gradosPorSegmento);
+  indice = (premios.length - indice) % premios.length;
+
+  mensaje.textContent = `¡Ganaste: ${premios[indice]}!`;
+  indiceGanador = indice;
+}, 4000);
+
   });
 
   btnCerrar.addEventListener('click', () => {
