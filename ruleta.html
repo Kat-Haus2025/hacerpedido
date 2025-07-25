@@ -135,35 +135,30 @@
   const btnGirar = document.getElementById('btn-girar');
   const btnCerrar = document.getElementById('btn-cerrar');
 
-  // Mostrar ruleta automáticamente al cargar
+  // Mostrar ruleta al cargar
   window.addEventListener('load', () => {
     contenedor.style.display = 'flex';
-    // Revisar si ya giró en esta sesión
     if (sessionStorage.getItem('girado') === 'true') {
       mensaje.textContent = "Ya giraste en esta visita. Recarga la página para intentar otra vez.";
       btnGirar.disabled = true;
     }
   });
 
-  // Girar ruleta
   btnGirar.addEventListener('click', () => {
-    // Marcar que ya giró en esta sesión
     sessionStorage.setItem('girado', 'true');
 
-    // Elegir premio aleatorio
+    // Premio aleatorio
     const indicePremio = Math.floor(Math.random() * premios.length);
     const premio = premios[indicePremio];
 
-    // Calcular ángulo exacto del premio
+    // Cada segmento = 60°
     const gradosPorSegmento = 360 / premios.length;
-    const anguloBase = 360 - (indicePremio * gradosPorSegmento + gradosPorSegmento / 2);
 
-    // Girar varias vueltas + ángulo del premio
-    const girosCompletos = 360 * 5;
-    const anguloFinal = girosCompletos + anguloBase;
+    // Ángulo exacto: giro completo + centro del segmento
+    // Ajuste: restamos 90° para alinear la flecha con el primer premio (arriba)
+    const anguloObjetivo = 360 * 5 + (indicePremio * gradosPorSegmento + gradosPorSegmento / 2) - 90;
 
-    // Animar ruleta
-    ruleta.style.transform = `rotate(${anguloFinal}deg)`;
+    ruleta.style.transform = `rotate(${anguloObjetivo}deg)`;
 
     setTimeout(() => {
       mensaje.textContent = `¡Ganaste: ${premio}!`;
