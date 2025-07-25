@@ -10,6 +10,7 @@
     text-align: center;
     background: #f0f0f0;
   }
+
   #ruleta-container {
     display: none;
     position: fixed;
@@ -18,9 +19,18 @@
     justify-content: center;
     align-items: center;
   }
-  #ruleta {
+
+  /* Contenedor de la ruleta */
+  .ruleta-wrapper {
+    position: relative;
     width: 300px;
     height: 300px;
+  }
+
+  /* Disco de colores */
+  #ruleta {
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
     border: 5px solid #333;
     background: conic-gradient(
@@ -32,12 +42,49 @@
       #fab1a0 300deg 360deg
     );
     transition: transform 4s cubic-bezier(0.33, 1, 0.68, 1);
+    position: absolute;
+    top: 0;
+    left: 0;
   }
+
+  /* Textos de cada premio */
+  .premio-texto {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    left: 50%;
+    top: 50%;
+    transform-origin: 0% 0%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: #000;
+    text-align: center;
+    padding: 4px;
+  }
+
+  /* Flecha indicadora */
+  .flecha {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 20px solid #333;
+    z-index: 10;
+  }
+
   #mensaje {
     margin-top: 20px;
     font-size: 1.2rem;
     font-weight: bold;
   }
+
   button {
     margin-top: 15px;
     padding: 8px 16px;
@@ -47,6 +94,7 @@
     cursor: pointer;
     border-radius: 5px;
   }
+
   button:disabled {
     opacity: 0.5;
     cursor: default;
@@ -57,7 +105,18 @@
 
 <div id="ruleta-container">
   <div>
-    <div id="ruleta"></div>
+    <div class="ruleta-wrapper">
+      <div class="flecha"></div>
+      <div id="ruleta">
+        <div class="premio-texto" style="transform: rotate(30deg) translate(0, -120px);">10% Descuento</div>
+        <div class="premio-texto" style="transform: rotate(90deg) translate(0, -120px);">Envío Gratis</div>
+        <div class="premio-texto" style="transform: rotate(150deg) translate(0, -120px);">2x1 en tu compra</div>
+        <div class="premio-texto" style="transform: rotate(210deg) translate(0, -120px);">15% Descuento</div>
+        <div class="premio-texto" style="transform: rotate(270deg) translate(0, -120px);">Regalo sorpresa</div>
+        <div class="premio-texto" style="transform: rotate(330deg) translate(0, -120px);">5% Descuento</div>
+      </div>
+    </div>
+
     <div id="mensaje"></div>
     <button id="btn-girar">Girar</button>
     <button id="btn-cerrar">Cerrar</button>
@@ -66,12 +125,12 @@
 
 <script>
   const premios = [
-    "10% de descuento",
-    "Envío gratis",
+    "10% Descuento",
+    "Envío Gratis",
     "2x1 en tu compra",
-    "15% de descuento",
+    "15% Descuento",
     "Regalo sorpresa",
-    "5% de descuento"
+    "5% Descuento"
   ];
 
   const contenedor = document.getElementById('ruleta-container');
