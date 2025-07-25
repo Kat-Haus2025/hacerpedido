@@ -24,11 +24,10 @@
 
   #ruleta-container {
     display: flex;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.4);
     justify-content: center;
     align-items: center;
+    margin-top: 20px;
+    flex-direction: column;
   }
 
   .ruleta-wrapper {
@@ -44,7 +43,7 @@
     height: 100%;
     border-radius: 50%;
     transform-origin: 50% 50%;
-    transition: transform 4s cubic-bezier(0.1, 0.8, 0.3, 1); /* ralentiza al final */
+    transition: transform 4s cubic-bezier(0.1, 0.8, 0.3, 1);
   }
 
   /* Pin triangular */
@@ -85,18 +84,15 @@
     margin-bottom: 1rem;
   }
 
-  /* Animación parpadeo + galope */
-  @keyframes parpadeo-galope {
-    0%   { opacity: 1; transform: scale(1); }
-    20%  { opacity: 0; transform: scale(1.1); }
-    30%  { opacity: 1; transform: scale(1); }
-    50%  { opacity: 0; transform: scale(1.1); }
-    60%  { opacity: 1; transform: scale(1); }
-    100% { opacity: 1; transform: scale(1); }
-  }
-
-  .activo {
-    animation: parpadeo-galope 0.666s infinite;
+  /* Texto profesional debajo */
+  .texto-info {
+    color: white;
+    font-size: 0.9rem;
+    background: #813b12;
+    padding: 0.8rem;
+    margin-top: 20px;
+    border-radius: 8px;
+    display: inline-block;
   }
 
   button {
@@ -122,24 +118,26 @@
 <header>Juega y Gana con <br> Kat-Haus</header>
 
 <div id="ruleta-container">
-  <div>
-    <div class="ruleta-wrapper">
-      <div class="pin"></div>
-      <img id="ruleta" src="ruleta.png" alt="Ruleta">
-    </div>
-    <button id="btn-girar">Girar ↻</button>
+  <div class="ruleta-wrapper">
+    <div class="pin"></div>
+    <img id="ruleta" src="ruleta.png" alt="Ruleta">
+  </div>
+  <button id="btn-girar">Girar ↻</button>
+  <div class="texto-info">
+    Gira la ruleta y descubre tu premio exclusivo. Válido una sola vez por cliente.  
+    Aplica solo para compras realizadas en Kat-Haus durante el mes en curso.
   </div>
 </div>
 
 <!-- Cuadro de diálogo del premio -->
 <div id="dialogo-premio">
   <div id="mensaje"></div>
-  <button id="btn-cerrar">Reclamar premio</button>
+  <button id="btn-reclamar">Reclamar premio</button>
 </div>
 
-<!-- Audios -->
+<!-- Sonidos -->
 <audio id="sonido-giro" src="giro.wav" preload="auto"></audio>
-<audio id="sonido-victoria" src="gano1.wav" preload="auto"></audio>
+<audio id="sonido-victoria" src="gano.wav" preload="auto"></audio>
 
 <script>
   // Premios y códigos
@@ -159,21 +157,31 @@
     "Sillón Gatuno Extra": "SGFR-478W"
   };
 
-  const offset = 100; // Ajuste para puntero
+  const offset = 90; // ajuste del ángulo
+  let anguloActual = 0;
+  let indiceGanador = null;
+  let ciudadUsuario = "";
 
-  // Elementos del DOM
   const ruleta = document.getElementById('ruleta');
   const mensaje = document.getElementById('mensaje');
   const dialogoPremio = document.getElementById('dialogo-premio');
   const btnGirar = document.getElementById('btn-girar');
-  const btnCerrar = document.getElementById('btn-cerrar');
+  const btnReclamar = document.getElementById('btn-reclamar');
+
   const sonidoGiro = document.getElementById('sonido-giro');
   const sonidoVictoria = document.getElementById('sonido-victoria');
 
-  let anguloActual = 0;
-  let indiceGanador = null;
+  // Obtener ciudad por IP
+  fetch("https://ipapi.co/json/")
+    .then(response => response.json())
+    .then(data => {
+      ciudadUsuario = data.city || "tu ciudad";
+    })
+    .catch(() => {
+      ciudadUsuario = "tu ciudad";
+    });
 
-  // Al girar
+  // Girar la ruleta
   btnGirar.addEventListener('click', () => {
     mensaje.classList.remove('activo');
     dialogoPremio.style.display = 'none';
@@ -182,7 +190,6 @@
     sonidoGiro.currentTime = 0;
     sonidoGiro.play();
 
-    // Calcular giro
     const girosCompletos = 360 * (5 + Math.floor(Math.random() * 3));
     const anguloExtra = Math.floor(Math.random() * 360);
     const anguloFinal = anguloActual + girosCompletos + anguloExtra;
@@ -195,6 +202,7 @@
     setTimeout(() => {
       let anguloResultado = anguloFinal % 360;
       if (anguloResultado < 0) anguloResultado += 360;
+
       anguloResultado = (anguloResultado + offset) % 360;
 
       const gradosPorSegmento = 360 / premios.length;
@@ -202,26 +210,23 @@
       indice = (premios.length - indice) % premios.length;
 
       mensaje.textContent = `¡Ganaste: ${premios[indice]}!`;
-      mensaje.classList.add('activo');
       dialogoPremio.style.display = 'block';
       indiceGanador = indice;
 
-      // Sonido de victoria
+      // Sonido victoria
       sonidoVictoria.currentTime = 0;
       sonidoVictoria.play();
     }, 4000);
   });
 
-  // Reclamar premio -> WhatsApp
-  btnCerrar.addEventListener('click', () => {
+  // Reclamar -> WhatsApp
+  btnReclamar.addEventListener('click', () => {
     if (indiceGanador !== null) {
       const premio = premios[indiceGanador];
       const codigo = codigosPremio[premio];
-      const mensajeWhatsApp = `Hola😸, jugué y gané con la Ruleta de *Kat-Haus,* mi premio fue ${codigo}`;
+      const mensajeWhatsApp = `Hola, jugué y gané con la Ruleta de *Kat-Haus,*  soy de ${ciudadUsuario}, mi premio fue ${codigo}`;
       const url = `https://wa.me/593963372269?text=${encodeURIComponent(mensajeWhatsApp)}`;
       window.location.href = url;
-    } else {
-      dialogoPremio.style.display = 'none';
     }
   });
 </script>
