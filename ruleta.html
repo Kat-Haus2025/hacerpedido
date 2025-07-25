@@ -205,6 +205,46 @@
     }
   });
 </script>
+<!-- Añade estos audios antes del </body> -->
+<audio id="sonido-giro" src="giro.wav" preload="auto"></audio>
+<audio id="sonido-victoria" src="gano.mp3" preload="auto"></audio>
+
+<script>
+  const sonidoGiro = document.getElementById('sonido-giro');
+  const sonidoVictoria = document.getElementById('sonido-victoria');
+
+  btnGirar.addEventListener('click', () => {
+    mensaje.classList.remove('activo');
+    dialogoPremio.style.display = 'none';
+
+    // Reproducir sonido de giro
+    sonidoGiro.currentTime = 0;
+    sonidoGiro.play();
+
+    const indice = seleccionarPremioPorProbabilidad(probabilidades);
+    indiceGanador = indice;
+
+    const girosCompletos = 360 * (5 + Math.floor(Math.random() * 3));
+    const anguloExtra = (360 / premios.length) * indice + Math.floor(Math.random() * (360 / premios.length));
+    const anguloFinal = anguloActual + girosCompletos + anguloExtra;
+
+    ruleta.style.transition = 'transform 4s cubic-bezier(0.1, 0.8, 0.3, 1)';
+    ruleta.style.transform = `rotate(${anguloFinal}deg)`;
+
+    anguloActual = anguloFinal;
+
+    setTimeout(() => {
+      mensaje.textContent = `¡Ganaste: ${premios[indice]}!`;
+      mensaje.classList.add('activo');
+      dialogoPremio.style.display = 'block';
+      localStorage.setItem('premioGanado', premios[indice]);
+
+      // Reproducir sonido de victoria
+      sonidoVictoria.currentTime = 0;
+      sonidoVictoria.play();
+    }, 4000);
+  });
+</script>
 
 </body>
 </html>
