@@ -210,8 +210,42 @@
 <audio id="sonido-victoria" src="gano.wav" preload="auto"></audio>
 
 <script>
+  const premios = [
+    "10% de descuento",
+    "20% de descuento",
+    "Envío/Instalación gratis",
+    "Peluche con Catnip Extra",
+    "Sillón Gatuno Extra"
+  ];
+
+  // Códigos asociados
+  const codigosPremio = {
+    "10% de descuento": "CZLSS-15F",
+    "20% de descuento": "DZLSS-89R",
+    "Envío/Instalación gratis": "FRSH-87LP",
+    "Peluche con Catnip Extra": "PLSH-687O",
+    "Sillón Gatuno Extra": "SGFR-478W"
+  };
+
+  const offset = 100; // Ajuste para cuadrante superior derecho
+
+  const contenedor = document.getElementById('ruleta-container');
+  const ruleta = document.getElementById('ruleta');
+  const dialogoPremio = document.getElementById('dialogo-premio');
+  const mensaje = document.getElementById('mensaje');
+  const btnGirar = document.getElementById('btn-girar');
+  const btnCerrar = document.getElementById('btn-cerrar');
+
+  // Sonidos
   const sonidoGiro = document.getElementById('sonido-giro');
   const sonidoVictoria = document.getElementById('sonido-victoria');
+
+  let anguloActual = 0;
+  let indiceGanador = null;
+
+  window.addEventListener('load', () => {
+    contenedor.style.display = 'flex';
+  });
 
   btnGirar.addEventListener('click', () => {
     mensaje.classList.remove('activo');
@@ -221,11 +255,8 @@
     sonidoGiro.currentTime = 0;
     sonidoGiro.play();
 
-    const indice = seleccionarPremioPorProbabilidad(probabilidades);
-    indiceGanador = indice;
-
     const girosCompletos = 360 * (5 + Math.floor(Math.random() * 3));
-    const anguloExtra = (360 / premios.length) * indice + Math.floor(Math.random() * (360 / premios.length));
+    const anguloExtra = Math.floor(Math.random() * 360);
     const anguloFinal = anguloActual + girosCompletos + anguloExtra;
 
     ruleta.style.transition = 'transform 4s cubic-bezier(0.1, 0.8, 0.3, 1)';
@@ -234,17 +265,41 @@
     anguloActual = anguloFinal;
 
     setTimeout(() => {
+      let anguloResultado = anguloFinal % 360;
+      if (anguloResultado < 0) anguloResultado += 360;
+
+      // Offset para cuadrante superior derecho
+      anguloResultado = (anguloResultado + offset) % 360;
+
+      const gradosPorSegmento = 360 / premios.length;
+      let indice = Math.floor(((anguloResultado + gradosPorSegmento / 2) % 360) / gradosPorSegmento);
+      indice = (premios.length - indice) % premios.length;
+
       mensaje.textContent = `¡Ganaste: ${premios[indice]}!`;
       mensaje.classList.add('activo');
       dialogoPremio.style.display = 'block';
-      localStorage.setItem('premioGanado', premios[indice]);
+      indiceGanador = indice;
 
       // Reproducir sonido de victoria
       sonidoVictoria.currentTime = 0;
       sonidoVictoria.play();
     }, 4000);
   });
+
+  // Botón Reclamar -> WhatsApp
+  btnCerrar.addEventListener('click', () => {
+    if (indiceGanador !== null) {
+      const premio = premios[indiceGanador];
+      const codigo = codigosPremio[premio];
+      const mensajeWhatsApp = `Hola, jugué y gané con la Ruleta de Kat-Haus, mi premio fue ${codigo}`;
+      const url = `https://wa.me/593963372269?text=${encodeURIComponent(mensajeWhatsApp)}`;
+      window.location.href = url;
+    } else {
+      dialogoPremio.style.display = 'none';
+    }
+  });
 </script>
+
 
 </body>
 </html>
