@@ -8,14 +8,14 @@
   body {
     font-family: sans-serif;
     text-align: center;
-    background: #f0f0f0;
+    background: #f9f2ec;
   }
 
   #ruleta-container {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.6);
+    background: rgba(0,0,0,0.4);
     justify-content: center;
     align-items: center;
   }
@@ -31,40 +31,43 @@
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    border: 5px solid #333;
+    border: 5px solid #a64b2a;
     background: conic-gradient(
-      #ff7675 0deg 72deg,
-      #74b9ff 72deg 144deg,
-      #55efc4 144deg 216deg,
-      #ffeaa7 216deg 288deg,
-      #a29bfe 288deg 360deg
+      #e25822 0deg 72deg,
+      #f2994a 72deg 144deg,
+      #f2c94c 144deg 216deg,
+      #d35400 216deg 288deg,
+      #e67e22 288deg 360deg
     );
     transition: transform 4s cubic-bezier(0.33, 1, 0.68, 1);
     position: absolute;
     top: 0;
     left: 0;
-    /* Desplazar ruleta -36° para centrar primer premio arriba */
     transform-origin: 50% 50%;
     transform: rotate(-36deg);
+    box-shadow: 0 0 10px 3px rgba(230, 126, 34, 0.7);
   }
 
   .premio-texto {
     position: absolute;
-    width: 50%;
-    height: 50%;
+    width: 45%;    /* un poco más estrecho para no salir del sector */
+    height: 45%;
     left: 50%;
     top: 50%;
     transform-origin: 0% 0%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 13px;
-    font-weight: bold;
-    color: #000;
+    font-size: 12px;
+    font-weight: 700;
+    color: #4e2a0c;
     text-align: center;
-    padding: 4px;
-    transition: filter 0.5s ease;
-    border-radius: 10px;
+    padding: 4px 6px;
+    border-radius: 8px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    user-select: none;
   }
 
   /* Animación parpadeo corchea, semicorchea, semicorchea a 180 BPM (0.666s ciclo) */
@@ -86,18 +89,26 @@
 
   #mensaje {
     margin-top: 20px;
-    font-size: 1.2rem;
-    font-weight: bold;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #a64b2a;
   }
 
   button {
     margin-top: 15px;
-    padding: 8px 16px;
-    background: #333;
+    padding: 10px 18px;
+    background: #a64b2a;
     color: white;
     border: none;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+
+  button:hover:not(:disabled) {
+    background-color: #d35400;
   }
 
   button:disabled {
@@ -112,11 +123,11 @@
   <div>
     <div class="ruleta-wrapper">
       <div id="ruleta">
-        <div class="premio-texto" style="transform: rotate(36deg) translate(0, -130px);">10% de descuento</div>
-        <div class="premio-texto" style="transform: rotate(108deg) translate(0, -130px);">20% de descuento</div>
-        <div class="premio-texto" style="transform: rotate(180deg) translate(0, -130px);">Envío/Instalación gratis</div>
-        <div class="premio-texto" style="transform: rotate(252deg) translate(0, -130px);">Peluche con Catnip</div>
-        <div class="premio-texto" style="transform: rotate(324deg) translate(0, -130px);">Sillón Gatuno Extra</div>
+        <div class="premio-texto" style="transform: rotate(36deg) translate(0, -115px);">10% de descuento</div>
+        <div class="premio-texto" style="transform: rotate(108deg) translate(0, -115px);">20% de descuento</div>
+        <div class="premio-texto" style="transform: rotate(180deg) translate(0, -115px);">Envío/Instalación gratis</div>
+        <div class="premio-texto" style="transform: rotate(252deg) translate(0, -115px);">Peluche con Catnip</div>
+        <div class="premio-texto" style="transform: rotate(324deg) translate(0, -115px);">Sillón Gatuno Extra</div>
       </div>
     </div>
 
@@ -142,7 +153,7 @@
   const btnCerrar = document.getElementById('btn-cerrar');
   const textos = document.querySelectorAll('.premio-texto');
 
-  let anguloActual = -36; // Inicializamos con -36 para compensar el transform inicial
+  let anguloActual = -36; // Para centrar primer premio arriba
   let indiceGanador = null;
 
   window.addEventListener('load', () => {
@@ -150,16 +161,12 @@
   });
 
   btnGirar.addEventListener('click', () => {
-    // Quitar animación previa
-    textos.forEach(t => {
-      t.classList.remove('activo');
-    });
+    textos.forEach(t => t.classList.remove('activo'));
 
     const girosCompletos = 360 * (5 + Math.floor(Math.random() * 3));
     const anguloExtra = Math.floor(Math.random() * 360);
     const anguloFinal = anguloActual + girosCompletos + anguloExtra;
 
-    // Aplicamos rotación compensando los -36 iniciales
     ruleta.style.transition = 'transform 4s cubic-bezier(0.33, 1, 0.68, 1)';
     ruleta.style.transform = `rotate(${anguloFinal}deg)`;
 
@@ -170,8 +177,7 @@
       if (anguloResultado < 0) anguloResultado += 360;
 
       const gradosPorSegmento = 360 / premios.length;
-      // Ajustamos para que 0° sea el centro del primer segmento:
-      let indice = Math.floor(((anguloResultado + gradosPorSegmento/2) % 360) / gradosPorSegmento);
+      let indice = Math.floor(((anguloResultado + gradosPorSegmento / 2) % 360) / gradosPorSegmento);
       indice = (premios.length - indice) % premios.length;
 
       mensaje.textContent = `¡Ganaste: ${premios[indice]}!`;
@@ -181,7 +187,7 @@
   });
 
   btnCerrar.addEventListener('click', () => {
-    if(indiceGanador !== null) {
+    if (indiceGanador !== null) {
       window.location.href = 'landing.html';
     } else {
       contenedor.style.display = 'none';
