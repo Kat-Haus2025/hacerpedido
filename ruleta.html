@@ -20,14 +20,12 @@
     align-items: center;
   }
 
-  /* Contenedor de la ruleta */
   .ruleta-wrapper {
     position: relative;
     width: 300px;
     height: 300px;
   }
 
-  /* Disco de colores */
   #ruleta {
     width: 100%;
     height: 100%;
@@ -47,7 +45,6 @@
     left: 0;
   }
 
-  /* Textos de cada premio */
   .premio-texto {
     position: absolute;
     width: 50%;
@@ -65,7 +62,6 @@
     padding: 4px;
   }
 
-  /* Flecha indicadora */
   .flecha {
     position: absolute;
     top: -20px;
@@ -141,26 +137,37 @@
 
   // Mostrar ruleta automáticamente al cargar
   window.addEventListener('load', () => {
-    const premioGuardado = localStorage.getItem('premio');
     contenedor.style.display = 'flex';
-
-    if (premioGuardado) {
-      mensaje.textContent = `Ya jugaste, tu premio es: ${premioGuardado}`;
+    // Revisar si ya giró en esta sesión
+    if (sessionStorage.getItem('girado') === 'true') {
+      mensaje.textContent = "Ya giraste en esta visita. Recarga la página para intentar otra vez.";
       btnGirar.disabled = true;
     }
   });
 
-  // Girar ruleta al hacer clic
+  // Girar ruleta
   btnGirar.addEventListener('click', () => {
-    const angulo = 360 * 5 + Math.floor(Math.random() * 360); // 5 vueltas + aleatorio
-    ruleta.style.transform = `rotate(${angulo}deg)`;
-    btnGirar.disabled = true;
+    // Marcar que ya giró en esta sesión
+    sessionStorage.setItem('girado', 'true');
+
+    // Elegir premio aleatorio
+    const indicePremio = Math.floor(Math.random() * premios.length);
+    const premio = premios[indicePremio];
+
+    // Calcular ángulo exacto del premio
+    const gradosPorSegmento = 360 / premios.length;
+    const anguloBase = 360 - (indicePremio * gradosPorSegmento + gradosPorSegmento / 2);
+
+    // Girar varias vueltas + ángulo del premio
+    const girosCompletos = 360 * 5;
+    const anguloFinal = girosCompletos + anguloBase;
+
+    // Animar ruleta
+    ruleta.style.transform = `rotate(${anguloFinal}deg)`;
 
     setTimeout(() => {
-      const indice = Math.floor((angulo % 360) / 60);
-      const premio = premios[premios.length - 1 - indice];
       mensaje.textContent = `¡Ganaste: ${premio}!`;
-      localStorage.setItem('premio', premio);
+      btnGirar.disabled = true;
     }, 4000);
   });
 
