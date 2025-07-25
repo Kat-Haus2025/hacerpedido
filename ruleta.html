@@ -60,20 +60,22 @@
     color: #000;
     text-align: center;
     padding: 4px;
-    transition: filter 0.5s ease, box-shadow 0.5s ease;
+    transition: filter 0.5s ease;
     border-radius: 10px;
   }
 
-  /* Premio iluminado */
-  .activo {
-    filter: brightness(1.8);
-    box-shadow: 0 0 15px 5px rgba(255, 255, 200, 0.8);
-    animation: parpadeo 1s infinite alternate;
+  /* Animación parpadeo 4:3 a 160 bpm */
+  @keyframes parpadeo-4-3 {
+    0%, 57% {
+      opacity: 1;
+    }
+    58%, 100% {
+      opacity: 0;
+    }
   }
 
-  @keyframes parpadeo {
-    0%   { opacity: 1; }
-    100% { opacity: 0.4; }
+  .activo {
+    animation: parpadeo-4-3 2.625s infinite;
   }
 
   #mensaje {
@@ -142,13 +144,12 @@
   });
 
   btnGirar.addEventListener('click', () => {
-    // Quitar clases y animaciones previas
     textos.forEach(t => {
       t.classList.remove('activo');
     });
 
-    const girosCompletos = 360 * (5 + Math.floor(Math.random() * 3)); // 5-7 vueltas
-    const anguloExtra = Math.floor(Math.random() * 360); // ángulo aleatorio
+    const girosCompletos = 360 * (5 + Math.floor(Math.random() * 3));
+    const anguloExtra = Math.floor(Math.random() * 360);
     const anguloFinal = anguloActual + girosCompletos + anguloExtra;
 
     ruleta.style.transform = `rotate(${anguloFinal}deg)`;
@@ -170,10 +171,8 @@
 
   btnCerrar.addEventListener('click', () => {
     if(indiceGanador !== null) {
-      // Redirigir a URL con premio en query param opcional
       window.location.href = 'https://kathaus.shop/landing.tml';
     } else {
-      // Si no hay premio (ruleta no girada), solo cierra modal
       contenedor.style.display = 'none';
     }
   });
