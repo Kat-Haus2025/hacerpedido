@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ruleta de premios</title>
+<style>
+  body {
+    font-family: sans-serif;
+    text-align: center;
+    background: #f0f0f0;
+  }
+  #ruleta-container {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+  }
+  #ruleta {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: 5px solid #333;
+    background: conic-gradient(
+      #ff7675 0deg 60deg,
+      #74b9ff 60deg 120deg,
+      #55efc4 120deg 180deg,
+      #ffeaa7 180deg 240deg,
+      #a29bfe 240deg 300deg,
+      #fab1a0 300deg 360deg
+    );
+    transition: transform 4s cubic-bezier(0.33, 1, 0.68, 1);
+  }
+  #mensaje {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  #btn-cerrar {
+    margin-top: 15px;
+    padding: 8px 16px;
+    background: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+</style>
+</head>
+<body>
+
+<div id="ruleta-container">
+  <div>
+    <div id="ruleta"></div>
+    <div id="mensaje"></div>
+    <button id="btn-cerrar">Cerrar</button>
+  </div>
+</div>
+
+<script>
+  const premios = [
+    "10% de descuento",
+    "Envío gratis",
+    "2x1 en tu compra",
+    "15% de descuento",
+    "Regalo sorpresa",
+    "5% de descuento"
+  ];
+
+  const contenedor = document.getElementById('ruleta-container');
+  const ruleta = document.getElementById('ruleta');
+  const mensaje = document.getElementById('mensaje');
+  const btnCerrar = document.getElementById('btn-cerrar');
+
+  function mostrarRuleta() {
+    // Revisar si ya tiene un premio guardado
+    const premioGuardado = localStorage.getItem('premio');
+    if (premioGuardado) {
+      mensaje.textContent = `Ya jugaste, tu premio es: ${premioGuardado}`;
+      contenedor.style.display = 'flex';
+      return;
+    }
+
+    contenedor.style.display = 'flex';
+
+    // Girar ruleta
+    const angulo = 360 * 5 + Math.floor(Math.random() * 360); // 5 vueltas + aleatorio
+    ruleta.style.transform = `rotate(${angulo}deg)`;
+
+    // Determinar premio después del giro
+    setTimeout(() => {
+      const indice = Math.floor((angulo % 360) / 60); // Cada sección 60 grados
+      const premio = premios[premios.length - 1 - indice]; // Ajuste de orden
+      mensaje.textContent = `¡Ganaste: ${premio}!`;
+      localStorage.setItem('premio', premio);
+    }, 4000);
+  }
+
+  btnCerrar.addEventListener('click', () => {
+    contenedor.style.display = 'none';
+  });
+
+  // Mostrar ruleta automáticamente al cargar
+  window.addEventListener('load', mostrarRuleta);
+</script>
+
+</body>
+</html>
