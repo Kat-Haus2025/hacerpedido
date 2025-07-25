@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8" />
@@ -132,15 +132,9 @@
 
   window.addEventListener('load', () => {
     contenedor.style.display = 'flex';
-    if (sessionStorage.getItem('girado') === 'true') {
-      mensaje.textContent = "Ya giraste en esta visita. Recarga la página para intentar otra vez.";
-      btnGirar.disabled = true;
-    }
   });
 
   btnGirar.addEventListener('click', () => {
-    sessionStorage.setItem('girado', 'true');
-
     // Quitar clase activo de todos
     textos.forEach(t => t.classList.remove('activo'));
 
@@ -161,7 +155,6 @@
 
       mensaje.textContent = `¡Ganaste: ${premios[indice]}!`;
       textos[indice].classList.add('activo');
-      btnGirar.disabled = true;
     }, 4000);
   });
 
