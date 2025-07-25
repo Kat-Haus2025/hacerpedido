@@ -37,17 +37,20 @@
   }
 
   /* Pin triangular */
-  .pin {
-    position: absolute;
-    top: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 0;
-    border-left: 12px solid transparent;
-    border-right: 12px solid transparent;
-    border-bottom: 18px solid #a64b2a; /* color cálido del pin */
-    z-index: 5;
+/* Pin triangular con punta hacia abajo */
+.pin {
+  position: absolute;
+  top: -18px;          /* ligeramente fuera del borde superior de la ruleta */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 18px solid #a64b2a; /* ahora la punta apunta hacia abajo */
+  z-index: 5;
+
+
   }
 
   /* Cuadro de diálogo */
