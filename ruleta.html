@@ -68,6 +68,12 @@
   .activo {
     filter: brightness(1.8);
     box-shadow: 0 0 15px 5px rgba(255, 255, 200, 0.8);
+    animation: parpadeo 1s infinite alternate;
+  }
+
+  @keyframes parpadeo {
+    0%   { opacity: 1; }
+    100% { opacity: 0.4; }
   }
 
   #mensaje {
@@ -129,14 +135,17 @@
   const textos = document.querySelectorAll('.premio-texto');
 
   let anguloActual = 0;
+  let indiceGanador = null;
 
   window.addEventListener('load', () => {
     contenedor.style.display = 'flex';
   });
 
   btnGirar.addEventListener('click', () => {
-    // Quitar clase activo de todos
-    textos.forEach(t => t.classList.remove('activo'));
+    // Quitar clases y animaciones previas
+    textos.forEach(t => {
+      t.classList.remove('activo');
+    });
 
     const girosCompletos = 360 * (5 + Math.floor(Math.random() * 3)); // 5-7 vueltas
     const anguloExtra = Math.floor(Math.random() * 360); // ángulo aleatorio
@@ -155,11 +164,18 @@
 
       mensaje.textContent = `¡Ganaste: ${premios[indice]}!`;
       textos[indice].classList.add('activo');
+      indiceGanador = indice;
     }, 4000);
   });
 
   btnCerrar.addEventListener('click', () => {
-    contenedor.style.display = 'none';
+    if(indiceGanador !== null) {
+      // Redirigir a URL con premio en query param opcional
+      window.location.href = 'https://kathaus.shop/landing.tml';
+    } else {
+      // Si no hay premio (ruleta no girada), solo cierra modal
+      contenedor.style.display = 'none';
+    }
   });
 </script>
 
