@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Juega y Gana con <br> Kat-Haus</title>
+<title>Juega y Gana con Kat-Haus</title>
 <style>
   body {
     background: #80d1ef;
@@ -13,10 +13,9 @@
     padding: 0;
   }
 
-  /* Cabecera */
   header {
     background: #a64b2a;
-    color: #ffffff;
+    color: #fff8f2;
     padding: 1rem;
     font-size: 1.8rem;
     font-weight: bold;
@@ -45,10 +44,9 @@
     height: 100%;
     border-radius: 50%;
     transform-origin: 50% 50%;
-    transition: transform 4s cubic-bezier(0.1, 0.8, 0.3, 1); /* ralentiza al final */
+    transition: transform 4s cubic-bezier(0.1, 0.8, 0.3, 1);
   }
 
-  /* Pin triangular con punta hacia abajo */
   .pin {
     position: absolute;
     top: -18px;
@@ -62,7 +60,6 @@
     z-index: 5;
   }
 
-  /* Cuadro de diálogo */
   #dialogo-premio {
     display: none;
     position: fixed;
@@ -86,7 +83,6 @@
     margin-bottom: 1rem;
   }
 
-  /* Animación parpadeo + galope */
   @keyframes parpadeo-galope {
     0%   { opacity: 1; transform: scale(1); }
     20%  { opacity: 0; transform: scale(1.1); }
@@ -125,13 +121,9 @@
 <div id="ruleta-container">
   <div>
     <div class="ruleta-wrapper">
-      <!-- Pin -->
       <div class="pin"></div>
-
-      <!-- PNG de la ruleta -->
       <img id="ruleta" src="ruleta.png" alt="Ruleta">
     </div>
-
     <button id="btn-girar">Girar</button>
   </div>
 </div>
@@ -147,12 +139,13 @@
     "10% de descuento",
     "20% de descuento",
     "Envío/Instalación gratis",
-    "Peluche con Catnip Extra",
-    "Sillón Gatuno Extra"
+    "Sillón Gatuno Extra",
+    "Peluche con Catnip Extra"
   ];
 
-  const offset = 100; // Ajuste para cuadrante superior derecho
+  const probabilidades = [35, 15, 20, 15, 15]; // en porcentajes
 
+  const offset = 100; // Ajuste visual
   const contenedor = document.getElementById('ruleta-container');
   const ruleta = document.getElementById('ruleta');
   const dialogoPremio = document.getElementById('dialogo-premio');
@@ -163,48 +156,64 @@
   let anguloActual = 0;
   let indiceGanador = null;
 
+  // Verificar si ya hay premio guardado
+  const premioGuardado = localStorage.getItem('premioGanado');
+
   window.addEventListener('load', () => {
-    contenedor.style.display = 'flex';
+    if (premioGuardado) {
+      // Mostrar mensaje en vez de ruleta
+      mensaje.textContent = `Gracias por regresar, aún puedes reclamar el "${premioGuardado}" que ganaste.`;
+      mensaje.classList.add('activo');
+      dialogoPremio.style.display = 'block';
+    } else {
+      contenedor.style.display = 'flex';
+    }
   });
 
   btnGirar.addEventListener('click', () => {
     mensaje.classList.remove('activo');
     dialogoPremio.style.display = 'none';
 
+    // Elegir premio según probabilidades
+    const indice = seleccionarPremioPorProbabilidad(probabilidades);
+    indiceGanador = indice;
+
+    // Animación de giro
     const girosCompletos = 360 * (5 + Math.floor(Math.random() * 3));
-    const anguloExtra = Math.floor(Math.random() * 360);
+    const anguloExtra = (360 / premios.length) * indice + Math.floor(Math.random() * (360 / premios.length));
     const anguloFinal = anguloActual + girosCompletos + anguloExtra;
 
-    ruleta.style.transition = 'transform 4s cubic-bezier(0.1, 0.8, 0.3, 1)'; // suavizado realista
+    ruleta.style.transition = 'transform 4s cubic-bezier(0.1, 0.8, 0.3, 1)';
     ruleta.style.transform = `rotate(${anguloFinal}deg)`;
 
     anguloActual = anguloFinal;
 
     setTimeout(() => {
-      let anguloResultado = anguloFinal % 360;
-      if (anguloResultado < 0) anguloResultado += 360;
-
-      // Offset para cuadrante superior derecho
-      anguloResultado = (anguloResultado + offset) % 360;
-
-      const gradosPorSegmento = 360 / premios.length;
-      let indice = Math.floor(((anguloResultado + gradosPorSegmento / 2) % 360) / gradosPorSegmento);
-      indice = (premios.length - indice) % premios.length;
-
       mensaje.textContent = `¡Ganaste: ${premios[indice]}!`;
       mensaje.classList.add('activo');
       dialogoPremio.style.display = 'block';
-      indiceGanador = indice;
+      localStorage.setItem('premioGanado', premios[indice]); // Guardar premio
     }, 4000);
   });
 
   btnCerrar.addEventListener('click', () => {
-    if (indiceGanador !== null) {
-      window.location.href = 'landing.html';
-    } else {
-      dialogoPremio.style.display = 'none';
-    }
+    window.location.href = 'landing.html';
   });
+
+  // Función para elegir premio según pesos
+  function seleccionarPremioPorProbabilidad(probabilidades) {
+    const total = probabilidades.reduce((a, b) => a + b, 0);
+    const random = Math.random() * total;
+    let acumulado = 0;
+
+    for (let i = 0; i < probabilidades.length; i++) {
+      acumulado += probabilidades[i];
+      if (random < acumulado) {
+        return i;
+      }
+    }
+    return probabilidades.length - 1; // fallback
+  }
 </script>
 
 </body>
