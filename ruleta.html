@@ -50,23 +50,17 @@
 
   .premio-texto {
     position: absolute;
-    width: 45%;    /* un poco más estrecho para no salir del sector */
-    height: 45%;
+    width: 110px;        /* ancho fijo para evitar saltos */
     left: 50%;
     top: 50%;
-    transform-origin: 0% 0%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    transform-origin: 0% 50%; /* anclar a la izquierda vertical centro */
     font-size: 12px;
     font-weight: 700;
     color: #4e2a0c;
-    text-align: center;
-    padding: 4px 6px;
+    text-align: left;
+    padding-left: 6px;
     border-radius: 8px;
-    overflow: hidden;
     white-space: nowrap;
-    text-overflow: ellipsis;
     user-select: none;
   }
 
@@ -123,11 +117,11 @@
   <div>
     <div class="ruleta-wrapper">
       <div id="ruleta">
-        <div class="premio-texto" style="transform: rotate(36deg) translate(0, -115px);">10% de descuento</div>
-        <div class="premio-texto" style="transform: rotate(108deg) translate(0, -115px);">20% de descuento</div>
-        <div class="premio-texto" style="transform: rotate(180deg) translate(0, -115px);">Envío/Instalación gratis</div>
-        <div class="premio-texto" style="transform: rotate(252deg) translate(0, -115px);">Peluche con Catnip</div>
-        <div class="premio-texto" style="transform: rotate(324deg) translate(0, -115px);">Sillón Gatuno Extra</div>
+        <div class="premio-texto" style="transform: rotate(36deg) translate(140px, -50%) rotate(-36deg);">10% de descuento</div>
+        <div class="premio-texto" style="transform: rotate(108deg) translate(140px, -50%) rotate(-108deg);">20% de descuento</div>
+        <div class="premio-texto" style="transform: rotate(180deg) translate(140px, -50%) rotate(-180deg);">Envío/Instalación gratis</div>
+        <div class="premio-texto" style="transform: rotate(252deg) translate(140px, -50%) rotate(-252deg);">Peluche con Catnip</div>
+        <div class="premio-texto" style="transform: rotate(324deg) translate(140px, -50%) rotate(-324deg);">Sillón Gatuno Extra</div>
       </div>
     </div>
 
