@@ -23,7 +23,7 @@
   }
 
   #ruleta-container {
-    display: none;
+    display: flex;
     position: fixed;
     inset: 0;
     background: rgba(0,0,0,0.4);
@@ -47,7 +47,7 @@
     transition: transform 4s cubic-bezier(0.1, 0.8, 0.3, 1); /* ralentiza al final */
   }
 
-  /* Pin triangular con punta hacia abajo */
+  /* Pin triangular */
   .pin {
     position: absolute;
     top: -18px;
@@ -124,13 +124,9 @@
 <div id="ruleta-container">
   <div>
     <div class="ruleta-wrapper">
-      <!-- Pin -->
       <div class="pin"></div>
-
-      <!-- PNG de la ruleta -->
       <img id="ruleta" src="ruleta.png" alt="Ruleta">
     </div>
-
     <button id="btn-girar">Girar</button>
   </div>
 </div>
@@ -141,75 +137,12 @@
   <button id="btn-cerrar">Reclamar premio</button>
 </div>
 
-<script>
-  const premios = [
-    "10% de descuento",
-    "20% de descuento",
-    "Envío/Instalación gratis",
-    "Peluche con Catnip Extra",
-    "Sillón Gatuno Extra"
-  ];
-
-  const offset = 90; // Ajuste para cuadrante superior derecho
-
-  const contenedor = document.getElementById('ruleta-container');
-  const ruleta = document.getElementById('ruleta');
-  const dialogoPremio = document.getElementById('dialogo-premio');
-  const mensaje = document.getElementById('mensaje');
-  const btnGirar = document.getElementById('btn-girar');
-  const btnCerrar = document.getElementById('btn-cerrar');
-
-  let anguloActual = 0;
-  let indiceGanador = null;
-
-  window.addEventListener('load', () => {
-    contenedor.style.display = 'flex';
-  });
-
-  btnGirar.addEventListener('click', () => {
-    mensaje.classList.remove('activo');
-    dialogoPremio.style.display = 'none';
-
-    const girosCompletos = 360 * (5 + Math.floor(Math.random() * 3));
-    const anguloExtra = Math.floor(Math.random() * 360);
-    const anguloFinal = anguloActual + girosCompletos + anguloExtra;
-
-    ruleta.style.transition = 'transform 4s cubic-bezier(0.1, 0.8, 0.3, 1)'; // suavizado realista
-    ruleta.style.transform = `rotate(${anguloFinal}deg)`;
-
-    anguloActual = anguloFinal;
-
-    setTimeout(() => {
-      let anguloResultado = anguloFinal % 360;
-      if (anguloResultado < 0) anguloResultado += 360;
-
-      // Offset para cuadrante superior derecho
-      anguloResultado = (anguloResultado + offset) % 360;
-
-      const gradosPorSegmento = 360 / premios.length;
-      let indice = Math.floor(((anguloResultado + gradosPorSegmento / 2) % 360) / gradosPorSegmento);
-      indice = (premios.length - indice) % premios.length;
-
-      mensaje.textContent = `¡Ganaste: ${premios[indice]}!`;
-      mensaje.classList.add('activo');
-      dialogoPremio.style.display = 'block';
-      indiceGanador = indice;
-    }, 4000);
-  });
-
-  btnCerrar.addEventListener('click', () => {
-    if (indiceGanador !== null) {
-      window.location.href = 'landing.html';
-    } else {
-      dialogoPremio.style.display = 'none';
-    }
-  });
-</script>
-<!-- Añade estos audios antes del </body> -->
+<!-- Audios -->
 <audio id="sonido-giro" src="giro.wav" preload="auto"></audio>
 <audio id="sonido-victoria" src="gano.wav" preload="auto"></audio>
 
 <script>
+  // Premios y códigos
   const premios = [
     "10% de descuento",
     "20% de descuento",
@@ -218,7 +151,6 @@
     "Sillón Gatuno Extra"
   ];
 
-  // Códigos asociados
   const codigosPremio = {
     "10% de descuento": "CZLSS-15F",
     "20% de descuento": "DZLSS-89R",
@@ -227,34 +159,30 @@
     "Sillón Gatuno Extra": "SGFR-478W"
   };
 
-  const offset = 100; // Ajuste para cuadrante superior derecho
+  const offset = 100; // Ajuste para puntero
 
-  const contenedor = document.getElementById('ruleta-container');
+  // Elementos del DOM
   const ruleta = document.getElementById('ruleta');
-  const dialogoPremio = document.getElementById('dialogo-premio');
   const mensaje = document.getElementById('mensaje');
+  const dialogoPremio = document.getElementById('dialogo-premio');
   const btnGirar = document.getElementById('btn-girar');
   const btnCerrar = document.getElementById('btn-cerrar');
-
-  // Sonidos
   const sonidoGiro = document.getElementById('sonido-giro');
   const sonidoVictoria = document.getElementById('sonido-victoria');
 
   let anguloActual = 0;
   let indiceGanador = null;
 
-  window.addEventListener('load', () => {
-    contenedor.style.display = 'flex';
-  });
-
+  // Al girar
   btnGirar.addEventListener('click', () => {
     mensaje.classList.remove('activo');
     dialogoPremio.style.display = 'none';
 
-    // Reproducir sonido de giro
+    // Sonido de giro
     sonidoGiro.currentTime = 0;
     sonidoGiro.play();
 
+    // Calcular giro
     const girosCompletos = 360 * (5 + Math.floor(Math.random() * 3));
     const anguloExtra = Math.floor(Math.random() * 360);
     const anguloFinal = anguloActual + girosCompletos + anguloExtra;
@@ -267,8 +195,6 @@
     setTimeout(() => {
       let anguloResultado = anguloFinal % 360;
       if (anguloResultado < 0) anguloResultado += 360;
-
-      // Offset para cuadrante superior derecho
       anguloResultado = (anguloResultado + offset) % 360;
 
       const gradosPorSegmento = 360 / premios.length;
@@ -280,13 +206,13 @@
       dialogoPremio.style.display = 'block';
       indiceGanador = indice;
 
-      // Reproducir sonido de victoria
+      // Sonido de victoria
       sonidoVictoria.currentTime = 0;
       sonidoVictoria.play();
     }, 4000);
   });
 
-  // Botón Reclamar -> WhatsApp
+  // Reclamar premio -> WhatsApp
   btnCerrar.addEventListener('click', () => {
     if (indiceGanador !== null) {
       const premio = premios[indiceGanador];
@@ -299,7 +225,6 @@
     }
   });
 </script>
-
 
 </body>
 </html>
