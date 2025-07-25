@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Ruleta de premios</title>
 <style>
   body {
@@ -24,6 +24,7 @@
     position: relative;
     width: 320px;
     height: 320px;
+    margin: auto;
   }
 
   #ruleta {
@@ -59,25 +60,14 @@
     color: #000;
     text-align: center;
     padding: 4px;
-    transition: filter 0.5s ease;
+    transition: filter 0.5s ease, box-shadow 0.5s ease;
+    border-radius: 10px;
   }
 
-  /* Efecto de aumento de brillo */
+  /* Premio iluminado */
   .activo {
     filter: brightness(1.8);
-  }
-
-  .flecha {
-    position: absolute;
-    top: -20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 0;
-    border-left: 15px solid transparent;
-    border-right: 15px solid transparent;
-    border-bottom: 20px solid #333;
-    z-index: 10;
+    box-shadow: 0 0 15px 5px rgba(255, 255, 200, 0.8);
   }
 
   #mensaje {
@@ -107,7 +97,6 @@
 <div id="ruleta-container">
   <div>
     <div class="ruleta-wrapper">
-      <div class="flecha"></div>
       <div id="ruleta">
         <div class="premio-texto" style="transform: rotate(36deg) translate(0, -130px);">10% de descuento</div>
         <div class="premio-texto" style="transform: rotate(108deg) translate(0, -130px);">20% de descuento</div>
@@ -141,7 +130,6 @@
 
   let anguloActual = 0;
 
-  // Mostrar al cargar
   window.addEventListener('load', () => {
     contenedor.style.display = 'flex';
     if (sessionStorage.getItem('girado') === 'true') {
@@ -153,19 +141,17 @@
   btnGirar.addEventListener('click', () => {
     sessionStorage.setItem('girado', 'true');
 
-    // Eliminar brillo anterior
-    textos.forEach(txt => txt.classList.remove('activo'));
+    // Quitar clase activo de todos
+    textos.forEach(t => t.classList.remove('activo'));
 
-    // Girar ruleta
-    const girosCompletos = 360 * (5 + Math.floor(Math.random() * 3));
-    const anguloExtra = Math.floor(Math.random() * 360);
+    const girosCompletos = 360 * (5 + Math.floor(Math.random() * 3)); // 5-7 vueltas
+    const anguloExtra = Math.floor(Math.random() * 360); // ángulo aleatorio
     const anguloFinal = anguloActual + girosCompletos + anguloExtra;
 
     ruleta.style.transform = `rotate(${anguloFinal}deg)`;
     anguloActual = anguloFinal;
 
     setTimeout(() => {
-      // Calcular resultado
       let anguloResultado = anguloFinal % 360;
       if (anguloResultado < 0) anguloResultado += 360;
 
@@ -174,10 +160,7 @@
       indice = (premios.length - indice) % premios.length;
 
       mensaje.textContent = `¡Ganaste: ${premios[indice]}!`;
-
-      // Iluminar premio seleccionado
       textos[indice].classList.add('activo');
-
       btnGirar.disabled = true;
     }, 4000);
   });
