@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Ruleta de premios</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ruleta PNG con diálogo</title>
 <style>
   body {
-    font-family: sans-serif;
-    text-align: center;
     background: #f9f2ec;
+    text-align: center;
+    font-family: sans-serif;
   }
 
   #ruleta-container {
@@ -22,9 +22,9 @@
 
   .ruleta-wrapper {
     position: relative;
-    width: 90vw;        /* ocupa 90% del ancho disponible */
-    max-width: 400px;   /* nunca más grande que 400px */
-    aspect-ratio: 1/1;  /* siempre circular */
+    width: 90vw;
+    max-width: 400px;
+    aspect-ratio: 1/1;
     margin: auto;
   }
 
@@ -32,52 +32,46 @@
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    border: 2% solid #a64b2a; /* borde proporcional */
-    background: conic-gradient(
-      #e25822 0deg 72deg,
-      #f2994a 72deg 144deg,
-      #f2c94c 144deg 216deg,
-      #d35400 216deg 288deg,
-      #e67e22 288deg 360deg
-    );
-    transition: transform 4s cubic-bezier(0.33, 1, 0.68, 1);
-    position: absolute;
-    top: 0;
-    left: 0;
     transform-origin: 50% 50%;
-    transform: rotate(0deg);
-    box-shadow: 0 0 1rem 0.3rem rgba(230, 126, 34, 0.7);
+    transition: transform 4s cubic-bezier(0.1, 0.8, 0.3, 1); /* ralentiza al final */
   }
 
-  .premio-texto {
-    position: absolute;
-    left: 50%;
+  /* Cuadro de diálogo */
+  #dialogo-premio {
+    display: none;
+    position: fixed;
     top: 50%;
-    transform-origin: 0 50%;
-    width: 30%;                   /* proporción al círculo */
-    font-size: clamp(10px, 2vw, 16px); /* escala adaptativa */
-    font-weight: 700;
-    color: #fff;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff8f2;
+    border: 3px solid #a64b2a;
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    max-width: 80%;
     text-align: center;
-    white-space: normal;
-    user-select: none;
-  }
-
-  @keyframes parpadeo-180bpm {
-    0%, 49% { opacity: 1; }
-    50%, 74% { opacity: 0; }
-    75%, 100% { opacity: 1; }
-  }
-
-  .activo {
-    animation: parpadeo-180bpm 0.666s infinite;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    z-index: 10;
   }
 
   #mensaje {
-    margin-top: 1rem;
-    font-size: 1.25rem;
-    font-weight: 700;
+    font-size: 1.4rem;
+    font-weight: bold;
     color: #a64b2a;
+    margin-bottom: 1rem;
+  }
+
+  /* Animación parpadeo + galope */
+  @keyframes parpadeo-galope {
+    0%   { opacity: 1; transform: scale(1); }
+    20%  { opacity: 0; transform: scale(1.1); }
+    30%  { opacity: 1; transform: scale(1); }
+    50%  { opacity: 0; transform: scale(1.1); }
+    60%  { opacity: 1; transform: scale(1); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+
+  .activo {
+    animation: parpadeo-galope 0.666s infinite;
   }
 
   button {
@@ -93,13 +87,8 @@
     transition: background-color 0.3s ease;
   }
 
-  button:hover:not(:disabled) {
+  button:hover {
     background-color: #d35400;
-  }
-
-  button:disabled {
-    opacity: 0.5;
-    cursor: default;
   }
 </style>
 </head>
@@ -108,20 +97,18 @@
 <div id="ruleta-container">
   <div>
     <div class="ruleta-wrapper">
-      <div id="ruleta">
-        <!-- Centrados con ángulos 36° + 72° * n -->
-        <div class="premio-texto" style="transform: rotate(36deg) translate(40%, -50%);">10% de descuento</div>
-        <div class="premio-texto" style="transform: rotate(108deg) translate(40%, -50%);">20% de descuento</div>
-        <div class="premio-texto" style="transform: rotate(180deg) translate(40%, -50%);">Envío/Instalación<br>gratis</div>
-        <div class="premio-texto" style="transform: rotate(252deg) translate(40%, -50%);">Peluche con Catnip</div>
-        <div class="premio-texto" style="transform: rotate(324deg) translate(40%, -50%);">Sillón Gatuno Extra</div>
-      </div>
+      <!-- Coloca aquí tu PNG de la ruleta -->
+      <img id="ruleta" src="ruleta.png" alt="Ruleta">
     </div>
 
-    <div id="mensaje"></div>
     <button id="btn-girar">Girar</button>
-    <button id="btn-cerrar">Reclamar premio</button>
   </div>
+</div>
+
+<!-- Cuadro de diálogo del premio -->
+<div id="dialogo-premio">
+  <div id="mensaje"></div>
+  <button id="btn-cerrar">Reclamar premio</button>
 </div>
 
 <script>
@@ -133,12 +120,14 @@
     "Sillón Gatuno Extra"
   ];
 
+  const offset = 100; // Ajuste para cuadrante superior derecho
+
   const contenedor = document.getElementById('ruleta-container');
   const ruleta = document.getElementById('ruleta');
+  const dialogoPremio = document.getElementById('dialogo-premio');
   const mensaje = document.getElementById('mensaje');
   const btnGirar = document.getElementById('btn-girar');
   const btnCerrar = document.getElementById('btn-cerrar');
-  const textos = document.querySelectorAll('.premio-texto');
 
   let anguloActual = 0;
   let indiceGanador = null;
@@ -148,40 +137,41 @@
   });
 
   btnGirar.addEventListener('click', () => {
-    textos.forEach(t => t.classList.remove('activo'));
+    mensaje.classList.remove('activo');
+    dialogoPremio.style.display = 'none';
 
     const girosCompletos = 360 * (5 + Math.floor(Math.random() * 3));
     const anguloExtra = Math.floor(Math.random() * 360);
     const anguloFinal = anguloActual + girosCompletos + anguloExtra;
 
-    ruleta.style.transition = 'transform 4s cubic-bezier(0.33, 1, 0.68, 1)';
+    ruleta.style.transition = 'transform 4s cubic-bezier(0.1, 0.8, 0.3, 1)'; // suavizado realista
     ruleta.style.transform = `rotate(${anguloFinal}deg)`;
 
     anguloActual = anguloFinal;
 
-   setTimeout(() => {
-  let anguloResultado = anguloFinal % 360;
-  if (anguloResultado < 0) anguloResultado += 360;
+    setTimeout(() => {
+      let anguloResultado = anguloFinal % 360;
+      if (anguloResultado < 0) anguloResultado += 360;
 
-  // *** OFFSET de 100° para cuadrante superior derecho ***
-  const offset = 100;
-  anguloResultado = (anguloResultado + offset) % 360;
+      // Offset para cuadrante superior derecho
+      anguloResultado = (anguloResultado + offset) % 360;
 
-  const gradosPorSegmento = 360 / premios.length;
-  let indice = Math.floor(((anguloResultado + gradosPorSegmento / 2) % 360) / gradosPorSegmento);
-  indice = (premios.length - indice) % premios.length;
+      const gradosPorSegmento = 360 / premios.length;
+      let indice = Math.floor(((anguloResultado + gradosPorSegmento / 2) % 360) / gradosPorSegmento);
+      indice = (premios.length - indice) % premios.length;
 
-  mensaje.textContent = `¡Ganaste: ${premios[indice]}!`;
-  indiceGanador = indice;
-}, 4000);
-
+      mensaje.textContent = `¡Ganaste: ${premios[indice]}!`;
+      mensaje.classList.add('activo');
+      dialogoPremio.style.display = 'block';
+      indiceGanador = indice;
+    }, 4000);
   });
 
   btnCerrar.addEventListener('click', () => {
     if (indiceGanador !== null) {
       window.location.href = 'landing.html';
     } else {
-      contenedor.style.display = 'none';
+      dialogoPremio.style.display = 'none';
     }
   });
 </script>
