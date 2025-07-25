@@ -11,7 +11,7 @@
     background: #f0f0f0;
   }
   #ruleta-container {
-    display: none; /* Oculto por defecto */
+    display: none;
     position: fixed;
     inset: 0;
     background: rgba(0,0,0,0.6);
@@ -38,7 +38,7 @@
     font-size: 1.2rem;
     font-weight: bold;
   }
-  #btn-cerrar {
+  button {
     margin-top: 15px;
     padding: 8px 16px;
     background: #333;
@@ -46,6 +46,10 @@
     border: none;
     cursor: pointer;
     border-radius: 5px;
+  }
+  button:disabled {
+    opacity: 0.5;
+    cursor: default;
   }
 </style>
 </head>
@@ -55,6 +59,7 @@
   <div>
     <div id="ruleta"></div>
     <div id="mensaje"></div>
+    <button id="btn-girar">Girar</button>
     <button id="btn-cerrar">Cerrar</button>
   </div>
 </div>
@@ -72,38 +77,37 @@
   const contenedor = document.getElementById('ruleta-container');
   const ruleta = document.getElementById('ruleta');
   const mensaje = document.getElementById('mensaje');
+  const btnGirar = document.getElementById('btn-girar');
   const btnCerrar = document.getElementById('btn-cerrar');
 
-  function mostrarRuleta() {
-    // Revisar si ya tiene un premio guardado
+  // Mostrar ruleta automáticamente al cargar
+  window.addEventListener('load', () => {
     const premioGuardado = localStorage.getItem('premio');
-    if (premioGuardado) {
-      mensaje.textContent = `Ya jugaste, tu premio es: ${premioGuardado}`;
-      contenedor.style.display = 'flex';
-      return;
-    }
-
     contenedor.style.display = 'flex';
 
-    // Girar ruleta
+    if (premioGuardado) {
+      mensaje.textContent = `Ya jugaste, tu premio es: ${premioGuardado}`;
+      btnGirar.disabled = true;
+    }
+  });
+
+  // Girar ruleta al hacer clic
+  btnGirar.addEventListener('click', () => {
     const angulo = 360 * 5 + Math.floor(Math.random() * 360); // 5 vueltas + aleatorio
     ruleta.style.transform = `rotate(${angulo}deg)`;
+    btnGirar.disabled = true;
 
-    // Determinar premio después del giro
     setTimeout(() => {
-      const indice = Math.floor((angulo % 360) / 60); // Cada sección 60 grados
-      const premio = premios[premios.length - 1 - indice]; // Ajuste de orden
+      const indice = Math.floor((angulo % 360) / 60);
+      const premio = premios[premios.length - 1 - indice];
       mensaje.textContent = `¡Ganaste: ${premio}!`;
       localStorage.setItem('premio', premio);
     }, 4000);
-  }
+  });
 
   btnCerrar.addEventListener('click', () => {
     contenedor.style.display = 'none';
   });
-
-  // Mostrar ruleta automáticamente al cargar
-  window.addEventListener('load', mostrarRuleta);
 </script>
 
 </body>
