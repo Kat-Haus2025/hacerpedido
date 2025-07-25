@@ -43,6 +43,9 @@
     position: absolute;
     top: 0;
     left: 0;
+    /* Desplazar ruleta -36° para centrar primer premio arriba */
+    transform-origin: 50% 50%;
+    transform: rotate(-36deg);
   }
 
   .premio-texto {
@@ -64,18 +67,21 @@
     border-radius: 10px;
   }
 
-  /* Animación parpadeo 4:3 a 160 bpm */
-  @keyframes parpadeo-4-3 {
-    0%, 57% {
+  /* Animación parpadeo corchea, semicorchea, semicorchea a 180 BPM (0.666s ciclo) */
+  @keyframes parpadeo-180bpm {
+    0%, 49% {
       opacity: 1;
     }
-    58%, 100% {
+    50%, 74% {
       opacity: 0;
+    }
+    75%, 100% {
+      opacity: 1;
     }
   }
 
   .activo {
-    animation: parpadeo-4-3 2.625s infinite;
+    animation: parpadeo-180bpm 0.666s infinite;
   }
 
   #mensaje {
@@ -136,7 +142,7 @@
   const btnCerrar = document.getElementById('btn-cerrar');
   const textos = document.querySelectorAll('.premio-texto');
 
-  let anguloActual = 0;
+  let anguloActual = -36; // Inicializamos con -36 para compensar el transform inicial
   let indiceGanador = null;
 
   window.addEventListener('load', () => {
@@ -144,6 +150,7 @@
   });
 
   btnGirar.addEventListener('click', () => {
+    // Quitar animación previa
     textos.forEach(t => {
       t.classList.remove('activo');
     });
@@ -152,7 +159,10 @@
     const anguloExtra = Math.floor(Math.random() * 360);
     const anguloFinal = anguloActual + girosCompletos + anguloExtra;
 
+    // Aplicamos rotación compensando los -36 iniciales
+    ruleta.style.transition = 'transform 4s cubic-bezier(0.33, 1, 0.68, 1)';
     ruleta.style.transform = `rotate(${anguloFinal}deg)`;
+
     anguloActual = anguloFinal;
 
     setTimeout(() => {
@@ -160,7 +170,8 @@
       if (anguloResultado < 0) anguloResultado += 360;
 
       const gradosPorSegmento = 360 / premios.length;
-      let indice = Math.floor(anguloResultado / gradosPorSegmento);
+      // Ajustamos para que 0° sea el centro del primer segmento:
+      let indice = Math.floor(((anguloResultado + gradosPorSegmento/2) % 360) / gradosPorSegmento);
       indice = (premios.length - indice) % premios.length;
 
       mensaje.textContent = `¡Ganaste: ${premios[indice]}!`;
@@ -171,7 +182,7 @@
 
   btnCerrar.addEventListener('click', () => {
     if(indiceGanador !== null) {
-      window.location.href = 'https://kathaus.shop/landing.tml';
+      window.location.href = 'landing.html';
     } else {
       contenedor.style.display = 'none';
     }
