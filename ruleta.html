@@ -32,12 +32,11 @@
     border-radius: 50%;
     border: 5px solid #333;
     background: conic-gradient(
-      #ff7675 0deg 60deg,
-      #74b9ff 60deg 120deg,
-      #55efc4 120deg 180deg,
-      #ffeaa7 180deg 240deg,
-      #a29bfe 240deg 300deg,
-      #fab1a0 300deg 360deg
+      #ff7675 0deg 72deg,
+      #74b9ff 72deg 144deg,
+      #55efc4 144deg 216deg,
+      #ffeaa7 216deg 288deg,
+      #a29bfe 288deg 360deg
     );
     transition: transform 4s cubic-bezier(0.33, 1, 0.68, 1);
     position: absolute;
@@ -104,12 +103,11 @@
     <div class="ruleta-wrapper">
       <div class="flecha"></div>
       <div id="ruleta">
-        <div class="premio-texto" style="transform: rotate(30deg) translate(0, -120px);">10% Descuento</div>
-        <div class="premio-texto" style="transform: rotate(90deg) translate(0, -120px);">Envío Gratis</div>
-        <div class="premio-texto" style="transform: rotate(150deg) translate(0, -120px);">2x1 en tu compra</div>
-        <div class="premio-texto" style="transform: rotate(210deg) translate(0, -120px);">15% Descuento</div>
-        <div class="premio-texto" style="transform: rotate(270deg) translate(0, -120px);">Regalo sorpresa</div>
-        <div class="premio-texto" style="transform: rotate(330deg) translate(0, -120px);">5% Descuento</div>
+        <div class="premio-texto" style="transform: rotate(36deg) translate(0, -120px);">Envío/instalación gratis</div>
+        <div class="premio-texto" style="transform: rotate(108deg) translate(0, -120px);">20% de descuento</div>
+        <div class="premio-texto" style="transform: rotate(180deg) translate(0, -120px);">10% de descuento</div>
+        <div class="premio-texto" style="transform: rotate(252deg) translate(0, -120px);">Regalo sorpresa</div>
+        <div class="premio-texto" style="transform: rotate(324deg) translate(0, -120px);">2x1 en tu compra</div>
       </div>
     </div>
 
@@ -121,12 +119,11 @@
 
 <script>
   const premios = [
-    "10% Descuento",
-    "Envío Gratis",
-    "2x1 en tu compra",
-    "15% Descuento",
+    "Envío/instalación gratis",
+    "20% de descuento",
+    "10% de descuento",
     "Regalo sorpresa",
-    "5% Descuento"
+    "2x1 en tu compra"
   ];
 
   const contenedor = document.getElementById('ruleta-container');
@@ -148,28 +145,22 @@
   btnGirar.addEventListener('click', () => {
     sessionStorage.setItem('girado', 'true');
 
-    // Girar entre 5 y 8 vueltas + ángulo aleatorio
-    const girosCompletos = 360 * (5 + Math.floor(Math.random() * 3));
-    const anguloExtra = Math.floor(Math.random() * 360);
+    const girosCompletos = 360 * (5 + Math.floor(Math.random() * 3)); // 5-7 vueltas
+    const anguloExtra = Math.floor(Math.random() * 360); // ángulo aleatorio
     const anguloFinal = anguloActual + girosCompletos + anguloExtra;
 
     ruleta.style.transform = `rotate(${anguloFinal}deg)`;
     anguloActual = anguloFinal;
 
     setTimeout(() => {
-      // Calcular ángulo donde quedó la flecha
       let anguloResultado = anguloFinal % 360;
       if (anguloResultado < 0) anguloResultado += 360;
 
-      // Cada premio ocupa 60°
       const gradosPorSegmento = 360 / premios.length;
-
-      // Determinar índice contando desde 0° arriba
       let indice = Math.floor(anguloResultado / gradosPorSegmento);
       indice = (premios.length - indice) % premios.length;
 
-      const premio = premios[indice];
-      mensaje.textContent = `¡Ganaste: ${premio}!`;
+      mensaje.textContent = `¡Ganaste: ${premios[indice]}!`;
       btnGirar.disabled = true;
     }, 4000);
   });
