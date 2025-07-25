@@ -22,8 +22,8 @@
 
   .ruleta-wrapper {
     position: relative;
-    width: 300px;
-    height: 300px;
+    width: 320px;
+    height: 320px;
   }
 
   #ruleta {
@@ -54,11 +54,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: bold;
     color: #000;
     text-align: center;
     padding: 4px;
+    transition: filter 0.5s ease;
+  }
+
+  /* Efecto de aumento de brillo */
+  .activo {
+    filter: brightness(1.8);
   }
 
   .flecha {
@@ -103,27 +109,27 @@
     <div class="ruleta-wrapper">
       <div class="flecha"></div>
       <div id="ruleta">
-        <div class="premio-texto" style="transform: rotate(36deg) translate(0, -120px);">Envío/instalación gratis</div>
-        <div class="premio-texto" style="transform: rotate(108deg) translate(0, -120px);">20% de descuento</div>
-        <div class="premio-texto" style="transform: rotate(180deg) translate(0, -120px);">10% de descuento</div>
-        <div class="premio-texto" style="transform: rotate(252deg) translate(0, -120px);">Regalo sorpresa</div>
-        <div class="premio-texto" style="transform: rotate(324deg) translate(0, -120px);">2x1 en tu compra</div>
+        <div class="premio-texto" style="transform: rotate(36deg) translate(0, -130px);">10% de descuento</div>
+        <div class="premio-texto" style="transform: rotate(108deg) translate(0, -130px);">20% de descuento</div>
+        <div class="premio-texto" style="transform: rotate(180deg) translate(0, -130px);">Envío/Instalación gratis</div>
+        <div class="premio-texto" style="transform: rotate(252deg) translate(0, -130px);">Peluche con Catnip</div>
+        <div class="premio-texto" style="transform: rotate(324deg) translate(0, -130px);">Sillón Gatuno Extra</div>
       </div>
     </div>
 
     <div id="mensaje"></div>
     <button id="btn-girar">Girar</button>
-    <button id="btn-cerrar">Cerrar</button>
+    <button id="btn-cerrar">Reclamar premio</button>
   </div>
 </div>
 
 <script>
   const premios = [
-    "Envío/instalación gratis",
-    "20% de descuento",
     "10% de descuento",
-    "Regalo sorpresa",
-    "2x1 en tu compra"
+    "20% de descuento",
+    "Envío/Instalación gratis",
+    "Peluche con Catnip",
+    "Sillón Gatuno Extra"
   ];
 
   const contenedor = document.getElementById('ruleta-container');
@@ -131,9 +137,11 @@
   const mensaje = document.getElementById('mensaje');
   const btnGirar = document.getElementById('btn-girar');
   const btnCerrar = document.getElementById('btn-cerrar');
+  const textos = document.querySelectorAll('.premio-texto');
 
   let anguloActual = 0;
 
+  // Mostrar al cargar
   window.addEventListener('load', () => {
     contenedor.style.display = 'flex';
     if (sessionStorage.getItem('girado') === 'true') {
@@ -145,14 +153,19 @@
   btnGirar.addEventListener('click', () => {
     sessionStorage.setItem('girado', 'true');
 
-    const girosCompletos = 360 * (5 + Math.floor(Math.random() * 3)); // 5-7 vueltas
-    const anguloExtra = Math.floor(Math.random() * 360); // ángulo aleatorio
+    // Eliminar brillo anterior
+    textos.forEach(txt => txt.classList.remove('activo'));
+
+    // Girar ruleta
+    const girosCompletos = 360 * (5 + Math.floor(Math.random() * 3));
+    const anguloExtra = Math.floor(Math.random() * 360);
     const anguloFinal = anguloActual + girosCompletos + anguloExtra;
 
     ruleta.style.transform = `rotate(${anguloFinal}deg)`;
     anguloActual = anguloFinal;
 
     setTimeout(() => {
+      // Calcular resultado
       let anguloResultado = anguloFinal % 360;
       if (anguloResultado < 0) anguloResultado += 360;
 
@@ -161,6 +174,10 @@
       indice = (premios.length - indice) % premios.length;
 
       mensaje.textContent = `¡Ganaste: ${premios[indice]}!`;
+
+      // Iluminar premio seleccionado
+      textos[indice].classList.add('activo');
+
       btnGirar.disabled = true;
     }, 4000);
   });
