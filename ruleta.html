@@ -135,6 +135,13 @@
     animation: none;
     transform: scale(1);
   }
+
+  /* Estilo para el contador */
+  #contador-visitantes {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: #813b12;
+  }
 </style>
 </head>
 <body>
@@ -150,6 +157,11 @@
   <div class="texto-info" id="texto-fomo">
     Gira la ruleta y descubre tu premio exclusivo. Válido una sola vez por cliente.  
     Aplica solo para compras realizadas en Kat-Haus durante el mes en curso.
+  </div>
+
+  <!-- Contador real de visitantes -->
+  <div id="contador-visitantes">
+    Visitantes únicos: <span id="contador">0</span>
   </div>
 </div>
 
@@ -211,6 +223,16 @@
     })
     .catch(() => {
       ciudadUsuario = "tu ciudad";
+    });
+
+  // Contador real de visitantes con CountAPI
+  fetch('https://api.countapi.xyz/hit/kat-haus/landingpage')
+    .then(response => response.json())
+    .then(data => {
+      document.getElementById('contador').textContent = data.value;
+    })
+    .catch(() => {
+      document.getElementById('contador').textContent = 'Error al contar';
     });
 
   // Girar la ruleta
