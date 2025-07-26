@@ -13,7 +13,6 @@
     padding: 0;
   }
 
-  /* Cabecera */
   header {
     background: #813b12;
     color: #ffffff;
@@ -46,7 +45,6 @@
     transition: transform 4s cubic-bezier(0.1, 0.8, 0.3, 1);
   }
 
-  /* Pin triangular */
   .pin {
     position: absolute;
     top: -18px;
@@ -60,7 +58,6 @@
     z-index: 5;
   }
 
-  /* Cuadro de diálogo */
   #dialogo-premio {
     display: none;
     position: fixed;
@@ -84,7 +81,6 @@
     margin-bottom: 1rem;
   }
 
-  /* Texto profesional debajo */
   .texto-info {
     color: white;
     font-size: 0.9rem;
@@ -93,26 +89,45 @@
     margin-top: 20px;
     border-radius: 8px;
     display: inline-block;
+    transition: all 0.3s ease;
   }
 
- button {
-  margin-top: 1rem;
-  padding: 1rem 2rem; /* MÁS GRANDE */
-  background: #a64b2a;
-  color: white;
-  border: none;
-  cursor: pointer;
-  border-radius: 10px; /* más redondeado */
-  font-weight: 700;
-  font-size: 1.4rem; /* tamaño de texto mayor */
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
+  button {
+    margin-top: 1rem;
+    padding: 1rem 2rem;
+    background: #a64b2a;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1.4rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
 
-button:hover {
-  background-color: #d35400;
-  transform: scale(1.05); /* pequeño efecto al pasar el mouse */
-}
+  button:hover {
+    background-color: #d35400;
+    transform: scale(1.05);
+  }
 
+  /* ANIMACIÓN DE LATIDO (aumentar/reducir tamaño) */
+  @keyframes latido {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+  }
+
+  /* Aplicamos la animación al botón de girar */
+  #btn-girar.animar {
+    animation: latido 1s infinite ease-in-out;
+  }
+
+  /* Estado desactivado */
+  #btn-girar:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+    animation: none; /* quitar animación al desactivar */
+    transform: scale(1);
+  }
 </style>
 </head>
 <body>
@@ -124,25 +139,22 @@ button:hover {
     <div class="pin"></div>
     <img id="ruleta" src="ruleta.png" alt="Ruleta">
   </div>
-  <button id="btn-girar">Girar ↻</button>
-  <div class="texto-info">
+  <button id="btn-girar" class="animar">Girar ↻</button>
+  <div class="texto-info" id="texto-fomo">
     Gira la ruleta y descubre tu premio exclusivo. Válido una sola vez por cliente.  
     Aplica solo para compras realizadas en Kat-Haus durante el mes en curso.
   </div>
 </div>
 
-<!-- Cuadro de diálogo del premio -->
 <div id="dialogo-premio">
   <div id="mensaje"></div>
   <button id="btn-reclamar">Reclamar premio</button>
 </div>
 
-<!-- Sonidos -->
 <audio id="sonido-giro" src="giro.wav" preload="auto"></audio>
 <audio id="sonido-victoria" src="gano1.wav" preload="auto"></audio>
 
 <script>
-  // Premios y códigos
   const premios = [
     "10% de descuento",
     "20% de descuento",
@@ -159,7 +171,7 @@ button:hover {
     "Sillón Gatuno Extra": "*SGFR-478W*"
   };
 
-  const offset = 90; // ajuste del ángulo
+  const offset = 90;
   let anguloActual = 0;
   let indiceGanador = null;
   let ciudadUsuario = "";
@@ -169,6 +181,7 @@ button:hover {
   const dialogoPremio = document.getElementById('dialogo-premio');
   const btnGirar = document.getElementById('btn-girar');
   const btnReclamar = document.getElementById('btn-reclamar');
+  const textoFomo = document.getElementById('texto-fomo');
 
   const sonidoGiro = document.getElementById('sonido-giro');
   const sonidoVictoria = document.getElementById('sonido-victoria');
@@ -201,6 +214,13 @@ button:hover {
 
     anguloActual = anguloFinal;
 
+    // DESACTIVAR BOTÓN
+    btnGirar.disabled = true;
+    btnGirar.textContent = "Usado";
+
+    // CAMBIAR TEXTO PARA FOMO
+    textoFomo.textContent = "¡Apresúrate! Otros clientes ya están girando la ruleta en este momento. Solo queda 1 oportunidad por persona.";
+
     setTimeout(() => {
       let anguloResultado = anguloFinal % 360;
       if (anguloResultado < 0) anguloResultado += 360;
@@ -215,7 +235,6 @@ button:hover {
       dialogoPremio.style.display = 'block';
       indiceGanador = indice;
 
-      // Sonido victoria
       sonidoVictoria.currentTime = 0;
       sonidoVictoria.play();
     }, 4000);
