@@ -81,7 +81,7 @@
     margin-bottom: 1rem;
   }
 
-  /* Strobo en el mensaje ganador */
+  /* Strobo */
   @keyframes strobo {
     0%, 50%, 100% { color: #a64b2a; text-shadow: none; }
     25%, 75% { color: #ff0000; text-shadow: 0 0 8px #fff, 0 0 16px #ff0000; }
@@ -119,7 +119,7 @@
     transform: scale(1.05);
   }
 
-  /* Animación de latido para el botón girar */
+  /* Animación latido */
   @keyframes latido {
     0%, 100% { transform: scale(1); }
     50% { transform: scale(1.2); }
@@ -161,7 +161,7 @@
 <!-- Sonidos -->
 <audio id="sonido-giro" src="giro.wav" preload="auto"></audio>
 <audio id="sonido-victoria" src="gano1.wav" preload="auto"></audio>
-<audio id="musica-fondo" src="game.wav" loop preload="auto"></audio>
+<audio id="musica-fondo" src="game.wav" loop autoplay muted></audio>
 
 <script>
   const premios = [
@@ -196,12 +196,11 @@
   const sonidoVictoria = document.getElementById('sonido-victoria');
   const musicaFondo = document.getElementById('musica-fondo');
 
-  // Reproducir música al cargar página
+  // Activar música automáticamente (subir volumen tras 100ms)
   window.addEventListener('DOMContentLoaded', () => {
-    musicaFondo.play().catch(() => {
-      // Algunos navegadores requieren interacción antes de reproducir audio
-      document.body.addEventListener('click', () => musicaFondo.play(), { once: true });
-    });
+    setTimeout(() => {
+      musicaFondo.muted = false;
+    }, 100);
   });
 
   // Obtener ciudad
@@ -216,7 +215,7 @@
 
   // Girar la ruleta
   btnGirar.addEventListener('click', () => {
-    // Detener música de fondo cuando empieza el giro
+    // Detener música de fondo
     musicaFondo.pause();
     musicaFondo.currentTime = 0;
 
@@ -236,7 +235,7 @@
     anguloActual = anguloFinal;
 
     btnGirar.disabled = true;
-    btnGirar.textContent = "¡Mucha Suerte!";
+    btnGirar.textContent = "Usado";
 
     textoFomo.textContent = "¡Apresúrate! Otros clientes ya están girando la ruleta en este momento. Solo queda 1 oportunidad por persona.";
 
