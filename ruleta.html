@@ -152,11 +152,11 @@ button:hover {
   ];
 
   const codigosPremio = {
-    "10% de descuento": "CZLSS-15F",
-    "20% de descuento": "DZLSS-89R",
-    "Envío/Instalación gratis": "FRSH-87LP",
-    "Peluche con Catnip Extra": "PLSH-687O",
-    "Sillón Gatuno Extra": "SGFR-478W"
+    "10% de descuento": "*CZLSS-15F*",
+    "20% de descuento": "*DZLSS-89R*",
+    "Envío/Instalación gratis": "*FRSH-87LP*",
+    "Peluche con Catnip Extra": "*PLSH-687O*",
+    "Sillón Gatuno Extra": "*SGFR-478W*"
   };
 
   const offset = 90; // ajuste del ángulo
@@ -226,7 +226,7 @@ button:hover {
     if (indiceGanador !== null) {
       const premio = premios[indiceGanador];
       const codigo = codigosPremio[premio];
-      const mensajeWhatsApp = `Hola, jugué y gané con la Ruleta de *Kat-Haus,*  soy de ${ciudadUsuario}, mi premio fue ${codigo}`;
+      const mensajeWhatsApp = `Hola, jugué y gané con la Ruleta de *Kat-Haus,*  soy de ${ciudadUsuario}, el código de transacción es: ${codigo}`;
       const url = `https://wa.me/593963372269?text=${encodeURIComponent(mensajeWhatsApp)}`;
       window.location.href = url;
     }
