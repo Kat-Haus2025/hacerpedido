@@ -8,15 +8,29 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            background: linear-gradient(#bde6ff, #dff3ff); /* azul cielo pastel */
+            background: linear-gradient(#bde6ff, #dff3ff);
             padding: 40px;
             color: #4a4a4a;
         }
 
-        h1 {
-            font-size: 28px;
-            color: #3b6ea8;
-            margin-bottom: 25px;
+        /* BANNER */
+        .banner {
+            background: rgba(255, 255, 255, 0.75);
+            border: 2px solid #a3cfff;
+            padding: 25px;
+            margin: 0 auto 35px auto;
+            width: 80%;
+            max-width: 650px;
+            border-radius: 20px;
+            box-shadow: 0 0 20px #9acbff66;
+        }
+
+        .banner h1 {
+            font-size: 32px;
+            color: #1f4e7a;
+            margin: 0;
+            font-weight: bold;
+            text-shadow: 1px 1px 4px #ffffffaa;
         }
 
         table {
@@ -50,39 +64,27 @@
             color: #3f5676;
         }
 
-        /* Glow cuando se hace clic */
         .destacado {
             box-shadow: 0 0 20px #7ab8ff !important;
             transform: scale(1.15) !important;
         }
 
-        /* FOOTNOTE */
         footer {
-            margin-top: 45px;
-            padding-top: 25px;
-            font-size: 14px;
-            color: #56718f;
-            opacity: 0.9;
+            margin-top: 40px;
+            font-size: 13px;
+            color: #6a7b8a;
         }
-
-        footer hr {
-            border: none;
-            height: 1px;
-            background: #9acbff;
-            width: 60%;
-            margin: 0 auto 18px auto;
-            opacity: 0.45;
-        }
-
     </style>
 
 </head>
 
 <body>
 
-    <h1>Selecciona Tu Rango de Inversión Gatuna:</h1>
+    <!-- BANNER CON TÍTULO CONTRASTANTE -->
+    <div class="banner">
+        <h1>Selecciona Tu Rango de Inversión Gatuna</h1>
+    </div>
 
-    <!-- TABLA 2x2 -->
     <table>
         <tr>
             <td>
@@ -109,11 +111,17 @@
     <script>
         let ciudad = "tu ciudad";
 
-        // Obtener ciudad por IP
         fetch("https://ipapi.co/json/")
             .then(r => r.json())
             .then(data => { ciudad = data.city || "tu ciudad"; })
             .catch(() => { ciudad = "tu ciudad"; });
+
+        const imagenURLs = [
+            "https://tusitio.com/dios.jpeg",
+            "https://tusitio.com/magnate.jpeg",
+            "https://tusitio.com/aristocrata.jpg",
+            "https://tusitio.com/ofice.jpg.jpg"
+        ];
 
         const categorias = [
             "Michi Deidad — (Sin límites)",
@@ -132,26 +140,25 @@
         imagenes.forEach((img, index) => {
             img.addEventListener("click", () => {
 
-                // Efecto visual
                 imagenes.forEach(i => i.classList.remove("destacado"));
                 img.classList.add("destacado");
 
                 const texto = 
-`Hola, soy de ${ciudad}, deseo gatificar mi hogar con un presupuesto: ${categorias[index]}`;
+`Hola, soy de ${ciudad}.
+Deseo gatificar mi hogar con un presupuesto:
+
+${categorias[index]}
+Imagen: ${imagenURLs[index]}`;
 
                 const link = `https://wa.me/593963372269?text=${encodeURIComponent(texto)}`;
 
-                // Abrir WhatsApp
                 window.location.href = link;
             });
         });
     </script>
 
-    <!-- FOOTNOTE PROFESIONAL -->
     <footer>
-        <hr>
-        Kat-Haus © 2025 — Diseñado con amor, ingeniería y mucha devoción gatuna.<br>
-        Todos los rangos son estimaciones iniciales y pueden variar según dimensiones y complejidad del proyecto.
+        *Las categorías son una guía estimada para ayudarte a elegir tu inversión ideal según tu estilo de vida gatuno.
     </footer>
 
 </body>
