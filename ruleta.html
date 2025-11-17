@@ -11,7 +11,6 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-G16549SGNT');
 </script>
 
@@ -56,19 +55,19 @@
     transition: transform 4s cubic-bezier(0.1, 0.8, 0.3, 1);
   }
 
- .pin {
-  position: absolute;
-  top: -18px;
-  left: calc(50% + 8px);
-  transform: translateX(-50%) rotate(5deg);
-  width: 0;
-  height: 0;
-  border-left: 12px solid transparent;
-  border-right: 12px solid transparent;
-  border-top: 18px solid #a64b2a;
-  z-index: 5;
-}
-
+  /* Pin movido a las 12:05 */
+  .pin {
+    position: absolute;
+    top: -18px;
+    left: calc(50% + 8px);
+    transform: translateX(-50%) rotate(5deg);
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-top: 18px solid #a64b2a;
+    z-index: 5;
+  }
 
   #dialogo-premio {
     display: none;
@@ -93,7 +92,6 @@
     margin-bottom: 1rem;
   }
 
-  /* Strobo */
   @keyframes strobo {
     0%, 50%, 100% { color: #a64b2a; text-shadow: none; }
     25%, 75% { color: #ff0000; text-shadow: 0 0 8px #fff, 0 0 16px #ff0000; }
@@ -131,7 +129,6 @@
     transform: scale(1.05);
   }
 
-  /* Animación latido */
   @keyframes latido {
     0%, 100% { transform: scale(1); }
     50% { transform: scale(1.2); }
@@ -160,8 +157,8 @@
   </div>
   <button id="btn-girar" class="animar">Girar ↻</button>
   <div class="texto-info" id="texto-fomo">
-    Gira la ruleta y descubre tu premio exclusivo. Válido una sola vez por cliente.  
-    Aplica solo para compras realizadas en Kat-Haus durante el mes en curso.
+    Gira la ruleta y descubre tu premio exclusivo.  
+    Válido una sola vez por cliente.
   </div>
 </div>
 
@@ -208,26 +205,33 @@
   const sonidoVictoria = document.getElementById('sonido-victoria');
   const musicaFondo = document.getElementById('musica-fondo');
 
-  // Activar música automáticamente (subir volumen tras 100ms)
+  /* --------------------------
+     BLOQUEAR SI YA ENTRÓ ANTES
+     -------------------------- */
+
+  if (localStorage.getItem("ruletaJugó") === "sí") {
+    btnGirar.disabled = true;
+    btnGirar.textContent = "Tu oportunidad expiró";
+    btnGirar.classList.remove("animar");
+  }
+
+  /* Música */
   window.addEventListener('DOMContentLoaded', () => {
-    setTimeout(() => {
-      musicaFondo.muted = false;
-    }, 100);
+    setTimeout(() => { musicaFondo.muted = false; }, 100);
   });
 
-  // Obtener ciudad
+  /* Ciudad */
   fetch("https://ipapi.co/json/")
-    .then(response => response.json())
-    .then(data => {
-      ciudadUsuario = data.city || "tu ciudad";
-    })
-    .catch(() => {
-      ciudadUsuario = "tu ciudad";
-    });
+    .then(r => r.json())
+    .then(data => ciudadUsuario = data.city || "tu ciudad")
+    .catch(() => ciudadUsuario = "tu ciudad");
 
-  // Girar la ruleta
+  /* Girar */
   btnGirar.addEventListener('click', () => {
-    // Detener música de fondo
+
+    // Registrar que ya jugó
+    localStorage.setItem("ruletaJugó", "sí");
+
     musicaFondo.pause();
     musicaFondo.currentTime = 0;
 
@@ -248,8 +252,7 @@
 
     btnGirar.disabled = true;
     btnGirar.textContent = "¡Mucha Suerte!";
-
-    textoFomo.textContent = "¡Apresúrate! Otros clientes ya están girando la ruleta en este momento. Solo queda 1 oportunidad por persona.";
+    textoFomo.textContent = "Casi llenamos los cupos de producción. No te quedes fuera.";
 
     setTimeout(() => {
       let anguloResultado = anguloFinal % 360;
@@ -257,8 +260,8 @@
 
       anguloResultado = (anguloResultado + offset) % 360;
 
-      const gradosPorSegmento = 360 / premios.length;
-      let indice = Math.floor(((anguloResultado + gradosPorSegmento / 2) % 360) / gradosPorSegmento);
+      const grados = 360 / premios.length;
+      let indice = Math.floor(((anguloResultado + grados / 2) % 360) / grados);
       indice = (premios.length - indice) % premios.length;
 
       mensaje.textContent = `¡Ganaste: ${premios[indice]}!`;
@@ -271,14 +274,13 @@
     }, 4000);
   });
 
-  // Reclamar -> WhatsApp
+  /* WhatsApp */
   btnReclamar.addEventListener('click', () => {
     if (indiceGanador !== null) {
       const premio = premios[indiceGanador];
       const codigo = codigosPremio[premio];
-      const mensajeWhatsApp = `Hola, jugué y gané con la Ruleta de *Kat-Haus,*  soy de ${ciudadUsuario}, mi _*Código Único de Recompensa (CUD)*_ es: ${codigo}`;
-      const url = `https://wa.me/593963372269?text=${encodeURIComponent(mensajeWhatsApp)}`;
-      window.location.href = url;
+      const texto = `Hola, jugué la Ruleta de Kat-Haus. Soy de ${ciudadUsuario}. Mi *CUD* es: ${codigo}`;
+      window.location.href = `https://wa.me/593963372269?text=${encodeURIComponent(texto)}`;
     }
   });
 </script>
