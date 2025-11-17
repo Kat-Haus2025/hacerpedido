@@ -109,8 +109,9 @@
 
         .grid {
             grid-template-columns: 1fr; /* una columna */
-            gap: 12px; /* menor espacio */
+            gap: 12px; 
             max-width: 95%;
+            margin: auto;
         }
 
         .item {
@@ -119,8 +120,8 @@
         }
 
         .michi-img {
-            max-width: 100%;   
-            width: 100%;
+            width: 100%;   /* ocupa todo el ancho de la columna */
+            max-width: 100%; 
             border-width: 2px;
             box-shadow: 0 0 6px #aacfff88;
         }
@@ -197,7 +198,6 @@
                 imagenes.forEach(i => i.classList.remove("destacado"));
                 img.classList.add("destacado");
 
-                // Mensaje de WhatsApp sin URL de imagen
                 const texto = 
 `Hola, soy de ${ciudad}.
 Deseo gatificar mi hogar con un presupuesto:
