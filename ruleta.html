@@ -2,310 +2,129 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Juega y Gana con Kat-Haus</title>
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G16549SGNT"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-G16549SGNT');
-</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ruleta Kat-Haus</title>
 
 <style>
   body {
-    background: #b9d5fa;
+    background: #eaeaea;
     text-align: center;
     font-family: sans-serif;
-    margin: 0;
-    padding: 0;
   }
 
-  header {
-    background: #813b12;
-    color: #ffffff;
-    padding: 1rem;
-    font-size: 1.8rem;
-    font-weight: bold;
-  }
-
-  #ruleta-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  h1 {
     margin-top: 20px;
-    flex-direction: column;
   }
 
-  .ruleta-wrapper {
+  .ruleta-container {
     position: relative;
-    width: 90vw;
-    max-width: 400px;
-    aspect-ratio: 1/1;
-    margin: auto;
+    width: 300px;
+    margin: 40px auto;
   }
 
   #ruleta {
     width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    transform-origin: 50% 50%;
     transition: transform 4s cubic-bezier(0.1, 0.8, 0.3, 1);
+    transform-origin: 50% 50%;
   }
 
-  .pin {
+  /* Triángulo marcador en posición 11:55 */
+  .marcador {
     position: absolute;
-    top: -18px;
+    top: -10px;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%) rotate(-20deg);
     width: 0;
     height: 0;
-    border-left: 12px solid transparent;
-    border-right: 12px solid transparent;
-    border-top: 18px solid #a64b2a;
-    z-index: 5;
-  }
-
-  #dialogo-premio {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: #fff8f2;
-    border: 3px solid #a64b2a;
-    border-radius: 12px;
-    padding: 1rem 1.5rem;
-    max-width: 80%;
-    text-align: center;
-    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    border-left: 14px solid transparent;
+    border-right: 14px solid transparent;
+    border-bottom: 22px solid #e63946;
     z-index: 10;
   }
 
-  #mensaje {
-    font-size: 1.4rem;
-    font-weight: bold;
-    color: #a64b2a;
-    margin-bottom: 1rem;
-  }
-
-  /* Strobo */
-  @keyframes strobo {
-    0%, 50%, 100% { color: #a64b2a; text-shadow: none; }
-    25%, 75% { color: #ff0000; text-shadow: 0 0 8px #fff, 0 0 16px #ff0000; }
-  }
-  .strobo {
-    animation: strobo 0.2s infinite;
-  }
-
-  .texto-info {
-    color: white;
-    font-size: 0.9rem;
-    background: #813b12;
-    padding: 0.8rem;
-    margin-top: 20px;
-    border-radius: 8px;
-    display: inline-block;
-    transition: all 0.3s ease;
-  }
-
   button {
-    margin-top: 1rem;
-    padding: 1rem 2rem;
-    background: #a64b2a;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    background: #1d3557;
     color: white;
     border: none;
-    cursor: pointer;
-    border-radius: 10px;
-    font-weight: 700;
-    font-size: 1.4rem;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    border-radius: 8px;
   }
 
   button:hover {
-    background-color: #d35400;
-    transform: scale(1.05);
+    background: #457b9d;
   }
 
-  @keyframes latido {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.2); }
-  }
-
-  #btn-girar.animar {
-    animation: latido 1s infinite ease-in-out;
-  }
-
-  #btn-girar:disabled {
-    background-color: #aaa;
-    cursor: not-allowed;
-    animation: none;
-    transform: scale(1);
-  }
-
-  #mensaje-ya-jugo {
-    display: none;
-    margin-top: 12px;
-    color: #4a4a4a;
+  #resultado {
+    margin-top: 20px;
+    font-size: 22px;
     font-weight: bold;
   }
 </style>
 </head>
+
 <body>
 
-<header>Juega y Gana con <br> Kat-Haus</header>
+<h1>Ruleta Kat-Haus</h1>
 
-<div id="ruleta-container">
-  <div class="ruleta-wrapper">
-    <div class="pin"></div>
-    <img id="ruleta" src="ruleta.png" alt="Ruleta" />
-  </div>
-  <button id="btn-girar" class="animar">Girar ↻</button>
-  <div class="texto-info" id="texto-fomo">
-    Gira la ruleta y descubre tu premio exclusivo.  
-    Aplica solo para compras realizadas el día de hoy hasta las 17:59h.
-  </div>
-  <div id="mensaje-ya-jugo">😿 Tu oportunidad ha expirado.😿 </div>
+<div class="ruleta-container">
+  <div class="marcador"></div>
+  <img id="ruleta" src="ruleta.png" alt="Ruleta">
 </div>
 
-<div id="dialogo-premio">
-  <div id="mensaje"></div>
-  <button id="btn-reclamar">Reclamar premio</button>
-</div>
+<button id="btn">Jugar</button>
 
-<!-- Sonidos -->
-<audio id="sonido-giro" src="giro.wav" preload="auto"></audio>
-<audio id="sonido-victoria" src="gano1.wav" preload="auto"></audio>
-<audio id="musica-fondo" src="game.wav" loop autoplay muted></audio>
+<div id="resultado"></div>
 
 <script>
-  /* ---------- CONFIG ---------- */
-  const STORAGE_KEY_PLAYED = 'kat_haus_ruleta_played_v1';
-  const STORAGE_KEY_RESULT = 'kat_haus_ruleta_result_v1';
-  /* ---------------------------- */
+const premios = [
+  "Premio 1",
+  "Premio 2",
+  "Premio 3",
+  "Premio 4",
+  "Premio 5"
+];
 
-  const premios = [
-    "10% de descuento",
-    "20% de descuento",
-    "Envío/Instalación gratis",
-    "Peluche con Catnip Extra",
-    "Sillón Gatuno Extra"
-  ];
+const ruleta = document.getElementById("ruleta");
+const boton = document.getElementById("btn");
+const resultado = document.getElementById("resultado");
 
-  const codigosPremio = {
-    "10% de descuento": "*CZLSS-15F*",
-    "20% de descuento": "*DZLSS-89R*",
-    "Envío/Instalación gratis": "*FRSH-87LP*",
-    "Peluche con Catnip Extra": "*PLSH-687O*",
-    "Sillón Gatuno Extra": "*SGFR-478W*"
-  };
+let anguloActual = 0;
 
-  const offset = 90;
-  let anguloActual = 0;
-  let indiceGanador = null;
-  let ciudadUsuario = "";
+// La ruleta está dividida en 5 → 360/5 = 72 grados por premio
+const SEGMENTO = 72;
 
-  const ruleta = document.getElementById('ruleta');
-  const mensaje = document.getElementById('mensaje');
-  const dialogoPremio = document.getElementById('dialogo-premio');
-  const btnGirar = document.getElementById('btn-girar');
-  const btnReclamar = document.getElementById('btn-reclamar');
-  const textoFomo = document.getElementById('texto-fomo');
-  const mensajeYaJugo = document.getElementById('mensaje-ya-jugo');
+// triángulo a las 11:55 → offset de ángulo para que coincida
+// Ajuste fino para la posición exacta:
+const OFFSET = -20;
 
-  const sonidoGiro = document.getElementById('sonido-giro');
-  const sonidoVictoria = document.getElementById('sonido-victoria');
-  const musicaFondo = document.getElementById('musica-fondo');
+boton.addEventListener("click", () => {
+  boton.disabled = true;
+  resultado.textContent = "";
 
-  window.addEventListener('DOMContentLoaded', () => {
-    setTimeout(() => {
-      musicaFondo.muted = false;
-    }, 100);
+  const vueltas = 360 * 5; // 5 vueltas completas
+  const extra = Math.floor(Math.random() * 360); // parada aleatoria
 
-    fetch("https://ipapi.co/json/")
-      .then(response => response.json())
-      .then(data => {
-        ciudadUsuario = data.city || "tu ciudad";
-      })
-      .catch(() => {
-        ciudadUsuario = "tu ciudad";
-      });
+  const anguloFinal = anguloActual + vueltas + extra;
 
-    /* 🟡 BLOQUEO DESACTIVADO – SECCIÓN ORIGINAL COMENTADA
-    const yaJugo = localStorage.getItem(STORAGE_KEY_PLAYED);
-    const resultadoGuardado = localStorage.getItem(STORAGE_KEY_RESULT);
+  ruleta.style.transform = `rotate(${anguloFinal}deg)`;
 
-    if (yaJugo) {
-      btnGirar.disabled = true;
-      btnGirar.textContent = "Ya participaste";
-      mensajeYaJugo.style.display = 'block';
-      textoFomo.textContent = "Gracias por participar. Si ganaste, revisa tu premio y código abajo.";
+  anguloActual = anguloFinal;
 
-      if (resultadoGuardado !== null) {
-        const idx = parseInt(resultadoGuardado, 10);
-        if (!isNaN(idx) && premios[idx]) {
-          indiceGanador = idx;
-          mensaje.textContent = `¡Ganaste: ${premios[idx]}!`;
-          dialogoPremio.style.display = 'block';
-        }
-      }
-    }
-    */
-  });
+  setTimeout(() => {
+    // Hallar dónde cayó la ruleta
+    let angulo = (anguloFinal + OFFSET) % 360;
+    if (angulo < 0) angulo += 360;
 
-  btnGirar.addEventListener('click', () => {
+    const indice = Math.floor(angulo / SEGMENTO);
 
-    // 🎯 BLOQUEO QUITADO PARA QUE SIEMPRE PUEDA JUGAR
-    /*
-    if (localStorage.getItem(STORAGE_KEY_PLAYED)) return;
-    */
+    resultado.textContent = "🎉 Ganaste: " + premios[indice];
 
-    musicaFondo.pause();
-    musicaFondo.currentTime = 0;
+    boton.disabled = false;
+  }, 4000);
+});
+</script>
 
-    mensaje.classList.remove('strobo');
-    dialogoPremio.style.display = 'none';
-
-    sonidoGiro.currentTime = 0;
-    sonidoGiro.play();
-
-    const girosCompletos = 360 * (5 + Math.floor(Math.random() * 3));
-    const anguloExtra = Math.floor(Math.random() * 360);
-    const anguloFinal = anguloActual + girosCompletos + anguloExtra;
-
-    ruleta.style.transition = 'transform 4s cubic-bezier(0.1, 0.8, 0.3, 1)';
-    ruleta.style.transform = `rotate(${anguloFinal}deg)`;
-
-    anguloActual = anguloFinal;
-
-    btnGirar.disabled = true;
-    btnGirar.textContent = "¡Mucha Suerte!";
-    btnGirar.classList.remove('animar');
-
-    textoFomo.textContent = "Felicitaciones, tu regalo será válido si haces tu compra el día de hoy.";
-
-    setTimeout(() => {
-      let anguloResultado = anguloFinal % 360;
-      if (anguloResultado < 0) anguloResultado += 360;
-
-      anguloResultado = (anguloResultado + offset) % 360;
-
-      const gradosPorSegmento = 360 / premios.length;
-      let indice = Math.floor(((anguloResultado + gradosPorSegmento / 2) % 360) / gradosPorSegmento);
-      indice = (premios.length - indice) % premios.length;
-
-      indiceGanador = indice;
-
-      // 🔕 No se guarda bloqueo
-      /*
-      localStorage.setItem(STORAGE_KEY_PLAYED, '1');
-      localStorage.setItem(STORAGE_KEY_RESULT, String(indice));
-      */
-
-      mensaje.textContent = `¡Ganaste: ${premios[indice]}!`;
-      mensaje.classList.add('strobo');
-      dialogoPremio.style.display = 'block';
-
-      sonidoVictoria.currentTime
+</body>
+</html>
