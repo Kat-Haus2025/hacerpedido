@@ -56,18 +56,19 @@
     transition: transform 4s cubic-bezier(0.1, 0.8, 0.3, 1);
   }
 
-  .pin {
-    position: absolute;
-    top: -18px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 0;
-    border-left: 12px solid transparent;
-    border-right: 12px solid transparent;
-    border-top: 18px solid #a64b2a;
-    z-index: 5;
-  }
+ .pin {
+  position: absolute;
+  top: -18px;
+  left: calc(50% + 8px);
+  transform: translateX(-50%) rotate(5deg);
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 18px solid #a64b2a;
+  z-index: 5;
+}
+
 
   #dialogo-premio {
     display: none;
