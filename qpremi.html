@@ -100,67 +100,7 @@
     <button id="boton">Jugar</button>
     <div id="mensaje"></div>
 
-    <script>
-        const boton = document.getElementById("boton");
-        const mensaje = document.getElementById("mensaje");
-
-        const imagenes = [
-            document.getElementById("img0"),
-            document.getElementById("img1"),
-            document.getElementById("img2"),
-            document.getElementById("img3"),
-        ];
-
-        // ----------------------------
-        // SISTEMA DE BLOQUEO
-        // ----------------------------
-        let fechaRegistro = localStorage.getItem("primer_ingreso");
-
-        if (!fechaRegistro) {
-            fechaRegistro = new Date().toLocaleString();
-            localStorage.setItem("primer_ingreso", fechaRegistro);
-        } else {
-            boton.textContent = "Tu oportunidad expiró";
-            boton.disabled = true;
-            mensaje.textContent = "Tu oportunidad expiró en: " + fechaRegistro;
-        }
-
-        // ----------------------------
-        // SELECCIÓN ALEATORIA
-        // ----------------------------
-        boton.addEventListener("click", () => {
-            if (boton.disabled) return;
-
-            // limpiar efectos previos
-            imagenes.forEach(img => img.classList.remove("destacado"));
-
-            // elegir imagen al azar
-            const ganador = Math.floor(Math.random() * 4);
-
-            // animación tipo "ruleta"
-            let pasos = 10 + Math.floor(Math.random() * 10);
-            let actual = 0;
-            let intervalo = 120;
-
-            let loop = setInterval(() => {
-                imagenes.forEach(img => img.classList.remove("destacado"));
-                imagenes[actual % 4].classList.add("destacado");
-
-                actual++;
-                pasos--;
-
-                if (pasos <= 0) {
-                    clearInterval(loop);
-                    imagenes[ganador].classList.add("destacado");
-
-                    // bloquear para siempre
-                    boton.textContent = "Tu oportunidad expiró";
-                    boton.disabled = true;
-                    mensaje.textContent = "Tu oportunidad expiró en: " + fechaRegistro;
-                }
-            }, intervalo);
-        });
-    </script>
+   
 
 </body>
 </html>
