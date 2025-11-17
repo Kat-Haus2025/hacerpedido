@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Selecciona tu Rango de Inversión</title>
 
-   <style>
+<style>
     body {
         font-family: Arial, sans-serif;
         text-align: center;
@@ -26,7 +26,7 @@
     }
 
     .banner h1 {
-        font-size: 26px;
+        font-size: clamp(20px, 4vw, 32px);
         color: #7A4D1F;
         margin: 0;
         font-weight: bold;
@@ -34,19 +34,21 @@
         line-height: 1.3;
     }
 
-    /* GRID RESPONSIVO REAL */
+    /* GRID — 2 columnas en PC */
     .grid {
         display: grid;
-        grid-template-columns: repeat(2, 1fr); /* PC Y TABLET = 2x2 */
-        gap: 20px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 22px;
         width: 100%;
+        max-width: 700px;
         margin: auto;
     }
 
-    /* EN CELULAR: UNA COLUMNA COMPLETA (FULL WIDTH) */
+    /* Celular: una columna y mayor crecimiento visual */
     @media (max-width: 600px) {
         .grid {
-            grid-template-columns: 1fr;  /* UNA COLUMNA */
+            grid-template-columns: 1fr;
+            max-width: 90%;
         }
     }
 
@@ -54,9 +56,10 @@
         text-align: center;
     }
 
+    /* Imagen adaptable REAL */
     .michi-img {
-        width: 100%;            /* OCUPA TODO EL ANCHO DISPONIBLE */
-        aspect-ratio: 1 / 1;    /* SIEMPRE CUADRADA */
+        width: 100%;
+        aspect-ratio: 1 / 1;
         object-fit: cover;
         border-radius: 15px;
         border: 3px solid #ffffffaa;
@@ -66,28 +69,38 @@
         cursor: pointer;
     }
 
-    .michi-img:hover {
-        transform: scale(1.06);
-        box-shadow: 0 0 18px #9acbff;
-    }
-
+    /* Texto adaptable a su imagen */
     .nombre {
-        font-size: 18px;
         margin-top: 10px;
         font-weight: bold;
         color: #3f5676;
+        font-size: clamp(14px, 2.3vw, 20px);
+        line-height: 1.25;
     }
 
-    /* Selección */
+    /* Efecto de selección */
     .destacado {
         box-shadow: 0 0 25px #7ab8ff !important;
-        transform: scale(1.08) !important;
+        transform: scale(1.05) !important;
     }
 
     footer {
         margin-top: 30px;
-        font-size: 12px;
+        font-size: clamp(10px, 1.8vw, 13px);
         color: #6a7b8a;
+    }
+
+    /* PC: reducir imágenes para que no parezcan gigantes */
+    @media (min-width: 900px) {
+        .michi-img {
+            max-width: 280px;
+            margin: auto;
+        }
+        .item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
     }
 </style>
 
