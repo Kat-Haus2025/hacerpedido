@@ -11,7 +11,6 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-G16549SGNT');
 </script>
 
@@ -146,6 +145,14 @@
     animation: none;
     transform: scale(1);
   }
+
+  /* Mensaje cuando ya jugó */
+  #mensaje-ya-jugo {
+    display: none;
+    margin-top: 12px;
+    color: #4a4a4a;
+    font-weight: bold;
+  }
 </style>
 </head>
 <body>
@@ -162,6 +169,7 @@
     Gira la ruleta y descubre tu premio exclusivo.  
     Aplica solo para compras realizadas el día de hoy hasta las 17:59h.
   </div>
+  <div id="mensaje-ya-jugo">Ya participaste desde este dispositivo. ¡Gracias por jugar!</div>
 </div>
 
 <div id="dialogo-premio">
@@ -175,6 +183,11 @@
 <audio id="musica-fondo" src="game.wav" loop autoplay muted></audio>
 
 <script>
+  /* ---------- CONFIG ---------- */
+  const STORAGE_KEY_PLAYED = 'kat_haus_ruleta_played_v1'; // flag de que ya jugó
+  const STORAGE_KEY_RESULT = 'kat_haus_ruleta_result_v1'; // guarda resultado (índice)
+  /* ---------------------------- */
+
   const premios = [
     "10% de descuento",
     "20% de descuento",
@@ -202,6 +215,7 @@
   const btnGirar = document.getElementById('btn-girar');
   const btnReclamar = document.getElementById('btn-reclamar');
   const textoFomo = document.getElementById('texto-fomo');
+  const mensajeYaJugo = document.getElementById('mensaje-ya-jugo');
 
   const sonidoGiro = document.getElementById('sonido-giro');
   const sonidoVictoria = document.getElementById('sonido-victoria');
@@ -212,20 +226,45 @@
     setTimeout(() => {
       musicaFondo.muted = false;
     }, 100);
-  });
 
-  // Obtener ciudad
-  fetch("https://ipapi.co/json/")
-    .then(response => response.json())
-    .then(data => {
-      ciudadUsuario = data.city || "tu ciudad";
-    })
-    .catch(() => {
-      ciudadUsuario = "tu ciudad";
-    });
+    // Obtener ciudad (no bloqueante)
+    fetch("https://ipapi.co/json/")
+      .then(response => response.json())
+      .then(data => {
+        ciudadUsuario = data.city || "tu ciudad";
+      })
+      .catch(() => {
+        ciudadUsuario = "tu ciudad";
+      });
+
+    // Revisar si ya jugó en este dispositivo (localStorage)
+    const yaJugo = localStorage.getItem(STORAGE_KEY_PLAYED);
+    const resultadoGuardado = localStorage.getItem(STORAGE_KEY_RESULT);
+
+    if (yaJugo) {
+      // Desactivar el juego para este dispositivo
+      btnGirar.disabled = true;
+      btnGirar.textContent = "Ya participaste";
+      mensajeYaJugo.style.display = 'block';
+      textoFomo.textContent = "Gracias por participar. Si ganaste, revisa tu premio y código abajo.";
+
+      // Si hay resultado guardado, mostrarlo en el diálogo para que pueda reclamar
+      if (resultadoGuardado !== null) {
+        const idx = parseInt(resultadoGuardado, 10);
+        if (!isNaN(idx) && premios[idx]) {
+          indiceGanador = idx;
+          mensaje.textContent = `¡Ganaste: ${premios[idx]}!`;
+          dialogoPremio.style.display = 'block';
+        }
+      }
+    }
+  });
 
   // Girar la ruleta
   btnGirar.addEventListener('click', () => {
+    // Si ya jugó (doble check)
+    if (localStorage.getItem(STORAGE_KEY_PLAYED)) return;
+
     // Detener música de fondo
     musicaFondo.pause();
     musicaFondo.currentTime = 0;
@@ -247,6 +286,7 @@
 
     btnGirar.disabled = true;
     btnGirar.textContent = "¡Mucha Suerte!";
+    btnGirar.classList.remove('animar');
 
     textoFomo.textContent = "Felicitaciones, tu regalo será válido si haces tu compra el día de hoy.";
 
@@ -260,13 +300,21 @@
       let indice = Math.floor(((anguloResultado + gradosPorSegmento / 2) % 360) / gradosPorSegmento);
       indice = (premios.length - indice) % premios.length;
 
+      // Guardar resultado en memoria local para que el dispositivo no pueda jugar otra vez
+      indiceGanador = indice;
+      localStorage.setItem(STORAGE_KEY_PLAYED, '1');
+      localStorage.setItem(STORAGE_KEY_RESULT, String(indice));
+
       mensaje.textContent = `¡Ganaste: ${premios[indice]}!`;
       mensaje.classList.add('strobo');
       dialogoPremio.style.display = 'block';
-      indiceGanador = indice;
 
       sonidoVictoria.currentTime = 0;
       sonidoVictoria.play();
+
+      // Actualizar botón final
+      btnGirar.textContent = "Ya participaste";
+      mensajeYaJugo.style.display = 'block';
     }, 4000);
   });
 
@@ -280,6 +328,10 @@
       window.location.href = url;
     }
   });
+
+  // Seguridad adicional: bloquear reactivación por script desde consola
+  // (esto no evita un usuario avanzado que manualmente borre localStorage)
+  // Si necesitas persistencia más fuerte, implementa también en servidor (cookies + DB).
 </script>
 
 </body>
