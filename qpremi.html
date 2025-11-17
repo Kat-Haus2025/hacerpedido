@@ -34,7 +34,7 @@
         line-height: 1.3;
     }
 
-    /* GRID — 2 columnas en PC */
+    /* GRID — PC (2 columnas) */
     .grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -44,21 +44,13 @@
         margin: auto;
     }
 
-    /* Celular: una columna y mayor crecimiento visual */
-    @media (max-width: 600px) {
-        .grid {
-            grid-template-columns: 1fr;
-            max-width: 90%;
-        }
-    }
-
     .item {
         text-align: center;
     }
 
-    /* Imagen adaptable REAL */
     .michi-img {
         width: 100%;
+        max-width: 280px;   /* Perfecto en PC */
         aspect-ratio: 1 / 1;
         object-fit: cover;
         border-radius: 15px;
@@ -67,9 +59,9 @@
         box-shadow: 0 0 10px #aacfff77;
         transition: transform 0.3s, box-shadow 0.3s;
         cursor: pointer;
+        margin: auto;
     }
 
-    /* Texto adaptable a su imagen */
     .nombre {
         margin-top: 10px;
         font-weight: bold;
@@ -78,7 +70,6 @@
         line-height: 1.25;
     }
 
-    /* Efecto de selección */
     .destacado {
         box-shadow: 0 0 25px #7ab8ff !important;
         transform: scale(1.05) !important;
@@ -90,20 +81,53 @@
         color: #6a7b8a;
     }
 
-    /* PC: reducir imágenes para que no parezcan gigantes */
-    @media (min-width: 900px) {
-        .michi-img {
-            max-width: 280px;
-            margin: auto;
+    /* ------------------------------------------- */
+    /* 📱 CELULAR — VERSION OPTIMIZADA Y COMPACTA  */
+    /* ------------------------------------------- */
+    @media (max-width: 600px) {
+
+        body {
+            padding: 8px;
         }
+
+        .banner {
+            padding: 12px;
+            margin-bottom: 15px;
+        }
+
+        .banner h1 {
+            font-size: 22px;
+        }
+
+        .grid {
+            grid-template-columns: 1fr; /* una columna */
+            gap: 12px; /* menor espacio */
+            max-width: 95%;
+        }
+
         .item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            padding: 0;
+            margin: 0;
+        }
+
+        .michi-img {
+            max-width: 100%;   /* OCUPA TODA LA PANTALLA */
+            width: 100%;
+            border-width: 2px;
+            box-shadow: 0 0 6px #aacfff88;
+        }
+
+        .nombre {
+            font-size: 17px;
+            margin-top: 6px; /* menos espacio */
+        }
+
+        footer {
+            margin-top: 18px;
+            font-size: 11px;
         }
     }
 </style>
-
 
 </head>
 
