@@ -1,100 +1,289 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Ruleta</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background: #f3f3f3;
-            margin: 0;
-            padding: 50px;
-        }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Club de los Que no Postergan</title>
 
-        #ruleta {
-            width: 350px;
-            height: 350px;
-            margin: 20px auto;
-            transition: transform 4s cubic-bezier(0.1, 0.57, 0.1, 1);
-        }
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G16549SGNT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-G16549SGNT');
+</script>
 
-        #boton {
-            background: #ff0055;
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 10px;
-            font-size: 20px;
-            cursor: pointer;
-            margin-top: 20px;
-        }
+<style>
+  body {
+    background: #b9d5fa;
+    text-align: center;
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+  }
 
-        #boton:disabled {
-            background: #999;
-            cursor: not-allowed;
-        }
+  header {
+    background: #813b12;
+    color: #ffffff;
+    padding: 1rem;
+    font-size: 1.8rem;
+    font-weight: bold;
+  }
 
-        #mensaje {
-            margin-top: 20px;
-            font-size: 18px;
-            color: #333;
-        }
-    </style>
+  #ruleta-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    flex-direction: column;
+  }
+
+  .ruleta-wrapper {
+    position: relative;
+    width: 90vw;
+    max-width: 400px;
+    aspect-ratio: 1/1;
+    margin: auto;
+  }
+
+  #ruleta {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    transform-origin: 50% 50%;
+    transition: transform 4s cubic-bezier(0.1, 0.8, 0.3, 1);
+  }
+
+  /* Pin movido a las 12:05 */
+  .pin {
+    position: absolute;
+    top: -18px;
+    left: calc(50% + 8px);
+    transform: translateX(-50%) rotate(5deg);
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-top: 18px solid #a64b2a;
+    z-index: 5;
+  }
+
+  #dialogo-premio {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff8f2;
+    border: 3px solid #a64b2a;
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    max-width: 80%;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    z-index: 10;
+  }
+
+  #mensaje {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #a64b2a;
+    margin-bottom: 1rem;
+  }
+
+  @keyframes strobo {
+    0%, 50%, 100% { color: #a64b2a; text-shadow: none; }
+    25%, 75% { color: #ff0000; text-shadow: 0 0 8px #fff, 0 0 16px #ff0000; }
+  }
+  .strobo {
+    animation: strobo 0.2s infinite;
+  }
+
+  .texto-info {
+    color: white;
+    font-size: 0.9rem;
+    background: #813b12;
+    padding: 0.8rem;
+    margin-top: 20px;
+    border-radius: 8px;
+    display: inline-block;
+    transition: all 0.3s ease;
+  }
+
+  button {
+    margin-top: 1rem;
+    padding: 1rem 2rem;
+    background: #a64b2a;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1.4rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  button:hover {
+    background-color: #d35400;
+    transform: scale(1.05);
+  }
+
+  @keyframes latido {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+  }
+
+  #btn-girar.animar {
+    animation: latido 1s infinite ease-in-out;
+  }
+
+  #btn-girar:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+    animation: none;
+    transform: scale(1);
+  }
+</style>
 </head>
 <body>
 
-    <h1>Ruleta de premios</h1>
+<header>Juega y Gana con <br> Kat-Haus</header>
 
-    <img id="ruleta" src="ruleta.png" alt="Ruleta">
+<div id="ruleta-container">
+  <div class="ruleta-wrapper">
+    <div class="pin"></div>
+    <img id="ruleta" src="ruleta.png" alt="Ruleta" />
+  </div>
+  <button id="btn-girar" class="animar">Girar ↻</button>
+  <div class="texto-info" id="texto-fomo">
+    Gira la ruleta y descubre tu premio exclusivo.  
+    Válido una sola vez por cliente.
+  </div>
+</div>
 
-    <button id="boton">Jugar</button>
+<div id="dialogo-premio">
+  <div id="mensaje"></div>
+  <button id="btn-reclamar">Reclamar premio</button>
+</div>
 
-    <div id="mensaje"></div>
+<!-- Sonidos -->
+<audio id="sonido-giro" src="giro.wav" preload="auto"></audio>
+<audio id="sonido-victoria" src="gano1.wav" preload="auto"></audio>
+<audio id="musica-fondo" src="game.wav" loop autoplay muted></audio>
 
-    <script>
-        const boton = document.getElementById("boton");
-        const ruleta = document.getElementById("ruleta");
-        const mensaje = document.getElementById("mensaje");
+<script>
+  const premios = [
+    "Protector de Muebles",
+    "Hamaca Tejida",
+    "Envío/Instalación gratis",
+    "Peluche con Catnip Extra",
+    "Sillón Gatuno Extra"
+  ];
 
-        // ----------------------------
-        // 1) Verificar si ya jugó antes
-        // ----------------------------
+  const codigosPremio = {
+    "Protector de Muebles": "*PMLSS-15F*",
+    "Hamaca Tejida": "*HTLSS-89R*",
+    "Envío/Instalación gratis": "*FRSH-87LP*",
+    "Peluche con Catnip Extra": "*PLSH-687O*",
+    "Sillón Gatuno Extra": "*SGFR-478W*"
+  };
 
-        let fechaRegistro = localStorage.getItem("primer_ingreso");
+  const offset = 90;
+  let anguloActual = 0;
+  let indiceGanador = null;
+  let ciudadUsuario = "";
 
-        if (!fechaRegistro) {
-            // Primer ingreso: guardar fecha
-            fechaRegistro = new Date().toLocaleString();
-            localStorage.setItem("primer_ingreso", fechaRegistro);
-        } else {
-            // Ya había ingresado antes → bloquear juego
-            boton.textContent = "Tu oportunidad expiró";
-            boton.disabled = true;
-            mensaje.textContent = "Tu oportunidad expiró en: " + fechaRegistro;
-        }
+  const ruleta = document.getElementById('ruleta');
+  const mensaje = document.getElementById('mensaje');
+  const dialogoPremio = document.getElementById('dialogo-premio');
+  const btnGirar = document.getElementById('btn-girar');
+  const btnReclamar = document.getElementById('btn-reclamar');
+  const textoFomo = document.getElementById('texto-fomo');
 
-        // ----------------------------
-        // 2) Función para girar ruleta
-        // ----------------------------
-        boton.addEventListener("click", () => {
-            if (boton.disabled) return; // seguridad extra
+  const sonidoGiro = document.getElementById('sonido-giro');
+  const sonidoVictoria = document.getElementById('sonido-victoria');
+  const musicaFondo = document.getElementById('musica-fondo');
 
-            // giro aleatorio (de 3 a 8 vueltas + ángulo random)
-            const vueltas = Math.floor(Math.random() * 5) + 3;
-            const randomAngle = Math.floor(Math.random() * 360);
-            const anguloFinal = (vueltas * 360) + randomAngle;
+  /* --------------------------
+     BLOQUEAR SI YA ENTRÓ ANTES
+     -------------------------- */
 
-            ruleta.style.transform = `rotate(${anguloFinal}deg)`;
+  if (localStorage.getItem("ruletaJugó") === "sí") {
+    btnGirar.disabled = true;
+    btnGirar.textContent = "Tu oportunidad expiró";
+    btnGirar.classList.remove("animar");
+  }
 
-            // Después de jugar → bloquear para siempre
-            setTimeout(() => {
-                boton.textContent = "Tu oportunidad expiró";
-                boton.disabled = true;
-                mensaje.textContent = "Tu oportunidad expiró en: " + fechaRegistro;
-            }, 4500);
-        });
-    </script>
+  /* Música */
+  window.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => { musicaFondo.muted = false; }, 100);
+  });
+
+  /* Ciudad */
+  fetch("https://ipapi.co/json/")
+    .then(r => r.json())
+    .then(data => ciudadUsuario = data.city || "tu ciudad")
+    .catch(() => ciudadUsuario = "tu ciudad");
+
+  /* Girar */
+  btnGirar.addEventListener('click', () => {
+
+    // Registrar que ya jugó
+    localStorage.setItem("ruletaJugó", "sí");
+
+    musicaFondo.pause();
+    musicaFondo.currentTime = 0;
+
+    mensaje.classList.remove('strobo');
+    dialogoPremio.style.display = 'none';
+
+    sonidoGiro.currentTime = 0;
+    sonidoGiro.play();
+
+    const girosCompletos = 360 * (5 + Math.floor(Math.random() * 3));
+    const anguloExtra = Math.floor(Math.random() * 360);
+    const anguloFinal = anguloActual + girosCompletos + anguloExtra;
+
+    ruleta.style.transition = 'transform 4s cubic-bezier(0.1, 0.8, 0.3, 1)';
+    ruleta.style.transform = `rotate(${anguloFinal}deg)`;
+
+    anguloActual = anguloFinal;
+
+    btnGirar.disabled = true;
+    btnGirar.textContent = "¡Mucha Suerte!";
+    textoFomo.textContent = "Casi llenamos los cupos de producción. No te quedes fuera.";
+
+    setTimeout(() => {
+      let anguloResultado = anguloFinal % 360;
+      if (anguloResultado < 0) anguloResultado += 360;
+
+      anguloResultado = (anguloResultado + offset) % 360;
+
+      const grados = 360 / premios.length;
+      let indice = Math.floor(((anguloResultado + grados / 2) % 360) / grados);
+      indice = (premios.length - indice) % premios.length;
+
+      mensaje.textContent = `¡Ganaste: ${premios[indice]}!`;
+      mensaje.classList.add('strobo');
+      dialogoPremio.style.display = 'block';
+      indiceGanador = indice;
+
+      sonidoVictoria.currentTime = 0;
+      sonidoVictoria.play();
+    }, 4000);
+  });
+
+  /* WhatsApp */
+  btnReclamar.addEventListener('click', () => {
+    if (indiceGanador !== null) {
+      const premio = premios[indiceGanador];
+      const codigo = codigosPremio[premio];
+      const texto = `Hola, jugué la Ruleta de Kat-Haus. Soy de ${ciudadUsuario}. Mi *CUD* es: ${codigo}`;
+      window.location.href = `https://wa.me/593963372269?text=${encodeURIComponent(texto)}`;
+    }
+  });
+</script>
 
 </body>
 </html>
