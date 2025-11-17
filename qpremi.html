@@ -9,70 +9,96 @@
             font-family: Arial, sans-serif;
             text-align: center;
             background: linear-gradient(#bde6ff, #dff3ff);
-            padding: 40px;
+            padding: 20px;
             color: #4a4a4a;
         }
 
         /* BANNER */
         .banner {
-            background: rgba(255, 255, 255, 0.75);
+            background: rgba(255, 255, 255, 0.8);
             border: 2px solid #a3cfff;
-            padding: 25px;
-            margin: 0 auto 35px auto;
-            width: 80%;
+            padding: 18px;
+            margin: 0 auto 25px auto;
+            width: 95%;
             max-width: 650px;
-            border-radius: 20px;
-            box-shadow: 0 0 20px #9acbff66;
+            border-radius: 18px;
+            box-shadow: 0 0 15px #9acbff66;
         }
 
         .banner h1 {
-            font-size: 32px;
+            font-size: 26px;
             color: #7A4D1F;
             margin: 0;
             font-weight: bold;
             text-shadow: 1px 1px 4px #ffffffaa;
+            line-height: 1.3;
         }
 
-        table {
-            margin: 20px auto;
-            border-collapse: collapse;
+        /* NUEVO: GRID RESPONSIVO */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 18px;
+            width: 100%;
+            max-width: 500px;
+            margin: auto;
         }
 
-        td {
-            padding: 15px;
+        .item {
+            padding: 5px;
         }
 
         .michi-img {
-            width: 180px;
-            height: 180px;
+            width: 100%;
+            max-width: 220px;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
             border-radius: 12px;
             transition: transform 0.3s, box-shadow 0.3s;
             cursor: pointer;
-            border: 4px solid #ffffffaa;
+            border: 3px solid #ffffffaa;
             background: #fff;
+            box-shadow: 0 0 10px #aacfff77;
         }
 
         .michi-img:hover {
-            transform: scale(1.08);
+            transform: scale(1.07);
             box-shadow: 0 0 15px #9acbff;
         }
 
         .nombre {
-            font-size: 18px;
-            margin-top: 10px;
+            font-size: 16px;
+            margin-top: 8px;
             font-weight: bold;
             color: #3f5676;
         }
 
         .destacado {
             box-shadow: 0 0 20px #7ab8ff !important;
-            transform: scale(1.15) !important;
+            transform: scale(1.13) !important;
         }
 
         footer {
-            margin-top: 40px;
-            font-size: 13px;
+            margin-top: 30px;
+            font-size: 12px;
             color: #6a7b8a;
+        }
+
+        /* HACERLOS AÚN MÁS GRANDES EN CELULAR */
+        @media (max-width: 480px) {
+            body { padding: 10px; }
+
+            .banner h1 {
+                font-size: 24px;
+            }
+
+            .michi-img {
+                max-width: 260px;
+            }
+
+            .nombre {
+                font-size: 15px;
+            }
         }
     </style>
 
@@ -80,33 +106,33 @@
 
 <body>
 
-    <!-- BANNER CON TÍTULO CONTRASTANTE -->
     <div class="banner">
-        <h1>Selecciona Tu Rango <br> de Inversión Gatuna</h1>
+        <h1>Selecciona Tu Rango<br>de Inversión Gatuna</h1>
     </div>
 
-    <table>
-        <tr>
-            <td>
-                <img id="img0" class="michi-img" src="dios.jpeg">
-                <div class="nombre">Michi Deidad<br>NO CONOCE LÍMITES</div>
-            </td>
-            <td>
-                <img id="img1" class="michi-img" src="magnate.jpeg">
-                <div class="nombre">Michi Magnate<br>$301 - $350</div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <img id="img2" class="michi-img" src="aristocrata.jpg">
-                <div class="nombre">Michi Aristócrata<br>$251 - $300</div>
-            </td>
-            <td>
-                <img id="img3" class="michi-img" src="ofice.jpg.jpg">
-                <div class="nombre">Michi Oficinista<br>$200 - $250</div>
-            </td>
-        </tr>
-    </table>
+    <div class="grid">
+
+        <div class="item">
+            <img id="img0" class="michi-img" src="dios.jpeg">
+            <div class="nombre">Michi Deidad<br>NO CONOCE LÍMITES</div>
+        </div>
+
+        <div class="item">
+            <img id="img1" class="michi-img" src="magnate.jpeg">
+            <div class="nombre">Michi Magnate<br>$301 - $350</div>
+        </div>
+
+        <div class="item">
+            <img id="img2" class="michi-img" src="aristocrata.jpg">
+            <div class="nombre">Michi Aristócrata<br>$251 - $300</div>
+        </div>
+
+        <div class="item">
+            <img id="img3" class="michi-img" src="ofice.jpg.jpg">
+            <div class="nombre">Michi Oficinista<br>$200 - $250</div>
+        </div>
+
+    </div>
 
     <script>
         let ciudad = "tu ciudad";
