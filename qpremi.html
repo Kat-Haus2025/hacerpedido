@@ -1,146 +1,166 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Elige tu circuito - Kat-Haus</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Uchiyama&display=swap');
-    body {
-      font-family: 'Uchiyama', cursive, sans-serif;
-    }
-    input[type="radio"] {
-      display: none;
-    }
-    label {
-      cursor: pointer;
-      transition: all 0.3s ease;
-      border-radius: 1rem;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      overflow: hidden;
-      border: 4px solid transparent;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 0.5rem;
-      background-color: #FFF7ED;
-    }
-    input[type="radio"]:checked + label {
-      border-color: #D97706;
-      box-shadow: 0 0 15px #D97706;
-      background-color: #FFF3D3;
-    }
-    /* Contenedor cuadrado para la imagen */
-    label > div.img-container {
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      overflow: hidden;
-      border-radius: 1rem;
-      margin-bottom: 0.5rem;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-    }
-    label img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.3s ease;
-    }
-    label:hover img {
-      transform: scale(1.05);
-    }
-    label span {
-      font-weight: 700;
-      color: #B45123;
-      font-size: 1.1rem;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Selecciona tu Rango de Inversión</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: #f3f3f3;
+            padding: 40px;
+        }
+
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 10px;
+        }
+
+        .michi-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .michi-img:hover {
+            transform: scale(1.05);
+        }
+
+        .nombre {
+            font-size: 18px;
+            margin-top: 8px;
+            font-weight: bold;
+        }
+
+        #boton {
+            background: #ff0055;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 20px;
+            cursor: pointer;
+            margin-top: 25px;
+        }
+
+        #boton:disabled {
+            background: #999;
+            cursor: not-allowed;
+        }
+
+        #mensaje {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #444;
+        }
+
+        /* Animación de selección */
+        .destacado {
+            outline: 6px solid #ff0055;
+            transform: scale(1.15) !important;
+            transition: transform 0.4s, outline 0.4s;
+        }
+    </style>
 </head>
-<body class="bg-[#afdcf3] min-h-screen flex flex-col">
 
-  <header class="bg-[#5d2b10] text-white py-4 shadow-md">
-    <div class="container mx-auto px-4 text-center">
-      <h1 class="text-2xl font-bold">Selecciona tu espacio.</h1>
-    </div>
-  </header>
+<body>
 
-  <main class="flex-grow container mx-auto px-4 py-10 max-w-6xl">
-    <form>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    <h1>Elige tu destino Michi 🐾</h1>
 
-        <div>
-          <input type="radio" id="circuito1" name="circuito" value="Circuito Múnich" />
-          <label for="circuito1">
-            <div class="img-container">
-              <img src="f.png" alt="Circuito Múnich" />
-            </div>
-            <span>Figura 1</span>
-          </label>
-        </div>
+    <!-- TABLA 2x2 -->
+    <table>
+        <tr>
+            <td>
+                <img id="img0" class="michi-img" src="deidad.png">
+                <div class="nombre">Michi Deidad</div>
+            </td>
+            <td>
+                <img id="img1" class="michi-img" src="magnate.png">
+                <div class="nombre">Michi Magnate</div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <img id="img2" class="michi-img" src="aristocrata.png">
+                <div class="nombre">Michi Aristócrata</div>
+            </td>
+            <td>
+                <img id="img3" class="michi-img" src="oficinista.png">
+                <div class="nombre">Michi Oficinista</div>
+            </td>
+        </tr>
+    </table>
 
-        <div>
-          <input type="radio" id="circuito2" name="circuito" value="Circuito Dresde" />
-          <label for="circuito2">
-            <div class="img-container">
-              <img src="e.png" alt="Circuito Dresde" />
-            </div>
-            <span>Figura 2</span>
-          </label>
-        </div>
+    <button id="boton">Jugar</button>
+    <div id="mensaje"></div>
 
-        <div>
-          <input type="radio" id="circuito3" name="circuito" value="Circuito Hamburgo" />
-          <label for="circuito3">
-            <div class="img-container">
-              <img src="d.png" alt="Circuito Hamburgo" />
-            </div>
-            <span>Figura 3</span>
-          </label>
-        </div>
+    <script>
+        const boton = document.getElementById("boton");
+        const mensaje = document.getElementById("mensaje");
 
-        <div>
-          <input type="radio" id="circuito4" name="circuito" value="Circuito Dortmund" />
-          <label for="circuito4">
-            <div class="img-container">
-              <img src="c.png" alt="Circuito Dortmund" />
-            </div>
-            <span>Figura 4</span>
-          </label>
-        </div>
+        const imagenes = [
+            document.getElementById("img0"),
+            document.getElementById("img1"),
+            document.getElementById("img2"),
+            document.getElementById("img3"),
+        ];
 
-        <div>
-          <input type="radio" id="circuito5" name="circuito" value="Circuito Essen" />
-          <label for="circuito5">
-            <div class="img-container">
-              <img src="b.png" alt="Circuito Essen" />
-            </div>
-            <span>Figura 5</span>
-          </label>
-        </div>
+        // ----------------------------
+        // SISTEMA DE BLOQUEO
+        // ----------------------------
+        let fechaRegistro = localStorage.getItem("primer_ingreso");
 
-        <div>
-          <input type="radio" id="circuito6" name="circuito" value="Circuito Leipzig" />
-          <label for="circuito6">
-            <div class="img-container">
-              <img src="a.png" alt="Circuito Leipzig" />
-            </div>
-            <span>Figura 6</span>
-          </label>
-        </div>
+        if (!fechaRegistro) {
+            fechaRegistro = new Date().toLocaleString();
+            localStorage.setItem("primer_ingreso", fechaRegistro);
+        } else {
+            boton.textContent = "Tu oportunidad expiró";
+            boton.disabled = true;
+            mensaje.textContent = "Tu oportunidad expiró en: " + fechaRegistro;
+        }
 
-      </div>
-    </form>
-  </main>
+        // ----------------------------
+        // SELECCIÓN ALEATORIA
+        // ----------------------------
+        boton.addEventListener("click", () => {
+            if (boton.disabled) return;
 
-  <footer class="bg-[#5d2b10] text-white py-6 mt-12">
-    <div class="container mx-auto px-4 text-center text-sm">
-      &copy; <span id="year"></span> Kat-Haus. Todos los derechos reservados.
-    </div>
-  </footer>
+            // limpiar efectos previos
+            imagenes.forEach(img => img.classList.remove("destacado"));
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+            // elegir imagen al azar
+            const ganador = Math.floor(Math.random() * 4);
+
+            // animación tipo "ruleta"
+            let pasos = 10 + Math.floor(Math.random() * 10);
+            let actual = 0;
+            let intervalo = 120;
+
+            let loop = setInterval(() => {
+                imagenes.forEach(img => img.classList.remove("destacado"));
+                imagenes[actual % 4].classList.add("destacado");
+
+                actual++;
+                pasos--;
+
+                if (pasos <= 0) {
+                    clearInterval(loop);
+                    imagenes[ganador].classList.add("destacado");
+
+                    // bloquear para siempre
+                    boton.textContent = "Tu oportunidad expiró";
+                    boton.disabled = true;
+                    mensaje.textContent = "Tu oportunidad expiró en: " + fechaRegistro;
+                }
+            }, intervalo);
+        });
+    </script>
 
 </body>
 </html>
