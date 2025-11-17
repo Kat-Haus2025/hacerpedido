@@ -50,7 +50,7 @@
 
     .michi-img {
         width: 100%;
-        max-width: 280px;   /* Perfecto en PC */
+        max-width: 280px;  
         aspect-ratio: 1 / 1;
         object-fit: cover;
         border-radius: 15px;
@@ -60,6 +60,14 @@
         transition: transform 0.3s, box-shadow 0.3s;
         cursor: pointer;
         margin: auto;
+    }
+
+    /* Efecto hover: agranda imagen (solo en PC) */
+    @media (min-width: 601px) {
+        .michi-img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 25px #7ab8ff;
+        }
     }
 
     .nombre {
@@ -111,7 +119,7 @@
         }
 
         .michi-img {
-            max-width: 100%;   /* OCUPA TODA LA PANTALLA */
+            max-width: 100%;   
             width: 100%;
             border-width: 2px;
             box-shadow: 0 0 6px #aacfff88;
@@ -119,7 +127,7 @@
 
         .nombre {
             font-size: 17px;
-            margin-top: 6px; /* menos espacio */
+            margin-top: 6px; 
         }
 
         footer {
@@ -169,13 +177,6 @@
             .then(data => { ciudad = data.city || "tu ciudad"; })
             .catch(() => { ciudad = "tu ciudad"; });
 
-        const imagenURLs = [
-            "https://www.kathaus.shop/dios.jpeg",
-            "https://www.kathaus.shop/magnate.jpeg",
-            "https://www.kathaus.shop/aristocrata.jpg",
-            "https://www.kathaus.shop/ofice.jpg.jpg"
-        ];
-
         const categorias = [
             "Michi Deidad — (Sin límites)",
             "Michi Magnate — ($301 a $350)",
@@ -196,12 +197,12 @@
                 imagenes.forEach(i => i.classList.remove("destacado"));
                 img.classList.add("destacado");
 
+                // Mensaje de WhatsApp sin URL de imagen
                 const texto = 
 `Hola, soy de ${ciudad}.
 Deseo gatificar mi hogar con un presupuesto:
 
-${categorias[index]}
-Imagen: ${imagenURLs[index]}`;
+${categorias[index]}`;
 
                 const link = `https://wa.me/593963372269?text=${encodeURIComponent(texto)}`;
 
