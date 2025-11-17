@@ -129,7 +129,6 @@
     transform: scale(1.05);
   }
 
-  /* Animación latido */
   @keyframes latido {
     0%, 100% { transform: scale(1); }
     50% { transform: scale(1.2); }
@@ -146,7 +145,6 @@
     transform: scale(1);
   }
 
-  /* Mensaje cuando ya jugó */
   #mensaje-ya-jugo {
     display: none;
     margin-top: 12px;
@@ -184,8 +182,8 @@
 
 <script>
   /* ---------- CONFIG ---------- */
-  const STORAGE_KEY_PLAYED = 'kat_haus_ruleta_played_v1'; // flag de que ya jugó
-  const STORAGE_KEY_RESULT = 'kat_haus_ruleta_result_v1'; // guarda resultado (índice)
+  const STORAGE_KEY_PLAYED = 'kat_haus_ruleta_played_v1';
+  const STORAGE_KEY_RESULT = 'kat_haus_ruleta_result_v1';
   /* ---------------------------- */
 
   const premios = [
@@ -221,13 +219,11 @@
   const sonidoVictoria = document.getElementById('sonido-victoria');
   const musicaFondo = document.getElementById('musica-fondo');
 
-  // Activar música automáticamente (subir volumen tras 100ms)
   window.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
       musicaFondo.muted = false;
     }, 100);
 
-    // Obtener ciudad (no bloqueante)
     fetch("https://ipapi.co/json/")
       .then(response => response.json())
       .then(data => {
@@ -237,18 +233,16 @@
         ciudadUsuario = "tu ciudad";
       });
 
-    // Revisar si ya jugó en este dispositivo (localStorage)
+    /* 🟡 BLOQUEO DESACTIVADO – SECCIÓN ORIGINAL COMENTADA
     const yaJugo = localStorage.getItem(STORAGE_KEY_PLAYED);
     const resultadoGuardado = localStorage.getItem(STORAGE_KEY_RESULT);
 
     if (yaJugo) {
-      // Desactivar el juego para este dispositivo
       btnGirar.disabled = true;
       btnGirar.textContent = "Ya participaste";
       mensajeYaJugo.style.display = 'block';
       textoFomo.textContent = "Gracias por participar. Si ganaste, revisa tu premio y código abajo.";
 
-      // Si hay resultado guardado, mostrarlo en el diálogo para que pueda reclamar
       if (resultadoGuardado !== null) {
         const idx = parseInt(resultadoGuardado, 10);
         if (!isNaN(idx) && premios[idx]) {
@@ -258,14 +252,16 @@
         }
       }
     }
+    */
   });
 
-  // Girar la ruleta
   btnGirar.addEventListener('click', () => {
-    // Si ya jugó (doble check)
-    if (localStorage.getItem(STORAGE_KEY_PLAYED)) return;
 
-    // Detener música de fondo
+    // 🎯 BLOQUEO QUITADO PARA QUE SIEMPRE PUEDA JUGAR
+    /*
+    if (localStorage.getItem(STORAGE_KEY_PLAYED)) return;
+    */
+
     musicaFondo.pause();
     musicaFondo.currentTime = 0;
 
@@ -300,39 +296,16 @@
       let indice = Math.floor(((anguloResultado + gradosPorSegmento / 2) % 360) / gradosPorSegmento);
       indice = (premios.length - indice) % premios.length;
 
-      // Guardar resultado en memoria local para que el dispositivo no pueda jugar otra vez
       indiceGanador = indice;
+
+      // 🔕 No se guarda bloqueo
+      /*
       localStorage.setItem(STORAGE_KEY_PLAYED, '1');
       localStorage.setItem(STORAGE_KEY_RESULT, String(indice));
+      */
 
       mensaje.textContent = `¡Ganaste: ${premios[indice]}!`;
       mensaje.classList.add('strobo');
       dialogoPremio.style.display = 'block';
 
-      sonidoVictoria.currentTime = 0;
-      sonidoVictoria.play();
-
-      // Actualizar botón final
-      btnGirar.textContent = "Ya participaste";
-      mensajeYaJugo.style.display = 'block';
-    }, 4000);
-  });
-
-  // Reclamar -> WhatsApp
-  btnReclamar.addEventListener('click', () => {
-    if (indiceGanador !== null) {
-      const premio = premios[indiceGanador];
-      const codigo = codigosPremio[premio];
-      const mensajeWhatsApp = `Hola, jugué y gané con la Ruleta de *Kat-Haus,*  soy de ${ciudadUsuario}, mi _*Código Único de Recompensa (CUD)*_ es: ${codigo}`;
-      const url = `https://wa.me/593963372269?text=${encodeURIComponent(mensajeWhatsApp)}`;
-      window.location.href = url;
-    }
-  });
-
-  // Seguridad adicional: bloquear reactivación por script desde consola
-  // (esto no evita un usuario avanzado que manualmente borre localStorage)
-  // Si necesitas persistencia más fuerte, implementa también en servidor (cookies + DB).
-</script>
-
-</body>
-</html>
+      sonidoVictoria.currentTime
