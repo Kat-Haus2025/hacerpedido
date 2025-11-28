@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Circuitos Kat-Haus</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #dbefff;
+      color: #2f2f2f;
+    }
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-top: 20px;
+    }
+    .card {
+      background: #ffe3c2;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+      transition: transform .25s ease;
+    }
+    .card:hover {
+      transform: scale(1.03);
+    }
+    .card img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+    }
+    .card h2 {
+      margin: 0;
+      padding: 12px 15px 5px;
+      font-size: 1.2rem;
+    }
+    .card p {
+      padding: 0 15px 15px;
+      font-size: 0.95rem;
+      color: #444;
+    }
+    footer {
+      margin-top: 40px;
+      padding: 15px;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #555;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Nuestros Circuitos Pre Diseñados</h1>
+
+    <div class="grid">
+      <div class="card">
+        <img src="cir1.jpg" alt="Circuito 1" />
+        <h2>Circuito 1</h2>
+        <p>Diseño funcional y perfecto para espacios pequeños.</p>
+      </div>
+      <div class="card">
+        <img src="cir2.jpg" alt="Circuito 2" />
+        <h2>Circuito 2</h2>
+        <p>Equilibrio ideal entre estética y diversión felina.</p>
+      </div>
+      <div class="card">
+        <img src="cir3.jpg" alt="Circuito 3" />
+        <h2>Circuito 3</h2>
+        <p>Una opción versátil para hogares con varios michis.</p>
+      </div>
+      <div class="card">
+        <img src="cir4.jpg" alt="Circuito 4" />
+        <h2>Circuito 4</h2>
+        <p>Perfecto para aventureros que aman las alturas.</p>
+      </div>
+      <div class="card">
+        <img src="cir5.jpg" alt="Circuito 5" />
+        <h2>Circuito 5</h2>
+        <p>Combinación equilibrada de túneles, rampas y plataformas.</p>
+      </div>
+      <div class="card">
+        <img src="cir6.jpg" alt="Circuito 6" />
+        <h2>Circuito 6</h2>
+        <p>Diseño premium para hogares amplios y michis activos.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>© 2025 Kat-Haus · Todos los derechos reservados</footer>
+</body>
+</html>
