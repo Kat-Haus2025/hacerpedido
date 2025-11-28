@@ -7,58 +7,87 @@
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: "Segoe UI", Arial, sans-serif;
       background: #dbefff;
       color: #2f2f2f;
     }
+
     .container {
       max-width: 1200px;
       margin: auto;
       padding: 20px;
       text-align: center;
     }
+
     h1 {
-      font-size: 2rem;
-      margin-bottom: 1.5rem;
+      font-size: 2.3rem;
+      font-weight: 700;
+      margin-bottom: 1.8rem;
     }
+
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
+      gap: 28px;
       margin-top: 20px;
     }
+
     .card {
       background: #ffe3c2;
-      border-radius: 18px;
+      border-radius: 20px;
       overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-      transition: transform .25s ease;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+      transition: transform .25s ease, box-shadow .25s ease;
+      text-align: left;
     }
+
     .card:hover {
-      transform: scale(1.03);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.22);
     }
+
     .card img {
       width: 100%;
       height: 230px;
       object-fit: cover;
     }
+
     .card h2 {
       margin: 0;
-      padding: 12px 15px 5px;
-      font-size: 1.2rem;
+      padding: 15px 18px 10px;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #2c1c10;
     }
+
+    /* Estética para la lista */
     .card p {
-      padding: 0 15px 15px;
+      padding: 0 20px 18px;
       font-size: 0.95rem;
-      color: #444;
+      line-height: 1.45rem;
+      color: #3d3d3d;
+      white-space: pre-line; /* respeta tus saltos de línea */
     }
+
+    .card p br::after {
+      content: "";
+      display: block;
+      margin-bottom: 2px;
+    }
+
     footer {
-      margin-top: 40px;
-      padding: 15px;
+      margin-top: 45px;
+      padding: 18px;
       text-align: center;
       font-size: 0.85rem;
-      color: #555;
-      opacity: 0.8;
+      color: #444;
+      opacity: 0.85;
+    }
+
+    .blender {
+      margin-top: 6px;
+      font-size: 0.8rem;
+      opacity: 0.7;
     }
   </style>
 </head>
@@ -67,68 +96,78 @@
     <h1>Nuestros Circuitos Pre Diseñados</h1>
 
     <div class="grid">
+
       <div class="card">
         <img src="cir1.jpg" alt="Circuito 1" />
         <h2>Circuito Viena</h2>
-        <p>-1 Sillón Gatuno <br>
--2 Repisa 30cms<br>
+        <p>-1 Sillón Gatuno 
+-2 Repisa 30cms
 -2 Escaleras 60cms</p>
       </div>
+
       <div class="card">
         <img src="cir2.jpg" alt="Circuito 2" />
         <h2>Circuito München</h2>
-        <p>-Casa Pentagonal<br>
--Puente Colgante<br>
--Sillón Gatuno<br>
--2 Escaleras 60cms<br>
+        <p>-Casa Pentagonal
+-Puente Colgante
+-Sillón Gatuno
+-2 Escaleras 60cms
 -Repisa 30cms</p>
       </div>
+
       <div class="card">
         <img src="cir3.jpg" alt="Circuito 3" />
         <h2>Circuito Düsseldorf</h2>
-        <p>Sillón Gatuno<br>
--Puente Brooklyn<br>
--Poste Escalador<br>
--2 Repisa 30cms<br>
+        <p>Sillón Gatuno
+-Puente Brooklyn
+-Poste Escalador
+-2 Repisa 30cms
 -2 Escaleras 60cms</p>
       </div>
+
       <div class="card">
         <img src="cir4.jpg" alt="Circuito 4" />
         <h2>Circuito Dresden</h2>
-        <p>-1 Casa Pentagonal<br>
--1 Sillón Gatuno<br>
--1 Túnel Felino<br>
--1 Puente Colgante<br>
--1 Poste Escalador<br>
--Puente Colgante<br>
--2 Repisas 30cms<br>
+        <p>-1 Casa Pentagonal
+-1 Sillón Gatuno
+-1 Túnel Felino
+-1 Puente Colgante
+-1 Poste Escalador
+-Puente Colgante
+-2 Repisas 30cms
 -2 Escaleras 60cms</p>
       </div>
+
       <div class="card">
         <img src="cir5.jpg" alt="Circuito 5" />
         <h2>Circuito Bremen</h2>
-        <p>-1 Casa Pentagonal<br>
--Sillón Gatuno<br>
--Puente Brooklyn<br>
--Puente Colgante<br>
--2 Escaleras 60cms<br>
--Poste Escalador<br>
+        <p>-1 Casa Pentagonal
+-Sillón Gatuno
+-Puente Brooklyn
+-Puente Colgante
+-2 Escaleras 60cms
+-Poste Escalador
 -Repisa 30cms</p>
       </div>
+
       <div class="card">
         <img src="cir6.jpg" alt="Circuito 6" />
         <h2>Circuito Frankfurt</h2>
-        <p>-2 Casas Pentagonales<br>
--2 Sillones Gatunos<br>
--2 Postes rascadores<br>
--2 Escaleras 60cms<br>
--2 Repisa 30cms<br>
--Puente Colgante<br>
+        <p>-2 Casas Pentagonales
+-2 Sillones Gatunos
+-2 Postes rascadores
+-2 Escaleras 60cms
+-2 Repisa 30cms
+-Puente Colgante
 -Puente Brooklyn</p>
       </div>
+
     </div>
   </div>
 
-  <footer>© 2025 Kat-Haus · Todos los derechos reservados</footer>
+  <footer>
+    © 2025 Kat-Haus · Todos los derechos reservados  
+    <div class="blender">Modelado y renders hechos en Blender 🧡</div>
+  </footer>
 </body>
 </html>
