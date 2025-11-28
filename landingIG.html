@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kat-Haus Landing</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #dbefff;
+      color: #2f2f2f;
+    }
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .card {
+      background: #ffe3c2;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+      transition: transform .25s ease;
+    }
+    .card:hover {
+      transform: scale(1.03);
+    }
+    .card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+    .card h2 {
+      margin: 0;
+      padding: 15px;
+      font-size: 1.3rem;
+    }
+    @media (max-width: 480px) {
+      h1 { font-size: 1.5rem; }
+      .card h2 { font-size: 1.1rem; }
+      .card img { height: 200px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Elige la mejor experiencia Kat-Haus para tu hogar</h1>
+
+    <div class="options">
+      <div class="card">
+        <img src="pre-disenado.jpg" alt="Circuito Pre Diseñado" />
+        <h2>Circuito Pre Diseñado</h2>
+      </div>
+
+      <div class="card">
+        <img src="diseñador.jpg" alt="Circuito Personalizado" />
+        <h2>Circuito Personalizado</h2>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
