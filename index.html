@@ -77,6 +77,66 @@
         padding: 40px 20px;
       }
     }
+      .confirm-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+
+    .confirm-box {
+      background: #111;
+      color: #fff;
+      padding: 30px;
+      max-width: 420px;
+      width: 90%;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    }
+
+    .confirm-box h2 {
+      margin-bottom: 15px;
+      font-size: 22px;
+    }
+
+    .confirm-box p {
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 25px;
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .confirm-actions {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    .confirm-actions button,
+    .confirm-actions a {
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      text-decoration: none;
+      border: none;
+    }
+
+    .confirm-actions button {
+      background: #333;
+      color: #fff;
+    }
+
+    .confirm-actions a {
+      background: #fff;
+      color: #000;
+      font-weight: bold;
+    }
+
   </style>
 </head>
 <body>
@@ -88,23 +148,62 @@
     </header>
 
     <section class="options">
-      <a class="option" href="https://wa.me/593963372269?text=Hola%2C%20mi%20presupuesto%20no%20tiene%20l%C3%ADmites.%20Quisiera%20m%C3%A1s%20informaci%C3%B3n." target="_blank">
+      <a class="option" href="#" onclick="openConfirm('ilimitado')">
         <img src="deidad.png" alt="Mi presupuesto no tiene límites" />
       </a>
 
-      <a class="option" href="https://wa.me/593963372269?text=Hola%2C%20mi%20presupuesto%20est%C3%A1%20entre%20%24201%20y%20%24300.%20Quisiera%20m%C3%A1s%20informaci%C3%B3n." target="_blank">
+      <a class="option" href="#" onclick="openConfirm('201_300')">
         <img src="aristocrata.png" alt="Mi presupuesto está entre $201-$300" />
       </a>
 
-      <a class="option" href="https://wa.me/593963372269?text=Hola%2C%20mi%20presupuesto%20est%C3%A1%20entre%20%24100%20y%20%24200.%20Quisiera%20m%C3%A1s%20informaci%C3%B3n." target="_blank">
+      <a class="option" href="#" onclick="openConfirm('100_200')">
         <img src="estudiante.png" alt="Mi presupuesto está entre $100-$200" />
       </a>
     </section>
+
+    <div class="confirm-overlay" id="confirmOverlay">
+      <div class="confirm-box">
+        <h2>Fabricación bajo pedido</h2>
+        <p>
+          Todos los productos de <strong>Kat Haus</strong> se fabrican de manera artesanal y exclusivamente bajo pedido.
+          Los tiempos de producción y personalización se coordinan luego del contacto.
+        </p>
+        <div class="confirm-actions">
+          <button onclick="closeConfirm()">Volver</button>
+          <a id="confirmLink" target="_blank">Continuar a WhatsApp</a>
+        </div>
+      </div>
+    </div>
 
     <footer>
       © Kat Haus
     </footer>
 
   </div>
+  <script>
+    function openConfirm(type) {
+      const overlay = document.getElementById('confirmOverlay');
+      const link = document.getElementById('confirmLink');
+
+      let message = '';
+
+      if (type === 'ilimitado') {
+        message = 'Hola, mi presupuesto no tiene límites. Entiendo que los productos se fabrican bajo pedido y quisiera más información.';
+      }
+      if (type === '201_300') {
+        message = 'Hola, mi presupuesto está entre $201 y $300. Entiendo que los productos se fabrican bajo pedido y quisiera más información.';
+      }
+      if (type === '100_200') {
+        message = 'Hola, mi presupuesto está entre $100 y $200. Entiendo que los productos se fabrican bajo pedido y quisiera más información.';
+      }
+
+      link.href = 'https://wa.me/593963372269?text=' + encodeURIComponent(message);
+      overlay.style.display = 'flex';
+    }
+
+    function closeConfirm() {
+      document.getElementById('confirmOverlay').style.display = 'none';
+    }
+  </script>
 </body>
 </html>
