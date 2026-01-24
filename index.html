@@ -165,12 +165,12 @@
       <div class="confirm-box">
         <h2>Fabricación bajo pedido</h2>
         <p>
-          Todos los productos de <strong>Kat Haus</strong> se fabrican de manera artesanal y exclusivamente bajo pedido.
-          Los tiempos de producción y personalización se coordinan luego del contacto.
+          Todos los circuitos de <strong>Kat Haus</strong> se diseñan y fabrican bajo pedido.
+          Los cupos en la cola de producción se asignan de manera progresiva conforme los pedidos son confirmados.
         </p>
         <div class="confirm-actions">
           <button onclick="closeConfirm()">Volver</button>
-          <a id="confirmLink" target="_blank">Continuar a WhatsApp</a>
+          <a id="confirmLink" target="_blank">Contacar con la Asesora</a>
         </div>
       </div>
     </div>
@@ -188,13 +188,13 @@
       let message = '';
 
       if (type === 'ilimitado') {
-        message = 'Hola, mi presupuesto no tiene límites. Entiendo que los productos se fabrican bajo pedido y quisiera más información.';
+        message = 'Hola, mi presupuesto no tiene límites. Entiendo que los productos se fabrican bajo pedido y estoy listo para empezar mi proceso de gatificacion.';
       }
       if (type === '201_300') {
-        message = 'Hola, mi presupuesto está entre $201 y $300. Entiendo que los productos se fabrican bajo pedido y quisiera más información.';
+        message = 'Hola, mi presupuesto está entre $201 y $300. Entiendo que los productos se fabrican bajo pedido y estoy listo para empezar mi proceso de gatificación.';
       }
       if (type === '100_200') {
-        message = 'Hola, mi presupuesto está entre $100 y $200. Entiendo que los productos se fabrican bajo pedido y quisiera más información.';
+        message = 'Hola, mi presupuesto está entre $100 y $200. Entiendo que los productos se fabrican bajo pedido y estoy listo para empezar mi proceso de gatificación.';
       }
 
       link.href = 'https://wa.me/593963372269?text=' + encodeURIComponent(message);
