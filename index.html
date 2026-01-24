@@ -1,78 +1,110 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bienvenido a Kat-Haus</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kat Haus</title>
   <style>
-    @keyframes pop {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-      100% { transform: scale(1); }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    .animate-pop {
-      animation: pop 0.8s ease-out;
+    body {
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      background: url('marmol.png') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    .animate-pop-delay {
-      animation: pop 0.8s ease-out 0.8s both;
+    .overlay {
+      min-height: 100vh;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header {
+      padding: 40px 20px 30px;
+    }
+
+    header img {
+      max-width: 220px;
+      height: auto;
+    }
+
+    .options {
+      width: 100%;
+      max-width: 900px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .option {
+      display: block;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .option img {
+      width: 100%;
+      display: block;
+    }
+
+    .option:hover {
+      transform: scale(1.02);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    footer {
+      margin-top: auto;
+      padding: 20px;
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    @media (min-width: 768px) {
+      .options {
+        padding: 40px 20px;
+      }
     }
   </style>
 </head>
-<body class="bg-[#fff3e0] text-[#5d2b10]">
+<body>
+  <div class="overlay">
 
-  <!-- Imagen principal -->
-  <div class="text-center mt-4 mb-[10px]">
-    <img src="donde.png" alt="Dónde está Kat-Haus" class="mx-auto">
+    <header>
+      <!-- Reemplaza logo.png con el nombre real de tu logo -->
+      <img src="logo.png" alt="Kat Haus" />
+    </header>
+
+    <section class="options">
+      <a class="option" href="https://wa.me/593963372269?text=Hola%2C%20mi%20presupuesto%20no%20tiene%20l%C3%ADmites.%20Quisiera%20m%C3%A1s%20informaci%C3%B3n." target="_blank">
+        <img src="deidad.png" alt="Mi presupuesto no tiene límites" />
+      </a>
+
+      <a class="option" href="https://wa.me/593963372269?text=Hola%2C%20mi%20presupuesto%20est%C3%A1%20entre%20%24201%20y%20%24300.%20Quisiera%20m%C3%A1s%20informaci%C3%B3n." target="_blank">
+        <img src="aristocrata.png" alt="Mi presupuesto está entre $201-$300" />
+      </a>
+
+      <a class="option" href="https://wa.me/593963372269?text=Hola%2C%20mi%20presupuesto%20est%C3%A1%20entre%20%24100%20y%20%24200.%20Quisiera%20m%C3%A1s%20informaci%C3%B3n." target="_blank">
+        <img src="estudiante.png" alt="Mi presupuesto está entre $100-$200" />
+      </a>
+    </section>
+
+    <footer>
+      © Kat Haus
+    </footer>
+
   </div>
-
-  <!-- Galería de selección -->
-  <section id="galeria" class="container mx-auto px-2 scale-[0.85] grid grid-cols-1 md:grid-cols-2 gap-1">
-    
-    <!-- Imagen Quito -->
-    <a id="quito" href="/quito.html" class="block transition-transform duration-300 hover:scale-105">
-      <div class="aspect-square overflow-hidden rounded-xl shadow-md animate-pop bg-[#ffe0b2]">
-        <img src="quito.png" alt="Quito" class="w-full h-full object-cover">
-      </div>
-    </a>
-
-    <!-- Imagen Provincia -->
-    <a href="/provincia.html" class="block transition-transform duration-300 hover:scale-105">
-      <div id="provincia" class="aspect-square overflow-hidden rounded-xl shadow-md animate-pop-delay bg-[#ffe0b2]">
-        <img src="provincia.png" alt="Provincia" class="w-full h-full object-cover">
-      </div>
-    </a>
-
-  </section>
-
-  <!-- Script para scroll animado -->
-  <script>
-    const provincia = document.getElementById('provincia');
-    const galeria = document.getElementById('galeria');
-
-    provincia.addEventListener('animationend', () => {
-      const top = galeria.offsetTop;
-      window.scrollTo({
-        top: top + 20,
-        behavior: 'smooth'
-      });
-    });
-  </script>
-
-  <!-- Información de contacto -->
-  <footer class="bg-[#d97706] text-white mt-10 py-4 text-center text-sm rounded-t-xl">
-    <p class="mb-1">📞 Teléfono: <a href="http://wa.me/593963372269" class="underline hover:text-[#fff7ed]">+593 96 337 2269</a></p>
-    <p>📷 Instagram: <a href="https://instagram.com/kathaus.ec" target="_blank" class="underline hover:text-[#fff7ed]">@kathaus.ec</a></p>
-  </footer>
-
-  <!-- Contador de visitas -->
-  <div class="text-center my-2">
-    <a href="https://visitorbadge.io/status?path=https%3A%2F%2Fgithub.com%2FKat-Haus2025%2Fhacerpedido%2Fblob%2Fmain%2Findex.html">
-      <img src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2FKat-Haus2025%2Fhacerpedido%2Fblob%2Fmain%2Findex.html&label=Visitante&countColor=%23263759&style=plastic" alt="Contador de visitantes">
-    </a>
-  </div>
-
 </body>
 </html>
