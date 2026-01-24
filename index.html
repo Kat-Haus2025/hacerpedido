@@ -3,7 +3,37 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kat Haus</title>
+
+  <title>Kat Haus | Circuitos personalizados y fabricación bajo pedido</title>
+  <meta name="description" content="Kat Haus diseña y fabrica circuitos personalizados bajo pedido. Producción exclusiva, cupos limitados y asesoría directa por WhatsApp." />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Kat Haus" />
+
+  <!-- Facebook Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s){
+    if(f.fbq)return;
+    n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];
+    t=b.createElement(e);t.async=!0;
+    t.src=v;
+    s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)
+  }(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+
+  fbq('init', '898422962642132');
+  fbq('track', 'PageView');
+  </script>
+
+  <noscript>
+    <img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=898422962642132&ev=PageView&noscript=1"/>
+  </noscript>
+  <!-- End Facebook Pixel Code -->
+
   <style>
     * {
       box-sizing: border-box;
@@ -30,35 +60,41 @@
       align-items: center;
     }
 
-header {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  padding: 10px 0;
-}
+    header {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
+      position: relative;
+    }
 
+    header img {
+      width: 90vw;
+      max-width: 900px;
+      height: auto;
+    }
 
-header img {
-  width: 90vw;        /* 90% del ancho de la pantalla */
-  max-width: 900px;  /* límite en pantallas grandes */
-  height: auto;
-}
+    .seo-title,
+    .seo-text {
+      position: absolute;
+      left: -9999px;
+    }
 
-   .options {
-  width: 100%;
-  max-width: 900px;
-  padding: 10px 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
+    .options {
+      width: 100%;
+      max-width: 900px;
+      padding: 10px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
 
     .option {
       display: block;
       border-radius: 12px;
       overflow: hidden;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
+      position: relative;
     }
 
     .option img {
@@ -78,12 +114,7 @@ header img {
       color: rgba(255, 255, 255, 0.7);
     }
 
-    @media (min-width: 768px) {
-      .options {
-        padding: 40px 20px;
-      }
-    }
-      .confirm-overlay {
+    .confirm-overlay {
       position: fixed;
       inset: 0;
       background: rgba(0, 0, 0, 0.75);
@@ -142,75 +173,74 @@ header img {
       color: #000;
       font-weight: bold;
     }
-
   </style>
-  <head>
-  ...
-  <!-- Facebook Pixel Code -->
-  <script>
-    !function(f,b,e,v,n,t,s){if(f.fbq)return;...}
-    fbq('init', '898422962642132');
-    fbq('track', 'PageView');
-  </script>
-  <noscript>
-    <img height="1" width="1"
-    src="https://www.facebook.com/tr?id=898422962642132&ev=PageView&noscript=1"/>
-  </noscript>
-  <!-- End Facebook Pixel Code -->
 </head>
 
-</head>
 <body>
   <div class="overlay">
+    <main>
 
-    <header>
-      <!-- Reemplaza logo.png con el nombre real de tu logo -->
-      <img src="logo.png" alt="Kat Haus" />
-    </header>
+      <header>
+        <h1 class="seo-title">Kat Haus – Circuitos personalizados fabricados bajo pedido</h1>
+        <img src="logo.png" alt="Kat Haus – Circuitos personalizados de fabricación bajo pedido" />
+      </header>
 
-    <section class="options">
-      
-      <a class="option" href="#" onclick="openConfirm('ilimitado')">
-        <img src="deidad.png" alt="Mi presupuesto no tiene límites" />
-      </a>
+      <section class="options">
 
-      <a class="option" href="#" onclick="openConfirm('201_300')">
-        <img src="arist.png" alt="Mi presupuesto está entre $201-$300" />
-      </a>
+        <a class="option" href="#contacto" onclick="openConfirm('ilimitado')">
+          <img src="deidad.png" alt="Circuitos personalizados sin límite de presupuesto" />
+          <span class="seo-text">Circuitos personalizados premium sin límite de presupuesto</span>
+        </a>
 
-      <a class="option" href="#" onclick="openConfirm('100_200')">
-        <img src="estudiante.png" alt="Mi presupuesto está entre $100-$200" />
-      </a>
-    </section>
+        <a class="option" href="#contacto" onclick="openConfirm('201_300')">
+          <img src="arist.png" alt="Circuitos personalizados entre 201 y 300 dólares" />
+          <span class="seo-text">Circuitos personalizados presupuesto medio</span>
+        </a>
 
-    <div class="confirm-overlay" id="confirmOverlay">
-      <div class="confirm-box">
-        <h2>¿Listos para Empezar?</h2>
-        <p>
-          Todos los circuitos de <strong>Kat Haus</strong> se diseñan y fabrican bajo pedido.
-          Los cupos en la cola de producción se asignan de manera progresiva conforme los pedidos son confirmados.
-        </p>
-        <div class="confirm-actions">
-          <button onclick="closeConfirm()">Volver</button>
-          <a id="confirmLink" target="_blank">Chatear con la Asesora</a>
+        <a class="option" href="#contacto" onclick="openConfirm('100_200')">
+          <img src="estudiante.png" alt="Circuitos personalizados entre 100 y 200 dólares" />
+          <span class="seo-text">Circuitos personalizados presupuesto inicial</span>
+        </a>
+
+      </section>
+
+      <div class="confirm-overlay" id="confirmOverlay">
+        <div class="confirm-box">
+          <h2>¿Listos para empezar?</h2>
+          <p>
+            Todos los circuitos de <strong>Kat Haus</strong> se diseñan y fabrican bajo pedido.
+            Los cupos en la cola de producción se asignan de manera progresiva conforme los pedidos son confirmados.
+          </p>
+          <div class="confirm-actions">
+            <button onclick="closeConfirm()">Volver</button>
+            <a id="confirmLink" target="_blank" onclick="trackWhatsApp()">Chatear con la Asesora</a>
+          </div>
         </div>
       </div>
-    </div>
 
-    <footer>
-      © Kat Haus
-    </footer>
+      <footer>
+        © Kat Haus — Diseño y fabricación de circuitos personalizados
+      </footer>
 
+    </main>
   </div>
+
   <script>
     function openConfirm(type) {
+
+      // Evento Meta: intención alta
+      if (typeof fbq === 'function') {
+        fbq('track', 'InitiateCheckout', {
+          content_category: type
+        });
+      }
+
       const overlay = document.getElementById('confirmOverlay');
       const link = document.getElementById('confirmLink');
-
       let message = '';
 
       if (type === 'ilimitado') {
-        message = 'Hola, mi presupuesto no tiene límites. Estoy listo para empezar mi proceso de gatificacion.';
+        message = 'Hola, mi presupuesto no tiene límites. Estoy listo para empezar mi proceso de gatificación.';
       }
       if (type === '201_300') {
         message = 'Hola, mi presupuesto está entre $201 y $300. Estoy listo para empezar mi proceso de gatificación.';
@@ -221,6 +251,12 @@ header img {
 
       link.href = 'https://wa.me/593963372269?text=' + encodeURIComponent(message);
       overlay.style.display = 'flex';
+    }
+
+    function trackWhatsApp() {
+      if (typeof fbq === 'function') {
+        fbq('track', 'Contact');
+      }
     }
 
     function closeConfirm() {
