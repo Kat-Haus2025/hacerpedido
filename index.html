@@ -30,28 +30,29 @@
       align-items: center;
     }
 
-    header {
-  height: 90vh;              /* 90% de la altura visible */
+header {
   width: 100%;
   display: flex;
-  align-items: center;
   justify-content: center;
+  padding: 10px 0;
 }
 
+
 header img {
-  max-height: 90vh;
-  max-width: 90vw;
-  width: auto;
+  width: 90vw;        /* 90% del ancho de la pantalla */
+  max-width: 900px;  /* límite en pantallas grandes */
   height: auto;
 }
-    .options {
-      width: 100%;
-      max-width: 900px;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
+
+   .options {
+  width: 100%;
+  max-width: 900px;
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
 
     .option {
       display: block;
@@ -175,7 +176,7 @@ header img {
         </p>
         <div class="confirm-actions">
           <button onclick="closeConfirm()">Volver</button>
-          <a id="confirmLink" target="_blank">Contacar con la Asesora</a>
+          <a id="confirmLink" target="_blank">Chatear con la Asesora</a>
         </div>
       </div>
     </div>
