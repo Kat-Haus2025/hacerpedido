@@ -6,8 +6,10 @@
 
   <title>Kat Haus | Circuitos felinos personalizados</title>
   <meta name="description" content="Kat Haus diseña y fabrica circuitos felinos personalizados y prediseñados. Producción bajo pedido y asesoría directa por WhatsApp." />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Kat Haus" />
 
-  <!-- Facebook Pixel -->
+  <!-- Facebook Pixel Code -->
   <script>
     !function(f,b,e,v,n,t,s){
       if(f.fbq)return;
@@ -21,9 +23,16 @@
       s=b.getElementsByTagName(e)[0];
       s.parentNode.insertBefore(t,s)
     }(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+
     fbq('init', '898422962642132');
     fbq('track', 'PageView');
   </script>
+
+  <noscript>
+    <img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=898422962642132&ev=PageView&noscript=1"/>
+  </noscript>
+  <!-- End Facebook Pixel Code -->
 
   <style>
     * {
@@ -38,7 +47,7 @@
       background-color: #0a332b;
       background-image: url('wallpaper.png');
       background-repeat: no-repeat;
-      background-position: center;
+      background-position: center center;
       background-size: cover;
       display: flex;
       justify-content: center;
@@ -51,34 +60,43 @@
       background: rgba(0, 0, 0, 0.45);
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       padding: 20px;
+    }
+
+    header {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-top: 5px;
     }
 
     header img {
       width: 90vw;
       max-width: 900px;
+      height: auto;
     }
 
     main {
       width: 100%;
       max-width: 900px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
     }
 
     .options {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 14px;
     }
 
     .option {
       display: block;
       border-radius: 14px;
       overflow: hidden;
-
-      /* LATIDO SINCRONIZADO */
-      animation: pulse 3.5s infinite ease-in-out;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .option img {
@@ -86,18 +104,47 @@
       display: block;
     }
 
-    @keyframes pulse {
-      0%   { transform: scale(1); }
-      8%   { transform: scale(1.05); }
-      16%  { transform: scale(1); }
-      100% { transform: scale(1); }
+    .option:hover {
+      transform: scale(1.02);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+      animation-play-state: paused;
     }
 
     footer {
-      font-size: 14px;
-      color: rgba(255,255,255,0.75);
-      text-align: center;
       margin-bottom: 10px;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.75);
+      text-align: center;
+    }
+
+    /* SEO invisible */
+    .seo {
+      position: absolute;
+      left: -9999px;
+    }
+
+    /* ===================== */
+    /* ANIMACIÓN DE LATIDO */
+    /* ===================== */
+
+    @keyframes latido {
+      0%   { transform: scale(1); }
+      25%  { transform: scale(1.04); }
+      50%  { transform: scale(1); }
+      75%  { transform: scale(1.04); }
+      100% { transform: scale(1); }
+    }
+
+    /* Prediseñados */
+    .predisenado {
+      animation: latido 1.4s ease-in-out infinite;
+      animation-delay: 0s;
+    }
+
+    /* Personalizado */
+    .personalizado {
+      animation: latido 1.4s ease-in-out infinite;
+      animation-delay: 0.2s;
     }
   </style>
 </head>
@@ -106,7 +153,8 @@
   <div class="overlay">
 
     <header>
-      <img src="logositio.png" alt="Kat Haus" />
+      <h1 class="seo">Kat Haus – Circuitos felinos personalizados y prediseñados</h1>
+      <img src="logositio.png" alt="Kat Haus – Circuitos felinos personalizados" />
     </header>
 
     <main>
@@ -114,23 +162,25 @@
 
         <!-- Prediseñados -->
         <a
-          class="option"
-          href="https://wa.me/593963372269?text=Hola,%20quiero%20ver%20los%20circuitos%20prediseñados%20de%20Kat%20Haus."
+          class="option predisenado"
+          href="https://wa.me/593963372269?text=Hola,%20Ale%20quiero%20adquirir%20uno%20de%20los%20circuitos%20prediseñados%20de%20Kat%20Haus."
           target="_blank"
           onclick="fbq('track','Contact')"
         >
-          <img src="ale.png" alt="Circuitos prediseñados" />
+          <img src="ale.png" alt="Elegir circuitos felinos prediseñados" />
         </a>
 
         <!-- Personalizado -->
         <a
-          class="option"
-          href="https://wa.me/593963372269?text=Hola,%20quiero%20un%20diseño%20felino%20personalizado."
+          class="option personalizado"
+          href="https://wa.me/593963372269?text=Hola,%20Chris%20quiero%20solicitar%20un%20diseño%20felino%20personalizado."
           target="_blank"
           onclick="fbq('track','Contact')"
         >
-          <img src="chris.png" alt="Diseño personalizado" />
+          <img src="chris.png" alt="Solicitar diseño felino personalizado" />
         </a>
+
+        <img src="footer.png" alt="Información adicional Kat Haus" />
 
       </section>
     </main>
