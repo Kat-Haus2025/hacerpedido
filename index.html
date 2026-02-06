@@ -11,21 +11,21 @@
 
   <!-- Facebook Pixel Code -->
   <script>
-  !function(f,b,e,v,n,t,s){
-    if(f.fbq)return;
-    n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;
-    n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];
-    t=b.createElement(e);t.async=!0;
-    t.src=v;
-    s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)
-  }(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    !function(f,b,e,v,n,t,s){
+      if(f.fbq)return;
+      n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;
+      n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];
+      t=b.createElement(e);t.async=!0;
+      t.src=v;
+      s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)
+    }(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
 
-  fbq('init', '898422962642132');
-  fbq('track', 'PageView');
+    fbq('init', '898422962642132');
+    fbq('track', 'PageView');
   </script>
 
   <noscript>
@@ -41,24 +41,18 @@
       padding: 0;
     }
 
-body {
-  min-height: 100vh;
-  font-family: Arial, Helvetica, sans-serif;
-
-  /* Color de respaldo */
-  background-color: #0a332b;
-
-  /* Imagen de fondo */
-  background-image: url('wallpaper.png');
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
+    body {
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #0a332b;
+      background-image: url('wallpaper.png');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
     .overlay {
       min-height: 100vh;
@@ -113,6 +107,7 @@ body {
     .option:hover {
       transform: scale(1.02);
       box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+      animation-play-state: paused;
     }
 
     footer {
@@ -126,6 +121,30 @@ body {
     .seo {
       position: absolute;
       left: -9999px;
+    }
+
+    /* ===================== */
+    /* ANIMACIÓN DE LATIDO */
+    /* ===================== */
+
+    @keyframes latido {
+      0%   { transform: scale(1); }
+      25%  { transform: scale(1.04); }
+      50%  { transform: scale(1); }
+      75%  { transform: scale(1.04); }
+      100% { transform: scale(1); }
+    }
+
+    /* Prediseñados */
+    .predisenado {
+      animation: latido 1.4s ease-in-out infinite;
+      animation-delay: 0s;
+    }
+
+    /* Personalizado */
+    .personalizado {
+      animation: latido 1.4s ease-in-out infinite;
+      animation-delay: 3s;
     }
   </style>
 </head>
@@ -143,7 +162,7 @@ body {
 
         <!-- Prediseñados -->
         <a
-          class="option"
+          class="option predisenado"
           href="https://wa.me/593963372269?text=Hola,%20Ale%20quiero%20adquirir%20uno%20de%20los%20circuitos%20prediseñados%20de%20Kat%20Haus."
           target="_blank"
           onclick="fbq('track','Contact')"
@@ -153,14 +172,16 @@ body {
 
         <!-- Personalizado -->
         <a
-          class="option"
+          class="option personalizado"
           href="https://wa.me/593963372269?text=Hola,%20Chris%20quiero%20solicitar%20un%20diseño%20felino%20personalizado."
           target="_blank"
           onclick="fbq('track','Contact')"
         >
           <img src="chris.png" alt="Solicitar diseño felino personalizado" />
         </a>
-<img src="footer.png" alt="info" />
+
+        <img src="footer.png" alt="Información adicional Kat Haus" />
+
       </section>
     </main>
 
