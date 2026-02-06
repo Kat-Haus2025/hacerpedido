@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Kat Haus | Circuitos personalizados y fabricación bajo pedido</title>
-  <meta name="description" content="Kat Haus diseña y fabrica circuitos personalizados bajo pedido. Producción exclusiva, cupos limitados y asesoría directa por WhatsApp." />
+  <title>Kat Haus | Circuitos felinos personalizados</title>
+  <meta name="description" content="Kat Haus diseña y fabrica circuitos felinos personalizados y prediseñados. Producción bajo pedido y asesoría directa por WhatsApp." />
   <meta name="robots" content="index, follow" />
   <meta name="author" content="Kat Haus" />
 
@@ -44,28 +44,29 @@
     body {
       min-height: 100vh;
       font-family: Arial, Helvetica, sans-serif;
-      background: url('marmol.png') no-repeat center center fixed;
+      background: url('wallpaper.png') no-repeat center center fixed;
       background-size: cover;
       display: flex;
-      flex-direction: column;
+      justify-content: center;
       align-items: center;
     }
 
     .overlay {
       min-height: 100vh;
       width: 100%;
-      background: rgba(0, 0, 0, 0.4);
+      background: rgba(0, 0, 0, 0.45);
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: space-between;
+      padding: 20px;
     }
 
     header {
       width: 100%;
       display: flex;
       justify-content: center;
-      padding: 10px 0;
-      position: relative;
+      margin-top: 20px;
     }
 
     header img {
@@ -73,36 +74,26 @@
       max-width: 900px;
       height: auto;
     }
-footer {
-  margin-top: auto;
-  padding: 20px;
-  font-size: 18px;
-  color: rgba(255, 255, 255, 0.7);
-  text-align: center;
-  width: 100%;
-}
 
-    .seo-title,
-    .seo-text {
-      position: absolute;
-      left: -9999px;
+    main {
+      width: 100%;
+      max-width: 900px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
     }
 
     .options {
-      width: 100%;
-      max-width: 900px;
-      padding: 10px 20px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 14px;
     }
 
     .option {
       display: block;
-      border-radius: 12px;
+      border-radius: 14px;
       overflow: hidden;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
-      position: relative;
     }
 
     .option img {
@@ -112,164 +103,62 @@ footer {
 
     .option:hover {
       transform: scale(1.02);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
     }
 
     footer {
-      margin-top: auto;
-      padding: 20px;
-      font-size: 12px;
-      color: rgba(255, 255, 255, 0.7);
-    }
-
-    .confirm-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.75);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 10;
-    }
-
-    .confirm-box {
-      background: #111;
-      color: #fff;
-      padding: 30px;
-      max-width: 420px;
-      width: 90%;
-      border-radius: 16px;
+      margin-bottom: 10px;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.75);
       text-align: center;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
     }
 
-    .confirm-box h2 {
-      margin-bottom: 15px;
-      font-size: 22px;
-    }
-
-    .confirm-box p {
-      font-size: 14px;
-      line-height: 1.6;
-      margin-bottom: 25px;
-      color: rgba(255, 255, 255, 0.85);
-    }
-
-    .confirm-actions {
-      display: flex;
-      gap: 15px;
-      justify-content: center;
-    }
-
-    .confirm-actions button,
-    .confirm-actions a {
-      padding: 10px 18px;
-      border-radius: 8px;
-      font-size: 14px;
-      cursor: pointer;
-      text-decoration: none;
-      border: none;
-    }
-
-    .confirm-actions button {
-      background: #333;
-      color: #fff;
-    }
-
-    .confirm-actions a {
-      background: #fff;
-      color: #000;
-      font-weight: bold;
+    /* SEO invisible */
+    .seo {
+      position: absolute;
+      left: -9999px;
     }
   </style>
 </head>
 
 <body>
   <div class="overlay">
+
+    <header>
+      <h1 class="seo">Kat Haus – Circuitos felinos personalizados y prediseñados</h1>
+      <img src="logo.png" alt="Kat Haus – Circuitos felinos personalizados" />
+    </header>
+
     <main>
-
-      <header>
-        <h1 class="seo-title">Kat Haus – Circuitos personalizados fabricados bajo pedido</h1>
-        <img src="logo.png" alt="Kat Haus – Circuitos personalizados de fabricación bajo pedido" />
-      </header>
-
       <section class="options">
 
-        <a class="option" href="#contacto" onclick="openConfirm('ilimitado')">
-          <img src="deidad.png" alt="Circuitos personalizados sin límite de presupuesto" />
-          <span class="seo-text">Circuitos personalizados premium sin límite de presupuesto</span>
+        <!-- Prediseñados -->
+        <a
+          class="option"
+          href="https://wa.me/59396337229?text=Hola,%20quiero%20ver%20los%20circuitos%20prediseñados%20de%20Kat%20Haus."
+          target="_blank"
+          onclick="fbq('track','Contact')"
+        >
+          <img src="predisenados.png" alt="Elegir circuitos felinos prediseñados" />
         </a>
 
-        <a class="option" href="#contacto" onclick="openConfirm('201_300')">
-          <img src="arist.png" alt="Circuitos personalizados entre 201 y 300 dólares" />
-          <span class="seo-text">Circuitos personalizados presupuesto medio</span>
-        </a>
-
-        <a class="option" href="#contacto" onclick="openConfirm('100_200')">
-          <img src="estudiante.png" alt="Circuitos personalizados entre 100 y 200 dólares" />
-          <span class="seo-text">Circuitos personalizados presupuesto inicial</span>
+        <!-- Personalizado -->
+        <a
+          class="option"
+          href="https://wa.me/59396337229?text=Hola,%20quiero%20solicitar%20un%20diseño%20felino%20personalizado."
+          target="_blank"
+          onclick="fbq('track','Contact')"
+        >
+          <img src="personalizado.png" alt="Solicitar diseño felino personalizado" />
         </a>
 
       </section>
-
-      <div class="confirm-overlay" id="confirmOverlay">
-        <div class="confirm-box">
-          <h2>¡Gatifiquemos tu Vida!</h2>
-          <p>
-            Todos los circuitos de <strong>Kat Haus</strong> se diseñan y fabrican bajo pedido.
-            Los cupos en la cola de producción se asignan de manera progresiva conforme los pedidos son confirmados.
-          </p>
-          <div class="confirm-actions">
-            <button onclick="closeConfirm()">Volver</button>
-            <a id="confirmLink" target="_blank" onclick="trackWhatsApp()">Chatear con la Asesora</a>
-          </div>
-        </div>
-      </div>
-
-      <footer>
-        © Kat Haus — Fabricando en Quito desde 2022
-     </footer>
-
     </main>
+
+    <footer>
+      © Kat Haus — Fabricando en Quito desde 2022
+    </footer>
+
   </div>
-
-  <script>
-    function openConfirm(type) {
-
-      // Evento Meta: intención alta
-      if (typeof fbq === 'function') {
-        fbq('track', 'InitiateCheckout', {
-          content_category: type
-        });
-      }
-
-      const overlay = document.getElementById('confirmOverlay');
-      const link = document.getElementById('confirmLink');
-      let message = '';
-
-      if (type === 'ilimitado') {
-        message = 'Hola, mi presupuesto no tiene límites. Estoy listo para empezar mi proceso de gatificación.';
-      }
-      if (type === '201_300') {
-        message = 'Hola, mi presupuesto está entre $201 y $300. Estoy listo para empezar mi proceso de gatificación.';
-      }
-      if (type === '100_200') {
-        message = 'Hola, mi presupuesto está entre $100 y $200. Estoy listo para empezar mi proceso de gatificación.';
-      }
-
-      link.href = 'https://wa.me/593963372269?text=' + encodeURIComponent(message);
-      overlay.style.display = 'flex';
-    }
-
-    function trackWhatsApp() {
-      if (typeof fbq === 'function') {
-        fbq('track', 'Contact');
-      }
-    }
-
-    function closeConfirm() {
-      document.getElementById('confirmOverlay').style.display = 'none';
-    }
-  </script>
 </body>
 </html>
