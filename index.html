@@ -32,7 +32,6 @@
     <img height="1" width="1" style="display:none"
       src="https://www.facebook.com/tr?id=898422962642132&ev=PageView&noscript=1"/>
   </noscript>
-  <!-- End Facebook Pixel Code -->
 
   <style>
     * {
@@ -117,34 +116,34 @@
       text-align: center;
     }
 
-    /* SEO invisible */
     .seo {
       position: absolute;
       left: -9999px;
     }
 
     /* ===================== */
-    /* ANIMACIÓN DE LATIDO */
+    /* ANIMACIONES LATIDO */
     /* ===================== */
 
+    /* Latido base */
     @keyframes latido {
       0%   { transform: scale(1); }
-      25%  { transform: scale(1.04); }
-      50%  { transform: scale(1); }
-      75%  { transform: scale(1.04); }
+      15%  { transform: scale(1.05); }
+      30%  { transform: scale(1); }
+      45%  { transform: scale(1.05); }
+      60%  { transform: scale(1); }
       100% { transform: scale(1); }
     }
 
-    /* Prediseñados */
+    /* Prediseñados: late primero */
     .predisenado {
-      animation: latido 1.4s ease-in-out infinite;
-      animation-delay: 0s;
+      animation: latido 4s ease-in-out infinite;
     }
 
-    /* Personalizado */
+    /* Personalizado: espera mientras late el primero */
     .personalizado {
-      animation: latido 1.4s ease-in-out infinite;
-      animation-delay: 3s;
+      animation: latido 4s ease-in-out infinite;
+      animation-delay: 2s;
     }
   </style>
 </head>
@@ -179,7 +178,7 @@
         >
           <img src="chris.png" alt="Solicitar diseño felino personalizado" />
         </a>
- <p> </p>  <p> </p>
+
         <img src="footer.png" alt="Información adicional Kat Haus" />
 
       </section>
