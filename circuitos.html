@@ -122,7 +122,7 @@ h1 {
     <img src="c04.png" onclick="openModal('Circuito Berlín')">
     <img src="c03.png" onclick="openModal('Circuito Hannover')">
     <img src="c02.png" onclick="openModal('Circuito Lizt')">
-    <img src="c01.png" onclick="openModal('Circuito Viena')">
+    <img src="C01.png" onclick="openModal('Circuito Viena')">
 </div>
 
 <!-- Modal -->
@@ -150,11 +150,11 @@ function openModal(nombre) {
     document.getElementById('modal').style.display = "flex";
 
     let mensajeEnvio = encodeURIComponent(
-        "Hola Ale 💕 quiero solicitar " + nombre + " con Envío Gratis."
+        "Hola Ale 💕 quiero solicitar la fabricación del " + nombre + " con Envío Gratis."
     );
 
     let mensajeInstalacion = encodeURIComponent(
-        "Hola Ale 💕 quiero solicitar " + nombre + " con Instalación en Quito o Guayaquil."
+        "Hola Ale 💕 quiero solicitar la fabricación del " + nombre + " con Instalación en Quito o Guayaquil."
     );
 
     document.getElementById("btn-envio").href =
