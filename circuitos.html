@@ -89,15 +89,20 @@ h1 {
     cursor: pointer;
 }
 
-.btn {
-    margin-top: 20px;
-    display: inline-block;
-    padding: 12px 20px;
-    background: black;
+.btn-whatsapp {
+    display: block;
+    margin: 15px 0;
+    padding: 14px;
+    background: #25D366;
     color: white;
     text-decoration: none;
     border-radius: 8px;
     font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-whatsapp:hover {
+    background: #1ebe5d;
 }
 </style>
 </head>
@@ -107,16 +112,16 @@ h1 {
 <h1>Circuitos Exclusivos Kat Haus</h1>
 
 <div class="grid">
-    <img src="c11.png" onclick="openModal('Circuito 10', 'Nuestro diseño más exclusivo y premium.')">
-    <img src="c09.png" onclick="openModal('Circuito 9', 'Alta gama con acabados superiores.')">
-    <img src="c08.png" onclick="openModal('Circuito 8', 'Diseño equilibrado y elegante.')">
-    <img src="c07.png" onclick="openModal('Circuito 7', 'Funcionalidad con estilo.')">
-    <img src="c06.png" onclick="openModal('Circuito 6', 'Moderno y adaptable.')">
-    <img src="c05.png" onclick="openModal('Circuito 5', 'Versátil y sofisticado.')">
-    <img src="c04.png" onclick="openModal('Circuito 4', 'Compacto y elegante.')">
-    <img src="c03.png" onclick="openModal('Circuito 3', 'Práctico y funcional.')">
-    <img src="c02.png" onclick="openModal('Circuito 2', 'Ideal para espacios pequeños.')">
-    <img src="c01.png" onclick="openModal('Circuito 1', 'Modelo esencial.')">
+    <img src="c10.png" onclick="openModal('Circuito 10')">
+    <img src="c09.png" onclick="openModal('Circuito 9')">
+    <img src="c08.png" onclick="openModal('Circuito 8')">
+    <img src="c07.png" onclick="openModal('Circuito 7')">
+    <img src="c06.png" onclick="openModal('Circuito 6')">
+    <img src="c05.png" onclick="openModal('Circuito 5')">
+    <img src="c04.png" onclick="openModal('Circuito 4')">
+    <img src="c03.png" onclick="openModal('Circuito 3')">
+    <img src="c02.png" onclick="openModal('Circuito 2')">
+    <img src="c01.png" onclick="openModal('Circuito 1')">
 </div>
 
 <!-- Modal -->
@@ -124,25 +129,41 @@ h1 {
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
         <h2 id="modal-title"></h2>
-        <p id="modal-description"></p>
 
-        <a class="btn" 
-           href="https://wa.me/593TU_NUMERO" 
-           target="_blank"
-           onclick="trackLead()">
-           Solicitar este diseño
+        <a id="btn-envio" class="btn-whatsapp" target="_blank">
+            Solicitar con Envío Gratis
+        </a>
+
+        <a id="btn-instalacion" class="btn-whatsapp" target="_blank">
+            Solicitar con Instalación en Quito o Guayaquil
         </a>
     </div>
 </div>
 
 <script>
-function openModal(title, description) {
-    document.getElementById('modal-title').innerText = title;
-    document.getElementById('modal-description').innerText = description;
+let circuitoActual = "";
+
+function openModal(nombre) {
+    circuitoActual = nombre;
+    document.getElementById('modal-title').innerText = nombre;
     document.getElementById('modal').style.display = "flex";
 
+    let mensajeEnvio = encodeURIComponent(
+        "Hola Ale 💕 quiero solicitar " + nombre + " con Envío Gratis."
+    );
+
+    let mensajeInstalacion = encodeURIComponent(
+        "Hola Ale 💕 quiero solicitar " + nombre + " con Instalación en Quito o Guayaquil."
+    );
+
+    document.getElementById("btn-envio").href =
+        "https://wa.me/593963372269?text=" + mensajeEnvio;
+
+    document.getElementById("btn-instalacion").href =
+        "https://wa.me/593963372269?text=" + mensajeInstalacion;
+
     fbq('track', 'ViewContent', {
-        content_name: title
+        content_name: nombre
     });
 }
 
@@ -150,9 +171,13 @@ function closeModal() {
     document.getElementById('modal').style.display = "none";
 }
 
-function trackLead() {
-    fbq('track', 'Lead');
-}
+document.addEventListener("click", function(e) {
+    if (e.target.classList.contains("btn-whatsapp")) {
+        fbq('track', 'Lead', {
+            content_name: circuitoActual
+        });
+    }
+});
 </script>
 
 </body>
