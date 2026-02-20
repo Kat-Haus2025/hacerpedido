@@ -26,64 +26,8 @@ fbq('init', '898422962642132');
 fbq('track', 'PageView');
 </script>
 
-<noscript>
-<img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=898422962642132&ev=PageView&noscript=1"/>
-</noscript>
-<!-- End Facebook Pixel Code -->
-
 <style>
 
-<style>
-body {
-    margin: 0;
-    background: #111;
-    font-family: Arial, sans-serif;
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-    padding: 40px;
-    max-width: 1200px;
-    margin: auto;
-}
-
-.grid img {
-    width: 100%;
-    border-radius: 16px;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-}
-
-/* 💓 Latido 60 BPM - corchea corchea blanca */
-.latido {
-    animation: heartbeat 3s infinite ease-in-out;
-}
-
-@keyframes heartbeat {
-
-    /* Inicio */
-    0% { transform: scale(1); }
-
-    /* Primera corchea (0.5s) */
-    8% { transform: scale(1.05); }
-    16% { transform: scale(1); }
-
-    /* Segunda corchea (1s total) */
-    25% { transform: scale(1.08); }
-    33% { transform: scale(1); }
-
-    /* Blanca (2s de reposo) */
-    100% { transform: scale(1); }
-}
-
-.grid img:hover {
-    transform: scale(1.12);
-}
-
-  
 body {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
@@ -100,23 +44,67 @@ h1 {
     letter-spacing: 2px;
 }
 
+.footer-container {
+    width: 100%;
+    text-align: center;
+    margin-top: 14px;
+    padding-bottom: 14px;
+}
+
+.footer-container img {
+    width: 100%;
+    max-width: 1400px;
+    height: auto;
+    display: block;
+    margin: 0 auto 12px auto;
+}
+
+.footer-text {
+    font-family: 'Cinzel', serif;
+    font-size: 28px;
+    letter-spacing: 2px;
+    color: #F5F5F5;
+    text-shadow: 0 0 15px rgba(255,255,255,0.3);
+}
+
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 30px;
     padding: 40px;
+    max-width: 1200px;
+    margin: auto;
 }
 
 .grid img {
     width: 100%;
-    cursor: pointer;
     border-radius: 16px;
-    transition: all 0.3s ease;
+    cursor: pointer;
     box-shadow: 0 10px 25px rgba(0,0,0,0.6);
 }
 
+/* 💓 LATIDO BASE */
+.latido {
+    animation: heartbeat 3s infinite ease-in-out;
+}
+
+/* Intensidades */
+.fuerte { --s1:1.08; --s2:1.13; }
+.medio  { --s1:1.05; --s2:1.08; }
+.suave  { --s1:1.03; --s2:1.05; }
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    8% { transform: scale(var(--s1)); }
+    16% { transform: scale(1); }
+    25% { transform: scale(var(--s2)); }
+    33% { transform: scale(1); }
+    100% { transform: scale(1); }
+}
+
 .grid img:hover {
-    transform: translateY(-8px) scale(1.02);
+    transform: translateY(-8px) scale(1.03);
+    transition: 0.3s;
     box-shadow: 0 15px 40px rgba(0,0,0,0.8);
 }
 
@@ -148,7 +136,6 @@ h1 {
     font-family: 'Cinzel', serif;
     font-size: 28px;
     margin-bottom: 25px;
-    text-shadow: 0 0 12px rgba(255,255,255,0.3);
 }
 
 .precio {
@@ -166,9 +153,7 @@ h1 {
     color: #aaa;
 }
 
-.close:hover {
-    color: #fff;
-}
+.close:hover { color: #fff; }
 
 .btn-whatsapp {
     display: block;
@@ -179,7 +164,7 @@ h1 {
     text-decoration: none;
     border-radius: 40px;
     font-weight: 600;
-    transition: all 0.3s ease;
+    transition: 0.3s;
     box-shadow: 0 0 20px rgba(37,211,102,0.4);
 }
 
@@ -189,77 +174,85 @@ h1 {
     box-shadow: 0 0 30px rgba(37,211,102,0.6);
 }
 
-.footer-container {
-    width: 100%;
-    text-align: center;
-    margin-top: 14px;
-    padding-bottom: 14px;
-}
-
-.footer-container img {
-    width: 100%;
-    max-width: 1400px;
-    height: auto;
-    display: block;
-    margin: 0 auto 12px auto;
-}
-
-.footer-text {
-    font-family: 'Cinzel', serif;
-    font-size: 28px;
-    letter-spacing: 2px;
-    color: #F5F5F5;
-    text-shadow: 0 0 15px rgba(255,255,255,0.3);
-}
-
 </style>
 </head>
 
 <body>
+
 <div class="footer-container">
-    <img src="profesional.png" alt="Gatificación Profesional">
+    <img src="profesional.png">
     <p class="footer-text">Selecciona tu Circuito Ideal:</p>
 </div>
 
 <div class="grid">
-   <img src="c11.png" class="latido" onclick="openModal('Circuito Bauhaus<br><span class=\'precio\'>$319.00</span>')">
-   <img src="c10.png" class="latido" onclick="openModal('Circuito Leverkusen<br><span class=\'precio\'>$285.00</span>')">
-   <img src="c09.png" class="latido" onclick="openModal('Circuito Heidelberg<br><span class=\'precio\'>$249.00</span>')">
-   <img src="c08.png" class="latido" onclick="openModal('Circuito Stuttgart<br><span class=\'precio\'>$232.00</span>')">
-   <img src="c07.png" class="latido" onclick="openModal('Circuito Dresden<br><span class=\'precio\'>$215.00</span>')">
-   <img src="c06.png" class="latido" onclick="openModal('Circuito Düsseldorf<br><span class=\'precio\'>$199.00</span>')">
-   <img src="c05.png" class="latido" onclick="openModal('Circuito München<br><span class=\'precio\'>$185.00</span>')">
-   <img src="c04.png" class="latido" onclick="openModal('Circuito Berlín<br><span class=\'precio\'>$163.00</span>')">
-   <img src="c03.png" class="latido" onclick="openModal('Circuito Hannover<br><span class=\'precio\'>$142.00</span>')">
-   <img src="c02.png" class="latido" onclick="openModal('Circuito Lizt<br><span class=\'precio\'>$119.00</span>')">
-   <img src="C01.png" class="latido" onclick="openModal('Circuito Viena<br><span class=\'precio\'>$99.00</span>')">
+
+<img src="c11.png" class="latido fuerte" style="animation-delay:0s"
+onclick="openCompra('c11.png','Circuito Bauhaus<br><span class=\'precio\'>$319.00</span>')">
+
+<img src="c10.png" class="latido fuerte" style="animation-delay:.4s"
+onclick="openCompra('c10.png','Circuito Leverkusen<br><span class=\'precio\'>$285.00</span>')">
+
+<img src="c09.png" class="latido medio" style="animation-delay:.8s"
+onclick="openCompra('c09.png','Circuito Heidelberg<br><span class=\'precio\'>$249.00</span>')">
+
+<img src="c08.png" class="latido medio" style="animation-delay:1.2s"
+onclick="openCompra('c08.png','Circuito Stuttgart<br><span class=\'precio\'>$232.00</span>')">
+
+<img src="c07.png" class="latido medio" style="animation-delay:1.6s"
+onclick="openCompra('c07.png','Circuito Dresden<br><span class=\'precio\'>$215.00</span>')">
+
+<img src="c06.png" class="latido suave" style="animation-delay:2s"
+onclick="openCompra('c06.png','Circuito Düsseldorf<br><span class=\'precio\'>$199.00</span>')">
+
+<img src="c05.png" class="latido suave" style="animation-delay:2.3s"
+onclick="openCompra('c05.png','Circuito München<br><span class=\'precio\'>$185.00</span>')">
+
+<img src="c04.png" class="latido suave" style="animation-delay:2.6s"
+onclick="openCompra('c04.png','Circuito Berlín<br><span class=\'precio\'>$163.00</span>')">
+
+<img src="c03.png" class="latido suave" style="animation-delay:2.9s"
+onclick="openCompra('c03.png','Circuito Hannover<br><span class=\'precio\'>$142.00</span>')">
+
+<img src="c02.png" class="latido suave" style="animation-delay:1.9s"
+onclick="openCompra('c02.png','Circuito Lizt<br><span class=\'precio\'>$119.00</span>')">
+
+<img src="C01.png" class="latido suave" style="animation-delay:.6s"
+onclick="openCompra('C01.png','Circuito Viena<br><span class=\'precio\'>$99.00</span>')">
+
 </div>
 
-<div class="modal" id="modal">
+<!-- MODAL COMPRA -->
+<div class="modal" id="modal-compra">
     <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <h2 id="modal-title"></h2>
+        <span class="close" onclick="closeCompra()">&times;</span>
+        <img id="compra-img" style="width:180px;border-radius:16px;margin-bottom:15px;">
+        <h2 id="compra-title"></h2>
 
         <a id="btn-envio" class="btn-whatsapp" target="_blank">
             Solicitar Fabricación con Envío GRATIS
         </a>
 
         <a id="btn-instalacion" class="btn-whatsapp" target="_blank">
-            Solicitar Fabricación e Instalación en Quito o Guayaquil (+$20.00)
+            Solicitar Fabricación e Instalación (+$20.00)
         </a>
     </div>
 </div>
 
-
+<div class="footer-container">
+    <img src="footer.png">
+</div>
 
 <script>
 
 let circuitoActual = "";
 
-function openModal(nombre) {
+function openCompra(imagen, nombre) {
+
     circuitoActual = nombre;
-    document.getElementById('modal-title').innerHTML = nombre;
-    document.getElementById('modal').style.display = "flex";
+
+    document.getElementById('compra-img').src = imagen;
+    document.getElementById('compra-title').innerHTML = nombre;
+    document.getElementById('modal-compra').style.display = "flex";
 
     let textoPlano = nombre.replace(/<[^>]*>?/gm, '');
 
@@ -277,27 +270,20 @@ function openModal(nombre) {
     document.getElementById("btn-instalacion").href =
         "https://wa.me/593963372269?text=" + mensajeInstalacion;
 
-    fbq('track', 'ViewContent', {
-        content_name: textoPlano
-    });
+    fbq('track', 'ViewContent', { content_name: textoPlano });
 }
 
-function closeModal() {
-    document.getElementById('modal').style.display = "none";
+function closeCompra() {
+    document.getElementById('modal-compra').style.display = "none";
 }
 
 document.addEventListener("click", function(e) {
     if (e.target.classList.contains("btn-whatsapp")) {
-        fbq('track', 'Lead', {
-            content_name: circuitoActual
-        });
+        fbq('track', 'Lead', { content_name: circuitoActual });
     }
 });
 
 </script>
-<div class="footer-container">
-    <img src="footer.png" alt="Info">
- 
-</div>
+
 </body>
 </html>
