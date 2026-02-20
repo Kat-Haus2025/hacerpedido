@@ -33,26 +33,7 @@ src="https://www.facebook.com/tr?id=898422962642132&ev=PageView&noscript=1"/>
 <!-- End Facebook Pixel Code -->
 
 <style>
-.footer-container {
-    width: 100%;
-    text-align: center;
-    margin-top: 15px;
-}
 
-.footer-container img {
-    width: 100%;
-    max-width: 1400px; /* evita que se estire demasiado en pantallas grandes */
-    height: auto;
-    display: block;
-    margin: 0 auto;
-  
-  .footer-text {
-    font-family: 'Cinzel', serif;
-    font-size: 28px;
-    letter-spacing: 2px;
-    color: #F5F5F5;
-    text-shadow: 0 0 15px rgba(255,255,255,0.3);
-}
 body {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
@@ -89,8 +70,6 @@ h1 {
     box-shadow: 0 15px 40px rgba(0,0,0,0.8);
 }
 
-/* Modal */
-
 .modal {
     display: none;
     position: fixed;
@@ -120,6 +99,14 @@ h1 {
     font-size: 28px;
     margin-bottom: 25px;
     text-shadow: 0 0 12px rgba(255,255,255,0.3);
+}
+
+.precio {
+    font-size: 22px;
+    color: #FFD8A8;
+    font-weight: 600;
+    display: block;
+    margin-top: 8px;
 }
 
 .close {
@@ -152,44 +139,68 @@ h1 {
     box-shadow: 0 0 30px rgba(37,211,102,0.6);
 }
 
+.footer-container {
+    width: 100%;
+    text-align: center;
+    margin-top: 80px;
+    padding-bottom: 60px;
+}
+
+.footer-container img {
+    width: 100%;
+    max-width: 1400px;
+    height: auto;
+    display: block;
+    margin: 0 auto 25px auto;
+}
+
+.footer-text {
+    font-family: 'Cinzel', serif;
+    font-size: 28px;
+    letter-spacing: 2px;
+    color: #F5F5F5;
+    text-shadow: 0 0 15px rgba(255,255,255,0.3);
+}
+
 </style>
 </head>
 
 <body>
 
-<div class="footer-container">
-    <img src="profesional.png" alt="Gatificación Profesional">
-    <p class="footer-text">Selecciona tu Circuito Ideal:</p>
-</div>
+<h1>Circuitos Exclusivos Kat-Haus</h1>
 
 <div class="grid">
-   <img src="c11.png" onclick="openModal('Circuito Bauhaus <br> $319.00')">
-   <img src="c10.png" onclick="openModal('Circuito Leverkusen <br> $285.00')">
-   <img src="c09.png" onclick="openModal('Circuito Heidelberg <br> $249.00')">
-   <img src="c08.png" onclick="openModal('Circuito Stuttgart <br> $232.00')">
-   <img src="c07.png" onclick="openModal('Circuito Dresden <br> $215.00')">
-   <img src="c06.png" onclick="openModal('Circuito Düsseldorf <br> $199.00')">
-   <img src="c05.png" onclick="openModal('Circuito München <br> $185.00')">
-   <img src="c04.png" onclick="openModal('Circuito Berlín <br> $163.00')">
-   <img src="c03.png" onclick="openModal('Circuito Hannover <br> $142.00')">
-   <img src="c02.png" onclick="openModal('Circuito Lizt <br> $119.00')">
-   <img src="C01.png" onclick="openModal('Circuito Viena <br> $99.00')">
+   <img src="c11.png" onclick="openModal('Circuito Bauhaus<br><span class=\'precio\'>$319.00</span>')">
+   <img src="c10.png" onclick="openModal('Circuito Leverkusen<br><span class=\'precio\'>$285.00</span>')">
+   <img src="c09.png" onclick="openModal('Circuito Heidelberg<br><span class=\'precio\'>$249.00</span>')">
+   <img src="c08.png" onclick="openModal('Circuito Stuttgart<br><span class=\'precio\'>$232.00</span>')">
+   <img src="c07.png" onclick="openModal('Circuito Dresden<br><span class=\'precio\'>$215.00</span>')">
+   <img src="c06.png" onclick="openModal('Circuito Düsseldorf<br><span class=\'precio\'>$199.00</span>')">
+   <img src="c05.png" onclick="openModal('Circuito München<br><span class=\'precio\'>$185.00</span>')">
+   <img src="c04.png" onclick="openModal('Circuito Berlín<br><span class=\'precio\'>$163.00</span>')">
+   <img src="c03.png" onclick="openModal('Circuito Hannover<br><span class=\'precio\'>$142.00</span>')">
+   <img src="c02.png" onclick="openModal('Circuito Lizt<br><span class=\'precio\'>$119.00</span>')">
+   <img src="C01.png" onclick="openModal('Circuito Viena<br><span class=\'precio\'>$99.00</span>')">
 </div>
 
-<!-- Modal -->
 <div class="modal" id="modal">
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
         <h2 id="modal-title"></h2>
 
         <a id="btn-envio" class="btn-whatsapp" target="_blank">
-            Solicitar Fabricación con Envío Gratis
+            Solicitar con Envío Gratis
         </a>
 
         <a id="btn-instalacion" class="btn-whatsapp" target="_blank">
-            Solicitar Fabricación e Instalación en Quito o Guayaquil <br> (+$20.00)
+            Solicitar con Instalación en Quito o Guayaquil (+$20.00)
         </a>
     </div>
+</div>
+
+<div class="footer-container">
+    <img src="profesional.png" alt="Gatificación Profesional">
+    <p class="footer-text">Selecciona tu Circuito Ideal</p>
 </div>
 
 <script>
@@ -198,15 +209,17 @@ let circuitoActual = "";
 
 function openModal(nombre) {
     circuitoActual = nombre;
-    document.getElementById('modal-title').innerText = nombre;
+    document.getElementById('modal-title').innerHTML = nombre;
     document.getElementById('modal').style.display = "flex";
 
+    let textoPlano = nombre.replace(/<[^>]*>?/gm, '');
+
     let mensajeEnvio = encodeURIComponent(
-        "Hola Ale 💕 quiero solicitar la fabricación del " + nombre + " con Envío Gratis."
+        "Hola Ale 💕 quiero solicitar la fabricación del " + textoPlano + " con Envío Gratis."
     );
 
     let mensajeInstalacion = encodeURIComponent(
-        "Hola Ale 💕 quiero solicitar la fabricación del " + nombre + " con Instalación en Quito o Guayaquil (+$20.00)."
+        "Hola Ale 💕 quiero solicitar la fabricación del " + textoPlano + " con Instalación en Quito o Guayaquil (+$20.00)."
     );
 
     document.getElementById("btn-envio").href =
@@ -216,7 +229,7 @@ function openModal(nombre) {
         "https://wa.me/593963372269?text=" + mensajeInstalacion;
 
     fbq('track', 'ViewContent', {
-        content_name: nombre
+        content_name: textoPlano
     });
 }
 
@@ -233,8 +246,6 @@ document.addEventListener("click", function(e) {
 });
 
 </script>
-<div class="footer-container">
-    <img src="footer.png" alt="Kat Haus Footer">
-</div>
+
 </body>
 </html>
