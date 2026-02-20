@@ -34,6 +34,56 @@ src="https://www.facebook.com/tr?id=898422962642132&ev=PageView&noscript=1"/>
 
 <style>
 
+<style>
+body {
+    margin: 0;
+    background: #111;
+    font-family: Arial, sans-serif;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 40px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.grid img {
+    width: 100%;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+/* 💓 Latido 60 BPM - corchea corchea blanca */
+.latido {
+    animation: heartbeat 3s infinite ease-in-out;
+}
+
+@keyframes heartbeat {
+
+    /* Inicio */
+    0% { transform: scale(1); }
+
+    /* Primera corchea (0.5s) */
+    8% { transform: scale(1.05); }
+    16% { transform: scale(1); }
+
+    /* Segunda corchea (1s total) */
+    25% { transform: scale(1.08); }
+    33% { transform: scale(1); }
+
+    /* Blanca (2s de reposo) */
+    100% { transform: scale(1); }
+}
+
+.grid img:hover {
+    transform: scale(1.12);
+}
+
+  
 body {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
@@ -172,17 +222,17 @@ h1 {
 </div>
 
 <div class="grid">
-   <img src="c11.png" onclick="openModal('Circuito Bauhaus<br><span class=\'precio\'>$319.00</span>')">
-   <img src="c10.png" onclick="openModal('Circuito Leverkusen<br><span class=\'precio\'>$285.00</span>')">
-   <img src="c09.png" onclick="openModal('Circuito Heidelberg<br><span class=\'precio\'>$249.00</span>')">
-   <img src="c08.png" onclick="openModal('Circuito Stuttgart<br><span class=\'precio\'>$232.00</span>')">
-   <img src="c07.png" onclick="openModal('Circuito Dresden<br><span class=\'precio\'>$215.00</span>')">
-   <img src="c06.png" onclick="openModal('Circuito Düsseldorf<br><span class=\'precio\'>$199.00</span>')">
-   <img src="c05.png" onclick="openModal('Circuito München<br><span class=\'precio\'>$185.00</span>')">
-   <img src="c04.png" onclick="openModal('Circuito Berlín<br><span class=\'precio\'>$163.00</span>')">
-   <img src="c03.png" onclick="openModal('Circuito Hannover<br><span class=\'precio\'>$142.00</span>')">
-   <img src="c02.png" onclick="openModal('Circuito Lizt<br><span class=\'precio\'>$119.00</span>')">
-   <img src="C01.png" onclick="openModal('Circuito Viena<br><span class=\'precio\'>$99.00</span>')">
+   <img src="c11.png" class="latido" onclick="openModal('Circuito Bauhaus<br><span class=\'precio\'>$319.00</span>')">
+   <img src="c10.png" class="latido" onclick="openModal('Circuito Leverkusen<br><span class=\'precio\'>$285.00</span>')">
+   <img src="c09.png" class="latido" onclick="openModal('Circuito Heidelberg<br><span class=\'precio\'>$249.00</span>')">
+   <img src="c08.png" class="latido" onclick="openModal('Circuito Stuttgart<br><span class=\'precio\'>$232.00</span>')">
+   <img src="c07.png" class="latido" onclick="openModal('Circuito Dresden<br><span class=\'precio\'>$215.00</span>')">
+   <img src="c06.png" class="latido" onclick="openModal('Circuito Düsseldorf<br><span class=\'precio\'>$199.00</span>')">
+   <img src="c05.png" class="latido" onclick="openModal('Circuito München<br><span class=\'precio\'>$185.00</span>')">
+   <img src="c04.png" class="latido" onclick="openModal('Circuito Berlín<br><span class=\'precio\'>$163.00</span>')">
+   <img src="c03.png" class="latido" onclick="openModal('Circuito Hannover<br><span class=\'precio\'>$142.00</span>')">
+   <img src="c02.png" class="latido" onclick="openModal('Circuito Lizt<br><span class=\'precio\'>$119.00</span>')">
+   <img src="C01.png" class="latido" onclick="openModal('Circuito Viena<br><span class=\'precio\'>$99.00</span>')">
 </div>
 
 <div class="modal" id="modal">
