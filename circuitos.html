@@ -83,22 +83,25 @@ h1 {
     box-shadow: 0 10px 25px rgba(0,0,0,0.6);
 }
 
-/* 💓 LATIDO BASE */
 .latido {
-    animation: heartbeat 3s infinite ease-in-out;
+    animation: heartbeat 3s infinite cubic-bezier(.4,0,.2,1);
 }
 
-/* Intensidades */
-.fuerte { --s1:1.08; --s2:1.13; }
-.medio  { --s1:1.05; --s2:1.08; }
-.suave  { --s1:1.03; --s2:1.05; }
+/* Intensidad por precio */
+.fuerte { --s1:1.07; --s2:1.12; }
+.medio  { --s1:1.04; --s2:1.07; }
+.suave  { --s1:1.02; --s2:1.04; }
 
 @keyframes heartbeat {
-    0% { transform: scale(1); }
-    8% { transform: scale(var(--s1)); }
-    16% { transform: scale(1); }
-    25% { transform: scale(var(--s2)); }
-    33% { transform: scale(1); }
+
+    0%   { transform: scale(1); }
+
+    10%  { transform: scale(var(--s1)); }
+    18%  { transform: scale(1); }
+
+    28%  { transform: scale(var(--s2)); }
+    38%  { transform: scale(1); }
+
     100% { transform: scale(1); }
 }
 
@@ -186,37 +189,37 @@ h1 {
 
 <div class="grid">
 
-<img src="c11.png" class="latido fuerte" style="animation-delay:0s"
+<img src="c11.png" class="latido fuerte" 
 onclick="openCompra('c11.png','Circuito Bauhaus<br><span class=\'precio\'>$319.00</span>')">
 
-<img src="c10.png" class="latido fuerte" style="animation-delay:.4s"
+<img src="c10.png" class="latido fuerte" 
 onclick="openCompra('c10.png','Circuito Leverkusen<br><span class=\'precio\'>$285.00</span>')">
 
-<img src="c09.png" class="latido medio" style="animation-delay:.8s"
+<img src="c09.png" class="latido medio" 
 onclick="openCompra('c09.png','Circuito Heidelberg<br><span class=\'precio\'>$249.00</span>')">
 
-<img src="c08.png" class="latido medio" style="animation-delay:1.2s"
+<img src="c08.png" class="latido medio" 
 onclick="openCompra('c08.png','Circuito Stuttgart<br><span class=\'precio\'>$232.00</span>')">
 
-<img src="c07.png" class="latido medio" style="animation-delay:1.6s"
+<img src="c07.png" class="latido medio" 
 onclick="openCompra('c07.png','Circuito Dresden<br><span class=\'precio\'>$215.00</span>')">
 
-<img src="c06.png" class="latido suave" style="animation-delay:2s"
+<img src="c06.png" class="latido suave" 
 onclick="openCompra('c06.png','Circuito Düsseldorf<br><span class=\'precio\'>$199.00</span>')">
 
-<img src="c05.png" class="latido suave" style="animation-delay:2.3s"
+<img src="c05.png" class="latido suave" 
 onclick="openCompra('c05.png','Circuito München<br><span class=\'precio\'>$185.00</span>')">
 
-<img src="c04.png" class="latido suave" style="animation-delay:2.6s"
+<img src="c04.png" class="latido suave" 
 onclick="openCompra('c04.png','Circuito Berlín<br><span class=\'precio\'>$163.00</span>')">
 
-<img src="c03.png" class="latido suave" style="animation-delay:2.9s"
+<img src="c03.png" class="latido suave" 
 onclick="openCompra('c03.png','Circuito Hannover<br><span class=\'precio\'>$142.00</span>')">
 
-<img src="c02.png" class="latido suave" style="animation-delay:1.9s"
+<img src="c02.png" class="latido suave" 
 onclick="openCompra('c02.png','Circuito Lizt<br><span class=\'precio\'>$119.00</span>')">
 
-<img src="C01.png" class="latido suave" style="animation-delay:.6s"
+<img src="C01.png" class="latido suave" 
 onclick="openCompra('C01.png','Circuito Viena<br><span class=\'precio\'>$99.00</span>')">
 
 </div>
