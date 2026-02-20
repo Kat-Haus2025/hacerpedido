@@ -1,183 +1,159 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Circuitos Kat-Haus</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: "Segoe UI", Arial, sans-serif;
-      background: #dbefff;
-      color: #2f2f2f;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Circuitos Kat Haus</title>
 
-    .container {
-      max-width: 1200px;
-      margin: auto;
-      padding: 20px;
-      text-align: center;
-    }
+<!-- Facebook Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){
+  if(f.fbq)return;
+  n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];
+  t=b.createElement(e);t.async=!0;
+  t.src=v;
+  s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)
+}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
 
-    h1 {
-      font-size: 2.3rem;
-      font-weight: 700;
-      margin-bottom: 1.8rem;
-    }
+fbq('init', '898422962642132');
+fbq('track', 'PageView');
+</script>
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 28px;
-      margin-top: 20px;
-    }
+<noscript>
+<img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=898422962642132&ev=PageView&noscript=1"/>
+</noscript>
+<!-- End Facebook Pixel Code -->
 
-    .card {
-      background: #ffe3c2;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-      transition: transform .25s ease, box-shadow .25s ease;
-      text-align: left;
-      cursor: pointer;
-      position: relative;
-    }
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #fafafa;
+}
 
-    /* Animación especial para el Dresden (más vendido) */
-    .card.dresden {
-      animation: pulse 2.4s infinite ease-in-out;
-    }
+h1 {
+    text-align: center;
+    padding: 20px;
+}
 
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.03); }
-      100% { transform: scale(1); }
-    }
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
 
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 22px rgba(0,0,0,0.22);
-    }
+.grid img {
+    width: 100%;
+    cursor: pointer;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+}
 
-    .card img {
-      width: 100%;
-      height: 230px;
-      object-fit: cover;
-    }
+.grid img:hover {
+    transform: scale(1.03);
+}
 
-    .card h2 {
-      margin: 0;
-      padding: 15px 18px 10px;
-      font-size: 1.35rem;
-      font-weight: 700;
-      color: #2c1c10;
-    }
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    justify-content: center;
+    align-items: center;
+}
 
-    .card p {
-      padding: 0 20px 18px;
-      font-size: 0.95rem;
-      line-height: 1.45rem;
-      color: #3d3d3d;
-      white-space: pre-line;
-    }
+.modal-content {
+    background: white;
+    padding: 25px;
+    border-radius: 16px;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+}
 
-    footer {
-      margin-top: 45px;
-      padding: 18px;
-      text-align: center;
-      font-size: 0.85rem;
-      color: #444;
-      opacity: 0.85;
-    }
+.close {
+    float: right;
+    font-size: 22px;
+    cursor: pointer;
+}
 
-    .blender {
-      margin-top: 6px;
-      font-size: 0.8rem;
-      opacity: 0.7;
-    }
-      a.card {
-      text-decoration: none;
-      color: inherit;
-    }
-  </style>
+.btn {
+    margin-top: 20px;
+    display: inline-block;
+    padding: 12px 20px;
+    background: black;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+}
+</style>
 </head>
+
 <body>
-  <div class="container">
-    <h1>Elige tu Circuito Ideal:</h1>
 
-    <div class="grid">
+<h1>Circuitos Exclusivos Kat Haus</h1>
 
-      <a class="card" href="cir6.html">
-        <img src="cir6.jpg" alt="Circuito 6" />
-        <h2>Circuito Frankfurt - $256.00</h2>
-        <p>-2 Casas Pentagonales
--2 Sillones Gatunos
--2 Postes rascadores
--2 Escaleras 60cms
--2 Repisa 30cms
--Puente Colgante
--Puente Brooklyn</p>
-      </a>
+<div class="grid">
+    <img src="c11.png" onclick="openModal('Circuito 10', 'Nuestro diseño más exclusivo y premium.')">
+    <img src="c09.png" onclick="openModal('Circuito 9', 'Alta gama con acabados superiores.')">
+    <img src="c08.png" onclick="openModal('Circuito 8', 'Diseño equilibrado y elegante.')">
+    <img src="c07.png" onclick="openModal('Circuito 7', 'Funcionalidad con estilo.')">
+    <img src="c06.png" onclick="openModal('Circuito 6', 'Moderno y adaptable.')">
+    <img src="c05.png" onclick="openModal('Circuito 5', 'Versátil y sofisticado.')">
+    <img src="c04.png" onclick="openModal('Circuito 4', 'Compacto y elegante.')">
+    <img src="c03.png" onclick="openModal('Circuito 3', 'Práctico y funcional.')">
+    <img src="c02.png" onclick="openModal('Circuito 2', 'Ideal para espacios pequeños.')">
+    <img src="c01.png" onclick="openModal('Circuito 1', 'Modelo esencial.')">
+</div>
 
-      <a class="card" href="cir5.html">
-        <img src="cir5.jpg" alt="Circuito 5" />
-        <h2>Circuito Bremen - $239.00</h2>
-        <p>-1 Casa Pentagonal
--1 Sillón Gatuno
--1 Puente Brooklyn
--1 Puente Colgante
--2 Escaleras 60cms
--1 Poste Escalador
--1 Repisa 30cms</p>
-      </a>
+<!-- Modal -->
+<div class="modal" id="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2 id="modal-title"></h2>
+        <p id="modal-description"></p>
 
-      <a class="card dresden" href="cir4.html">
-        <img src="cir4.jpg" alt="Circuito 4" />
-        <h2>Circuito Dresden - $199.00 ⭐ Más vendido</h2>
-        <p>-1 Casa Pentagonal
--1 Sillón Gatuno
--1 Túnel Felino
--1 Puente Colgante
--1 Poste Escalador
--1 Puente Colgante
--2 Repisas 30cms
--2 Escaleras 60cms</p>
-      </a>
-
-      <a class="card" href="cir3.html">
-        <img src="cir3.jpg" alt="Circuito 3" />
-        <h2>Circuito Düsseldorf - $173.00</h2>
-        <p>-1 Sillón Gatuno
--1 Puente Brooklyn
--1 Poste Escalador
--2 Repisa 30cms
--2 Escaleras 60cms</p>
-      </a>
-
-      <a class="card" href="cir2.html">
-        <img src="cir2.jpg" alt="Circuito 2" />
-        <h2>Circuito München - $138.00</h2>
-        <p>-1 Casa Pentagonal
--1 Puente Colgante
--1 Sillón Gatuno
--2 Escaleras 60cms
--1 Repisa 30cms</p>
-      </a>
-
-      <a class="card" href="cir1.html">
-        <img src="cir1.jpg" alt="Circuito 1" />
-        <h2>Circuito Viena - $108.00</h2>
-        <p>-1 Sillón Gatuno
--2 Repisa 30cms
--2 Escaleras 60cms</p>
-      </a>
-
+        <a class="btn" 
+           href="https://wa.me/593TU_NUMERO" 
+           target="_blank"
+           onclick="trackLead()">
+           Solicitar este diseño
+        </a>
     </div>
-  </div>
+</div>
 
-  <footer>
-    © 2025 Kat-Haus · Todos los derechos reservados  
-    <div class="blender">Modelado y renders hechos en Blender 🧡</div>
-  </footer>
+<script>
+function openModal(title, description) {
+    document.getElementById('modal-title').innerText = title;
+    document.getElementById('modal-description').innerText = description;
+    document.getElementById('modal').style.display = "flex";
+
+    fbq('track', 'ViewContent', {
+        content_name: title
+    });
+}
+
+function closeModal() {
+    document.getElementById('modal').style.display = "none";
+}
+
+function trackLead() {
+    fbq('track', 'Lead');
+}
+</script>
+
 </body>
 </html>
