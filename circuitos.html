@@ -24,6 +24,7 @@ fbq('track', 'PageView');
 <!-- END META PIXEL -->
 
 <style>
+
 body {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
@@ -141,28 +142,81 @@ body {
 
 <div class="grid">
 
+<!-- 1 -->
 <div class="card">
 <img src="c11.png" class="latido fuerte"
 onclick="openCompra('c11.png','Circuito Bauhaus',319)">
 <p class="descripcion">5 plataformas • 3 túneles • 2 rascadores • hamaca premium</p>
 </div>
 
+<!-- 2 -->
 <div class="card">
 <img src="c10.png" class="latido fuerte"
 onclick="openCompra('c10.png','Circuito Leverkusen',285)">
 <p class="descripcion">4 plataformas • puente suspendido • rascador doble</p>
 </div>
 
+<!-- 3 -->
 <div class="card">
 <img src="c09.png" class="latido medio"
 onclick="openCompra('c09.png','Circuito Heidelberg',249)">
 <p class="descripcion">3 niveles • túnel central • hamaca inferior</p>
 </div>
 
+<!-- 4 -->
 <div class="card">
 <img src="c08.png" class="latido medio"
 onclick="openCompra('c08.png','Circuito Stuttgart',232)">
 <p class="descripcion">3 plataformas • zona descanso • rascador vertical</p>
+</div>
+
+<!-- 5 -->
+<div class="card">
+<img src="c07.png" class="latido medio"
+onclick="openCompra('c07.png','Circuito Dresden',215)">
+<p class="descripcion">2 niveles • rascador alto • base amplia</p>
+</div>
+
+<!-- 6 -->
+<div class="card">
+<img src="c06.png" class="latido suave"
+onclick="openCompra('c06.png','Circuito Düsseldorf',199)">
+<p class="descripcion">2 plataformas • túnel simple • compacto</p>
+</div>
+
+<!-- 7 -->
+<div class="card">
+<img src="c05.png" class="latido suave"
+onclick="openCompra('c05.png','Circuito München',185)">
+<p class="descripcion">2 niveles • rascador central</p>
+</div>
+
+<!-- 8 -->
+<div class="card">
+<img src="c04.png" class="latido suave"
+onclick="openCompra('c04.png','Circuito Berlín',163)">
+<p class="descripcion">Plataforma doble • base estable</p>
+</div>
+
+<!-- 9 -->
+<div class="card">
+<img src="c03.png" class="latido suave"
+onclick="openCompra('c03.png','Circuito Hannover',142)">
+<p class="descripcion">Plataforma simple • rascador integrado</p>
+</div>
+
+<!-- 10 -->
+<div class="card">
+<img src="c02.png" class="latido suave"
+onclick="openCompra('c02.png','Circuito Lizt',119)">
+<p class="descripcion">Diseño compacto • ideal espacios pequeños</p>
+</div>
+
+<!-- 11 -->
+<div class="card">
+<img src="C01.png" class="latido suave"
+onclick="openCompra('C01.png','Circuito Viena',99)">
+<p class="descripcion">1 plataforma • rascador básico</p>
 </div>
 
 </div>
@@ -215,7 +269,6 @@ document.getElementById("btn-envio").href =
 document.getElementById("btn-instalacion").href =
 "https://wa.me/593963372269?text="+mensajeInstalacion;
 
-/* VIEW CONTENT PRO */
 fbq('track','ViewContent',{
 content_name: nombre,
 value: precio,
@@ -224,7 +277,6 @@ currency: 'USD'
 
 }
 
-/* LEAD PRO */
 document.addEventListener("click",function(e){
 if(e.target.classList.contains("btn-whatsapp")){
 fbq('track','Lead',{
