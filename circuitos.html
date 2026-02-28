@@ -25,25 +25,21 @@ fbq('track', 'PageView');
 
 <style>
 
-html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    background-color: #0f3f44; /* mismo tono oscuro base del turquesa */
+html {
+    background: #0f3f44 url("background.png") center center / cover no-repeat fixed;
+    min-height: 100%;
 }
 
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0; /* top:0 right:0 bottom:0 left:0 */
-    
-    background-image: url("background.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+@media (max-width: 768px) {
+    html {
+        background-attachment: scroll;
+    }
+}
 
-    z-index: -1;
-    transform: translateZ(0); /* fuerza render GPU */
+body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
 }
 
 .footer-container {
