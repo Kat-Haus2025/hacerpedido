@@ -7,7 +7,7 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 
-<!-- Meta Pixel Code -->
+<!-- META PIXEL PRO -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -21,15 +21,9 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 fbq('init', '649645208209657');
 fbq('track', 'PageView');
 </script>
-
-<noscript>
-<img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=649645208209657&ev=PageView&noscript=1"/>
-</noscript>
-<!-- End Meta Pixel Code -->
+<!-- END META PIXEL -->
 
 <style>
-
 body {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
@@ -37,36 +31,15 @@ body {
     color: #F5F5F5;
 }
 
-h1 {
-    font-family: 'Cinzel', serif;
-    text-align: center;
-    font-size: 42px;
-    margin-top: 40px;
-    text-shadow: 0 0 20px rgba(255,255,255,0.3);
-    letter-spacing: 2px;
-}
-
 .footer-container {
-    width: 100%;
     text-align: center;
-    margin-top: 14px;
-    padding-bottom: 14px;
-}
-
-.footer-container img {
-    width: 100%;
-    max-width: 1400px;
-    height: auto;
-    display: block;
-    margin: 0 auto 12px auto;
+    margin-top: 20px;
 }
 
 .footer-text {
     font-family: 'Cinzel', serif;
     font-size: 28px;
     letter-spacing: 2px;
-    color: #F5F5F5;
-    text-shadow: 0 0 15px rgba(255,255,255,0.3);
 }
 
 .grid {
@@ -78,6 +51,8 @@ h1 {
     margin: auto;
 }
 
+.card { text-align:center; }
+
 .grid img {
     width: 100%;
     border-radius: 16px;
@@ -85,42 +60,38 @@ h1 {
     box-shadow: 0 10px 25px rgba(0,0,0,0.6);
 }
 
+.descripcion {
+    margin-top: 12px;
+    font-size: 14px;
+    color: #CCCCCC;
+    line-height: 1.5;
+}
+
 .latido {
     animation: heartbeat 3s infinite cubic-bezier(.4,0,.2,1);
 }
 
-/* Intensidad por precio */
 .fuerte { --s1:1.07; --s2:1.12; }
 .medio  { --s1:1.04; --s2:1.07; }
 .suave  { --s1:1.02; --s2:1.04; }
 
 @keyframes heartbeat {
-
-    0%   { transform: scale(1); }
-
-    10%  { transform: scale(var(--s1)); }
-    18%  { transform: scale(1); }
-
-    28%  { transform: scale(var(--s2)); }
-    38%  { transform: scale(1); }
-
+    0% { transform: scale(1); }
+    10% { transform: scale(var(--s1)); }
+    18% { transform: scale(1); }
+    28% { transform: scale(var(--s2)); }
+    38% { transform: scale(1); }
     100% { transform: scale(1); }
 }
 
-.grid img:hover {
-    transform: translateY(-8px) scale(1.03);
-    transition: 0.3s;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.8);
-}
+/* MODAL */
 
 .modal {
     display: none;
     position: fixed;
     z-index: 999;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
     background: rgba(0,0,0,0.85);
     justify-content: center;
     align-items: center;
@@ -134,13 +105,6 @@ h1 {
     width: 90%;
     text-align: center;
     border: 1px solid #8B5A2B;
-    box-shadow: 0 0 30px rgba(139,90,43,0.4);
-}
-
-.modal-content h2 {
-    font-family: 'Cinzel', serif;
-    font-size: 28px;
-    margin-bottom: 25px;
 }
 
 .precio {
@@ -150,15 +114,6 @@ h1 {
     display: block;
     margin-top: 8px;
 }
-
-.close {
-    float: right;
-    font-size: 22px;
-    cursor: pointer;
-    color: #aaa;
-}
-
-.close:hover { color: #fff; }
 
 .btn-whatsapp {
     display: block;
@@ -170,122 +125,114 @@ h1 {
     border-radius: 40px;
     font-weight: 600;
     transition: 0.3s;
-    box-shadow: 0 0 20px rgba(37,211,102,0.4);
 }
 
 .btn-whatsapp:hover {
     background: #1ebe5d;
-    transform: translateY(-3px);
-    box-shadow: 0 0 30px rgba(37,211,102,0.6);
 }
-
 </style>
 </head>
 
 <body>
 
 <div class="footer-container">
-    <img src="profesional.png">
-    <p class="footer-text">Selecciona tu Circuito Ideal:</p>
+<p class="footer-text">Selecciona tu Circuito Ideal:</p>
 </div>
 
 <div class="grid">
 
-<img src="c11.png" class="latido fuerte" 
-onclick="openCompra('c11.png','Circuito Bauhaus<br><span class=\'precio\'>$319.00</span>')">
+<div class="card">
+<img src="c11.png" class="latido fuerte"
+onclick="openCompra('c11.png','Circuito Bauhaus',319)">
+<p class="descripcion">5 plataformas • 3 túneles • 2 rascadores • hamaca premium</p>
+</div>
 
-<img src="c10.png" class="latido fuerte" 
-onclick="openCompra('c10.png','Circuito Leverkusen<br><span class=\'precio\'>$285.00</span>')">
+<div class="card">
+<img src="c10.png" class="latido fuerte"
+onclick="openCompra('c10.png','Circuito Leverkusen',285)">
+<p class="descripcion">4 plataformas • puente suspendido • rascador doble</p>
+</div>
 
-<img src="c09.png" class="latido medio" 
-onclick="openCompra('c09.png','Circuito Heidelberg<br><span class=\'precio\'>$249.00</span>')">
+<div class="card">
+<img src="c09.png" class="latido medio"
+onclick="openCompra('c09.png','Circuito Heidelberg',249)">
+<p class="descripcion">3 niveles • túnel central • hamaca inferior</p>
+</div>
 
-<img src="c08.png" class="latido medio" 
-onclick="openCompra('c08.png','Circuito Stuttgart<br><span class=\'precio\'>$232.00</span>')">
-
-<img src="c07.png" class="latido medio" 
-onclick="openCompra('c07.png','Circuito Dresden<br><span class=\'precio\'>$215.00</span>')">
-
-<img src="c06.png" class="latido suave" 
-onclick="openCompra('c06.png','Circuito Düsseldorf<br><span class=\'precio\'>$199.00</span>')">
-
-<img src="c05.png" class="latido suave" 
-onclick="openCompra('c05.png','Circuito München<br><span class=\'precio\'>$185.00</span>')">
-
-<img src="c04.png" class="latido suave" 
-onclick="openCompra('c04.png','Circuito Berlín<br><span class=\'precio\'>$163.00</span>')">
-
-<img src="c03.png" class="latido suave" 
-onclick="openCompra('c03.png','Circuito Hannover<br><span class=\'precio\'>$142.00</span>')">
-
-<img src="c02.png" class="latido suave" 
-onclick="openCompra('c02.png','Circuito Lizt<br><span class=\'precio\'>$119.00</span>')">
-
-<img src="C01.png" class="latido suave" 
-onclick="openCompra('C01.png','Circuito Viena<br><span class=\'precio\'>$99.00</span>')">
+<div class="card">
+<img src="c08.png" class="latido medio"
+onclick="openCompra('c08.png','Circuito Stuttgart',232)">
+<p class="descripcion">3 plataformas • zona descanso • rascador vertical</p>
+</div>
 
 </div>
 
-<!-- MODAL COMPRA -->
-<div class="modal" id="modal-compra">
-    <div class="modal-content">
-        <span class="close" onclick="closeCompra()">&times;</span>
-        <img id="compra-img" style="width:180px;border-radius:16px;margin-bottom:15px;">
-        <h2 id="compra-title"></h2>
+<!-- MODAL -->
 
-        <a id="btn-envio" class="btn-whatsapp" target="_blank">
-            Solicitar Fabricación con Envío GRATIS
-        </a>
+<div class="modal" id="modal">
+<div class="modal-content">
+<img id="modal-img" style="width:180px;border-radius:16px;margin-bottom:15px;">
+<h2 id="modal-title"></h2>
+<span id="modal-price" class="precio"></span>
 
-        <a id="btn-instalacion" class="btn-whatsapp" target="_blank">
-            Solicitar Fabricación e Instalación en Quito o Guayaquil (+$20.00)
-        </a>
-    </div>
+<a id="btn-envio" class="btn-whatsapp" target="_blank">
+Solicitar con Envío GRATIS
+</a>
+
+<a id="btn-instalacion" class="btn-whatsapp" target="_blank">
+Fabricación + Instalación (+$20)
+</a>
+
 </div>
-
-<div class="footer-container">
-    <img src="footer.png">
 </div>
 
 <script>
 
-let circuitoActual = "";
+let productoNombre = "";
+let productoPrecio = 0;
 
-function openCompra(imagen, nombre) {
+function openCompra(img,nombre,precio){
 
-    circuitoActual = nombre;
+productoNombre = nombre;
+productoPrecio = precio;
 
-    document.getElementById('compra-img').src = imagen;
-    document.getElementById('compra-title').innerHTML = nombre;
-    document.getElementById('modal-compra').style.display = "flex";
+document.getElementById("modal").style.display="flex";
+document.getElementById("modal-img").src = img;
+document.getElementById("modal-title").innerText = nombre;
+document.getElementById("modal-price").innerText = "$"+precio+".00";
 
-    let textoPlano = nombre.replace(/<[^>]*>?/gm, '');
+let mensajeEnvio = encodeURIComponent(
+"Hola Ale 💕 quiero el "+nombre+" con Envío Gratis."
+);
 
-    let mensajeEnvio = encodeURIComponent(
-        "Hola Ale 💕 quiero solicitar la fabricación del " + textoPlano + " con Envío Gratis."
-    );
+let mensajeInstalacion = encodeURIComponent(
+"Hola Ale 💕 quiero el "+nombre+" con Instalación (+$20)."
+);
 
-    let mensajeInstalacion = encodeURIComponent(
-        "Hola Ale 💕 quiero solicitar la fabricación del " + textoPlano + " con Instalación en Quito o Guayaquil (+$20.00)."
-    );
+document.getElementById("btn-envio").href =
+"https://wa.me/593963372269?text="+mensajeEnvio;
 
-    document.getElementById("btn-envio").href =
-        "https://wa.me/593963372269?text=" + mensajeEnvio;
+document.getElementById("btn-instalacion").href =
+"https://wa.me/593963372269?text="+mensajeInstalacion;
 
-    document.getElementById("btn-instalacion").href =
-        "https://wa.me/593963372269?text=" + mensajeInstalacion;
+/* VIEW CONTENT PRO */
+fbq('track','ViewContent',{
+content_name: nombre,
+value: precio,
+currency: 'USD'
+});
 
-    fbq('track', 'ViewContent', { content_name: textoPlano });
 }
 
-function closeCompra() {
-    document.getElementById('modal-compra').style.display = "none";
+/* LEAD PRO */
+document.addEventListener("click",function(e){
+if(e.target.classList.contains("btn-whatsapp")){
+fbq('track','Lead',{
+content_name: productoNombre,
+value: productoPrecio,
+currency: 'USD'
+});
 }
-
-document.addEventListener("click", function(e) {
-    if (e.target.classList.contains("btn-whatsapp")) {
-        fbq('track', 'Lead', { content_name: circuitoActual });
-    }
 });
 
 </script>
