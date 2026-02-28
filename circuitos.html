@@ -27,9 +27,24 @@ fbq('track', 'PageView');
 
 body {
     margin: 0;
-    font-family: 'Montserrat', sans-serif;
-    background: linear-gradient(180deg, #1E1E1E 0%, #2A2A2A 100%);
-    color: #F5F5F5;
+    padding: 0;
+    min-height: 100vh;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background-image: url("background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    z-index: -1;  /* Lo manda detrás de todo */
 }
 
 .footer-container {
@@ -152,14 +167,30 @@ body {
 <div class="card">
 <img src="c11.png" class="latido fuerte"
 onclick="openCompra('c11.png','Circuito Bauhaus',319)">
-<p class="descripcion">5 plataformas • 3 túneles • 2 rascadores • hamaca premium</p>
+<p class="descripcion">Circuito Bauhaus <br>
+    -1 Casa Pentagonal con Puente<br>  
+        -2 Postes Rascadores<br> 
+    -2 Sillones Gatunos<br>
+    -4 Repisa 30cms<br> 
+     -1 Puente Brooklyn<br> 
+     -2 Escalera 60 cms<br> 
+    -1 Túnel Felino<br> 
+
 </div>
 
 <!-- 2 -->
 <div class="card">
 <img src="c10.png" class="latido fuerte"
 onclick="openCompra('c10.png','Circuito Leverkusen',285)">
-<p class="descripcion">4 plataformas • puente suspendido • rascador doble</p>
+<p class="descripcion">Circuito Leverkusen <br>
+    -1 Casa Pentagonal con Puente<br>  
+        -1 Puente Brooklyn<br> 
+    -1 Repisero<br>
+    -2 Repisa 30cms<br> 
+     -1 Poste Rascador<br> 
+    -1 Túnel Felino<br> 
+    -4 Escalera 60cms<br> 
+    -1 Sillón Gatuno </p>
 </div>
 
 <!-- 3 -->
@@ -237,7 +268,7 @@ onclick="openCompra('c04.png','Circuito Berlín',163)">
         -1 Puente Brooklyn<br> 
     -2 Repisa 30cms<br> 
     -2 Escalera 60cms<br> 
-    -2 Sillón Gatuno </p>
+    -1 Sillón Gatuno </p>
 </div>
 
 <!-- 9 -->
