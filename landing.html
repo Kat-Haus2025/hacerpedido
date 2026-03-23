@@ -87,12 +87,6 @@ transform:scale(1.05);
 border:1px solid #c49546;
 }
 
-/* MAGNATE DESTACADO */
-.hero{
-border:2px solid #c49546;
-box-shadow:0 0 12px rgba(196,149,70,0.3);
-}
-
 /* BADGE */
 .badge{
 background:#c49546;
@@ -154,16 +148,8 @@ margin-top:30px;
 
 <div class="grid">
 
-<!-- 🔥 MAGNATE (EL QUE QUIERES VENDER) -->
-<div class="card hero" onclick="clienteMagnate()">
-<div class="badge">Elección más inteligente</div>
-<img src="tier-4.png">
-<div class="title">Michi Magnate</div>
-<div class="price">$250–$300</div>
-<div class="note">El punto donde diseño, durabilidad y costo se alinean</div>
-</div>
+<!-- ORDEN RESPETADO -->
 
-<!-- SUPERIORES -->
 <div class="card" onclick="clienteAlto('deidad','Michi Deidad')">
 <img src="tier-6.png">
 <div class="title">Michi Deidad</div>
@@ -178,7 +164,15 @@ margin-top:30px;
 <div class="note">Para quienes buscan llevarlo más allá</div>
 </div>
 
-<!-- INFERIORES -->
+<!-- 🔥 MAGNATE CON PRUEBA SOCIAL -->
+<div class="card" onclick="clienteMagnate()">
+<div class="badge">El más pedido</div>
+<img src="tier-4.png">
+<div class="title">Michi Magnate</div>
+<div class="price">$250–$300</div>
+<div class="note">El punto donde diseño, durabilidad y costo se alinean</div>
+</div>
+
 <div class="card" onclick="clienteBajo('aristocrata','Michi Aristócrata')">
 <img src="tier-3.png">
 <div class="title">Michi Aristócrata</div>
@@ -216,13 +210,13 @@ function irWhatsApp(texto){
   window.location.href = url;
 }
 
-// 🔥 MAGNATE (CIERRE DIRECTO)
+// 🔥 MAGNATE
 function clienteMagnate(){
 
   fbq('track', 'Lead', { value:1, currency:'USD', tier:'magnate' });
   fbq('trackCustom', 'HighValueClient', { tier:'magnate' });
 
-  let mensaje = "Hola, quiero avanzar con una gatificación tipo Michi Magnate. Me parece el mejor equilibrio, ¿cómo empezamos?";
+  let mensaje = "Hola, quiero avanzar con una gatificación tipo Michi Magnate. Veo que es el más solicitado, ¿cómo empezamos?";
   irWhatsApp(mensaje);
 }
 
@@ -232,7 +226,7 @@ function clienteAlto(tipo,nombre){
   fbq('track', 'Lead', { value:1, currency:'USD', tier:tipo });
   fbq('trackCustom', 'HighValueClient', { tier:tipo });
 
-  let mensaje = "Hola, estoy considerando una gatificación tipo " + nombre + ", pero quiero entender si vale la pena este nivel o si el Magnate sería suficiente.";
+  let mensaje = "Hola, estoy considerando una gatificación tipo " + nombre + ", pero quiero entender si realmente necesito ese nivel o si el Magnate sería suficiente.";
   irWhatsApp(mensaje);
 }
 
@@ -241,7 +235,7 @@ function clienteBajo(tipo,nombre){
 
   fbq('trackCustom', 'LowBudget');
 
-  let mensaje = "Hola, me interesa una gatificación tipo " + nombre + " y quiero optimizar lo máximo posible dentro de este nivel.";
+  let mensaje = "Hola, me interesa una gatificación tipo " + nombre + " y quiero optimizar lo máximo posible dentro de este rango.";
   irWhatsApp(mensaje);
 }
 
