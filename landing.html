@@ -109,29 +109,53 @@ font-size:0.75rem;
 color:#aaa;
 }
 
-/* UBICACIÓN */
-.location{
-margin-top:30px;
-text-align:center;
+/* BANNER UBICACIÓN */
+.location-banner{
+margin-top:35px;
+max-width:600px;
+margin-left:auto;
+margin-right:auto;
+background:#181512;
+border:1px solid #2a2622;
+border-radius:14px;
+padding:20px;
+box-shadow:0 0 12px rgba(0,0,0,0.4);
 }
 
-.location h3{
+.location-banner h3{
 color:#f1c40f;
 font-size:1.2rem;
 margin-bottom:15px;
+text-align:center;
 }
 
+/* OPCIONES */
 .location-options{
-max-width:420px;
-margin:auto;
-text-align:left;
+display:flex;
+flex-direction:column;
+gap:10px;
 }
 
-.location-options label{
-display:block;
-margin-bottom:10px;
+.location-option{
+background:#211d19;
+padding:10px 12px;
+border-radius:8px;
 cursor:pointer;
-color:#ccc;
+border:1px solid transparent;
+transition:.2s;
+}
+
+.location-option:hover{
+border:1px solid #c49546;
+}
+
+.location-option input{
+margin-right:8px;
+}
+
+.location-option.selected{
+border:1px solid #c49546;
+background:#2a241d;
 }
 
 /* BOTÓN WHATSAPP */
@@ -237,15 +261,26 @@ A mayor inversión, más amplio el recorrido y mayor la experiencia para tu gato
 
 <div class="location">
 
-<h3>Ubicación de tu Hogar Felino:</h3>
+<div class="location-banner">
+
+<h3>Ubicación de tu Hogar Felino</h3>
 
 <div class="location-options">
 
-<label><input type="radio" name="loc" value="Quito"> <strong>Quito</strong> (Envío o Instalación por nuestro personal.)</label>
+<label class="location-option">
+<input type="radio" name="loc" value="Quito">
+Quito <span style="color:#aaa;">(instalación directa desde fábrica)</span>
+</label>
 
-<label><input type="radio" name="loc" value="Guayaquil"> <strong>Guayaquil</strong> (Envío o Instalación por nuestro socio estratégico.)</label>
+<label class="location-option">
+<input type="radio" name="loc" value="Guayaquil">
+Guayaquil <span style="color:#aaa;">(instalación con socio estratégico)</span>
+</label>
 
-<label><input type="radio" name="loc" value="Otra ciudad"> <strong>Otra ciudad en Ecuador continental</strong> (Envío por courier)</label>
+<label class="location-option">
+<input type="radio" name="loc" value="Otra ciudad">
+Otra ciudad <span style="color:#aaa;">(envío a cualquier ciudad del Ecuador continental)</span>
+</label>
 
 </div>
 
