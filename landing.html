@@ -1,134 +1,175 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Kat-Haus - Gatifica tu hogar</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    input[type="radio"] {
-      display: none;
-    }
 
-    label {
-      position: relative;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      border-radius: 1rem;
-      overflow: hidden;
-      border: 4px solid transparent;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background-color: #FFF7ED;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      padding-top: 2rem;
-    }
+<!-- META PIXEL -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
 
-    /* Círculo visual del botón radio */
-    label::before {
-      content: '';
-      position: absolute;
-      top: 0.75rem;
-      left: 0.75rem;
-      width: 1rem;
-      height: 1rem;
-      border-radius: 9999px;
-      border: 2px solid #D97706;
-      background-color: white;
-      transition: background-color 0.3s ease;
-    }
+fbq('init', 'TU_PIXEL_ID');
+fbq('track', 'PageView');
+</script>
 
-    input[type="radio"]:checked + label::before {
-      background-color: #D97706;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    input[type="radio"]:checked + label {
-      border-color: #D97706;
-      box-shadow: 0 0 15px #D97706;
-      background-color: #FFF3D3;
-    }
+<title>Selecciona tu Gatificación</title>
 
-    label img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 1rem;
-    }
+<style>
 
-    label span {
-      font-weight: 600;
-      color: #B45123;
-      padding: 0.5rem 1rem;
-      text-align: center;
-    }
-  </style>
+body{
+background:#12100e;
+color:#fff;
+font-family:sans-serif;
+text-align:center;
+padding:20px;
+}
+
+h1{
+color:#f1c40f;
+margin-bottom:10px;
+}
+
+p{
+color:#bbb;
+margin-bottom:20px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+gap:12px;
+max-width:700px;
+margin:auto;
+}
+
+.card{
+background:#1e1b17;
+padding:12px;
+border-radius:10px;
+cursor:pointer;
+transition:.25s;
+}
+
+.card:hover{
+transform:scale(1.05);
+}
+
+/* 🔴 BAJO VALOR */
+.low{
+opacity:0.6;
+}
+
+/* 🟢 ALTO VALOR */
+.high{
+border:2px solid #c49546;
+}
+
+img{
+width:100%;
+border-radius:6px;
+}
+
+.title{
+color:#f1c40f;
+font-size:0.9rem;
+margin-top:8px;
+}
+
+.price{
+font-size:0.85rem;
+color:#ccc;
+}
+
+#msg{
+margin-top:20px;
+font-size:0.9rem;
+color:#ccc;
+display:none;
+}
+
+</style>
+
 </head>
-<body class="bg-[#fde68a] min-h-screen text-gray-800 flex flex-col justify-center items-center p-4">
 
-  <div class="w-full max-w-xl bg-white rounded-2xl shadow-lg p-6">
-    <h1 class="text-2xl font-bold text-center text-[#5d2b10] mb-6">
-      ¡Tu Hogar está a punto de convertirse en la envidia de los Michis de la cuadra!
-    </h1>
+<body>
 
-    <form id="katForm" class="space-y-4">
-      <input type="number" id="michis" name="michis" placeholder="¿Cuántos michis habitan tu hogar?" required class="w-full p-3 border rounded-xl" />
-      <input type="text" id="ubicacion" name="ubicacion" placeholder="¿Eres de Quito o de qué ciudad?" required class="w-full p-3 border rounded-xl" />
+<h1>Selecciona tu nivel de Gatificación</h1>
 
-      <p class="font-semibold mt-4 text-[#5d2b10]">Selecciona el método de Gatificación:</p>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <!-- Opción Pre-Diseñado -->
-        <div>
-          <input type="radio" id="prediseñado" name="tipo" value="Pre-Diseñado" required />
-          <label for="prediseñado">
-            <span><strong>Circuito Pre-Diseñado</strong></span>
-            <img src="predis.png" alt="Circuito Pre-Diseñado" />
-            <span>
-              Circuitos <strong>probados y aprobados</strong> por nuestros michis,
-              cubriendo rangos <strong>entre $99 y $350</strong>.
-              La manera <strong>más rápida y sencilla</strong> de iniciarte en la Gatificación.
-            </span>
-          </label>
-        </div>
+<p>Trabajamos soluciones estructurales personalizadas.  
+No todos los presupuestos aplican.</p>
 
-        <!-- Opción Personalizado -->
-        <div>
-          <input type="radio" id="personalizado" name="tipo" value="Personalizado" />
-          <label for="personalizado">
-            <span><strong>Circuito Personalizado</strong></span>
-            <img src="disenador.jpg" alt="Circuito Personalizado" />
-            <span>
-              Nuestro servicio <strong>Premium</strong>, ideal para michis con <strong>gustos exigentes</strong> y humanos<br>
-              <strong>para quienes el presupuesto no es un obstáculo.</strong>
-            </span>
-          </label>
-        </div>
-      </div>
+<div class="grid">
 
-      <div class="mt-6 flex flex-col gap-3">
-        <button type="button" onclick="enviarWhatsApp()" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-xl">
-          Continuar por WhatsApp
-        </button>
-      </div>
-    </form>
-  </div>
+<!-- 🔥 PREMIUM -->
+<div class="card high" onclick="goHigh()">
+<img src="deidad.png">
+<div class="title">Michi Deidad</div>
+<div class="price">Sin límites</div>
+</div>
 
-  <script>
-    function enviarWhatsApp() {
-      const michis = document.getElementById("michis").value.trim();
-      const ubicacion = document.getElementById("ubicacion").value.trim();
-      const tipo = document.querySelector('input[name="tipo"]:checked');
+<div class="card high" onclick="goHigh()">
+<img src="emperador.png">
+<div class="title">Michi Emperador</div>
+<div class="price">$400–$500</div>
+</div>
 
-      if (!michis || !ubicacion || !tipo) {
-        alert("Por favor completa todos los campos y elige el método de gatificación.");
-        return;
-      }
+<div class="card high" onclick="goHigh()">
+<img src="magnate.png">
+<div class="title">Michi Magnate</div>
+<div class="price">$300–$399</div>
+</div>
 
-      const mensaje = `Hola! Tengo ${michis} michi(s) y vivo en ${ubicacion}. Estoy interesado en un circuito ${tipo.value}.`;
-      const link = `https://wa.me/593963372269?text=${encodeURIComponent(mensaje)}`;
-      window.open(link, '_blank');
-    }
-  </script>
+<!-- ⚠️ FILTRO -->
+<div class="card low" onclick="reject()">
+<img src="aristocrata.png">
+<div class="title">Michi Aristócrata</div>
+<div class="price">$200–$299</div>
+</div>
+
+<div class="card low" onclick="reject()">
+<img src="oficinista.png">
+<div class="title">Michi Oficinista</div>
+<div class="price">$150–$199</div>
+</div>
+
+<div class="card low" onclick="reject()">
+<img src="estudiante.png">
+<div class="title">Michi Estudiante</div>
+<div class="price">$100–$149</div>
+</div>
+
+</div>
+
+<div id="msg"></div>
+
+<script>
+
+function goHigh(){
+  fbq('track', 'QualifiedLead'); // 🔥 señal de cliente bueno
+  window.location.href = "contacto.html";
+}
+
+function reject(){
+  fbq('track', 'LowIntent'); // ❌ entrenas a Meta a evitarlos
+
+  let msg = document.getElementById("msg");
+  msg.style.display = "block";
+  msg.innerHTML = `
+  Nuestros circuitos están diseñados como soluciones estructurales personalizadas,
+  no como productos individuales.<br><br>
+  Si buscas algo dentro de este rango, probablemente no seamos la mejor opción.
+  `;
+}
+
+</script>
 
 </body>
 </html>
