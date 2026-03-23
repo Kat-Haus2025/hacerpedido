@@ -34,7 +34,6 @@ margin:0;
 /* HEADER */
 .header img{
 width:100%;
-height:auto;
 display:block;
 }
 
@@ -56,30 +55,24 @@ font-size:0.9rem;
 margin-bottom:20px;
 }
 
-/* GRID RESPONSIVE REAL */
+/* GRID */
 .grid{
 display:grid;
-grid-template-columns:repeat(3, 1fr);
+grid-template-columns:repeat(3,1fr);
 gap:14px;
 max-width:900px;
 margin:auto;
 }
 
-/* TABLET */
 @media(max-width:900px){
-.grid{
-grid-template-columns:repeat(2, 1fr);
-}
+.grid{grid-template-columns:repeat(2,1fr);}
 }
 
-/* MÓVIL */
 @media(max-width:500px){
-.grid{
-grid-template-columns:1fr;
-}
+.grid{grid-template-columns:1fr;}
 }
 
-/* CARDS */
+/* CARD */
 .card{
 background:#1c1915;
 padding:12px;
@@ -94,7 +87,7 @@ transform:scale(1.05);
 border:1px solid #c49546;
 }
 
-/* DESTACADO SIN ROMPER GRID */
+/* MAGNATE DESTACADO */
 .hero{
 border:2px solid #c49546;
 box-shadow:0 0 12px rgba(196,149,70,0.3);
@@ -157,38 +150,40 @@ margin-top:30px;
 <div class="container">
 
 <h1>Define el nivel de intervención</h1>
-<div class="sub">Todos los niveles funcionan — la diferencia está en el alcance del diseño</div>
+<div class="sub">Todos funcionan — la diferencia está en cuánto quieres optimizar el resultado</div>
 
 <div class="grid">
 
-<!-- DESTACADO -->
-<div class="card hero" onclick="clienteBueno('emperador','Michi Emperador')">
-<div class="badge">Recomendado</div>
-<img src="tier-5.png">
-<div class="title">Michi Emperador</div>
-<div class="price">$301–$350</div>
-<div class="note">Equilibrio ideal entre diseño y durabilidad</div>
-</div>
-
-<div class="card" onclick="clienteBueno('deidad','Michi Deidad')">
-<img src="tier-6.png">
-<div class="title">Michi Deidad</div>
-<div class="price">Sin límites</div>
-<div class="note">Máxima personalización</div>
-</div>
-
-<div class="card" onclick="clienteBueno('magnate','Michi Magnate')">
+<!-- 🔥 MAGNATE (EL QUE QUIERES VENDER) -->
+<div class="card hero" onclick="clienteMagnate()">
+<div class="badge">Elección más inteligente</div>
 <img src="tier-4.png">
 <div class="title">Michi Magnate</div>
 <div class="price">$250–$300</div>
-<div class="note">Alta personalización</div>
+<div class="note">El punto donde diseño, durabilidad y costo se alinean</div>
 </div>
 
+<!-- SUPERIORES -->
+<div class="card" onclick="clienteAlto('deidad','Michi Deidad')">
+<img src="tier-6.png">
+<div class="title">Michi Deidad</div>
+<div class="price">Sin límites</div>
+<div class="note">Diseño sin restricciones</div>
+</div>
+
+<div class="card" onclick="clienteAlto('emperador','Michi Emperador')">
+<img src="tier-5.png">
+<div class="title">Michi Emperador</div>
+<div class="price">$301–$350</div>
+<div class="note">Para quienes buscan llevarlo más allá</div>
+</div>
+
+<!-- INFERIORES -->
 <div class="card" onclick="clienteBajo('aristocrata','Michi Aristócrata')">
 <img src="tier-3.png">
 <div class="title">Michi Aristócrata</div>
 <div class="price">$201–$250</div>
-<div class="note">Solución funcional</div>
+<div class="note">Solución funcional optimizada</div>
 </div>
 
 <div class="card" onclick="clienteBajo('oficinista','Michi Oficinista')">
@@ -221,29 +216,32 @@ function irWhatsApp(texto){
   window.location.href = url;
 }
 
-// CLIENTES ALTOS
-function clienteBueno(tipo,nombre){
+// 🔥 MAGNATE (CIERRE DIRECTO)
+function clienteMagnate(){
 
-  fbq('track', 'Lead', {
-    value: 1,
-    currency: 'USD',
-    tier: tipo
-  });
+  fbq('track', 'Lead', { value:1, currency:'USD', tier:'magnate' });
+  fbq('trackCustom', 'HighValueClient', { tier:'magnate' });
 
-  fbq('trackCustom', 'HighValueClient', {
-    tier: tipo
-  });
-
-  let mensaje = "Hola, ya revisé las opciones y quiero avanzar con una gatificación tipo " + nombre + ". ¿Cómo empezamos?";
+  let mensaje = "Hola, quiero avanzar con una gatificación tipo Michi Magnate. Me parece el mejor equilibrio, ¿cómo empezamos?";
   irWhatsApp(mensaje);
 }
 
-// CLIENTES BAJOS (SIN RECHAZO)
+// ALTOS
+function clienteAlto(tipo,nombre){
+
+  fbq('track', 'Lead', { value:1, currency:'USD', tier:tipo });
+  fbq('trackCustom', 'HighValueClient', { tier:tipo });
+
+  let mensaje = "Hola, estoy considerando una gatificación tipo " + nombre + ", pero quiero entender si vale la pena este nivel o si el Magnate sería suficiente.";
+  irWhatsApp(mensaje);
+}
+
+// BAJOS
 function clienteBajo(tipo,nombre){
 
   fbq('trackCustom', 'LowBudget');
 
-  let mensaje = "Hola, me interesa una gatificación tipo " + nombre + ". Quiero definir la mejor opción dentro de este nivel.";
+  let mensaje = "Hola, me interesa una gatificación tipo " + nombre + " y quiero optimizar lo máximo posible dentro de este nivel.";
   irWhatsApp(mensaje);
 }
 
