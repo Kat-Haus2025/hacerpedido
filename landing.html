@@ -158,27 +158,60 @@ border:1px solid #c49546;
 background:#2a241d;
 }
 
-/* BOTÓN WHATSAPP */
+/* BOTÓN BASE */
 .btn{
-margin-top:30px;
+margin:35px auto 0 auto;
 background:#25D366;
 color:#fff;
-padding:14px;
+padding:14px 18px;
 border-radius:10px;
 cursor:pointer;
 font-weight:bold;
 border:none;
-width:100%;
-max-width:380px;
 display:flex;
 align-items:center;
 justify-content:center;
 gap:10px;
 font-size:0.95rem;
+width:100%;
+max-width:380px;
+opacity:0.6;
+transition:.3s;
+position:relative;
+overflow:hidden;
 }
 
-.btn:hover{
-opacity:0.9;
+/* ACTIVO */
+.btn.active{
+opacity:1;
+}
+
+/* EFECTO BRILLO SOLO ACTIVO */
+.btn.active::before{
+content:"";
+position:absolute;
+top:0;
+left:-100%;
+width:100%;
+height:100%;
+background:linear-gradient(
+120deg,
+transparent,
+rgba(255,255,255,0.4),
+transparent
+);
+animation:shine 2.5s infinite;
+}
+
+@keyframes shine{
+0%{left:-100%;}
+50%{left:100%;}
+100%{left:100%;}
+}
+
+/* HOVER */
+.btn.active:hover{
+transform:scale(1.05);
 }
 
 /* ICONO */
@@ -186,6 +219,64 @@ opacity:0.9;
 width:20px;
 height:20px;
 fill:white;
+}
+
+/* ICONO */
+.btn svg{
+width:20px;
+height:20px;
+fill:white;
+}
+
+/* BANNER UBICACIÓN */
+.location-banner{
+margin-top:35px;
+max-width:600px;
+margin-left:auto;
+margin-right:auto;
+background:#181512;
+border:1px solid #2a2622;
+border-radius:14px;
+padding:20px;
+box-shadow:0 0 12px rgba(0,0,0,0.4);
+}
+
+/* TÍTULO CENTRADO */
+.location-banner h3{
+color:#f1c40f;
+font-size:1.2rem;
+margin-bottom:15px;
+text-align:center;
+}
+
+/* OPCIONES A LA IZQUIERDA */
+.location-options{
+display:flex;
+flex-direction:column;
+gap:10px;
+text-align:left;
+}
+
+.location-option{
+background:#211d19;
+padding:10px 12px;
+border-radius:8px;
+cursor:pointer;
+border:1px solid transparent;
+transition:.2s;
+}
+
+.location-option:hover{
+border:1px solid #c49546;
+}
+
+.location-option.selected{
+border:1px solid #c49546;
+background:#2a241d;
+}
+
+.location-option input{
+margin-right:8px;
 }
 
 /* FOOTER */
@@ -286,14 +377,14 @@ Otra ciudad <span style="color:#aaa;">(envío a cualquier ciudad del Ecuador con
 
 </div>
 
-<button class="btn" onclick="enviar()">
-  
-<!-- ICONO WHATSAPP -->
+<button class="btn" id="ctaBtn" onclick="enviar()">
+
 <svg viewBox="0 0 32 32">
-<path d="M16 .4C7.6.4.8 7.2.8 15.6c0 2.7.7 5.2 2 7.5L.4 32l9.1-2.3c2.2 1.2 4.8 1.9 7.5 1.9 8.4 0 15.2-6.8 15.2-15.2C31.2 7.2 24.4.4 16 .4zm0 27.6c-2.3 0-4.5-.6-6.4-1.7l-.5-.3-5.4 1.4 1.4-5.3-.3-.5c-1.2-1.9-1.8-4.1-1.8-6.5C3 8.6 8.6 3 16 3s13 5.6 13 13-5.6 13-13 13zm7.2-9.6c-.4-.2-2.4-1.2-2.7-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.2 1.6-.2.2-.4.3-.8.1-2.3-1.1-3.8-2-5.3-4.4-.4-.6.4-.6 1.1-2 .1-.2 0-.4 0-.6-.1-.2-.9-2.2-1.2-3-.3-.8-.6-.7-.9-.7h-.8c-.3 0-.6.1-.9.4-.3.4-1.2 1.2-1.2 2.9 0 1.7 1.2 3.4 1.4 3.6.2.2 2.4 3.6 5.9 5.1.8.3 1.5.5 2 .6.8.3 1.6.3 2.2.2.7-.1 2.4-1 2.7-1.9.3-.9.3-1.7.2-1.9-.1-.2-.3-.3-.7-.5z"/>
+<path d="M16 .4C7.6.4.8 7.2.8 15.6c0 2.7.7 5.2 2 7.5L.4 32l9.1-2.3c2.2 1.2 4.8 1.9 7.5 1.9 8.4 0 15.2-6.8 15.2-15.2C31.2 7.2 24.4.4 16 .4zm0 27.6c-2.3 0-4.5-.6-6.4-1.7l-.5-.3-5.4 1.4 1.4-5.3-.3-.5c-1.2-1.9-1.8-4.1-1.8-6.5C3 8.6 8.6 3 16 3s13 5.6 13 13-5.6 13-13 13z"/>
 </svg>
 
-Solicitar Gatificación Personalizada.
+Selecciona una opción para continuar
+
 </button>
 </div>
 
@@ -302,37 +393,81 @@ Solicitar Gatificación Personalizada.
 </div>
 
 <script>
-
 let selectedTier = null;
+let selectedLoc = null;
 
+// SELECCIÓN TIER
 function selectTier(el, tier){
 
   document.querySelectorAll(".card").forEach(c => c.classList.remove("selected"));
   el.classList.add("selected");
 
   selectedTier = tier;
+  actualizarBoton();
+}
+
+// SELECCIÓN UBICACIÓN
+document.querySelectorAll('.location-option').forEach(option=>{
+  option.addEventListener('click', ()=>{
+    document.querySelectorAll('.location-option').forEach(o=>o.classList.remove('selected'));
+    option.classList.add('selected');
+
+    let input = option.querySelector('input');
+    input.checked = true;
+
+    selectedLoc = input.value;
+    actualizarBoton();
+  });
+});
+
+// CAMBIO DINÁMICO DEL BOTÓN
+function actualizarBoton(){
+
+  let btn = document.getElementById("ctaBtn");
+
+  if(selectedTier && selectedLoc){
+
+    btn.classList.add("active");
+
+    // PERSONALIZACIÓN POR UBICACIÓN
+    if(selectedLoc === "Quito"){
+      btn.innerHTML = icono() + " Agendar instalación en Quito";
+    } else if(selectedLoc === "Guayaquil"){
+      btn.innerHTML = icono() + " Coordinar instalación en Guayaquil";
+    } else {
+      btn.innerHTML = icono() + " Coordinar envío a tu ciudad";
+    }
+
+  } else {
+    btn.classList.remove("active");
+    btn.innerHTML = icono() + " Selecciona una opción para continuar";
+  }
+}
+
+// ICONO
+function icono(){
+  return `<svg viewBox="0 0 32 32">
+  <path d="M16 .4C7.6.4.8 7.2.8 15.6c0 2.7.7 5.2 2 7.5L.4 32l9.1-2.3c2.2 1.2 4.8 1.9 7.5 1.9 8.4 0 15.2-6.8 15.2-15.2C31.2 7.2 24.4.4 16 .4z"/>
+  </svg>`;
 }
 
 // ENVÍO
 function enviar(){
 
-  let loc = document.querySelector('input[name="loc"]:checked');
-
-  if(!selectedTier || !loc){
-    alert("Selecciona un nivel y tu ubicación");
+  if(!selectedTier || !selectedLoc){
     return;
   }
 
   // PIXEL
   fbq('track', 'Lead', { value:1, currency:'USD', tier:selectedTier });
 
-  if(selectedTier === "Deidad" || selectedTier === "Emperador" || selectedTier === "Magnate"){
+  if(["Deidad","Emperador","Magnate"].includes(selectedTier)){
     fbq('trackCustom','HighValueClient',{tier:selectedTier});
   } else {
     fbq('trackCustom','LowBudget',{tier:selectedTier});
   }
 
-  let mensaje = `Hola Ale, quiero avanzar con una gatificación tipo ${selectedTier}. Estoy en ${loc.value}. ¿Cuál sería el siguiente paso?`;
+  let mensaje = `Hola Ale, quiero avanzar con una gatificación tipo ${selectedTier}. Estoy en ${selectedLoc}. ¿Cuál sería el siguiente paso?`;
 
   window.location.href = "https://wa.me/593963372269?text=" + encodeURIComponent(mensaje);
 }
