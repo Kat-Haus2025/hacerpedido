@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 
-<!-- META PIXEL -->
+<!-- META PIXEL (TUYO) -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -13,9 +13,14 @@ t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 
-fbq('init', 'TU_PIXEL_ID');
+fbq('init', '649645208209657');
 fbq('track', 'PageView');
 </script>
+
+<noscript>
+<img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=649645208209657&ev=PageView&noscript=1"/>
+</noscript>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,11 +40,13 @@ padding:20px;
 h1{
 color:#f1c40f;
 margin-bottom:10px;
+font-size:1.6rem;
 }
 
 p{
 color:#bbb;
 margin-bottom:20px;
+font-size:0.95rem;
 }
 
 .grid{
@@ -62,9 +69,9 @@ transition:.25s;
 transform:scale(1.05);
 }
 
-/* 🔴 BAJO VALOR */
+/* 🔴 BAJO PRESUPUESTO */
 .low{
-opacity:0.6;
+opacity:0.5;
 }
 
 /* 🟢 ALTO VALOR */
@@ -93,6 +100,9 @@ margin-top:20px;
 font-size:0.9rem;
 color:#ccc;
 display:none;
+max-width:400px;
+margin-left:auto;
+margin-right:auto;
 }
 
 </style>
@@ -101,46 +111,48 @@ display:none;
 
 <body>
 
-<h1>Selecciona tu nivel de Gatificación</h1>
+<h1>Selecciona el nivel de inversión</h1>
 
-<p>Trabajamos soluciones estructurales personalizadas.  
-No todos los presupuestos aplican.</p>
+<p>
+Nuestros circuitos son soluciones estructurales personalizadas.  
+No todos los presupuestos aplican.
+</p>
 
 <div class="grid">
 
-<!-- 🔥 PREMIUM -->
-<div class="card high" onclick="goHigh()">
+<!-- 🟢 CLIENTES REALES -->
+<div class="card high" onclick="clienteBueno('deidad')">
 <img src="deidad.png">
 <div class="title">Michi Deidad</div>
 <div class="price">Sin límites</div>
 </div>
 
-<div class="card high" onclick="goHigh()">
+<div class="card high" onclick="clienteBueno('emperador')">
 <img src="emperador.png">
 <div class="title">Michi Emperador</div>
 <div class="price">$400–$500</div>
 </div>
 
-<div class="card high" onclick="goHigh()">
+<div class="card high" onclick="clienteBueno('magnate')">
 <img src="magnate.png">
 <div class="title">Michi Magnate</div>
 <div class="price">$300–$399</div>
 </div>
 
-<!-- ⚠️ FILTRO -->
-<div class="card low" onclick="reject()">
+<!-- 🔴 FILTRO -->
+<div class="card low" onclick="clienteBajo()">
 <img src="aristocrata.png">
 <div class="title">Michi Aristócrata</div>
 <div class="price">$200–$299</div>
 </div>
 
-<div class="card low" onclick="reject()">
+<div class="card low" onclick="clienteBajo()">
 <img src="oficinista.png">
 <div class="title">Michi Oficinista</div>
 <div class="price">$150–$199</div>
 </div>
 
-<div class="card low" onclick="reject()">
+<div class="card low" onclick="clienteBajo()">
 <img src="estudiante.png">
 <div class="title">Michi Estudiante</div>
 <div class="price">$100–$149</div>
@@ -152,19 +164,31 @@ No todos los presupuestos aplican.</p>
 
 <script>
 
-function goHigh(){
-  fbq('track', 'QualifiedLead'); // 🔥 señal de cliente bueno
+// ✅ CLIENTE BUENO
+function clienteBueno(tipo){
+  fbq('track', 'Lead', {
+    value: 1,
+    currency: 'USD',
+    tier: tipo
+  });
+
+  // 🔥 ESTE ES EL EVENTO IMPORTANTE PARA META
+  fbq('trackCustom', 'HighValueClient', {
+    tier: tipo
+  });
+
   window.location.href = "contacto.html";
 }
 
-function reject(){
-  fbq('track', 'LowIntent'); // ❌ entrenas a Meta a evitarlos
+// ❌ CLIENTE BAJO
+function clienteBajo(){
+
+  fbq('trackCustom', 'LowBudget');
 
   let msg = document.getElementById("msg");
   msg.style.display = "block";
   msg.innerHTML = `
-  Nuestros circuitos están diseñados como soluciones estructurales personalizadas,
-  no como productos individuales.<br><br>
+  Nuestros circuitos están diseñados como soluciones estructurales personalizadas.<br><br>
   Si buscas algo dentro de este rango, probablemente no seamos la mejor opción.
   `;
 }
