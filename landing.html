@@ -17,11 +17,6 @@ fbq('init', '649645208209657');
 fbq('track', 'PageView');
 </script>
 
-<noscript>
-<img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=649645208209657&ev=PageView&noscript=1"/>
-</noscript>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -37,6 +32,13 @@ text-align:center;
 padding:20px;
 }
 
+/* HEADER IMAGEN */
+.header-img{
+max-width:500px;
+width:100%;
+margin-bottom:15px;
+}
+
 h1{
 color:#f1c40f;
 margin-bottom:10px;
@@ -47,6 +49,7 @@ p{
 color:#bbb;
 margin-bottom:20px;
 font-size:0.95rem;
+line-height:1.4;
 }
 
 .grid{
@@ -57,7 +60,6 @@ max-width:700px;
 margin:auto;
 }
 
-/* 🔥 TODAS IGUALES */
 .card{
 background:#1e1b17;
 padding:12px;
@@ -68,8 +70,9 @@ border:1px solid #2a2622;
 }
 
 .card:hover{
-transform:scale(1.05);
+transform:scale(1.06);
 border:1px solid #c49546;
+box-shadow:0 0 10px rgba(196,149,70,0.3);
 }
 
 img{
@@ -104,28 +107,30 @@ margin-right:auto;
 
 <body>
 
-<h1>Gatificación a la Medida de tu Vida</h1>
+<img src="profesional.png" class="header-img">
+
+<h1>Diseñamos Circuitos Felinos de Alto Nivel</h1>
 
 <p>
-Para que podamos crear el circuito perfecto para tu hogar felino selecciona el rango de inversión que tienes destinado para la intervención. 
+No es mobiliario. Es una intervención estructural pensada para transformar cómo tu gato vive el espacio.<br><br>
+Selecciona el nivel de inversión con el que quieres trabajar.
 </p>
 
 <div class="grid">
 
-<!-- TODOS VISUALMENTE IGUALES -->
-<div class="card" onclick="clienteBueno('deidad')">
+<div class="card" onclick="clienteBueno('deidad','Michi Deidad')">
 <img src="tier-6.png">
 <div class="title">Michi Deidad</div>
 <div class="price">No Conoce Límites</div>
 </div>
 
-<div class="card" onclick="clienteBueno('emperador')">
+<div class="card" onclick="clienteBueno('emperador','Michi Emperador')">
 <img src="tier-5.png">
 <div class="title">Michi Emperador</div>
 <div class="price">$301–$350</div>
 </div>
 
-<div class="card" onclick="clienteBueno('magnate')">
+<div class="card" onclick="clienteBueno('magnate','Michi Magnate')">
 <img src="tier-4.png">
 <div class="title">Michi Magnate</div>
 <div class="price">$250–$300</div>
@@ -155,8 +160,9 @@ Para que podamos crear el circuito perfecto para tu hogar felino selecciona el r
 
 <script>
 
-// ✅ CLIENTE ALTO VALOR
-function clienteBueno(tipo){
+// ✅ CLIENTE ALTO VALOR → WHATSAPP
+function clienteBueno(tipo,nombre){
+
   fbq('track', 'Lead', {
     value: 1,
     currency: 'USD',
@@ -167,10 +173,18 @@ function clienteBueno(tipo){
     tier: tipo
   });
 
-  window.location.href = "contacto.html";
+  let mensaje = encodeURIComponent(
+`Hola, quiero cotizar un circuito de gatificación.
+
+Categoría seleccionada: ${nombre}
+
+Quiero más información.`
+  );
+
+  window.location.href = `https://wa.me/593963372269?text=${mensaje}`;
 }
 
-// ❌ CLIENTE BAJO
+// ❌ CLIENTE BAJO (FILTRO)
 function clienteBajo(){
 
   fbq('trackCustom', 'LowBudget');
@@ -179,7 +193,7 @@ function clienteBajo(){
   msg.style.display = "block";
   msg.innerHTML = `
   Nuestros circuitos están diseñados como soluciones estructurales personalizadas.<br><br>
-  Si buscas algo dentro de este rango, probablemente no seamos la mejor opción.
+  Si estás buscando algo dentro de este rango, probablemente no somos la mejor opción.
   `;
 }
 
