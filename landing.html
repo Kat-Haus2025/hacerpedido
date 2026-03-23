@@ -34,8 +34,8 @@ margin:0;
 /* HEADER */
 .header img{
 width:100%;
-max-height:240px;
-object-fit:cover;
+height:auto;
+display:block;
 }
 
 /* CONTENIDO */
@@ -46,7 +46,7 @@ text-align:center;
 
 h1{
 color:#f1c40f;
-font-size:1.7rem;
+font-size:1.6rem;
 margin-bottom:8px;
 }
 
@@ -56,13 +56,27 @@ font-size:0.9rem;
 margin-bottom:20px;
 }
 
-/* GRID */
+/* GRID RESPONSIVE REAL */
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+grid-template-columns:repeat(3, 1fr);
 gap:14px;
-max-width:850px;
+max-width:900px;
 margin:auto;
+}
+
+/* TABLET */
+@media(max-width:900px){
+.grid{
+grid-template-columns:repeat(2, 1fr);
+}
+}
+
+/* MÓVIL */
+@media(max-width:500px){
+.grid{
+grid-template-columns:1fr;
+}
 }
 
 /* CARDS */
@@ -73,31 +87,35 @@ border-radius:12px;
 cursor:pointer;
 transition:.25s;
 border:1px solid #2a2622;
-position:relative;
 }
 
 .card:hover{
-transform:scale(1.06);
+transform:scale(1.05);
 border:1px solid #c49546;
 }
 
-/* ANCLA SUAVE */
+/* DESTACADO SIN ROMPER GRID */
 .hero{
 border:2px solid #c49546;
-box-shadow:0 0 15px rgba(196,149,70,0.3);
+box-shadow:0 0 12px rgba(196,149,70,0.3);
 }
 
 /* BADGE */
 .badge{
-position:absolute;
-top:8px;
-right:8px;
 background:#c49546;
 color:#000;
 font-size:0.7rem;
-padding:4px 6px;
+padding:3px 6px;
 border-radius:6px;
+display:inline-block;
+margin-bottom:6px;
 font-weight:bold;
+}
+
+/* IMAGEN */
+.card img{
+width:100%;
+border-radius:6px;
 }
 
 /* TEXTOS */
@@ -113,9 +131,16 @@ color:#ccc;
 }
 
 .note{
-font-size:0.7rem;
+font-size:0.75rem;
 color:#aaa;
 margin-top:4px;
+}
+
+/* FOOTER */
+.footer img{
+width:100%;
+display:block;
+margin-top:30px;
 }
 
 </style>
@@ -124,6 +149,7 @@ margin-top:4px;
 
 <body>
 
+<!-- HEADER -->
 <div class="header">
 <img src="profesional.png">
 </div>
@@ -131,25 +157,24 @@ margin-top:4px;
 <div class="container">
 
 <h1>Define el nivel de intervención</h1>
-<div class="sub">Todos los niveles son funcionales — la diferencia está en alcance y personalización</div>
+<div class="sub">Todos los niveles funcionan — la diferencia está en el alcance del diseño</div>
 
 <div class="grid">
 
-<!-- ANCLA -->
+<!-- DESTACADO -->
 <div class="card hero" onclick="clienteBueno('emperador','Michi Emperador')">
 <div class="badge">Recomendado</div>
 <img src="tier-5.png">
 <div class="title">Michi Emperador</div>
 <div class="price">$301–$350</div>
-<div class="note">Mayor equilibrio entre diseño y durabilidad</div>
+<div class="note">Equilibrio ideal entre diseño y durabilidad</div>
 </div>
 
-<!-- ALTOS -->
 <div class="card" onclick="clienteBueno('deidad','Michi Deidad')">
 <img src="tier-6.png">
 <div class="title">Michi Deidad</div>
 <div class="price">Sin límites</div>
-<div class="note">Máxima libertad de diseño</div>
+<div class="note">Máxima personalización</div>
 </div>
 
 <div class="card" onclick="clienteBueno('magnate','Michi Magnate')">
@@ -159,12 +184,11 @@ margin-top:4px;
 <div class="note">Alta personalización</div>
 </div>
 
-<!-- BAJOS (SIN RECHAZO) -->
 <div class="card" onclick="clienteBajo('aristocrata','Michi Aristócrata')">
 <img src="tier-3.png">
 <div class="title">Michi Aristócrata</div>
 <div class="price">$201–$250</div>
-<div class="note">Solución funcional optimizada</div>
+<div class="note">Solución funcional</div>
 </div>
 
 <div class="card" onclick="clienteBajo('oficinista','Michi Oficinista')">
@@ -178,11 +202,16 @@ margin-top:4px;
 <img src="tier-1.png">
 <div class="title">Michi Estudiante</div>
 <div class="price">$100–$150</div>
-<div class="note">Inicio básico funcional</div>
+<div class="note">Inicio básico</div>
 </div>
 
 </div>
 
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+<img src="footer.png">
 </div>
 
 <script>
@@ -192,7 +221,7 @@ function irWhatsApp(texto){
   window.location.href = url;
 }
 
-// 🔥 TODOS VAN A WHATSAPP (SIN FILTRO)
+// CLIENTES ALTOS
 function clienteBueno(tipo,nombre){
 
   fbq('track', 'Lead', {
@@ -205,15 +234,16 @@ function clienteBueno(tipo,nombre){
     tier: tipo
   });
 
-  let mensaje = "Hola, ya revisé las opciones y quiero avanzar con una gatificación tipo " + nombre + ". ¿Me ayudas a definir el diseño ideal para mi espacio?";
+  let mensaje = "Hola, ya revisé las opciones y quiero avanzar con una gatificación tipo " + nombre + ". ¿Cómo empezamos?";
   irWhatsApp(mensaje);
 }
 
+// CLIENTES BAJOS (SIN RECHAZO)
 function clienteBajo(tipo,nombre){
 
   fbq('trackCustom', 'LowBudget');
 
-  let mensaje = "Hola, me interesa una gatificación tipo " + nombre + ". Quiero ver cómo aprovechar mejor mi espacio dentro de este nivel.";
+  let mensaje = "Hola, me interesa una gatificación tipo " + nombre + ". Quiero definir la mejor opción dentro de este nivel.";
   irWhatsApp(mensaje);
 }
 
