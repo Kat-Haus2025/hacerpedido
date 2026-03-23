@@ -25,65 +25,86 @@ fbq('track', 'PageView');
 <style>
 
 body{
-background:#12100e;
+background:#0f0d0b;
 color:#fff;
 font-family:sans-serif;
-text-align:center;
-padding:20px;
+margin:0;
 }
 
-/* HEADER IMAGEN */
-.header-img{
-max-width:500px;
+/* HEADER */
+.header img{
 width:100%;
-margin-bottom:15px;
+max-height:240px;
+object-fit:cover;
+}
+
+/* CONTENIDO */
+.container{
+padding:20px;
+text-align:center;
 }
 
 h1{
 color:#f1c40f;
-margin-bottom:10px;
-font-size:1.6rem;
+font-size:1.7rem;
+margin-bottom:8px;
 }
 
-p{
-color:#bbb;
+.sub{
+color:#aaa;
+font-size:0.9rem;
 margin-bottom:20px;
-font-size:0.95rem;
-line-height:1.4;
 }
 
+/* GRID */
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-gap:12px;
-max-width:700px;
+gap:14px;
+max-width:850px;
 margin:auto;
 }
 
+/* CARDS */
 .card{
-background:#1e1b17;
+background:#1c1915;
 padding:12px;
-border-radius:10px;
+border-radius:12px;
 cursor:pointer;
 transition:.25s;
 border:1px solid #2a2622;
+position:relative;
 }
 
 .card:hover{
 transform:scale(1.06);
 border:1px solid #c49546;
-box-shadow:0 0 10px rgba(196,149,70,0.3);
 }
 
-img{
-width:100%;
+/* ANCLA SUAVE */
+.hero{
+border:2px solid #c49546;
+box-shadow:0 0 15px rgba(196,149,70,0.3);
+}
+
+/* BADGE */
+.badge{
+position:absolute;
+top:8px;
+right:8px;
+background:#c49546;
+color:#000;
+font-size:0.7rem;
+padding:4px 6px;
 border-radius:6px;
+font-weight:bold;
 }
 
+/* TEXTOS */
 .title{
 color:#f1c40f;
-font-size:0.9rem;
 margin-top:8px;
+font-size:1rem;
 }
 
 .price{
@@ -91,14 +112,10 @@ font-size:0.85rem;
 color:#ccc;
 }
 
-#msg{
-margin-top:20px;
-font-size:0.9rem;
-color:#ccc;
-display:none;
-max-width:400px;
-margin-left:auto;
-margin-right:auto;
+.note{
+font-size:0.7rem;
+color:#aaa;
+margin-top:4px;
 }
 
 </style>
@@ -107,60 +124,75 @@ margin-right:auto;
 
 <body>
 
-<img src="profesional.png" class="header-img">
+<div class="header">
+<img src="profesional.png">
+</div>
 
-<h1>Diseñamos Circuitos Felinos de Alto Nivel</h1>
+<div class="container">
 
-<p>
-No es mobiliario. Es una intervención estructural pensada para transformar cómo tu gato vive el espacio.<br><br>
-Selecciona el nivel de inversión con el que quieres trabajar.
-</p>
+<h1>Define el nivel de intervención</h1>
+<div class="sub">Todos los niveles son funcionales — la diferencia está en alcance y personalización</div>
 
 <div class="grid">
 
-<div class="card" onclick="clienteBueno('deidad','Michi Deidad')">
-<img src="tier-6.png">
-<div class="title">Michi Deidad</div>
-<div class="price">No Conoce Límites</div>
-</div>
-
-<div class="card" onclick="clienteBueno('emperador','Michi Emperador')">
+<!-- ANCLA -->
+<div class="card hero" onclick="clienteBueno('emperador','Michi Emperador')">
+<div class="badge">Recomendado</div>
 <img src="tier-5.png">
 <div class="title">Michi Emperador</div>
 <div class="price">$301–$350</div>
+<div class="note">Mayor equilibrio entre diseño y durabilidad</div>
+</div>
+
+<!-- ALTOS -->
+<div class="card" onclick="clienteBueno('deidad','Michi Deidad')">
+<img src="tier-6.png">
+<div class="title">Michi Deidad</div>
+<div class="price">Sin límites</div>
+<div class="note">Máxima libertad de diseño</div>
 </div>
 
 <div class="card" onclick="clienteBueno('magnate','Michi Magnate')">
 <img src="tier-4.png">
 <div class="title">Michi Magnate</div>
 <div class="price">$250–$300</div>
+<div class="note">Alta personalización</div>
 </div>
 
-<div class="card" onclick="clienteBajo()">
+<!-- BAJOS (SIN RECHAZO) -->
+<div class="card" onclick="clienteBajo('aristocrata','Michi Aristócrata')">
 <img src="tier-3.png">
 <div class="title">Michi Aristócrata</div>
 <div class="price">$201–$250</div>
+<div class="note">Solución funcional optimizada</div>
 </div>
 
-<div class="card" onclick="clienteBajo()">
+<div class="card" onclick="clienteBajo('oficinista','Michi Oficinista')">
 <img src="tier-2.png">
 <div class="title">Michi Oficinista</div>
 <div class="price">$151–$200</div>
+<div class="note">Intervención puntual</div>
 </div>
 
-<div class="card" onclick="clienteBajo()">
+<div class="card" onclick="clienteBajo('estudiante','Michi Estudiante')">
 <img src="tier-1.png">
 <div class="title">Michi Estudiante</div>
 <div class="price">$100–$150</div>
+<div class="note">Inicio básico funcional</div>
 </div>
 
 </div>
 
-<div id="msg"></div>
+</div>
 
 <script>
 
-// ✅ CLIENTE ALTO VALOR → WHATSAPP
+function irWhatsApp(texto){
+  let url = "https://wa.me/593963372269?text=" + encodeURIComponent(texto);
+  window.location.href = url;
+}
+
+// 🔥 TODOS VAN A WHATSAPP (SIN FILTRO)
 function clienteBueno(tipo,nombre){
 
   fbq('track', 'Lead', {
@@ -173,28 +205,16 @@ function clienteBueno(tipo,nombre){
     tier: tipo
   });
 
-  let mensaje = encodeURIComponent(
-`Hola, quiero cotizar un circuito de gatificación.
-
-Categoría seleccionada: ${nombre}
-
-Quiero más información.`
-  );
-
-  window.location.href = `https://wa.me/593963372269?text=${mensaje}`;
+  let mensaje = "Hola, ya revisé las opciones y quiero avanzar con una gatificación tipo " + nombre + ". ¿Me ayudas a definir el diseño ideal para mi espacio?";
+  irWhatsApp(mensaje);
 }
 
-// ❌ CLIENTE BAJO (FILTRO)
-function clienteBajo(){
+function clienteBajo(tipo,nombre){
 
   fbq('trackCustom', 'LowBudget');
 
-  let msg = document.getElementById("msg");
-  msg.style.display = "block";
-  msg.innerHTML = `
-  Nuestros circuitos están diseñados como soluciones estructurales personalizadas.<br><br>
-  Si estás buscando algo dentro de este rango, probablemente no somos la mejor opción.
-  `;
+  let mensaje = "Hola, me interesa una gatificación tipo " + nombre + ". Quiero ver cómo aprovechar mejor mi espacio dentro de este nivel.";
+  irWhatsApp(mensaje);
 }
 
 </script>
