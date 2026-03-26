@@ -141,24 +141,68 @@ border-radius:14px;
 }
 }
 
-/* BOTÓN */
-.btn{
-margin:30px auto;
-background:#25D366;
-color:#fff;
-padding:14px;
-border-radius:10px;
-font-weight:bold;
-width:100%;
-max-width:380px;
-opacity:0.6;
-transition:.3s;
-border:none;
+/* BOTÓN WHATSAPP PREMIUM */
+.btn {
+  margin: 30px auto;
+  background: #25D366; /* Verde WhatsApp */
+  color: #fff;
+  padding: 18px;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  width: 100%;
+  max-width: 380px;
+  opacity: 0.5;
+  transition: .3s;
+  border: none;
+  display: block;
+  cursor: not-allowed;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  position: relative;
+  overflow: hidden;
 }
 
-.btn.active{
-opacity:1;
-transform:scale(1.05);
+/* EFECTO BRILLO (SHINE) */
+.btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 20%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.4);
+  transform: rotate(30deg);
+  transition: none;
+}
+
+.btn.active {
+  opacity: 1;
+  cursor: pointer;
+  transform: scale(1.02);
+  animation: pulseGreen 1.5s infinite, glow 1.5s infinite alternate;
+}
+
+/* El brillo parpadeante solo cuando está activo */
+.btn.active::after {
+  animation: shine 3s infinite;
+}
+
+/* ANIMACIONES */
+@keyframes pulseGreen {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+  70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+@keyframes shine {
+  0% { left: -60%; }
+  20% { left: 120%; }
+  100% { left: 120%; }
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 5px #25D366; }
+  to { box-shadow: 0 0 20px #25D366; }
 }
 
 </style>
@@ -265,59 +309,27 @@ Selecciona una opción para continuar
 
 <script>
 
-let selectedTier = null;
-let selectedLoc = null;
-
-function selectTier(el,tier){
-document.querySelectorAll(".card").forEach(c=>c.classList.remove("selected"));
-el.classList.add("selected");
-selectedTier = tier;
-updateBtn();
-}
-
-document.querySelectorAll("input[name='loc']").forEach(r=>{
-r.addEventListener("change",()=>{
-selectedLoc = r.value;
-updateBtn();
-});
-});
-
 function updateBtn(){
-let btn = document.getElementById("ctaBtn");
+  let btn = document.getElementById("ctaBtn");
 
-if(selectedTier && selectedLoc){
-btn.classList.add("active");
+  if(selectedTier && selectedLoc){
+    btn.classList.add("active");
+    
+    // Icono de WhatsApp para más impacto
+    let icono = " 📲";
 
-if(selectedLoc==="Quito"){
-btn.innerText="Solicitar en Quito";
-}else if(selectedLoc==="Guayaquil"){
-btn.innerText="Solicitar en Guayaquil";
-}else{
-btn.innerText="Solicitar con envío";
-}
+    if(selectedLoc==="Quito"){
+      btn.innerText = "Solicitar en Quito" + icono;
+    } else if(selectedLoc==="Guayaquil"){
+      btn.innerText = "Solicitar en Guayaquil" + icono;
+    } else {
+      btn.innerText = "Solicitar con envío" + icono;
+    }
 
-}else{
-btn.innerText="Selecciona opciones para continuar";
-btn.classList.remove("active");
-}
-}
-
-function enviar(){
-
-if(!selectedTier || !selectedLoc) return;
-
-// 🔥 TRACKING
-if(["Aristócrata","Magnate","Emperador","Deidad"].includes(selectedTier)){
-fbq('track','Lead',{tier:selectedTier});
-fbq('trackCustom','HighValueClient',{tier:selectedTier});
-}else{
-fbq('trackCustom','LowBudget',{tier:selectedTier});
-}
-
-// WHATSAPP PERSONALIZADO
-let mensaje = `Hola, quiero una gatificación tipo ${selectedTier} en ${selectedLoc}.`;
-
-window.location.href = "https://wa.me/593963372269?text="+encodeURIComponent(mensaje);
+  } else {
+    btn.innerText = "Selecciona opciones para continuar";
+    btn.classList.remove("active");
+  }
 
 }
 function pixelBasura() {
