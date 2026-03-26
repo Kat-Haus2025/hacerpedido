@@ -309,9 +309,9 @@ function updateBtn() {
     if (selectedTier && selectedLoc) {
         btn.classList.add("active");
         let icono = " 📲";
-        if (selectedLoc === "Quito") btn.innerText = "Solicitar en Quito" + icono;
-        else if (selectedLoc === "Guayaquil") btn.innerText = "Solicitar en Guayaquil" + icono;
-        else btn.innerText = "Solicitar con envío" + icono;
+        if (selectedLoc === "Quito") btn.innerText = "Diseñar para Quito" + icono;
+        else if (selectedLoc === "Guayaquil") btn.innerText = "Diseñar para Guayaquil" + icono;
+        else btn.innerText = "DIseñar para envío" + icono;
     } else {
         btn.innerText = "Selecciona opciones para continuar";
         btn.classList.remove("active");
