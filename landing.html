@@ -304,7 +304,12 @@ let mensaje = `Hola, quiero una gatificación tipo ${selectedTier} en ${selected
 window.location.href = "https://wa.me/593963372269?text="+encodeURIComponent(mensaje);
 
 }
-
+function pixelBasura() {
+    // 🚩 Marcamos a este usuario como "No Calificado" en Facebook
+    fbq('trackCustom', 'UnqualifiedLead', { reason: 'Presupuesto menor a 100' });
+    
+    alert("Para presupuestos menores a $100, recomendamos buscar rascadores estándar en tiendas locales. Nuestras gatificaciones son circuitos estructurales diseñados a medida.");
+}
 </script>
 <div class="header">
   <img src="footer.png">
