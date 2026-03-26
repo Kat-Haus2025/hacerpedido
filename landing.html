@@ -2,7 +2,6 @@
 <html lang="es">
 <head>
 
-<!-- META PIXEL -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -23,7 +22,6 @@ fbq('track', 'PageView');
 <title>Configura tu Gatificación</title>
 
 <style>
-
 body{
 background:#514033;
 color:#fff;
@@ -137,14 +135,14 @@ border-radius:14px;
   display: block;
   margin: 8px 0;
   cursor: pointer;
-  text-align: left; /* 👈 Esto alinea el texto a la izquierda */
-}
+  text-align: left;
+  padding-left: 10px;
 }
 
 /* BOTÓN WHATSAPP PREMIUM */
 .btn {
   margin: 30px auto;
-  background: #25D366; /* Verde WhatsApp */
+  background: #25D366;
   color: #fff;
   padding: 18px;
   border-radius: 12px;
@@ -162,7 +160,6 @@ border-radius:14px;
   overflow: hidden;
 }
 
-/* EFECTO BRILLO (SHINE) */
 .btn::after {
   content: '';
   position: absolute;
@@ -182,12 +179,10 @@ border-radius:14px;
   animation: pulseGreen 1.5s infinite, glow 1.5s infinite alternate;
 }
 
-/* El brillo parpadeante solo cuando está activo */
 .btn.active::after {
   animation: shine 3s infinite;
 }
 
-/* ANIMACIONES */
 @keyframes pulseGreen {
   0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
   70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
@@ -204,14 +199,12 @@ border-radius:14px;
   from { box-shadow: 0 0 5px #25D366; }
   to { box-shadow: 0 0 20px #25D366; }
 }
-
 </style>
 
 </head>
 
 <body>
 
-<!-- 🔥 BANNER -->
 <div class="top-banner">
 🐾 “Gatificando Hogares Premium desde 2021.”
 </div>
@@ -227,123 +220,133 @@ border-radius:14px;
 </div>
 
 <h1>Selecciona tu Gategoría:</h1>
-<div class="sub">(Un presupuesto mayor se traduce en un circuito más complejo  y desafiante para el minino).</div>
+<div class="sub">(Un presupuesto mayor se traduce en un circuito más complejo y desafiante para el minino).</div>
+
 <div class="grid">
-
-<div class="card" onclick="selectTier(this,'Deidad')">
-<img src="tier6.png">
-<div class="title">Michi Deidad</div>
-<div class="price">Sin límites</div>
+    <div class="card" onclick="selectTier(this,'Deidad')">
+        <img src="tier6.png">
+        <div class="title">Michi Deidad</div>
+        <div class="price">Sin límites</div>
+    </div>
+    <div class="card" onclick="selectTier(this,'Emperador')">
+        <img src="tier5.png">
+        <div class="title">Michi Emperador</div>
+        <div class="price">$301–$350</div>
+    </div>
+    <div class="card" onclick="selectTier(this,'Magnate')">
+        <img src="tier4.png">
+        <div class="title">Michi Magnate</div>
+        <div class="price">$250–$300</div>
+    </div>
+    <div class="card" onclick="selectTier(this,'Aristócrata')">
+        <img src="tier3.png">
+        <div class="title">Michi Aristócrata</div>
+        <div class="price">$201–$250</div>
+    </div>
+    <div class="card" onclick="selectTier(this,'Oficinista')">
+        <img src="tier2.png">
+        <div class="title">Michi Oficinista</div>
+        <div class="price">$151–$200</div>
+    </div>
+    <div class="card" onclick="selectTier(this,'Estudiante')">
+        <img src="tier1.png">
+        <div class="title">Michi Estudiante</div>
+        <div class="price">$100–$150</div>
+    </div>
 </div>
 
-<div class="card" onclick="selectTier(this,'Emperador')">
-<img src="tier5.png">
-<div class="title">Michi Emperador</div>
-<div class="price">$301–$350</div>
-</div>
-
-<div class="card" onclick="selectTier(this,'Magnate')">
-<img src="tier4.png">
-<div class="title">Michi Magnate</div>
-<div class="price">$250–$300</div>
-</div>
-
-<div class="card" onclick="selectTier(this,'Aristócrata')">
-<img src="tier3.png">
-<div class="title">Michi Aristócrata</div>
-<div class="price">$201–$250</div>
-</div>
-
-<div class="card" onclick="selectTier(this,'Oficinista')">
-<img src="tier2.png">
-<div class="title">Michi Oficinista</div>
-<div class="price">$151–$200</div>
-</div>
-
-<div class="card" onclick="selectTier(this,'Estudiante')">
-<img src="tier1.png">
-<div class="title">Michi Estudiante</div>
-<div class="price">$100–$150</div>
-</div>
-
-</div>
-<p>
-  <div style="margin-top: 25px; padding: 15px; border: 1px dashed #f1c40f; border-radius: 10px; background: rgba(241, 196, 15, 0.05);">
+<div style="margin-top: 25px; padding: 15px; border: 1px dashed #f1c40f; border-radius: 10px; background: rgba(241, 196, 15, 0.05);">
     <p style="font-size: 0.85rem; color: #f1c40f; margin: 0;">
         ⚠️ <strong>Nota Importante:</strong> No realizamos proyectos con presupuestos inferiores a <strong>$100 USD</strong>. 
         Nuestros estándares de seguridad y materiales premium para el bienestar de tu gato no permiten costos menores.
     </p>
-    
     <p style="margin-top: 10px; font-size: 0.75rem; color: #bbb;">
         ¿Tu presupuesto es menor? 
         <span onclick="pixelBasura()" style="text-decoration: underline; cursor: pointer; color: #3498db;">Ver recomendaciones básicas</span>
     </p>
-    </p>
 </div>
 
-  
-<!-- UBICACIÓN -->
 <div class="location-banner">
-
-<h3>Ubicación de tu Hogar Felino:</h3>
-
-<label class="location-option">
-<input type="radio" name="loc" value="Quito"> <strong>Quito</strong> (Envío o Instalación a manos de nuestro personal.)
-</label>
-
-<label class="location-option">
-<input type="radio" name="loc" value="Guayaquil"> <strong>Guayaquil</strong> (Envío o Instalación a manos de nuestro socio estratégico)
-</label>
-
-<label class="location-option">
-<input type="radio" name="loc" value="Otra ciudad"> <strong>Otra ciudad</strong> (Envío vía Courier)
-</label>
-
+    <h3>Ubicación de tu Hogar Felino:</h3>
+    <label class="location-option">
+        <input type="radio" name="loc" value="Quito"> <strong>Quito</strong> (Personal Kat-Haus)
+    </label>
+    <label class="location-option">
+        <input type="radio" name="loc" value="Guayaquil"> <strong>Guayaquil</strong> (Socio Estratégico)
+    </label>
+    <label class="location-option">
+        <input type="radio" name="loc" value="Otra ciudad"> <strong>Otra ciudad</strong> (Envío Courier)
+    </label>
 </div>
 
 <button class="btn" id="ctaBtn" onclick="enviar()">
-Selecciona una opción para continuar
+    Selecciona opciones para continuar
 </button>
 
 </div>
 
 <script>
+let selectedTier = null;
+let selectedLoc = null;
+const miauSound = new Audio('https://www.myinstants.com/media/sounds/miau.mp3');
 
-function updateBtn(){
-  let btn = document.getElementById("ctaBtn");
-
-  if(selectedTier && selectedLoc){
-    btn.classList.add("active");
-    
-    // Icono de WhatsApp para más impacto
-    let icono = " 📲";
-
-    if(selectedLoc==="Quito"){
-      btn.innerText = "Solicitar en Quito" + icono;
-    } else if(selectedLoc==="Guayaquil"){
-      btn.innerText = "Solicitar en Guayaquil" + icono;
-    } else {
-      btn.innerText = "Solicitar con envío" + icono;
-    }
-
-  } else {
-    btn.innerText = "Selecciona opciones para continuar";
-    btn.classList.remove("active");
-  }
-
+function selectTier(el, tier) {
+    document.querySelectorAll(".card").forEach(c => c.classList.remove("selected"));
+    el.classList.add("selected");
+    selectedTier = tier;
+    updateBtn();
 }
-function pixelBasura() {
-    // 🚩 Marcamos a este usuario como "No Calificado" en Facebook
-    fbq('trackCustom', 'UnqualifiedLead', { reason: 'Presupuesto menor a 100' });
+
+document.querySelectorAll("input[name='loc']").forEach(r => {
+    r.addEventListener("change", () => {
+        selectedLoc = r.value;
+        updateBtn();
+    });
+});
+
+function updateBtn() {
+    let btn = document.getElementById("ctaBtn");
+    if (selectedTier && selectedLoc) {
+        btn.classList.add("active");
+        let icono = " 📲";
+        if (selectedLoc === "Quito") btn.innerText = "Solicitar en Quito" + icono;
+        else if (selectedLoc === "Guayaquil") btn.innerText = "Solicitar en Guayaquil" + icono;
+        else btn.innerText = "Solicitar con envío" + icono;
+    } else {
+        btn.innerText = "Selecciona opciones para continuar";
+        btn.classList.remove("active");
+    }
+}
+
+function enviar() {
+    if (!selectedTier || !selectedLoc) return;
     
+    miauSound.play();
+
+    setTimeout(() => {
+        let esHighValue = ["Aristócrata", "Magnate", "Emperador", "Deidad"].includes(selectedTier);
+        let prefijo = esHighValue ? "🔥 [CLIENTE VIP]" : "⚠️ [BAJO PRESUPUESTO]";
+
+        if (esHighValue) {
+            fbq('track', 'Lead', {tier: selectedTier});
+            fbq('trackCustom', 'HighValueClient', {tier: selectedTier});
+        } else {
+            fbq('trackCustom', 'LowBudget', {tier: selectedTier});
+        }
+
+        let mensaje = `${prefijo} Hola, quiero una gatificación tipo ${selectedTier} en ${selectedLoc}.`;
+        window.location.href = "https://wa.me/593963372269?text=" + encodeURIComponent(mensaje);
+    }, 300);
+}
+
+function pixelBasura() {
+    fbq('trackCustom', 'UnqualifiedLead', {reason: 'Presupuesto menor a 100'});
     alert("Para presupuestos menores a $100, recomendamos buscar opciones fabricadas en MDF o cartón prensado, muy comunes en sitios como Facebook Marketplace. Nuestras gatificaciones son circuitos estructurales diseñados a medida.");
 }
 </script>
 
-
-
-  <div class="header">
-  <img src="footer.png">
+<div class="header">
+    <img src="footer.png">
 </div>
 </body>
 </html>
