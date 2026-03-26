@@ -39,8 +39,6 @@ text-align:center;
 font-size:0.9rem;
 font-weight:bold;
 color:#f1c40f;
-letter-spacing:0.03em;
-box-shadow:0 0 15px rgba(0,0,0,0.6);
 animation:fadeGlow 2s infinite alternate;
 }
 
@@ -63,7 +61,12 @@ text-align:center;
 h1{
 color:#f1c40f;
 font-size:1.6rem;
-margin-bottom:10px;
+}
+
+.sub{
+color:#bbb;
+font-size:0.95rem;
+margin-bottom:15px;
 }
 
 /* GRID */
@@ -90,7 +93,6 @@ padding:12px;
 border-radius:10px;
 cursor:pointer;
 border:1px solid #2a2622;
-transition:.2s;
 }
 
 .card.selected{
@@ -107,16 +109,13 @@ animation:heartbeat 2.5s infinite;
 
 @keyframes heartbeat{
 0%{transform:scale(1);}
-10%{transform:scale(1.04);}
-20%{transform:scale(1);}
-30%{transform:scale(1.06);}
+20%{transform:scale(1.05);}
 40%{transform:scale(1);}
 100%{transform:scale(1);}
 }
 
 .title{
 color:#f1c40f;
-margin-top:6px;
 }
 
 .price{
@@ -130,27 +129,14 @@ margin-top:30px;
 max-width:600px;
 margin:auto;
 background:#181512;
-border-radius:14px;
 padding:20px;
-}
-
-.location-options{
-display:flex;
-flex-direction:column;
-gap:10px;
-text-align:left;
+border-radius:14px;
 }
 
 .location-option{
-background:#211d19;
-padding:10px;
-border-radius:8px;
+display:block;
+margin:8px 0;
 cursor:pointer;
-}
-
-.location-option.selected{
-border:1px solid #c49546;
-background:#2a241d;
 }
 
 /* BOTÓN */
@@ -166,7 +152,6 @@ max-width:380px;
 opacity:0.6;
 transition:.3s;
 border:none;
-cursor:pointer;
 }
 
 .btn.active{
@@ -191,8 +176,20 @@ transform:scale(1.05);
 
 <div class="container">
 
-<h1>Selecciona tu Gategoría</h1>
+<div class="sub">
+Cada circuito que diseñamos en Kat Haus es una pieza única.
+No trabajamos con catálogo ni producción en serie:
+cada estructura se diseña y fabrica bajo pedido, considerando el espacio, el comportamiento y la lógica de recorrido de tu michi.
 
+Este proceso está pensado para quienes buscan algo más que un accesorio:
+un entorno que realmente transforme su hogar en un territorio felino funcional, seguro y estimulan <br>
+
+  Si estás listo para convertir tu hogar en un verdadero paraíso felino,
+selecciona una <strong>Gategoría de inversión</strong> para que tu solicitud sea dirigida a un asesor y podamos desarrollar tu diseño personalizado.
+</div>
+
+<h1>Selecciona tu Gategoría</h1>
+<div class="sub">(Un presupuesto mayor se traduce en un circuito más complejo  y desafiante para el minino).</div>
 <div class="grid">
 
 <div class="card" onclick="selectTier(this,'Deidad')">
@@ -238,8 +235,6 @@ transform:scale(1.05);
 
 <h3>Ubicación</h3>
 
-<div class="location-options">
-
 <label class="location-option">
 <input type="radio" name="loc" value="Quito"> Quito
 </label>
@@ -254,10 +249,8 @@ transform:scale(1.05);
 
 </div>
 
-</div>
-
 <button class="btn" id="ctaBtn" onclick="enviar()">
-Selecciona opciones para continuar
+Selecciona una opción para continuar
 </button>
 
 </div>
@@ -267,57 +260,56 @@ Selecciona opciones para continuar
 let selectedTier = null;
 let selectedLoc = null;
 
-// TIER
 function selectTier(el,tier){
 document.querySelectorAll(".card").forEach(c=>c.classList.remove("selected"));
 el.classList.add("selected");
 selectedTier = tier;
-activar();
+updateBtn();
 }
 
-// UBICACIÓN
-document.querySelectorAll(".location-option").forEach(opt=>{
-opt.addEventListener("click",()=>{
-document.querySelectorAll(".location-option").forEach(o=>o.classList.remove("selected"));
-opt.classList.add("selected");
-selectedLoc = opt.querySelector("input").value;
-activar();
+document.querySelectorAll("input[name='loc']").forEach(r=>{
+r.addEventListener("change",()=>{
+selectedLoc = r.value;
+updateBtn();
 });
 });
 
-// ACTIVAR BOTÓN
-function activar(){
+function updateBtn(){
+let btn = document.getElementById("ctaBtn");
+
 if(selectedTier && selectedLoc){
-document.getElementById("ctaBtn").classList.add("active");
+btn.classList.add("active");
+
+if(selectedLoc==="Quito"){
+btn.innerText="Solicitar en Quito";
+}else if(selectedLoc==="Guayaquil"){
+btn.innerText="Solicitar en Guayaquil";
+}else{
+btn.innerText="Solicitar con envío";
+}
+
+}else{
+btn.innerText="Selecciona opciones para continuar";
+btn.classList.remove("active");
 }
 }
 
-// ENVÍO + PIXEL INTELIGENTE
 function enviar(){
 
 if(!selectedTier || !selectedLoc) return;
 
-// 🔥 FILTRO
+// 🔥 TRACKING
 if(["Aristócrata","Magnate","Emperador","Deidad"].includes(selectedTier)){
-
-fbq('track','Lead',{
-value:5,
-currency:'USD',
-tier:selectedTier
-});
-
+fbq('track','Lead',{tier:selectedTier});
 fbq('trackCustom','HighValueClient',{tier:selectedTier});
-
 }else{
-
 fbq('trackCustom','LowBudget',{tier:selectedTier});
-
 }
 
-// WHATSAPP
-let msg = `Hola Ale, quiero una gatificación tipo ${selectedTier}. Estoy en ${selectedLoc}.`;
+// WHATSAPP PERSONALIZADO
+let mensaje = `Hola, quiero una gatificación tipo ${selectedTier} en ${selectedLoc}.`;
 
-window.location.href = "https://wa.me/593963372269?text="+encodeURIComponent(msg);
+window.location.href = "https://wa.me/593963372269?text="+encodeURIComponent(mensaje);
 
 }
 
