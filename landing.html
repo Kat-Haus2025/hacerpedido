@@ -31,16 +31,30 @@ font-family:sans-serif;
 margin:0;
 }
 
+/* 🔥 BANNER */
+.top-banner{
+background:linear-gradient(90deg,#000,#3a2a1a,#000);
+padding:12px;
+text-align:center;
+font-size:0.9rem;
+font-weight:bold;
+color:#f1c40f;
+letter-spacing:0.03em;
+box-shadow:0 0 15px rgba(0,0,0,0.6);
+animation:fadeGlow 2s infinite alternate;
+}
+
+@keyframes fadeGlow{
+from{opacity:0.7;}
+to{opacity:1;}
+}
+
+/* HEADER */
 .header img{
 width:100%;
 display:block;
 }
-.note{
-font-size:0.75rem;
-color:#aaa;
-margin-top:4px;
-display:block;
-}
+
 .container{
 padding:20px;
 text-align:center;
@@ -49,13 +63,7 @@ text-align:center;
 h1{
 color:#f1c40f;
 font-size:1.6rem;
-margin-bottom:5px;
-}
-
-.sub{
-color:#bbb;
-font-size:0.95rem;
-margin-bottom:20px;
+margin-bottom:10px;
 }
 
 /* GRID */
@@ -75,7 +83,7 @@ margin:auto;
 .grid{grid-template-columns:1fr;}
 }
 
-/* CARD RADIO */
+/* CARD */
 .card{
 background:#1c1915;
 padding:12px;
@@ -85,18 +93,25 @@ border:1px solid #2a2622;
 transition:.2s;
 }
 
-.card input{
-display:none;
-}
-
 .card.selected{
 border:2px solid #c49546;
 box-shadow:0 0 10px rgba(196,149,70,0.4);
 }
 
+/* 🫀 LATIDO */
 .card img{
 width:100%;
 border-radius:6px;
+animation:heartbeat 2.5s infinite;
+}
+
+@keyframes heartbeat{
+0%{transform:scale(1);}
+10%{transform:scale(1.04);}
+20%{transform:scale(1);}
+30%{transform:scale(1.06);}
+40%{transform:scale(1);}
+100%{transform:scale(1);}
 }
 
 .title{
@@ -109,152 +124,16 @@ color:#ccc;
 font-size:0.85rem;
 }
 
-.note{
-font-size:0.75rem;
-color:#aaa;
-}
-
-/* BANNER UBICACIÓN */
+/* UBICACIÓN */
 .location-banner{
-margin-top:35px;
+margin-top:30px;
 max-width:600px;
-margin-left:auto;
-margin-right:auto;
+margin:auto;
 background:#181512;
-border:1px solid #2a2622;
 border-radius:14px;
 padding:20px;
-box-shadow:0 0 12px rgba(0,0,0,0.4);
 }
 
-.location-banner h3{
-color:#f1c40f;
-font-size:1.2rem;
-margin-bottom:15px;
-text-align:center;
-}
-
-/* OPCIONES */
-.location-options{
-display:flex;
-flex-direction:column;
-gap:10px;
-}
-
-.location-option{
-background:#211d19;
-padding:10px 12px;
-border-radius:8px;
-cursor:pointer;
-border:1px solid transparent;
-transition:.2s;
-}
-
-.location-option:hover{
-border:1px solid #c49546;
-}
-
-.location-option input{
-margin-right:8px;
-}
-
-.location-option.selected{
-border:1px solid #c49546;
-background:#2a241d;
-}
-
-/* BOTÓN BASE */
-.btn{
-margin:35px auto 0 auto;
-background:#25D366;
-color:#fff;
-padding:14px 18px;
-border-radius:10px;
-cursor:pointer;
-font-weight:bold;
-border:none;
-display:flex;
-align-items:center;
-justify-content:center;
-gap:10px;
-font-size:0.95rem;
-width:100%;
-max-width:380px;
-opacity:0.6;
-transition:.3s;
-position:relative;
-overflow:hidden;
-}
-
-/* ACTIVO */
-.btn.active{
-opacity:1;
-}
-
-/* EFECTO BRILLO SOLO ACTIVO */
-.btn.active::before{
-content:"";
-position:absolute;
-top:0;
-left:-100%;
-width:100%;
-height:100%;
-background:linear-gradient(
-120deg,
-transparent,
-rgba(255,255,255,0.4),
-transparent
-);
-animation:shine 2.5s infinite;
-}
-
-@keyframes shine{
-0%{left:-100%;}
-50%{left:100%;}
-100%{left:100%;}
-}
-
-/* HOVER */
-.btn.active:hover{
-transform:scale(1.05);
-}
-
-/* ICONO */
-.btn svg{
-width:20px;
-height:20px;
-fill:white;
-}
-
-/* ICONO */
-.btn svg{
-width:20px;
-height:20px;
-fill:white;
-}
-
-/* BANNER UBICACIÓN */
-.location-banner{
-margin-top:35px;
-max-width:600px;
-margin-left:auto;
-margin-right:auto;
-background:#181512;
-border:1px solid #2a2622;
-border-radius:14px;
-padding:20px;
-box-shadow:0 0 12px rgba(0,0,0,0.4);
-}
-
-/* TÍTULO CENTRADO */
-.location-banner h3{
-color:#f1c40f;
-font-size:1.2rem;
-margin-bottom:15px;
-text-align:center;
-}
-
-/* OPCIONES A LA IZQUIERDA */
 .location-options{
 display:flex;
 flex-direction:column;
@@ -264,15 +143,9 @@ text-align:left;
 
 .location-option{
 background:#211d19;
-padding:10px 12px;
+padding:10px;
 border-radius:8px;
 cursor:pointer;
-border:1px solid transparent;
-transition:.2s;
-}
-
-.location-option:hover{
-border:1px solid #c49546;
 }
 
 .location-option.selected{
@@ -280,14 +153,25 @@ border:1px solid #c49546;
 background:#2a241d;
 }
 
-.location-option input{
-margin-right:8px;
+/* BOTÓN */
+.btn{
+margin:30px auto;
+background:#25D366;
+color:#fff;
+padding:14px;
+border-radius:10px;
+font-weight:bold;
+width:100%;
+max-width:380px;
+opacity:0.6;
+transition:.3s;
+border:none;
+cursor:pointer;
 }
 
-/* FOOTER */
-.footer img{
-width:100%;
-margin-top:30px;
+.btn.active{
+opacity:1;
+transform:scale(1.05);
 }
 
 </style>
@@ -296,62 +180,52 @@ margin-top:30px;
 
 <body>
 
+<!-- 🔥 BANNER -->
+<div class="top-banner">
+🐾 “Me salté las papitas del recreo… pero estoy invirtiendo.”
+</div>
+
 <div class="header">
 <img src="profesional.png">
 </div>
 
 <div class="container">
-<div class="sub">
-Estás entrando en una experiencia de diseño pensada exclusivamente para tu gato.
-Cada circuito se desarrolla <strong>bajo pedido,</strong> adaptado a tu espacio y estilo de vida.
-Elige el <strong>nivel de inversión</strong> para comenzar a definir tu proyecto.
-</div>
-<h1>Selecciona tu Gategoría</h1>
-<div class="sub">
-(A mayor inversión, más extenso el recorrido y más exigente la experiencia física y mental para tu gato.)
-</div>
 
-<!-- TIERS -->
-<div class="grid" id="tiers">
+<h1>Selecciona tu Gategoría</h1>
+
+<div class="grid">
 
 <div class="card" onclick="selectTier(this,'Deidad')">
-<input type="radio" name="tier">
 <img src="tier6.png">
 <div class="title">Michi Deidad</div>
 <div class="price">Sin límites</div>
 </div>
 
 <div class="card" onclick="selectTier(this,'Emperador')">
-<input type="radio" name="tier">
 <img src="tier5.png">
 <div class="title">Michi Emperador</div>
 <div class="price">$301–$350</div>
 </div>
 
 <div class="card" onclick="selectTier(this,'Magnate')">
-<input type="radio" name="tier">
 <img src="tier4.png">
 <div class="title">Michi Magnate</div>
 <div class="price">$250–$300</div>
-<div class="note">El más solicitado por nuestros clientes</div>
 </div>
 
 <div class="card" onclick="selectTier(this,'Aristócrata')">
-<input type="radio" name="tier">
 <img src="tier3.png">
 <div class="title">Michi Aristócrata</div>
 <div class="price">$201–$250</div>
 </div>
 
 <div class="card" onclick="selectTier(this,'Oficinista')">
-<input type="radio" name="tier">
 <img src="tier2.png">
 <div class="title">Michi Oficinista</div>
 <div class="price">$151–$200</div>
 </div>
 
 <div class="card" onclick="selectTier(this,'Estudiante')">
-<input type="radio" name="tier">
 <img src="tier1.png">
 <div class="title">Michi Estudiante</div>
 <div class="price">$100–$150</div>
@@ -359,27 +233,23 @@ Elige el <strong>nivel de inversión</strong> para comenzar a definir tu proyect
 
 </div>
 
-<div class="location">
-
+<!-- UBICACIÓN -->
 <div class="location-banner">
 
-<h3>Ubicación de tu Hogar Felino:</h3>
+<h3>Ubicación</h3>
 
 <div class="location-options">
 
 <label class="location-option">
-<input type="radio" name="loc" value="Quito">
-Quito <span style="color:#aaa;">(Envío o Instalación por nuestro personal.)</span>
+<input type="radio" name="loc" value="Quito"> Quito
 </label>
 
 <label class="location-option">
-<input type="radio" name="loc" value="Guayaquil">
-Guayaquil <span style="color:#aaa;">(Envío o Instalación por nuestro socio estratégico.)</span>
+<input type="radio" name="loc" value="Guayaquil"> Guayaquil
 </label>
 
 <label class="location-option">
-<input type="radio" name="loc" value="Otra ciudad">
-Otra ciudad <span style="color:#aaa;">(Envío Vía Courier)</span>
+<input type="radio" name="loc" value="Otra ciudad"> Otra ciudad
 </label>
 
 </div>
@@ -387,98 +257,68 @@ Otra ciudad <span style="color:#aaa;">(Envío Vía Courier)</span>
 </div>
 
 <button class="btn" id="ctaBtn" onclick="enviar()">
-
-<svg viewBox="0 0 32 32">
-<path d="M16 .4C7.6.4.8 7.2.8 15.6c0 2.7.7 5.2 2 7.5L.4 32l9.1-2.3c2.2 1.2 4.8 1.9 7.5 1.9 8.4 0 15.2-6.8 15.2-15.2C31.2 7.2 24.4.4 16 .4zm0 27.6c-2.3 0-4.5-.6-6.4-1.7l-.5-.3-5.4 1.4 1.4-5.3-.3-.5c-1.2-1.9-1.8-4.1-1.8-6.5C3 8.6 8.6 3 16 3s13 5.6 13 13-5.6 13-13 13z"/>
-</svg>
-
-Selecciona una Gategoría y Ubicación para continuar.
-
+Selecciona opciones para continuar
 </button>
-</div>
 
-<div class="footer">
-<img src="footer.png">
 </div>
 
 <script>
+
 let selectedTier = null;
 let selectedLoc = null;
 
-// SELECCIÓN TIER
-function selectTier(el, tier){
-
-  document.querySelectorAll(".card").forEach(c => c.classList.remove("selected"));
-  el.classList.add("selected");
-
-  selectedTier = tier;
-  actualizarBoton();
+// TIER
+function selectTier(el,tier){
+document.querySelectorAll(".card").forEach(c=>c.classList.remove("selected"));
+el.classList.add("selected");
+selectedTier = tier;
+activar();
 }
 
-// SELECCIÓN UBICACIÓN
-document.querySelectorAll('.location-option').forEach(option=>{
-  option.addEventListener('click', ()=>{
-    document.querySelectorAll('.location-option').forEach(o=>o.classList.remove('selected'));
-    option.classList.add('selected');
-
-    let input = option.querySelector('input');
-    input.checked = true;
-
-    selectedLoc = input.value;
-    actualizarBoton();
-  });
+// UBICACIÓN
+document.querySelectorAll(".location-option").forEach(opt=>{
+opt.addEventListener("click",()=>{
+document.querySelectorAll(".location-option").forEach(o=>o.classList.remove("selected"));
+opt.classList.add("selected");
+selectedLoc = opt.querySelector("input").value;
+activar();
+});
 });
 
-// CAMBIO DINÁMICO DEL BOTÓN
-function actualizarBoton(){
-
-  let btn = document.getElementById("ctaBtn");
-
-  if(selectedTier && selectedLoc){
-
-    btn.classList.add("active");
-
-    // PERSONALIZACIÓN POR UBICACIÓN
-    if(selectedLoc === "Quito"){
-      btn.innerHTML = icono() + " Solicitar Gatificación en Quito";
-    } else if(selectedLoc === "Guayaquil"){
-      btn.innerHTML = icono() + " Solicitar Gatificación para Guayaquil";
-    } else {
-      btn.innerHTML = icono() + " Solicitar Gatificación con Envío";
-    }
-
-  } else {
-    btn.classList.remove("active");
-    btn.innerHTML = icono() + " Selecciona una opción para continuar";
-  }
+// ACTIVAR BOTÓN
+function activar(){
+if(selectedTier && selectedLoc){
+document.getElementById("ctaBtn").classList.add("active");
+}
 }
 
-// ICONO
-function icono(){
-  return `<svg viewBox="0 0 32 32">
-  <path d="M16 .4C7.6.4.8 7.2.8 15.6c0 2.7.7 5.2 2 7.5L.4 32l9.1-2.3c2.2 1.2 4.8 1.9 7.5 1.9 8.4 0 15.2-6.8 15.2-15.2C31.2 7.2 24.4.4 16 .4z"/>
-  </svg>`;
-}
-
-// ENVÍO
+// ENVÍO + PIXEL INTELIGENTE
 function enviar(){
 
-  if(!selectedTier || !selectedLoc){
-    return;
-  }
+if(!selectedTier || !selectedLoc) return;
 
-  // PIXEL
-  fbq('track', 'Lead', { value:1, currency:'USD', tier:selectedTier });
+// 🔥 FILTRO
+if(["Aristócrata","Magnate","Emperador","Deidad"].includes(selectedTier)){
 
-  if(["Deidad","Emperador","Magnate"].includes(selectedTier)){
-    fbq('trackCustom','HighValueClient',{tier:selectedTier});
-  } else {
-    fbq('trackCustom','LowBudget',{tier:selectedTier});
-  }
+fbq('track','Lead',{
+value:5,
+currency:'USD',
+tier:selectedTier
+});
 
-  let mensaje = `Hola Ale, quiero avanzar con una gatificación tipo ${selectedTier}. Estoy en ${selectedLoc}. ¿Cuál sería el siguiente paso?`;
+fbq('trackCustom','HighValueClient',{tier:selectedTier});
 
-  window.location.href = "https://wa.me/593963372269?text=" + encodeURIComponent(mensaje);
+}else{
+
+fbq('trackCustom','LowBudget',{tier:selectedTier});
+
+}
+
+// WHATSAPP
+let msg = `Hola Ale, quiero una gatificación tipo ${selectedTier}. Estoy en ${selectedLoc}.`;
+
+window.location.href = "https://wa.me/593963372269?text="+encodeURIComponent(msg);
+
 }
 
 </script>
