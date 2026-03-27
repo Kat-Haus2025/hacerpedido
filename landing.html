@@ -22,11 +22,16 @@ fbq('track', 'PageView');
 <title>Configura tu Gatificación</title>
 
 <style>
-body{
-background:#514033;
-color:#fff;
-font-family:sans-serif;
-margin:0;
+body {
+  /* Mantenemos tu color base como respaldo */
+  background-color: #514033; 
+  /* Creamos un gradiente que abre desde el centro */
+  background: radial-gradient(circle, #634f3f 0%, #3d3027 100%);
+  background-attachment: fixed; /* Para que el fondo no se mueva al hacer scroll */
+  color: #fff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente más moderna */
+  margin: 0;
+  min-height: 100vh;
 }
 
 /* 🔥 BANNER */
