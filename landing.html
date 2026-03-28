@@ -28,7 +28,30 @@ color:#fff;
 font-family:sans-serif;
 margin:0;
 }
+.disclaimer-global{
+margin:30px auto 10px auto;
+max-width:600px;
+font-size:0.85rem;
+color:#bbb;
+line-height:1.5;
+background:rgba(0,0,0,0.25);
+padding:15px;
+border-radius:10px;
+border:1px dashed #c49546;
+}
 
+.disclaimer-global a{
+display:inline-block;
+margin-top:8px;
+color:#3498db;
+text-decoration:underline;
+cursor:pointer;
+transition:.2s;
+}
+
+.disclaimer-global a:hover{
+color:#5dade2;
+}
 .top-banner{
 background:linear-gradient(90deg,#000,#3a2a1a,#000);
 padding:12px;
@@ -253,13 +276,17 @@ cursor:pointer;
 <div class="title">Michi Estudiante</div>
 <div class="price">$100–$150</div>
 
-<div class="disclaimer">
-⚠️ No aceptamos proyectos de menos de $100 USD.<br>
-<a onclick="lowBudgetClick()">Ver opciones económicas</a>
-</div>
 
 </div>
+<div class="disclaimer-global">
+⚠️ No aceptamos proyectos de menos de <strong>$100 USD</strong>, ya que por debajo de ese nivel no es posible mantener nuestros estándares de calidad.
 
+<br><br>
+
+<a onclick="lowBudgetClick()">
+No cuento con el presupuesto suficiente, ¿Qué hacer? 
+</a>
+</div>
 </div> <!-- 🔥 cierre correcto del grid -->
 
 <!-- UBICACIÓN -->
@@ -281,7 +308,7 @@ cursor:pointer;
 </div>
 
 <button class="btn" id="ctaBtn" onclick="enviar()">
-Configura tu selección
+Selecciona Gategoría y Ubicación para Continuar
 </button>
 
 </div>
