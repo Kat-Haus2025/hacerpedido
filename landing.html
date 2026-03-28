@@ -18,7 +18,6 @@ fbq('track', 'PageView');
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Configura tu Gatificación | Kat Haus</title>
 
 <style>
@@ -48,18 +47,10 @@ width:100%;
 display:block;
 }
 
-.video-container {
-    background: #000;
-    line-height: 0;
-}
+.video-container { background: #000; line-height: 0; }
 
-.container{
-padding:20px;
-text-align:center;
-}
-
+.container{ padding:20px; text-align:center; }
 h1{ color:#f1c40f; font-size:1.6rem; margin-top: 30px; }
-
 .sub{ color:#bbb; font-size:0.95rem; margin-bottom:15px; }
 
 .grid{
@@ -150,9 +141,7 @@ border: 1px solid #333;
   100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
 }
 </style>
-
 </head>
-
 <body>
 
 <div class="top-banner">
@@ -166,7 +155,6 @@ border: 1px solid #333;
 <div class="video-container">
     <video autoplay muted loop playsinline>
         <source src="banner.mp4" type="video/mp4">
-        Tu navegador no soporta videos.
     </video>
 </div>
 
@@ -175,9 +163,8 @@ border: 1px solid #333;
 </div>
 
 <div class="container">
-
 <h1>Selecciona tu Categoría:</h1>
-<div class="sub">(El nivel de complejidad estructural aumenta según la categoría seleccionada).</div>
+<div class="sub">(Circuitos diseñados según el nivel de actividad de tu minino).</div>
 
 <div class="grid">
     <div class="card" onclick="selectTier(this,'Deidad')">
@@ -214,10 +201,10 @@ border: 1px solid #333;
 
 <div style="margin-top: 25px; padding: 15px; border: 1px dashed #f1c40f; border-radius: 10px; background: rgba(241, 196, 15, 0.05);">
     <p style="font-size: 0.85rem; color: #f1c40f; margin: 0;">
-        ⚠️ <strong>Compromiso de Calidad:</strong> Para garantizar la seguridad estructural y el uso de maderas tratadas, nuestros proyectos inician desde los <strong>$100 USD</strong>.
+        ⚠️ <strong>Compromiso de Calidad:</strong> Nuestros proyectos inician desde los <strong>$100 USD</strong> para asegurar materiales estructurales de alta resistencia.
     </p>
     <p style="margin-top: 10px; font-size: 0.75rem; color: #bbb;">
-        ¿Buscas opciones más sencillas? 
+        ¿Tu presupuesto es menor? 
         <span onclick="pixelBasura()" style="text-decoration: underline; cursor: pointer; color: #3498db;">Ver guía de materiales básicos</span>
     </p>
 </div>
@@ -238,12 +225,12 @@ border: 1px solid #333;
 <button class="btn" id="ctaBtn" onclick="enviar()">
     Configura tu selección para continuar
 </button>
-
 </div>
 
 <script>
 let selectedTier = null;
 let selectedLoc = null;
+const miauSound = new Audio('maullido.mp3'); // Sonido restaurado
 
 function selectTier(el, tier) {
     document.querySelectorAll(".card").forEach(c => c.classList.remove("selected"));
@@ -273,22 +260,25 @@ function updateBtn() {
 function enviar() {
     if (!selectedTier || !selectedLoc) return;
 
-    let esHighValue = ["Aristócrata", "Magnate", "Emperador", "Deidad"].includes(selectedTier);
-    let prefijo = esHighValue ? "💎 [PROYECTO PREMIUM]" : "✨ [LÍNEA ESENCIAL]";
+    // Reproducir miau antes de saltar al WA
+    miauSound.play();
 
-    if (esHighValue) {
-        fbq('track', 'Lead', {tier: selectedTier});
-    } else {
-        fbq('trackCustom', 'EssentialTier', {tier: selectedTier});
-    }
+    setTimeout(() => {
+        let esHighValue = ["Aristócrata", "Magnate", "Emperador", "Deidad"].includes(selectedTier);
+        let prefijo = esHighValue ? "💎 [PROYECTO PREMIUM]" : "✨ [LÍNEA ESENCIAL]";
 
-    let mensaje = `${prefijo} Hola Kat Haus, me interesa un circuito tipo ${selectedTier} para ${selectedLoc}. ¿Podemos coordinar el diseño?`;
-    window.location.href = "https://wa.me/593963372269?text=" + encodeURIComponent(mensaje);
+        if (esHighValue) {
+            fbq('track', 'Lead', {tier: selectedTier});
+        }
+
+        let mensaje = `${prefijo} Hola Kat Haus, me interesa un circuito tipo ${selectedTier} para ${selectedLoc}. ¿Podemos coordinar el diseño?`;
+        window.location.href = "https://wa.me/593963372269?text=" + encodeURIComponent(mensaje);
+    }, 400); // Un pelín de tiempo para que se escuche el miau
 }
 
 function pixelBasura() {
     fbq('trackCustom', 'InformationSeeker', {reason: 'Presupuesto inicial'});
-    alert("Para presupuestos iniciales, recomendamos materiales ligeros como el MDF. En Kat Haus trabajamos exclusivamente con maderas sólidas y anclajes de alta resistencia para garantizar que tu inversión dure toda la vida del gatito.");
+    alert("En Kat Haus trabajamos exclusivamente con maderas sólidas y anclajes de alta resistencia. Para opciones en MDF o cartón, recomendamos buscar en plataformas de materiales ligeros.");
 }
 </script>
 
