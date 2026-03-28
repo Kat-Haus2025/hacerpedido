@@ -1,151 +1,164 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configura tu Gatificación | Kat Haus</title>
 
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '649645208209657');
+    fbq('track', 'PageView');
+    </script>
 
-fbq('init', '649645208209657');
-fbq('track', 'PageView');
-</script>
+    <style>
+        body {
+            background: radial-gradient(circle, #634f3f 0%, #3d3027 100%);
+            background-attachment: fixed;
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+        }
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Configura tu Gatificación | Kat Haus</title>
+        .top-banner {
+            background: linear-gradient(90deg,#000,#3a2a1a,#000);
+            padding: 12px;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: #f1c40f;
+            animation: fadeGlow 2s infinite alternate;
+        }
 
-<style>
-body {
-  background: radial-gradient(circle, #634f3f 0%, #3d3027 100%);
-  background-attachment: fixed;
-  color: #fff;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 0;
-  min-height: 100vh;
-}
+        @keyframes fadeGlow { from{opacity:0.7;} to{opacity:1;} }
 
-.top-banner{
-background:linear-gradient(90deg,#000,#3a2a1a,#000);
-padding:12px;
-text-align:center;
-font-size:0.9rem;
-font-weight:bold;
-color:#f1c40f;
-animation:fadeGlow 2s infinite alternate;
-}
+        .header img, .video-container video {
+            width: 100%;
+            display: block;
+        }
 
-@keyframes fadeGlow{ from{opacity:0.7;} to{opacity:1;} }
+        /* Contenedor de video optimizado */
+        .video-container { 
+            background: #000; 
+            line-height: 0; 
+            width: 100%;
+            max-width: 900px;
+            margin: auto;
+        }
 
-.header img, .video-container video {
-width:100%;
-display:block;
-}
+        .container { padding: 20px; text-align: center; }
+        h1 { color: #f1c40f; font-size: 1.6rem; margin-top: 30px; }
+        .sub { color: #bbb; font-size: 0.95rem; margin-bottom: 15px; }
 
-.video-container { background: #000; line-height: 0; }
+        /* GRID DE CATEGORÍAS */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            max-width: 900px;
+            margin: auto;
+        }
 
-.container{ padding:20px; text-align:center; }
-h1{ color:#f1c40f; font-size:1.6rem; margin-top: 30px; }
-.sub{ color:#bbb; font-size:0.95rem; margin-bottom:15px; }
+        @media(max-width:900px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+        @media(max-width:500px) { .grid { grid-template-columns: 1fr; } }
 
-.grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:12px;
-max-width:900px;
-margin:auto;
-}
+        .card {
+            background: #1c1915;
+            padding: 12px;
+            border-radius: 10px;
+            cursor: pointer;
+            border: 1px solid #2a2622;
+            transition: 0.3s;
+        }
 
-@media(max-width:900px){ .grid{grid-template-columns:repeat(2,1fr);} }
-@media(max-width:500px){ .grid{grid-template-columns:1fr;} }
+        .card.selected {
+            border: 2px solid #c49546;
+            box-shadow: 0 0 15px rgba(196, 149, 70, 0.5);
+            transform: translateY(-5px);
+        }
 
-.card{
-background:#1c1915;
-padding:12px;
-border-radius:10px;
-cursor:pointer;
-border:1px solid #2a2622;
-transition: 0.3s;
-}
+        .card img {
+            width: 100%;
+            border-radius: 6px;
+            animation: heartbeat 2.5s infinite;
+        }
 
-.card.selected{
-border:2px solid #c49546;
-box-shadow:0 0 15px rgba(196,149,70,0.5);
-}
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            20% { transform: scale(1.03); }
+            40% { transform: scale(1); }
+        }
 
-.card img{
-width:100%;
-border-radius:6px;
-animation:heartbeat 2.5s infinite;
-}
+        .title { color: #f1c40f; font-weight: bold; margin-top: 8px; }
+        .price { color: #ccc; font-size: 0.85rem; }
 
-@keyframes heartbeat{
-0%{transform:scale(1);}
-20%{transform:scale(1.03);}
-40%{transform:scale(1);}
-}
+        /* UBICACIÓN */
+        .location-banner {
+            margin: 30px auto;
+            max-width: 600px;
+            background: #181512;
+            padding: 20px;
+            border-radius: 14px;
+            border: 1px solid #333;
+        }
 
-.title{ color:#f1c40f; font-weight: bold; margin-top: 8px; }
-.price{ color:#ccc; font-size:0.85rem; }
+        .location-option {
+            display: block;
+            margin: 12px 0;
+            cursor: pointer;
+            text-align: left;
+            padding: 12px;
+            background: #221e1a;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
 
-.location-banner{
-margin: 30px auto;
-max-width:600px;
-background:#181512;
-padding:20px;
-border-radius:14px;
-border: 1px solid #333;
-}
+        .location-option:hover { background: #2d2824; }
 
-.location-option {
-  display: block;
-  margin: 12px 0;
-  cursor: pointer;
-  text-align: left;
-  padding: 10px;
-  background: #221e1a;
-  border-radius: 8px;
-}
+        /* BOTÓN WHATSAPP */
+        .btn {
+            margin: 30px auto;
+            background: #25D366;
+            color: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            width: 100%;
+            max-width: 380px;
+            opacity: 0.4;
+            transition: .3s;
+            border: none;
+            display: block;
+            cursor: not-allowed;
+            text-transform: uppercase;
+        }
 
-.btn {
-  margin: 30px auto;
-  background: #25D366;
-  color: #fff;
-  padding: 18px;
-  border-radius: 12px;
-  font-weight: bold;
-  font-size: 1.1rem;
-  width: 100%;
-  max-width: 380px;
-  opacity: 0.5;
-  transition: .3s;
-  border: none;
-  display: block;
-  cursor: not-allowed;
-}
+        .btn.active {
+            opacity: 1;
+            cursor: pointer;
+            animation: pulseGreen 1.5s infinite;
+        }
 
-.btn.active {
-  opacity: 1;
-  cursor: pointer;
-  animation: pulseGreen 1.5s infinite;
-}
-
-@keyframes pulseGreen {
-  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-  70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-}
-</style>
+        @keyframes pulseGreen {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+    </style>
 </head>
 <body>
 
 <div class="top-banner">
-🐾 “Gatificando Hogares Premium desde 2021.”
+    🐾 “Gatificando Hogares Premium desde 2021.”
 </div>
 
 <div class="header">
@@ -153,8 +166,9 @@ border: 1px solid #333;
 </div>
 
 <div class="video-container">
-    <video autoplay muted loop playsinline>
+    <video autoplay muted loop playsinline id="mainVideo">
         <source src="banner.mp4" type="video/mp4">
+        Tu navegador no soporta video.
     </video>
 </div>
 
@@ -163,74 +177,74 @@ border: 1px solid #333;
 </div>
 
 <div class="container">
-<h1>Selecciona tu Categoría:</h1>
-<div class="sub">(Circuitos diseñados según el nivel de actividad de tu minino).</div>
+    <h1>Selecciona tu Categoría:</h1>
+    <div class="sub">(El nivel de complejidad estructural se adapta a tu elección).</div>
 
-<div class="grid">
-    <div class="card" onclick="selectTier(this,'Deidad')">
-        <img src="tier6.png">
-        <div class="title">Michi Deidad</div>
-        <div class="price">Proyectos Master</div>
+    <div class="grid">
+        <div class="card" onclick="selectTier(this,'Deidad')">
+            <img src="tier6.png">
+            <div class="title">Michi Deidad</div>
+            <div class="price">Proyectos Master</div>
+        </div>
+        <div class="card" onclick="selectTier(this,'Emperador')">
+            <img src="tier5.png">
+            <div class="title">Michi Emperador</div>
+            <div class="price">$301–$350</div>
+        </div>
+        <div class="card" onclick="selectTier(this,'Magnate')">
+            <img src="tier4.png">
+            <div class="title">Michi Magnate</div>
+            <div class="price">$250–$300</div>
+        </div>
+        <div class="card" onclick="selectTier(this,'Aristócrata')">
+            <img src="tier3.png">
+            <div class="title">Michi Aristócrata</div>
+            <div class="price">$201–$250</div>
+        </div>
+        <div class="card" onclick="selectTier(this,'Oficinista')">
+            <img src="tier2.png">
+            <div class="title">Michi Oficinista</div>
+            <div class="price">$151–$200</div>
+        </div>
+        <div class="card" onclick="selectTier(this,'Estudiante')">
+            <img src="tier1.png">
+            <div class="title">Michi Estudiante</div>
+            <div class="price">$100–$150</div>
+        </div>
     </div>
-    <div class="card" onclick="selectTier(this,'Emperador')">
-        <img src="tier5.png">
-        <div class="title">Michi Emperador</div>
-        <div class="price">$301–$350</div>
-    </div>
-    <div class="card" onclick="selectTier(this,'Magnate')">
-        <img src="tier4.png">
-        <div class="title">Michi Magnate</div>
-        <div class="price">$250–$300</div>
-    </div>
-    <div class="card" onclick="selectTier(this,'Aristócrata')">
-        <img src="tier3.png">
-        <div class="title">Michi Aristócrata</div>
-        <div class="price">$201–$250</div>
-    </div>
-    <div class="card" onclick="selectTier(this,'Oficinista')">
-        <img src="tier2.png">
-        <div class="title">Michi Oficinista</div>
-        <div class="price">$151–$200</div>
-    </div>
-    <div class="card" onclick="selectTier(this,'Estudiante')">
-        <img src="tier1.png">
-        <div class="title">Michi Estudiante</div>
-        <div class="price">$100–$150</div>
-    </div>
-</div>
 
-<div style="margin-top: 25px; padding: 15px; border: 1px dashed #f1c40f; border-radius: 10px; background: rgba(241, 196, 15, 0.05);">
-    <p style="font-size: 0.85rem; color: #f1c40f; margin: 0;">
-        ⚠️ <strong>Compromiso de Calidad:</strong> Nuestros proyectos inician desde los <strong>$100 USD</strong> para asegurar materiales estructurales de alta resistencia.
-    </p>
-    <p style="margin-top: 10px; font-size: 0.75rem; color: #bbb;">
-        ¿Tu presupuesto es menor? 
-        <span onclick="pixelBasura()" style="text-decoration: underline; cursor: pointer; color: #3498db;">Ver guía de materiales básicos</span>
-    </p>
-</div>
+    <div style="margin-top: 25px; padding: 15px; border: 1px dashed #f1c40f; border-radius: 10px; background: rgba(241, 196, 15, 0.05);">
+        <p style="font-size: 0.85rem; color: #f1c40f; margin: 0;">
+            ⚠️ <strong>Estándar Kat Haus:</strong> Para garantizar la seguridad de tu gato, solo trabajamos con maderas sólidas. Proyectos desde <strong>$100 USD</strong>.
+        </p>
+        <p style="margin-top: 10px; font-size: 0.75rem; color: #bbb;">
+            ¿Buscas algo más sencillo? 
+            <span onclick="pixelBasura()" style="text-decoration: underline; cursor: pointer; color: #3498db;">Guía de materiales iniciales</span>
+        </p>
+    </div>
 
-<div class="location-banner">
-    <h3>Ubicación del Proyecto:</h3>
-    <label class="location-option">
-        <input type="radio" name="loc" value="Quito"> <strong>Quito</strong> (Instalación Kat-Haus)
-    </label>
-    <label class="location-option">
-        <input type="radio" name="loc" value="Guayaquil"> <strong>Guayaquil</strong> (Aliado Estratégico)
-    </label>
-    <label class="location-option">
-        <input type="radio" name="loc" value="Otra ciudad"> <strong>Otras Provincias</strong> (Envío por Courier)
-    </label>
-</div>
+    <div class="location-banner">
+        <h3>Ubicación del Proyecto:</h3>
+        <label class="location-option">
+            <input type="radio" name="loc" value="Quito"> <strong>Quito</strong> (Instalación Kat-Haus)
+        </label>
+        <label class="location-option">
+            <input type="radio" name="loc" value="Guayaquil"> <strong>Guayaquil</strong> (Aliado Estratégico)
+        </label>
+        <label class="location-option">
+            <input type="radio" name="loc" value="Otra ciudad"> <strong>Otras Provincias</strong> (Envío Courier)
+        </label>
+    </div>
 
-<button class="btn" id="ctaBtn" onclick="enviar()">
-    Configura tu selección para continuar
-</button>
+    <button class="btn" id="ctaBtn" onclick="enviar()">
+        Configura tu selección
+    </button>
 </div>
 
 <script>
 let selectedTier = null;
 let selectedLoc = null;
-const miauSound = new Audio('maullido.mp3'); // Sonido restaurado
+const miauSound = new Audio('maullido.mp3');
 
 function selectTier(el, tier) {
     document.querySelectorAll(".card").forEach(c => c.classList.remove("selected"));
@@ -252,7 +266,7 @@ function updateBtn() {
         btn.classList.add("active");
         btn.innerText = "Consultar Disponibilidad 📲";
     } else {
-        btn.innerText = "Configura tu selección para continuar";
+        btn.innerText = "Configura tu selección";
         btn.classList.remove("active");
     }
 }
@@ -260,9 +274,9 @@ function updateBtn() {
 function enviar() {
     if (!selectedTier || !selectedLoc) return;
 
-    // Reproducir miau antes de saltar al WA
-    miauSound.play();
-
+    // Sonido y pequeña vibración visual
+    miauSound.play().catch(e => console.log("Audio bloqueado hasta interacción"));
+    
     setTimeout(() => {
         let esHighValue = ["Aristócrata", "Magnate", "Emperador", "Deidad"].includes(selectedTier);
         let prefijo = esHighValue ? "💎 [PROYECTO PREMIUM]" : "✨ [LÍNEA ESENCIAL]";
@@ -271,19 +285,20 @@ function enviar() {
             fbq('track', 'Lead', {tier: selectedTier});
         }
 
-        let mensaje = `${prefijo} Hola Kat Haus, me interesa un circuito tipo ${selectedTier} para ${selectedLoc}. ¿Podemos coordinar el diseño?`;
+        let mensaje = `${prefijo} Hola Kat Haus, me interesa un circuito tipo ${selectedTier} para ${selectedLoc}. ¿Me ayudan con el diseño?`;
         window.location.href = "https://wa.me/593963372269?text=" + encodeURIComponent(mensaje);
-    }, 400); // Un pelín de tiempo para que se escuche el miau
+    }, 500); // 500ms para asegurar que el miau se escuche
 }
 
 function pixelBasura() {
-    fbq('trackCustom', 'InformationSeeker', {reason: 'Presupuesto inicial'});
-    alert("En Kat Haus trabajamos exclusivamente con maderas sólidas y anclajes de alta resistencia. Para opciones en MDF o cartón, recomendamos buscar en plataformas de materiales ligeros.");
+    fbq('trackCustom', 'InfoBásica', {reason: 'Presupuesto inicial'});
+    alert("En Kat Haus fabricamos muebles estructurales de larga duración. Para opciones en MDF o materiales económicos, recomendamos plataformas de venta masiva.");
 }
 </script>
 
 <div class="header">
     <img src="footer.png">
 </div>
+
 </body>
 </html>
