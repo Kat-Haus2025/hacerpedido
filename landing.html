@@ -1,324 +1,303 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Configura tu Gatificación | Kat Haus</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Configura tu Gatificación | Kat Haus</title>
 
-    <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '649645208209657');
-    fbq('track', 'PageView');
-    </script>
+<!-- META PIXEL -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
 
-    <style>
-        body {
-            background: radial-gradient(circle, #634f3f 0%, #3d3027 100%);
-            background-attachment: fixed;
-            color: #fff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            min-height: 100vh;
-        }
+fbq('init', '649645208209657');
+fbq('track', 'PageView');
+</script>
 
-        .top-banner {
-            background: linear-gradient(90deg,#000,#3a2a1a,#000);
-            padding: 12px;
-            text-align: center;
-            font-size: 0.9rem;
-            font-weight: bold;
-            color: #f1c40f;
-            animation: fadeGlow 2s infinite alternate;
-        }
-
-        @keyframes fadeGlow { from{opacity:0.7;} to{opacity:1;} }
-
-        .header img, .video-container video {
-            width: 100%;
-            display: block;
-        }
-
-        /* Contenedor de video optimizado */
-        .video-container { 
-            background: #000; 
-            line-height: 0; 
-            width: 100%;
-            max-width: 900px;
-            margin: auto;
-        }
-
-        .container { padding: 20px; text-align: center; }
-        h1 { color: #f1c40f; font-size: 1.6rem; margin-top: 30px; }
-        .sub { color: #bbb; font-size: 0.95rem; margin-bottom: 15px; }
-
-        /* GRID DE CATEGORÍAS */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            max-width: 900px;
-            margin: auto;
-        }
-
-        @media(max-width:900px) { .grid { grid-template-columns: repeat(2, 1fr); } }
-        @media(max-width:500px) { .grid { grid-template-columns: 1fr; } }
-
-        .card {
-            background: #1c1915;
-            padding: 12px;
-            border-radius: 10px;
-            cursor: pointer;
-            border: 1px solid #2a2622;
-            transition: 0.3s;
-        }
-
-        .card.selected {
-            border: 2px solid #c49546;
-            box-shadow: 0 0 15px rgba(196, 149, 70, 0.5);
-            transform: translateY(-5px);
-        }
-
-        .card img {
-            width: 100%;
-            border-radius: 6px;
-            animation: heartbeat 2.5s infinite;
-        }
-
-        @keyframes heartbeat {
-            0% { transform: scale(1); }
-            20% { transform: scale(1.03); }
-            40% { transform: scale(1); }
-        }
-
-.title {
-  color: #f1c40f;
-  font-weight: bold;
-  margin-top: 8px;
-  text-align: center;
+<style>
+body {
+background: radial-gradient(circle, #634f3f 0%, #3d3027 100%);
+background-attachment: fixed;
+color: #fff;
+font-family: 'Segoe UI', sans-serif;
+margin: 0;
 }
 
-.price {
-  color: #ccc;
-  font-size: 0.85rem;
-  text-align: center;
+.top-banner{
+background:linear-gradient(90deg,#000,#3a2a1a,#000);
+padding:12px;
+text-align:center;
+font-weight:bold;
+color:#f1c40f;
+animation:fadeGlow 2s infinite alternate;
 }
 
-        /* UBICACIÓN */
-        .location-banner {
-            margin: 30px auto;
-            max-width: 600px;
-            background: #181512;
-            padding: 20px;
-            border-radius: 14px;
-            border: 1px solid #333;
-        }
+@keyframes fadeGlow{ from{opacity:0.7;} to{opacity:1;} }
 
-        .location-option {
-            display: block;
-            margin: 12px 0;
-            cursor: pointer;
-            text-align: left;
-            padding: 12px;
-            background: #221e1a;
-            border-radius: 8px;
-            transition: 0.3s;
-        }
+.header img, .video-container video{
+width:100%;
+display:block;
+}
 
-        .location-option:hover { background: #2d2824; }
+.video-container{
+max-width:900px;
+margin:auto;
+background:#000;
+}
 
-        /* BOTÓN WHATSAPP */
-        .btn {
-            margin: 30px auto;
-            background: #25D366;
-            color: #fff;
-            padding: 20px;
-            border-radius: 12px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            width: 100%;
-            max-width: 380px;
-            opacity: 0.4;
-            transition: .3s;
-            border: none;
-            display: block;
-            cursor: not-allowed;
-            text-transform: uppercase;
-        }
+.container{
+padding:20px;
+text-align:center;
+}
 
-        .btn.active {
-            opacity: 1;
-            cursor: pointer;
-            animation: pulseGreen 1.5s infinite;
-        }
+.grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:12px;
+max-width:900px;
+margin:auto;
+}
 
-        @keyframes pulseGreen {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-        }
-    </style>
+@media(max-width:900px){ .grid{grid-template-columns:repeat(2,1fr);} }
+@media(max-width:500px){ .grid{grid-template-columns:1fr;} }
+
+.card{
+background:#1c1915;
+padding:12px;
+border-radius:10px;
+cursor:pointer;
+border:1px solid #2a2622;
+transition:.3s;
+text-align:center;
+}
+
+.card.selected{
+border:2px solid #c49546;
+box-shadow:0 0 15px rgba(196,149,70,0.5);
+transform:translateY(-5px);
+}
+
+.card img{
+width:100%;
+border-radius:6px;
+animation:heartbeat 2.5s infinite;
+}
+
+@keyframes heartbeat{
+0%{transform:scale(1);}
+20%{transform:scale(1.03);}
+40%{transform:scale(1);}
+}
+
+.title{
+color:#f1c40f;
+font-weight:bold;
+margin-top:8px;
+}
+
+.price{
+color:#ccc;
+font-size:0.85rem;
+}
+
+.location-banner{
+margin:30px auto;
+max-width:600px;
+background:#181512;
+padding:20px;
+border-radius:14px;
+}
+
+.location-option{
+display:block;
+margin:10px 0;
+cursor:pointer;
+padding:10px;
+background:#221e1a;
+border-radius:8px;
+}
+
+.btn{
+margin:30px auto;
+background:#25D366;
+color:#fff;
+padding:18px;
+border-radius:12px;
+font-weight:bold;
+font-size:1rem;
+width:100%;
+max-width:380px;
+opacity:0.4;
+transition:.3s;
+border:none;
+cursor:not-allowed;
+}
+
+.btn.active{
+opacity:1;
+cursor:pointer;
+animation:pulseGreen 1.5s infinite;
+}
+
+@keyframes pulseGreen{
+0%{transform:scale(1);}
+50%{transform:scale(1.05);}
+100%{transform:scale(1);}
+}
+</style>
 </head>
+
 <body>
 
 <div class="top-banner">
-    🐾 “Gatificando Hogares Premium desde 2021.”
+🐾 Gatificando hogares premium desde 2021
 </div>
 
 <div class="header">
-    <img src="profesional.png">
+<img src="profesional.png">
 </div>
 
 <div class="video-container">
-    <video autoplay muted loop playsinline id="mainVideo">
-        <source src="banner.webm" type="video/mp4">
-        Tu navegador no soporta video.
-    </video>
+<video autoplay muted loop playsinline>
+<source src="banner.webm" type="video/webm">
+<source src="banner.mp4" type="video/mp4">
+</video>
 </div>
 
 <div class="header">
-    <img src="copy.png">
+<img src="copy.png">
 </div>
 
 <div class="header">
-    <img src="selecciona.png">
+<img src="selecciona.png">
 </div>
 
-    <div class="grid">
-        <div class="card" onclick="selectTier(this,'Deidad')">
-            <img src="tier6.png">
-            <div class="title">Michi Deidad</div>
-            <div class="price">Proyectos Master</div>
-        </div>
-        <div class="card" onclick="selectTier(this,'Emperador')">
-            <img src="tier5.png">
-            <div class="title">Michi Emperador</div>
-            <div class="price">$301–$350</div>
-        </div>
-        <div class="card" onclick="selectTier(this,'Magnate')">
-            <img src="tier4.png">
-            <div class="title">Michi Magnate</div>
-            <div class="price">$250–$300</div>
-        </div>
-        <div class="card" onclick="selectTier(this,'Aristócrata')">
-            <img src="tier3.png">
-            <div class="title">Michi Aristócrata</div>
-            <div class="price">$201–$250</div>
-        </div>
-        <div class="card" onclick="selectTier(this,'Oficinista')">
-            <img src="tier2.png">
-            <div class="title">Michi Oficinista</div>
-            <div class="price">$151–$200</div>
-        </div>
-        <div class="card" onclick="selectTier(this,'Estudiante')">
-            <img src="tier1.png">
-            <div class="title">Michi Estudiante</div>
-            <div class="price">$100–$150</div>
-        </div>
-    </div>
+<div class="container">
 
-    <div style="margin-top: 25px; padding: 15px; border: 1px dashed #f1c40f; border-radius: 10px; background: rgba(241, 196, 15, 0.05);">
-        <p style="font-size: 0.85rem; color: #f1c40f; margin: 0;">
-            ⚠️ <strong>Estándar Kat Haus:</strong> Para garantizar la seguridad de tu gato, solo trabajamos con maderas sólidas. Proyectos desde <strong>$100 USD</strong>.
-        </p>
-        <p style="margin-top: 10px; font-size: 0.75rem; color: #bbb;">
-            ¿Buscas algo más sencillo? 
-            <span onclick="pixelBasura()" style="text-decoration: underline; cursor: pointer; color: #3498db;">Guía de materiales iniciales</span>
-        </p>
-    </div>
+<div class="grid">
 
-    <div class="location-banner">
-        <h3>Ubicación del Proyecto:</h3>
-        <label class="location-option">
-            <input type="radio" name="loc" value="Quito"> <strong>Quito</strong> (Instalación Kat-Haus)
-        </label>
-        <label class="location-option">
-            <input type="radio" name="loc" value="Guayaquil"> <strong>Guayaquil</strong> (Aliado Estratégico)
-        </label>
-        <label class="location-option">
-            <input type="radio" name="loc" value="Otra ciudad"> <strong>Otras Provincias</strong> (Envío Courier)
-        </label>
-    </div>
+<div class="card" onclick="selectTier(this,'Deidad')">
+<img src="tier6.png">
+<div class="title">Michi Deidad</div>
+<div class="price">Proyectos Master</div>
+</div>
 
-    <button class="btn" id="ctaBtn" onclick="enviar()">
-        Configura tu selección
-    </button>
+<div class="card" onclick="selectTier(this,'Emperador')">
+<img src="tier5.png">
+<div class="title">Michi Emperador</div>
+<div class="price">$301–$350</div>
+</div>
+
+<div class="card" onclick="selectTier(this,'Magnate')">
+<img src="tier4.png">
+<div class="title">Michi Magnate</div>
+<div class="price">$250–$300</div>
+</div>
+
+<div class="card" onclick="selectTier(this,'Aristócrata')">
+<img src="tier3.png">
+<div class="title">Michi Aristócrata</div>
+<div class="price">$201–$250</div>
+</div>
+
+<div class="card" onclick="selectTier(this,'Oficinista')">
+<img src="tier2.png">
+<div class="title">Michi Oficinista</div>
+<div class="price">$151–$200</div>
+</div>
+
+<div class="card" onclick="selectTier(this,'Estudiante')">
+<img src="tier1.png">
+<div class="title">Michi Estudiante</div>
+<div class="price">$100–$150</div>
+</div>
+
+</div>
+
+<div class="location-banner">
+<h3>Ubicación del Proyecto:</h3>
+
+<label class="location-option">
+<input type="radio" name="loc" value="Quito"> Quito
+</label>
+
+<label class="location-option">
+<input type="radio" name="loc" value="Guayaquil"> Guayaquil
+</label>
+
+<label class="location-option">
+<input type="radio" name="loc" value="Otra ciudad"> Otra ciudad
+</label>
+
+</div>
+
+<button class="btn" id="ctaBtn" onclick="enviar()">
+Configura tu selección
+</button>
+
+</div>
+
+<div class="header">
+<img src="footer.png">
 </div>
 
 <script>
 let selectedTier = null;
 let selectedLoc = null;
-const miauSound = new Audio('maullido.mp3');
 
-function selectTier(el, tier) {
-    document.querySelectorAll(".card").forEach(c => c.classList.remove("selected"));
-    el.classList.add("selected");
-    selectedTier = tier;
-    updateBtn();
+function selectTier(el,tier){
+document.querySelectorAll(".card").forEach(c=>c.classList.remove("selected"));
+el.classList.add("selected");
+selectedTier=tier;
+updateBtn();
 }
 
-document.querySelectorAll("input[name='loc']").forEach(r => {
-    r.addEventListener("change", () => {
-        selectedLoc = r.value;
-        updateBtn();
-    });
+document.querySelectorAll("input[name='loc']").forEach(r=>{
+r.addEventListener("change",()=>{
+selectedLoc=r.value;
+updateBtn();
+});
 });
 
-function updateBtn() {
-    let btn = document.getElementById("ctaBtn");
+function updateBtn(){
+let btn=document.getElementById("ctaBtn");
 
-    if (selectedTier && selectedLoc) {
-        btn.classList.add("active");
+if(selectedTier && selectedLoc){
+btn.classList.add("active");
 
-        if (selectedLoc === "Quito") {
-            btn.innerText = "Diseñar para Quito 🐾";
-        } else if (selectedLoc === "Guayaquil") {
-            btn.innerText = "Diseñar para Guayaquil 🐾";
-        } else {
-            btn.innerText = "Diseñar para otra ciudad 🐾";
-        }
+if(selectedLoc==="Quito"){
+btn.innerText="Diseñar para Quito 🐾";
+}else if(selectedLoc==="Guayaquil"){
+btn.innerText="Diseñar para Guayaquil 🐾";
+}else{
+btn.innerText="Diseñar para otra ciudad 🐾";
+}
 
-    } else {
-        btn.innerText = "Configura tu selección";
-        btn.classList.remove("active");
-    }
+}else{
+btn.innerText="Configura tu selección";
+btn.classList.remove("active");
 }
 }
 
-function enviar() {
-    if (!selectedTier || !selectedLoc) return;
+function enviar(){
+if(!selectedTier || !selectedLoc) return;
 
-    // Sonido y pequeña vibración visual
-    miauSound.play().catch(e => console.log("Audio bloqueado hasta interacción"));
-    
-    setTimeout(() => {
-        let esHighValue = ["Aristócrata", "Magnate", "Emperador", "Deidad"].includes(selectedTier);
-        let prefijo = esHighValue ? "💎 [PROYECTO PREMIUM]" : "✨ [LÍNEA ESENCIAL]";
+let esHigh=["Aristócrata","Magnate","Emperador","Deidad"].includes(selectedTier);
 
-        if (esHighValue) {
-            fbq('track', 'Lead', {tier: selectedTier});
-        }
-
-        let mensaje = `${prefijo} Hola Kat Haus, me interesa un circuito tipo ${selectedTier} para ${selectedLoc}. ¿Me ayudan con el diseño?`;
-        window.location.href = "https://wa.me/593963372269?text=" + encodeURIComponent(mensaje);
-    }, 500); // 500ms para asegurar que el miau se escuche
+if(esHigh){
+fbq('track','Lead',{tier:selectedTier});
 }
 
-function pixelBasura() {
-    fbq('trackCustom', 'InfoBásica', {reason: 'Presupuesto inicial'});
-    alert("En Kat Haus fabricamos muebles estructurales de larga duración. Para opciones en MDF o materiales económicos, recomendamos plataformas de venta masiva.");
+let mensaje=`Hola Kat Haus, quiero un circuito ${selectedTier} en ${selectedLoc}`;
+window.location.href="https://wa.me/593963372269?text="+encodeURIComponent(mensaje);
 }
 </script>
-
-<div class="header">
-    <img src="footer.png">
-</div>
 
 </body>
 </html>
