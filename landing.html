@@ -24,21 +24,21 @@ fbq('track', 'PageView');
 body {
 background: radial-gradient(circle, #634f3f 0%, #3d3027 100%);
 background-attachment: fixed;
-color: #fff;
-font-family: 'Segoe UI', sans-serif;
-margin: 0;
+color:#fff;
+font-family:sans-serif;
+margin:0;
 }
 
 .top-banner{
 background:linear-gradient(90deg,#000,#3a2a1a,#000);
 padding:12px;
 text-align:center;
-font-weight:bold;
 color:#f1c40f;
+font-weight:bold;
 animation:fadeGlow 2s infinite alternate;
 }
 
-@keyframes fadeGlow{ from{opacity:0.7;} to{opacity:1;} }
+@keyframes fadeGlow{from{opacity:.7;}to{opacity:1;}}
 
 .header img, .video-container video{
 width:100%;
@@ -64,8 +64,8 @@ max-width:900px;
 margin:auto;
 }
 
-@media(max-width:900px){ .grid{grid-template-columns:repeat(2,1fr);} }
-@media(max-width:500px){ .grid{grid-template-columns:1fr;} }
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:500px){.grid{grid-template-columns:1fr;}}
 
 .card{
 background:#1c1915;
@@ -79,7 +79,7 @@ text-align:center;
 
 .card.selected{
 border:2px solid #c49546;
-box-shadow:0 0 15px rgba(196,149,70,0.5);
+box-shadow:0 0 15px rgba(196,149,70,.5);
 transform:translateY(-5px);
 }
 
@@ -95,16 +95,8 @@ animation:heartbeat 2.5s infinite;
 40%{transform:scale(1);}
 }
 
-.title{
-color:#f1c40f;
-font-weight:bold;
-margin-top:8px;
-}
-
-.price{
-color:#ccc;
-font-size:0.85rem;
-}
+.title{color:#f1c40f;font-weight:bold;margin-top:8px;}
+.price{color:#ccc;font-size:.85rem;}
 
 .location-banner{
 margin:30px auto;
@@ -130,13 +122,11 @@ color:#fff;
 padding:18px;
 border-radius:12px;
 font-weight:bold;
-font-size:1rem;
 width:100%;
 max-width:380px;
-opacity:0.4;
-transition:.3s;
-border:none;
+opacity:.4;
 cursor:not-allowed;
+transition:.3s;
 }
 
 .btn.active{
@@ -155,9 +145,7 @@ animation:pulseGreen 1.5s infinite;
 
 <body>
 
-<div class="top-banner">
-🐾 Gatificando hogares premium desde 2021
-</div>
+<div class="top-banner">🐾 Gatificando hogares premium</div>
 
 <div class="header">
 <img src="profesional.png">
@@ -248,8 +236,11 @@ Configura tu selección
 </div>
 
 <script>
-let selectedTier = null;
-let selectedLoc = null;
+let selectedTier=null;
+let selectedLoc=null;
+
+// 🎧 Maullido
+const miauSound=new Audio('maullido.mp3');
 
 function selectTier(el,tier){
 document.querySelectorAll(".card").forEach(c=>c.classList.remove("selected"));
@@ -288,6 +279,17 @@ btn.classList.remove("active");
 function enviar(){
 if(!selectedTier || !selectedLoc) return;
 
+// 🔊 intenta reproducir sonido
+miauSound.currentTime=0;
+let playPromise=miauSound.play();
+
+if(playPromise!==undefined){
+playPromise.catch(()=>{});
+}
+
+// delay para que se escuche el miau
+setTimeout(()=>{
+
 let esHigh=["Aristócrata","Magnate","Emperador","Deidad"].includes(selectedTier);
 
 if(esHigh){
@@ -296,6 +298,8 @@ fbq('track','Lead',{tier:selectedTier});
 
 let mensaje=`Hola Kat Haus, quiero un circuito ${selectedTier} en ${selectedLoc}`;
 window.location.href="https://wa.me/593963372269?text="+encodeURIComponent(mensaje);
+
+},400);
 }
 </script>
 
