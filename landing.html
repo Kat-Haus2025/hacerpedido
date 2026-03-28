@@ -50,7 +50,59 @@ max-width:900px;
 margin:auto;
 background:#000;
 }
+.disclaimer{
+font-size:0.75rem;
+color:#aaa;
+margin-top:6px;
+line-height:1.3;
+}
 
+.disclaimer a{
+color:#3498db;
+text-decoration:underline;
+cursor:pointer;
+}
+
+/* MODAL */
+.modal{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.8);
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:999;
+opacity:0;
+pointer-events:none;
+transition:.3s;
+}
+
+.modal.active{
+opacity:1;
+pointer-events:auto;
+}
+
+.modal-box{
+background:#1c1915;
+padding:20px;
+border-radius:12px;
+max-width:400px;
+text-align:center;
+border:1px solid #c49546;
+}
+
+.modal-box button{
+margin-top:15px;
+padding:10px 15px;
+border:none;
+background:#c49546;
+color:#000;
+border-radius:8px;
+cursor:pointer;
+}
 .container{
 padding:20px;
 text-align:center;
@@ -204,6 +256,10 @@ animation:pulseGreen 1.5s infinite;
 <img src="tier1.png">
 <div class="title">Michi Estudiante</div>
 <div class="price">$100–$150</div>
+
+<div class="disclaimer">
+⚠️ No trabajamos proyectos menores a $100 USD.<br>
+<a onclick="lowBudgetClick()">Ver opciones económicas</a>
 </div>
 
 </div>
@@ -236,6 +292,21 @@ Configura tu selección
 </div>
 
 <script>
+
+  function lowBudgetClick(){
+
+// 🔥 evento para excluir este perfil
+fbq('trackCustom','LowBudgetIntent',{
+  reason:'Buscando opciones económicas'
+});
+
+// mostrar modal
+document.getElementById("lowModal").classList.add("active");
+}
+
+function cerrarModal(){
+document.getElementById("lowModal").classList.remove("active");
+}
 let selectedTier=null;
 let selectedLoc=null;
 
@@ -302,6 +373,15 @@ window.location.href="https://wa.me/593963372269?text="+encodeURIComponent(mensa
 },400);
 }
 </script>
-
+<div class="modal" id="lowModal">
+  <div class="modal-box">
+    <p>
+    Si tu presupuesto es limitado, puedes optar por soluciones en 
+    <strong>MDF o cartón prensado</strong>, comunes en plataformas como 
+    Facebook Marketplace.
+    </p>
+    <button onclick="cerrarModal()">Entendido</button>
+  </div>
+</div>
 </body>
 </html>
