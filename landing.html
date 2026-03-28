@@ -272,13 +272,23 @@ document.querySelectorAll("input[name='loc']").forEach(r => {
 
 function updateBtn() {
     let btn = document.getElementById("ctaBtn");
+
     if (selectedTier && selectedLoc) {
         btn.classList.add("active");
-        btn.innerText = "Consultar Disponibilidad 📲";
+
+        if (selectedLoc === "Quito") {
+            btn.innerText = "Diseñar para Quito 🐾";
+        } else if (selectedLoc === "Guayaquil") {
+            btn.innerText = "Diseñar para Guayaquil 🐾";
+        } else {
+            btn.innerText = "Diseñar para otra ciudad 🐾";
+        }
+
     } else {
         btn.innerText = "Configura tu selección";
         btn.classList.remove("active");
     }
+}
 }
 
 function enviar() {
