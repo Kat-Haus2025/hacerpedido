@@ -1,401 +1,103 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Configura tu Gatificación | Kat Haus</title>
+<div style="height:100vh; display:flex; flex-direction:column; justify-content:space-between; font-family:'Segoe UI', sans-serif; padding:20px; box-sizing:border-box;">
 
-<!-- META PIXEL -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
+    <!-- META PIXEL -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
 
-fbq('init', '649645208209657');
-fbq('track', 'PageView');
-</script>
+    fbq('init', '649645208209657');
+    fbq('track', 'PageView');
+    </script>
 
-<style>
-body {
-background: radial-gradient(circle, #634f3f 0%, #3d3027 100%);
-background-attachment: fixed;
-color:#fff;
-font-family:sans-serif;
-margin:0;
-}
-.disclaimer-global{
-    margin:30px auto 10px auto;
-    max-width:600px;
-    font-size:0.85rem;
-    color:#bbb;
-    line-height:1.5;
-    background:rgba(0,0,0,0.25);
-    padding:15px;
-    border-radius:10px;
-    border:1px dashed #c49546;
-    text-align: center;
-}
+    <!-- Header -->
+    <div style="text-align:center; margin-bottom:10px;">
+        <h2 style="margin:0; font-size:1.5rem;">
+            Cada proyecto está pensado para hogares que entienden el valor de una solución bien diseñada.
+        </h2>
+        <p style="margin-top:8px; color:#666;">
+            Selecciona tu rango de inversión para desarrollar una propuesta adaptada a tu espacio.
+        </p>
+    </div>
 
-.disclaimer-global a{
-display:inline-block;
-margin-top:8px;
-color:#3498db;
-text-decoration:underline;
-cursor:pointer;
-transition:.2s;
-text-align: center;
-}
+    <!-- Grid -->
+    <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:12px; max-width:900px; margin:auto;">
 
-.disclaimer-global a:hover{
-color:#5dade2;
-text-align: center;
-}
-.top-banner{
-background:linear-gradient(90deg,#000,#3a2a1a,#000);
-padding:12px;
-text-align:center;
-color:#f1c40f;
-font-weight:bold;
-animation:fadeGlow 2s infinite alternate;
-}
+        <div onclick="irWhatsApp('Michi Deidad','clientevip')" style="background:#111; color:white; border-radius:12px; padding:12px; text-align:center; cursor:pointer;">
+            <img src="01tier.png" style="width:60px;">
+            <h3>Sin límite</h3>
+            <p><b>Michi Deidad</b></p>
+            <p style="font-size:0.75rem;">El dinero no es un limitante para mí</p>
+        </div>
 
-@keyframes fadeGlow{from{opacity:.7;}to{opacity:1;}}
+        <div onclick="irWhatsApp('Michi Emperador','clientevip')" style="border:1px solid #ddd; border-radius:12px; padding:12px; text-align:center; cursor:pointer;">
+            <img src="02tier.png" style="width:60px;">
+            <h3>$300 – $350</h3>
+            <p><b>Michi Emperador</b></p>
+            <p style="font-size:0.75rem;">Quiero lo mejor dentro de un rango definido</p>
+        </div>
 
-.header img, .video-container video{
-width:100%;
-display:block;
-}
+        <div onclick="irWhatsApp('Michi Magnate','clientevip')" style="border:1px solid #ddd; border-radius:12px; padding:12px; text-align:center; cursor:pointer;">
+            <img src="03tier.png" style="width:60px;">
+            <h3>$250 – $299</h3>
+            <p><b>Michi Magnate</b></p>
+            <p style="font-size:0.75rem;">Busco diseño y funcionalidad equilibrados</p>
+        </div>
 
-.video-container{
-max-width:900px;
-margin:auto;
-background:#000;
-}
+        <div onclick="irWhatsApp('Michi Aristócrata','clienteregular')" style="border:1px solid #ddd; border-radius:12px; padding:12px; text-align:center; cursor:pointer;">
+            <img src="04tier.png" style="width:60px;">
+            <h3>$200 – $249</h3>
+            <p><b>Michi Aristócrata</b></p>
+            <p style="font-size:0.75rem;">Quiero mejorar el espacio sin excesos</p>
+        </div>
 
-.container{
-padding:20px;
-text-align:center;
-}
+        <div onclick="irWhatsApp('Michi Oficinista','clienteregular')" style="border:1px solid #ddd; border-radius:12px; padding:12px; text-align:center; cursor:pointer;">
+            <img src="05tier.png" style="width:60px;">
+            <h3>$150 – $199</h3>
+            <p><b>Michi Oficinista</b></p>
+            <p style="font-size:0.75rem;">Busco una solución funcional y accesible</p>
+        </div>
 
-.grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:12px;
-max-width:900px;
-margin:auto;
-}
+        <div onclick="irWhatsApp('Michi Estudiante','clienteregular')" style="border:1px solid #ddd; border-radius:12px; padding:12px; text-align:center; cursor:pointer;">
+            <img src="06tier.png" style="width:60px;">
+            <h3>$100 – $149</h3>
+            <p><b>Michi Estudiante</b></p>
+            <p style="font-size:0.75rem;">Quiero empezar con lo esencial</p>
+        </div>
 
-@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr);}}
-@media(max-width:500px){.grid{grid-template-columns:1fr;}}
+    </div>
 
-.card{
-background:#1c1915;
-padding:12px;
-border-radius:10px;
-cursor:pointer;
-border:1px solid #2a2622;
-transition:.3s;
-text-align:center;
-}
+    <!-- Nota + link -->
+    <div style="text-align:center; font-size:0.75rem; color:#666;">
+        <p>No creamos configuraciones con presupuestos menores a $100 ya que los materiales que empleamos no lo permiten.</p>
+        <p>
+            <a href="#" onclick="verAlternativa()" style="color:#006680; text-decoration:underline;">
+                Mi presupuesto no es suficiente para un circuito de Kat Haus, ¿Qué hacer?
+            </a>
+        </p>
+    </div>
 
-.card.selected{
-border:2px solid #c49546;
-box-shadow:0 0 15px rgba(196,149,70,.5);
-transform:translateY(-5px);
-}
-
-.card img{
-width:100%;
-border-radius:6px;
-animation:heartbeat 2.5s infinite;
-}
-
-@keyframes heartbeat{
-0%{transform:scale(1);}
-20%{transform:scale(1.03);}
-40%{transform:scale(1);}
-}
-
-.title{color:#f1c40f;font-weight:bold;margin-top:8px;}
-.price{color:#ccc;font-size:.85rem;}
-
-.disclaimer{
-font-size:0.75rem;
-color:#aaa;
-margin-top:6px;
-line-height:1.3;
-}
-
-.disclaimer a{
-color:#3498db;
-text-decoration:underline;
-cursor:pointer;
-}
-
-.location-banner{
-margin:30px auto;
-max-width:600px;
-background:#181512;
-padding:20px;
-border-radius:14px;
-}
-
-.location-option{
-display:block;
-margin:10px 0;
-cursor:pointer;
-padding:10px;
-background:#221e1a;
-border-radius:8px;
-}
-
-.btn{
-margin:30px auto;
-background:#25D366;
-color:#fff;
-padding:18px;
-border-radius:12px;
-font-weight:bold;
-width:100%;
-max-width:380px;
-opacity:.4;
-cursor:not-allowed;
-transition:.3s;
-}
-
-.btn.active{
-opacity:1;
-cursor:pointer;
-animation:pulseGreen 1.5s infinite;
-}
-
-@keyframes pulseGreen{
-0%{transform:scale(1);}
-50%{transform:scale(1.05);}
-100%{transform:scale(1);}
-}
-
-/* MODAL */
-.modal{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.8);
-display:flex;
-align-items:center;
-justify-content:center;
-z-index:999;
-opacity:0;
-pointer-events:none;
-transition:.3s;
-}
-
-.modal.active{
-opacity:1;
-pointer-events:auto;
-}
-
-.modal-box{
-background:#1c1915;
-padding:20px;
-border-radius:12px;
-max-width:400px;
-text-align:center;
-border:1px solid #c49546;
-}
-
-.modal-box button{
-margin-top:15px;
-padding:10px 15px;
-border:none;
-background:#c49546;
-color:#000;
-border-radius:8px;
-cursor:pointer;
-}
-</style>
-</head>
-
-<body>
-
-<div class="top-banner">🐾 Gatificando el Ecuador desde 2022</div>
-
-<div class="header"><img src="profesional.png"></div>
-
-<div class="video-container">
-<video autoplay muted loop playsinline>
-<source src="banner.webm" type="video/webm">
-<source src="banner.mp4" type="video/mp4">
-</video>
-</div>
-
-<div class="header"><img src="copy.png"></div>
-<div class="header"><img src="selecciona.png"></div>
-
-<div class="container">
-
-<!-- GRID -->
-<div class="grid">
-
-<div class="card" onclick="selectTier(this,'Deidad')">
-<img src="tier6.png">
-<div class="title">Michi Deidad</div>
-<div class="price">Proyectos Master</div>
-</div>
-
-<div class="card" onclick="selectTier(this,'Emperador')">
-<img src="tier5.png">
-<div class="title">Michi Emperador</div>
-<div class="price">$301–$350</div>
-</div>
-
-<div class="card" onclick="selectTier(this,'Magnate')">
-<img src="tier4.png">
-<div class="title">Michi Magnate</div>
-<div class="price">$250–$300</div>
-</div>
-
-<div class="card" onclick="selectTier(this,'Aristócrata')">
-<img src="tier3.png">
-<div class="title">Michi Aristócrata</div>
-<div class="price">$201–$250</div>
-</div>
-
-<div class="card" onclick="selectTier(this,'Oficinista')">
-<img src="tier2.png">
-<div class="title">Michi Oficinista</div>
-<div class="price">$151–$200</div>
-</div>
-
-<div class="card" onclick="selectTier(this,'Estudiante')">
-<img src="tier1.png">
-<div class="title">Michi Estudiante</div>
-<div class="price">$100–$150</div>
-
-
-</div>
-<div class="disclaimer-global">
-⚠️ No aceptamos proyectos de menos de <strong>$100 USD</strong>, ya que por debajo de ese nivel no es posible mantener nuestros estándares de calidad.
-
-<br><br>
-
-<a onclick="lowBudgetClick()">
-No cuento con el presupuesto suficiente para un circuito hecho por Kat-Haus, ¿Qué hacer? 
-</a>
-</div>
-</div> <!-- 🔥 cierre correcto del grid -->
-
-<div class="header"><img src="ecuador.png"></div>
-</div>
-<div class="location-banner">
-<h3>Ubicación del Proyecto:</h3>
-
-<label class="location-option">
-<input type="radio" name="loc" value="Quito"> Quito (Instalado por nuestro personal)
-</label>
-
-<label class="location-option">
-<input type="radio" name="loc" value="Guayaquil"> Guayaquil (Socio estratégico)
-</label>
-
-<label class="location-option">
-<input type="radio" name="loc" value="Otra ciudad"> Otra ciudad (Envío)
-</label>
-
-</div>
-
-<button class="btn" id="ctaBtn" onclick="enviar()">
-Selecciona Gategoría y Ubicación para Continuar
-</button>
-
-</div>
-
-<div class="header"><img src="footer.png"></div>
-
-<!-- MODAL -->
-<div class="modal" id="lowModal">
-<div class="modal-box">
-<p>
-Si tu presupuesto es limitado, puedes optar por soluciones creadas con materiales económicos como 
-<strong>MDF o cartón prensado</strong>, comunes en plataformas como Facebook Marketplace.
-</p>
-<button onclick="cerrarModal()">Entendido</button>
-</div>
 </div>
 
 <script>
-let selectedTier=null;
-let selectedLoc=null;
-const miauSound=new Audio('maullido.mp3');
+function irWhatsApp(categoria, tipoCliente) {
+    fbq('trackCustom', tipoCliente);
 
-function selectTier(el,tier){
-document.querySelectorAll(".card").forEach(c=>c.classList.remove("selected"));
-el.classList.add("selected");
-selectedTier=tier;
-updateBtn();
+    const numero = "593963372269";
+    const mensaje = encodeURIComponent("Hola, requiero el diseño y fabricación de un circuito gatuno de categoria " + categoria);
+    const url = "https://wa.me/" + numero + "?text=" + mensaje;
+
+    window.location.href = url;
 }
 
-document.querySelectorAll("input[name='loc']").forEach(r=>{
-r.addEventListener("change",()=>{
-selectedLoc=r.value;
-updateBtn();
-});
-});
+function verAlternativa() {
+    fbq('trackCustom', 'mironsindinero');
 
-function updateBtn(){
-let btn=document.getElementById("ctaBtn");
-
-if(selectedTier && selectedLoc){
-btn.classList.add("active");
-
-if(selectedLoc==="Quito"){
-btn.innerText="Diseñar mi circuito para Quito 🐾";
-}else if(selectedLoc==="Guayaquil"){
-btn.innerText="Diseñar mi circuito  para Guayaquil 🐾";
-}else{
-btn.innerText="Diseñar mi circuito para otra ciudad 🐾";
-}
-
-}else{
-btn.innerText="Configura tu selección";
-btn.classList.remove("active");
-}
-}
-
-function enviar(){
-if(!selectedTier || !selectedLoc) return;
-
-miauSound.currentTime=0;
-miauSound.play().catch(()=>{});
-
-setTimeout(()=>{
-let esHigh=["Aristócrata","Magnate","Emperador","Deidad"].includes(selectedTier);
-
-if(esHigh){
-fbq('track','Lead',{tier:selectedTier});
-}
-
-let mensaje=`Hola Kat Haus, quiero un circuito ${selectedTier} en ${selectedLoc}`;
-window.location.href="https://wa.me/593963372269?text="+encodeURIComponent(mensaje);
-},400);
-}
-
-function lowBudgetClick(){
-fbq('trackCustom','LowBudgetIntent',{reason:'Buscando opciones económicas'});
-document.getElementById("lowModal").classList.add("active");
-}
-
-function cerrarModal(){
-document.getElementById("lowModal").classList.remove("active");
+    alert("Si tu presupuesto no puede cubrir un circuito de Kat-Haus puedes buscar soluciones de precio reducido, construidos en MDF y aglomerado, son fáciles de encontrar en sitios como Facebook Marketplace");
 }
 </script>
-
-</body>
-</html>
