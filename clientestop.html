@@ -20,34 +20,40 @@
         flex-grow:1;
     ">
 
-        <div onclick="irWhatsApp('Michi Estudiante')" style="background:#fff; border:1px solid #ddd; border-radius:12px; padding:18px; text-align:center; cursor:pointer;">
-            <h3>$100 – $149</h3>
-            <p style="font-size:0.85rem;">Michi Estudiante</p>
-        </div>
-
-        <div onclick="irWhatsApp('Michi Oficinista')" style="background:#fff; border:1px solid #ddd; border-radius:12px; padding:18px; text-align:center; cursor:pointer;">
-            <h3>$150 – $199</h3>
-            <p style="font-size:0.85rem;">Michi Oficinista</p>
-        </div>
-
-        <div onclick="irWhatsApp('Michi Aristócrata')" style="background:#fff; border:1px solid #ddd; border-radius:12px; padding:18px; text-align:center; cursor:pointer;">
-            <h3>$200 – $249</h3>
-            <p style="font-size:0.85rem;">Michi Aristócrata</p>
-        </div>
-
-        <div onclick="irWhatsApp('Michi Magnate')" style="background:#fff; border:1px solid #ddd; border-radius:12px; padding:18px; text-align:center; cursor:pointer;">
-            <h3>$250 – $299</h3>
-            <p style="font-size:0.85rem;">Michi Magnate</p>
+        <div onclick="irWhatsApp('Michi Deidad')" style="background:#111; color:white; border-radius:12px; padding:18px; text-align:center; cursor:pointer;">
+            <h3>Sin límite</h3>
+            <p style="font-size:0.9rem; font-weight:bold;">Michi Deidad</p>
+            <p style="font-size:0.8rem; opacity:0.8;">El dinero no es un limitante para mí</p>
         </div>
 
         <div onclick="irWhatsApp('Michi Emperador')" style="background:#fff; border:1px solid #ddd; border-radius:12px; padding:18px; text-align:center; cursor:pointer;">
             <h3>$300 – $350</h3>
-            <p style="font-size:0.85rem;">Michi Emperador</p>
+            <p style="font-size:0.9rem; font-weight:bold;">Michi Emperador</p>
+            <p style="font-size:0.8rem; color:#666;">Quiero lo mejor dentro de un rango definido</p>
         </div>
 
-        <div onclick="irWhatsApp('Michi Deidad')" style="background:#111; color:white; border-radius:12px; padding:18px; text-align:center; cursor:pointer;">
-            <h3>Sin límite</h3>
-            <p style="font-size:0.85rem;">Michi Deidad</p>
+        <div onclick="irWhatsApp('Michi Magnate')" style="background:#fff; border:1px solid #ddd; border-radius:12px; padding:18px; text-align:center; cursor:pointer;">
+            <h3>$250 – $299</h3>
+            <p style="font-size:0.9rem; font-weight:bold;">Michi Magnate</p>
+            <p style="font-size:0.8rem; color:#666;">Busco diseño y funcionalidad bien equilibrados</p>
+        </div>
+
+        <div onclick="irWhatsApp('Michi Aristócrata')" style="background:#fff; border:1px solid #ddd; border-radius:12px; padding:18px; text-align:center; cursor:pointer;">
+            <h3>$200 – $249</h3>
+            <p style="font-size:0.9rem; font-weight:bold;">Michi Aristócrata</p>
+            <p style="font-size:0.8rem; color:#666;">Quiero mejorar el espacio sin excesos</p>
+        </div>
+
+        <div onclick="irWhatsApp('Michi Oficinista')" style="background:#fff; border:1px solid #ddd; border-radius:12px; padding:18px; text-align:center; cursor:pointer;">
+            <h3>$150 – $199</h3>
+            <p style="font-size:0.9rem; font-weight:bold;">Michi Oficinista</p>
+            <p style="font-size:0.8rem; color:#666;">Busco una solución funcional y accesible</p>
+        </div>
+
+        <div onclick="irWhatsApp('Michi Estudiante')" style="background:#fff; border:1px solid #ddd; border-radius:12px; padding:18px; text-align:center; cursor:pointer;">
+            <h3>$100 – $149</h3>
+            <p style="font-size:0.9rem; font-weight:bold;">Michi Estudiante</p>
+            <p style="font-size:0.8rem; color:#666;">Quiero empezar con lo esencial</p>
         </div>
 
     </div>
@@ -59,6 +65,6 @@ function irWhatsApp(categoria) {
     const mensaje = encodeURIComponent("Hola, requiero el diseño y fabricación de un circuito gatuno de categoria " + categoria);
     const url = "https://wa.me/" + numero + "?text=" + mensaje;
 
-    window.open(url, "_blank");
+    window.location.href = url;
 }
 </script>
