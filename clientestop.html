@@ -1,0 +1,65 @@
+<div style="height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; font-family:'Segoe UI', sans-serif; padding:20px; box-sizing:border-box;">
+
+    <!-- Header -->
+    <div style="text-align:center; margin-bottom:20px; max-width:700px;">
+        <h2 style="margin:0; font-size:1.6rem;">
+            Cada proyecto está pensado para hogares que entienden el valor de una solución bien diseñada.
+        </h2>
+        <p style="margin-top:10px; color:#666;">
+            Selecciona tu rango de inversión para desarrollar una propuesta adaptada a tu espacio.
+        </p>
+    </div>
+
+    <!-- Grid -->
+    <div style="
+        display:grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap:15px;
+        width:100%;
+        max-width:900px;
+        flex-grow:1;
+    ">
+
+        <!-- Tier -->
+        <div class="tier" onclick="seleccionarTier('$150 - $300')" style="background:#fff; border:1px solid #ddd; border-radius:12px; padding:20px; text-align:center; cursor:pointer; transition:0.2s;">
+            <h3>$150 – $300</h3>
+            <p style="font-size:0.85rem; color:#666;">Intervención básica</p>
+        </div>
+
+        <div class="tier" onclick="seleccionarTier('$300 - $600')" style="background:#fff; border:1px solid #ddd; border-radius:12px; padding:20px; text-align:center; cursor:pointer;">
+            <h3>$300 – $600</h3>
+            <p style="font-size:0.85rem; color:#666;">Recorrido funcional</p>
+        </div>
+
+        <div class="tier" onclick="seleccionarTier('$600 - $1000')" style="background:#fff; border:1px solid #ddd; border-radius:12px; padding:20px; text-align:center; cursor:pointer;">
+            <h3>$600 – $1000</h3>
+            <p style="font-size:0.85rem; color:#666;">Diseño completo</p>
+        </div>
+
+        <div class="tier" onclick="seleccionarTier('$1000 - $1500')" style="background:#fff; border:1px solid #ddd; border-radius:12px; padding:20px; text-align:center; cursor:pointer;">
+            <h3>$1000 – $1500</h3>
+            <p style="font-size:0.85rem; color:#666;">Sistema extendido</p>
+        </div>
+
+        <div class="tier" onclick="seleccionarTier('$1500 - $2500')" style="background:#fff; border:1px solid #ddd; border-radius:12px; padding:20px; text-align:center; cursor:pointer;">
+            <h3>$1500 – $2500</h3>
+            <p style="font-size:0.85rem; color:#666;">Experiencia premium</p>
+        </div>
+
+        <div class="tier" onclick="seleccionarTier('$2500+')" style="background:#111; color:white; border-radius:12px; padding:20px; text-align:center; cursor:pointer;">
+            <h3>$2500+</h3>
+            <p style="font-size:0.85rem;">Proyecto a medida total</p>
+        </div>
+
+    </div>
+</div>
+
+<script>
+function seleccionarTier(rango) {
+    alert("Seleccionaste: " + rango);
+    // aquí luego puedes:
+    // - redirigir a whatsapp
+    // - guardar en localStorage
+    // - mostrar formulario
+}
+</script>
