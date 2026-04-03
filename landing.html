@@ -1,96 +1,153 @@
-<div style="min-height:100vh; display:flex; flex-direction:column; justify-content:center; font-family:'Segoe UI', Roboto, Helvetica, Arial, sans-serif; padding:10px; box-sizing:border-box; gap: 20px; align-items: center; background-color: #fff;">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Rangos de Inversión - Kat Haus</title>
+    <style>
+        body, html { margin: 0; padding: 0; width: 100%; overflow-x: hidden; font-family: 'Segoe UI', Roboto, sans-serif; }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 10px;
+            box-sizing: border-box;
+            background-color: #ffffff;
+            min-height: 100vh;
+            text-align: center;
+        }
 
-    <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '649645208209657');
-    fbq('track', 'PageView');
-    </script>
+        .header { margin-bottom: 30px; width: 100%; }
+        .header h1 { font-size: 24px; color: #111; margin: 0 0 10px 0; line-height: 1.2; }
+        .header p { font-size: 16px; color: #444; margin: 0; padding: 0 15px; }
+        .header span { font-size: 14px; color: #888; display: block; margin-top: 10px; }
 
-    <div style="text-align:center; width:100%; max-width:100%;">
-        <h2 style="margin:0; font-size: clamp(1.5rem, 6vw, 2.2rem); color:#111; line-height:1.1; padding: 0 5px;">
-            Esto no es para quien busca opciones genéricas.
-        </h2>
-        <p style="margin:10px 0; color:#444; font-size: clamp(1rem, 4vw, 1.2rem); padding: 0 10px;">
-            Cada intervención está pensada para hogares que valoran el diseño a medida.
-        </p>
+        /* EL GRID 2x3 QUE LLENA LA PANTALLA */
+        .grid-tier {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Dos columnas iguales */
+            gap: 15px;
+            width: 100%;
+            max-width: 500px; /* Para que en PC no se deforme */
+            margin-bottom: 40px;
+        }
+
+        .card {
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .card img {
+            width: 90%; /* Imagen grande */
+            height: auto;
+            border-radius: 15px;
+            z-index: 2;
+            margin-bottom: -25px; /* Efecto de superposición */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .info-box {
+            width: 100%;
+            padding: 35px 10px 15px 10px;
+            border-radius: 15px;
+            box-sizing: border-box;
+            min-height: 140px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border: 1px solid #eaeaea;
+            background: #fff;
+        }
+
+        .card.dark .info-box { background: #111; color: #fff; border: none; }
+        
+        .price { font-size: 18px; font-weight: bold; margin: 0; }
+        .name { font-size: 16px; margin: 5px 0; color: inherit; }
+        .phrase { font-size: 12px; line-height: 1.3; opacity: 0.8; margin: 0; }
+
+        .footer { width: 100%; padding: 0 20px 30px 20px; box-sizing: border-box; }
+        .footer p { font-size: 14px; color: #666; margin-bottom: 15px; }
+        .footer a { color: #006680; font-weight: bold; text-decoration: underline; font-size: 15px; }
+        .legal { font-size: 11px; color: #bbb; margin-top: 30px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <div class="header">
+        <h1>Esto no es para quien busca opciones genéricas.</h1>
+        <p>Cada intervención está pensada para hogares que valoran el diseño a medida.</p>
+        <span>Define tu rango de inversión para una propuesta técnica.</span>
     </div>
 
-    <div style="display:grid; grid-template-columns: repeat(2, 1fr); gap: 10px; width: 100%; max-width: 450px; justify-content: center; padding: 0 5px; box-sizing: border-box;">
-
-        <div onclick="irWhatsApp('Michi Deidad','clientevip')" style="cursor:pointer; text-align:center; display:flex; flex-direction:column; align-items:center;">
-            <img src="06tier.png" alt="Deidad" style="width: 90%; height:auto; z-index:2; margin-bottom:-20px; border-radius: 15px;">
-            <div style="background:#111; color:white; border-radius:15px; padding: 25px 5px 15px 5px; flex-grow:1; display: flex; flex-direction: column; justify-content: center; min-height: 130px; width:100%; box-sizing: border-box; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-                <h3 style="margin:0; font-size: clamp(1.1rem, 4.5vw, 1.4rem);">Sin límite</h3>
-                <p style="margin:4px 0; font-size: 1rem;"><strong>Michi Deidad</strong></p>
-                <p style="font-size: 0.75rem; margin:0; opacity:0.8; line-height:1.2;">El dinero no es un limitante</p>
+    <div class="grid-tier">
+        <div class="card dark" onclick="irWhatsApp('Michi Deidad','clientevip')">
+            <img src="06tier.png" alt="Deidad">
+            <div class="info-box">
+                <p class="price">Sin límite</p>
+                <p class="name"><strong>Michi Deidad</strong></p>
+                <p class="phrase">El dinero no es un limitante para mí</p>
             </div>
         </div>
 
-        <div onclick="irWhatsApp('Michi Emperador','clientevip')" style="cursor:pointer; text-align:center; display:flex; flex-direction:column; align-items:center;">
-            <img src="05tier.png" alt="Emperador" style="width: 90%; height:auto; z-index:2; margin-bottom:-20px; border-radius: 15px;">
-            <div style="border:2px solid #eee; border-radius:15px; padding: 25px 5px 15px 5px; flex-grow:1; display: flex; flex-direction: column; justify-content: center; min-height: 130px; width:100%; box-sizing: border-box; background: #fff;">
-                <h3 style="margin:0; font-size: clamp(1.1rem, 4.5vw, 1.4rem);">$300–350</h3>
-                <p style="margin:4px 0; font-size: 1rem;"><strong>Michi Emperador</strong></p>
-                <p style="font-size: 0.75rem; margin:0; color:#666; line-height:1.2;">Territorio en expansión</p>
+        <div class="card" onclick="irWhatsApp('Michi Emperador','clientevip')">
+            <img src="05tier.png" alt="Emperador">
+            <div class="info-box">
+                <p class="price">$300 - $350</p>
+                <p class="name"><strong>Michi Emperador</strong></p>
+                <p class="phrase">Mi territorio está en expansión</p>
             </div>
         </div>
 
-        <div onclick="irWhatsApp('Michi Magnate','clientevip')" style="cursor:pointer; text-align:center; display:flex; flex-direction:column; align-items:center;">
-            <img src="04tier.png" alt="Magnate" style="width: 90%; height:auto; z-index:2; margin-bottom:-20px; border-radius: 15px;">
-            <div style="border:2px solid #eee; border-radius:15px; padding: 25px 5px 15px 5px; flex-grow:1; display: flex; flex-direction: column; justify-content: center; min-height: 130px; width:100%; box-sizing: border-box; background: #fff;">
-                <h3 style="margin:0; font-size: clamp(1.1rem, 4.5vw, 1.4rem);">$250–299</h3>
-                <p style="margin:4px 0; font-size: 1rem;"><strong>Michi Magnate</strong></p>
-                <p style="font-size: 0.75rem; margin:0; color:#666; line-height:1.2;">Inversión en alto nivel</p>
+        <div class="card" onclick="irWhatsApp('Michi Magnate','clientevip')">
+            <img src="04tier.png" alt="Magnate">
+            <div class="info-box">
+                <p class="price">$250 - $299</p>
+                <p class="name"><strong>Michi Magnate</strong></p>
+                <p class="phrase">Invierto en hogares felinos de alto nivel</p>
             </div>
         </div>
 
-        <div onclick="irWhatsApp('Michi Aristócrata','clienteregular')" style="cursor:pointer; text-align:center; display:flex; flex-direction:column; align-items:center;">
-            <img src="03tier.png" alt="Aristócrata" style="width: 90%; height:auto; z-index:2; margin-bottom:-20px; border-radius: 15px;">
-            <div style="border:2px solid #eee; border-radius:15px; padding: 25px 5px 15px 5px; flex-grow:1; display: flex; flex-direction: column; justify-content: center; min-height: 130px; width:100%; box-sizing: border-box; background: #fff;">
-                <h3 style="margin:0; font-size: clamp(1.1rem, 4.5vw, 1.4rem);">$200–249</h3>
-                <p style="margin:4px 0; font-size: 1rem;"><strong>Michi Aristócrata</strong></p>
-                <p style="font-size: 0.75rem; margin:0; color:#666; line-height:1.2;">Clase y buen gusto</p>
+        <div class="card" onclick="irWhatsApp('Michi Aristócrata','clienteregular')">
+            <img src="03tier.png" alt="Aristócrata">
+            <div class="info-box">
+                <p class="price">$200 - $249</p>
+                <p class="name"><strong>Michi Aristócrata</strong></p>
+                <p class="phrase">El buen gusto no se adquiere, se hereda</p>
             </div>
         </div>
 
-        <div onclick="irWhatsApp('Michi Oficinista','clienteregular')" style="cursor:pointer; text-align:center; display:flex; flex-direction:column; align-items:center;">
-            <img src="02tier.png" alt="Oficinista" style="width: 90%; height:auto; z-index:2; margin-bottom:-20px; border-radius: 15px;">
-            <div style="border:2px solid #eee; border-radius:15px; padding: 25px 5px 15px 5px; flex-grow:1; display: flex; flex-direction: column; justify-content: center; min-height: 130px; width:100%; box-sizing: border-box; background: #fff;">
-                <h3 style="margin:0; font-size: clamp(1.1rem, 4.5vw, 1.4rem);">$150–199</h3>
-                <p style="margin:4px 0; font-size: 1rem;"><strong>Michi Oficinista</strong></p>
-                <p style="font-size: 0.75rem; margin:0; color:#666; line-height:1.2;">Jefe de su propio espacio</p>
+        <div class="card" onclick="irWhatsApp('Michi Oficinista','clienteregular')">
+            <img src="02tier.png" alt="Oficinista">
+            <div class="info-box">
+                <p class="price">$150 - $199</p>
+                <p class="name"><strong>Michi Oficinista</strong></p>
+                <p class="phrase">Soy el jefe y exijo espacio a mi altura</p>
             </div>
         </div>
 
-        <div onclick="irWhatsApp('Michi Estudiante','clienteregular')" style="cursor:pointer; text-align:center; display:flex; flex-direction:column; align-items:center;">
-            <img src="01tier.png" alt="Estudiante" style="width: 90%; height:auto; z-index:2; margin-bottom:-20px; border-radius: 15px;">
-            <div style="border:2px solid #eee; border-radius:15px; padding: 25px 5px 15px 5px; flex-grow:1; display: flex; flex-direction: column; justify-content: center; min-height: 130px; width:100%; box-sizing: border-box; background: #fff;">
-                <h3 style="margin:0; font-size: clamp(1.1rem, 4.5vw, 1.4rem);">$100–149</h3>
-                <p style="margin:4px 0; font-size: 1rem;"><strong>Michi Estudiante</strong></p>
-                <p style="font-size: 0.75rem; margin:0; color:#666; line-height:1.2;">Visión y gran futuro</p>
+        <div class="card" onclick="irWhatsApp('Michi Estudiante','clienteregular')">
+            <img src="01tier.png" alt="Estudiante">
+            <div class="info-box">
+                <p class="price">$100 - $149</p>
+                <p class="name"><strong>Michi Estudiante</strong></p>
+                <p class="phrase">Poco presupuesto, grandes visiones</p>
             </div>
         </div>
-
     </div>
 
-    <div style="text-align:center; width:100%; padding: 10px 20px;">
-        <p style="font-size: 0.9rem; color:#666; margin-bottom:12px; line-height:1.3;">
-            No creamos configuraciones menores a $100 debido a la calidad de nuestros materiales.
-        </p>
-        <p>
-            <a href="javascript:void(0)" onclick="verAlternativa()" style="color:#006680; text-decoration:underline; font-weight:bold; font-size: 1rem;">
-                ¿Presupuesto insuficiente? ¿Qué hacer?
-            </a>
-        </p>
-        <div style="font-size: 0.7rem; color:#aaa; margin-top:25px;">
-            Autoriza el uso de datos para contacto e información. 
+    <div class="footer">
+        <p>No creamos configuraciones menores a $100 debido a la calidad de nuestros materiales.</p>
+        <a href="javascript:void(0)" onclick="alert('Busca opciones en Marketplace para presupuestos bajos.')">
+            ¿Presupuesto insuficiente? ¿Qué hacer?
+        </a>
+        <div class="legal">
+            Al continuar, autoriza el uso de sus datos para contacto e información sobre nuestros servicios.
         </div>
     </div>
 
@@ -98,19 +155,11 @@
 
 <script>
 function irWhatsApp(categoria, tipoCliente) {
-    if(typeof fbq === 'function') {
-        fbq('trackCustom', tipoCliente, { content_name: categoria });
-    }
     const numero = "593963372269";
     const mensaje = encodeURIComponent("Hola, requiero el diseño y fabricación de un circuito gatuno de categoría " + categoria);
-    const url = "https://wa.me/" + numero + "?text=" + mensaje;
-    window.open(url, '_blank');
-}
-
-function verAlternativa() {
-    if(typeof fbq === 'function') {
-        fbq('trackCustom', 'mironsindinero');
-    }
-    alert("Si tu presupuesto es menor a $100, puedes buscar opciones en MDF o aglomerado en Facebook Marketplace.");
+    window.open("https://wa.me/" + numero + "?text=" + mensaje, '_blank');
 }
 </script>
+
+</body>
+</html>
