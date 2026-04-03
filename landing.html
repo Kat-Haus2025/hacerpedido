@@ -1,56 +1,29 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-T6CD3NX2');</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Kat Haus - Inversión</title>
-    <style>
-/* Estilo específico para el Banner de Exclusividad */
-    .banner-calidad {
-        background-color: #f0ede5; /* Un tono más profundo que el beige del fondo */
-        border: 1.5px solid var(--dark);
-        border-radius: 12px;
-        padding: 25px 20px;
-        margin: 40px auto 20px auto;
-        max-width: 420px;
-        box-sizing: border-box;
-        text-align: center;
-    }
-
-    .banner-calidad h4 {
-        margin: 0 0 10px 0;
-        font-size: 13px;
-        text-transform: uppercase;
-        letter-spacing: 1.5px;
-        font-weight: 900;
-        color: var(--dark);
-    }
-
-    .banner-calidad p {
-        font-size: 12.5px;
-        line-height: 1.5;
-        color: #444;
-        margin-bottom: 20px;
-        font-weight: 500;
-    }
-
-    /* Botón de alternativa dentro del banner (más discreto) */
-    .btn-filtro {
-        display: inline-block;
-        font-size: 11px;
-        color: #888;
-        text-decoration: underline;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        transition: color 0.3s;
-    }
     
-    .btn-filtro:hover {
-        color: var(--dark);
-    }
-        
-        /* Paleta Refinada: Beige Hueso, Negro Mate y Oro Viejo */
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '649645208209657');
+    fbq('track', 'PageView');
+    </script>
+    
+    <style>
         :root { 
             --gold: #b38e4d; 
             --dark: #1a1a1a; 
@@ -59,247 +32,182 @@
         }
         
         body, html { 
-            margin: 0; 
-            padding: 0; 
-            width: 100%; 
+            margin: 0; padding: 0; width: 100%; 
             background: var(--beige-bg); 
             font-family: 'Inter', 'Segoe UI', sans-serif; 
             color: var(--dark); 
         }
         
         .container { 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            padding: 40px 15px; 
-            box-sizing: border-box; 
+            display: flex; flex-direction: column; align-items: center; 
+            padding: 40px 15px; box-sizing: border-box; 
         }
 
-        .header { margin-bottom: 40px; text-align: center; }
+        .header { margin-bottom: 30px; text-align: center; max-width: 400px; }
         .header h1 { 
-            font-size: 26px; 
-            font-weight: 900; 
-            text-transform: uppercase; 
-            letter-spacing: -1px; 
-            margin: 0; 
-            line-height: 1;
-            color: var(--dark);
+            font-size: 26px; font-weight: 900; text-transform: uppercase; 
+            letter-spacing: -1px; margin: 0; line-height: 1; 
         }
-        .header p { 
-            font-size: 15px; 
-            color: #555; 
-            margin: 12px 0 0; 
-            max-width: 280px; 
-            margin-inline: auto; 
-            line-height: 1.4;
+        
+        .instruccion {
+            text-align: center; margin-bottom: 35px; max-width: 380px;
         }
+        .instruccion p { font-size: 14px; line-height: 1.5; color: #555; margin: 0; }
 
-        /* GRID */
         .grid-tier {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px 15px;
-            width: 100%;
-            max-width: 450px;
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 25px 15px; width: 100%; max-width: 450px;
         }
 
-        .card {
-            position: relative;
-            cursor: pointer;
-            transition: transform 0.2s ease;
-        }
+        .card { position: relative; cursor: pointer; transition: transform 0.2s; }
         .card:active { transform: scale(0.96); }
 
         .card img {
-            width: 92%;
-            height: auto;
-            border-radius: 12px;
-            display: block;
-            margin: 0 auto;
-            position: relative;
-            z-index: 3;
-            border: 2.5px solid var(--dark);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            width: 92%; height: auto; border-radius: 12px; display: block;
+            margin: 0 auto; position: relative; z-index: 3;
+            border: 2.5px solid var(--dark); box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
 
         .info-box {
-            margin-top: -35px; 
-            padding: 45px 10px 15px 10px;
-            border-radius: 16px;
-            background: var(--card-white);
-            border: 2.5px solid var(--dark);
-            box-shadow: 4px 4px 0px rgba(26, 26, 26, 0.1);
-            text-align: center;
-            min-height: 135px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            box-sizing: border-box;
+            margin-top: -35px; padding: 45px 10px 15px 10px;
+            border-radius: 16px; background: var(--card-white);
+            border: 2.5px solid var(--dark); box-shadow: 4px 4px 0px rgba(26,26,26,0.1);
+            text-align: center; min-height: 135px;
+            display: flex; flex-direction: column; justify-content: flex-end; box-sizing: border-box;
         }
 
-        /* TIER VIP */
-        .card.dark .info-box { 
-            background: var(--dark); 
-            color: #fff; 
-            box-shadow: 5px 5px 0px var(--gold);
-            border-color: var(--dark);
-        }
+        .card.dark .info-box { background: var(--dark); color: #fff; box-shadow: 5px 5px 0px var(--gold); }
         .card.dark img { border-color: var(--gold); }
         .card.dark .name { color: var(--gold); }
 
-        .price { font-size: 19px; font-weight: 800; margin: 0; letter-spacing: -0.5px; }
+        .price { font-size: 19px; font-weight: 800; margin: 0; }
         .name { font-size: 13px; text-transform: uppercase; font-weight: 700; margin: 4px 0; color: #777; }
-        .phrase { font-size: 10.5px; font-weight: 500; line-height: 1.2; opacity: 0.7; }
+        .phrase { font-size: 10.5px; opacity: 0.7; line-height: 1.2; }
 
-        /* Badges */
         .badge {
-            position: absolute;
-            top: 8px;
-            right: -2px;
-            background: var(--gold);
-            color: #fff;
-            font-size: 9px;
-            font-weight: 900;
-            padding: 4px 7px;
-            border-radius: 3px;
-            z-index: 10;
-            text-transform: uppercase;
-            border: 1.5px solid var(--dark);
+            position: absolute; top: 8px; right: -2px; background: var(--gold);
+            color: #fff; font-size: 9px; font-weight: 900; padding: 4px 7px;
+            border-radius: 3px; z-index: 10; text-transform: uppercase; border: 1.5px solid var(--dark);
         }
 
-        /* FOOTER */
-        .footer { 
-            margin-top: 50px; 
-            text-align: center; 
-            padding: 0 20px; 
-            width: 100%; 
-            max-width: 400px; 
+        .banner-calidad {
+            background-color: #f0ede5; border: 1.5px solid var(--dark);
+            border-radius: 12px; padding: 25px 20px; margin: 40px auto 20px auto;
+            max-width: 420px; box-sizing: border-box; text-align: center;
         }
-        .footer p { font-size: 13px; font-weight: 600; color: #666; margin-bottom: 20px; }
-        
-        .btn-alt {
-            display: inline-block;
-            padding: 10px 18px;
-            border: 1px solid #d1cfc8;
-            border-radius: 50px;
-            color: #888;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 11px;
-            text-transform: uppercase;
-            background: transparent;
-        }
+        .banner-calidad h4 { margin: 0 0 10px 0; font-size: 13px; text-transform: uppercase; letter-spacing: 1.5px; }
+        .banner-calidad p { font-size: 12.5px; line-height: 1.5; color: #444; margin-bottom: 20px; }
+
+        .btn-filtro { font-size: 11px; color: #888; text-decoration: underline; font-weight: 700; text-transform: uppercase; }
 
         .legal { 
-            font-size: 10px; 
-            color: #a3a19a; 
-            margin-top: 35px; 
-            line-height: 1.5; 
-            text-align: center; 
-            padding: 0 10px; 
-            border-top: 1px solid #e0ddd5;
-            padding-top: 20px;
+            font-size: 10px; color: #a3a19a; margin-top: 35px; line-height: 1.5; 
+            text-align: center; border-top: 1px solid #e0ddd5; padding-top: 20px; width: 100%; max-width: 400px;
         }
     </style>
 </head>
 <body>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T6CD3NX2"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <div class="container">
+        <div class="header">
+            <h1>Diseño de Autor</h1>
+        </div>
 
-<div class="container">
-    
-    <div class="header">
-        <h1>Diseño de Autor</h1>
-        <p>Al seleccionar una categoría, serás vinculado directamente con un <strong>diseñador especializado</strong> para 
-            planificar la intervención <strong>a medida</strong> de tu hogar.</p>
+        <div class="instruccion">
+            <p>Selecciona tu rango de inversión para ser vinculado con un <strong>diseñador especializado</strong> e iniciar la creación de tu configuración personalizada.</p>
+        </div>
+
+        <div class="grid-tier">
+            <div class="card dark" onclick="irWhatsApp('Michi Deidad', 'vip')">
+                <div class="badge">Elite</div>
+                <img src="06tier.png" alt="Deidad">
+                <div class="info-box">
+                    <p class="price">Sin Límite</p>
+                    <p class="name">Michi Deidad</p>
+                    <p class="phrase">El dinero no es un limitante para mi visión.</p>
+                </div>
+            </div>
+
+            <div class="card" onclick="irWhatsApp('Michi Emperador', 'vip')">
+                <img src="05tier.png" alt="Emperador">
+                <div class="info-box">
+                    <p class="price">$300 - $350</p>
+                    <p class="name">Michi Emperador</p>
+                    <p class="phrase">Territorio en expansión constante.</p>
+                </div>
+            </div>
+
+            <div class="card" onclick="irWhatsApp('Michi Magnate', 'vip')">
+                <div class="badge" style="background: var(--dark);">Más solicitado</div>
+                <img src="04tier.png" alt="Magnate">
+                <div class="info-box">
+                    <p class="price">$250 - $299</p>
+                    <p class="name">Michi Magnate</p>
+                    <p class="phrase">Inversión inteligente en hogares de alto nivel.</p>
+                </div>
+            </div>
+
+            <div class="card" onclick="irWhatsApp('Michi Aristócrata', 'regular')">
+                <img src="03tier.png" alt="Aristócrata">
+                <div class="info-box">
+                    <p class="price">$200 - $249</p>
+                    <p class="name">Michi Aristócrata</p>
+                    <p class="phrase">El verdadero buen gusto no se compra, se tiene.</p>
+                </div>
+            </div>
+
+            <div class="card" onclick="irWhatsApp('Michi Oficinista', 'regular')">
+                <img src="02tier.png" alt="Oficinista">
+                <div class="info-box">
+                    <p class="price">$150 - $199</p>
+                    <p class="name">Michi Oficinista</p>
+                    <p class="phrase">Exijo un entorno a la altura de mi cargo.</p>
+                </div>
+            </div>
+
+            <div class="card" onclick="irWhatsApp('Michi Estudiante', 'regular')">
+                <img src="01tier.png" alt="Estudiante">
+                <div class="info-box">
+                    <p class="price">$100 - $149</p>
+                    <p class="name">Michi Estudiante</p>
+                    <p class="phrase">Aún no heredo la fortuna, pero tengo el gusto.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="banner-calidad">
+            <h4>Comprometidos con la excelencia</h4>
+            <p>No realizamos intervenciones inferiores a <strong>$100</strong>. La selección de materiales premium exige este estándar para garantizar la durabilidad Kat Haus.</p>
+            <a href="javascript:void(0)" onclick="verAlternativa()" class="btn-filtro">¿Presupuesto insuficiente para Kat-Haus? ¿Qué hacer?</a>
+        </div>
+
+        <div class="legal">
+            Al interactuar, autoriza a Kat Haus el tratamiento de sus datos personales para fines de contacto y cotización, conforme a la Ley Orgánica de Protección de Datos Personales de Ecuador.
+        </div>
     </div>
 
-    <div class="grid-tier">
-        <div class="card dark" onclick="irWhatsApp('Michi Deidad')">
-            <div class="badge">Elite</div>
-            <img src="06tier.png" alt="Deidad">
-            <div class="info-box">
-                <p class="price">Sin Límite</p>
-                <p class="name">Michi Deidad</p>
-                <p class="phrase">El dinero no es un limitante para mi visión.</p>
-            </div>
-        </div>
+    <script>
+    function irWhatsApp(categoria, tipo) {
+        if(typeof fbq === 'function') {
+            fbq('trackCustom', 'Lead_Click', { tier: categoria, tipo: tipo });
+        }
+        // GTM DataLayer Push (Esto enviará el evento a Google Analytics automáticamente)
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            'event': 'clic_tier',
+            'michi_categoria': categoria
+        });
 
-        <div class="card" onclick="irWhatsApp('Michi Emperador')">
-            <img src="05tier.png" alt="Emperador">
-            <div class="info-box">
-                <p class="price">$300 - $350</p>
-                <p class="name">Michi Emperador</p>
-                <p class="phrase">Territorio en expansión constante.</p>
-            </div>
-        </div>
+        const numero = "593963372269";
+        const mensaje = encodeURIComponent("Hola Kat Haus, quiero iniciar mi proyecto " + categoria);
+        window.open("https://wa.me/" + numero + "?text=" + mensaje, '_blank');
+    }
 
-        <div class="card" onclick="irWhatsApp('Michi Magnate')">
-            <div class="badge" style="background: var(--dark);">Más solicitado</div>
-            <img src="04tier.png" alt="Magnate">
-            <div class="info-box">
-                <p class="price">$250 - $299</p>
-                <p class="name">Michi Magnate</p>
-                <p class="phrase">Inversión inteligente en hogares de alto nivel.</p>
-            </div>
-        </div>
-
-        <div class="card" onclick="irWhatsApp('Michi Aristócrata')">
-            <img src="03tier.png" alt="Aristócrata">
-            <div class="info-box">
-                <p class="price">$200 - $249</p>
-                <p class="name">Michi Aristócrata</p>
-                <p class="phrase">El verdadero buen gusto no se compra, se tiene.</p>
-            </div>
-        </div>
-
-        <div class="card" onclick="irWhatsApp('Michi Oficinista')">
-            <img src="02tier.png" alt="Oficinista">
-            <div class="info-box">
-                <p class="price">$150 - $199</p>
-                <p class="name">Michi Oficinista</p>
-                <p class="phrase">Exijo un entorno a la altura de mi cargo.</p>
-            </div>
-        </div>
-
-        <div class="card" onclick="irWhatsApp('Michi Estudiante')">
-            <img src="01tier.png" alt="Estudiante">
-            <div class="info-box">
-                <p class="price">$100 - $149</p>
-                <p class="name">Michi Estudiante</p>
-                <p class="phrase">Aún no heredo la fortuna, pero tengo el gusto.</p>
-            </div>
-        </div>
-    </div>
-
-<div class="footer">
-    <div class="banner-calidad">
-        <h4>Comprometidos con la excelencia</h4>
-        <p>
-            No realizamos intervenciones inferiores a <strong>$100</strong>. 
-            La selección de materiales técnicos y maderas tratadas que utilizamos exige este estándar mínimo de inversión para garantizar la durabilidad Kat Haus.
-        </p>
-        
-        <a href="javascript:void(0)" onclick="verAlternativa()" class="btn-filtro">
-            ¿Presupuesto insuficiente para Kat Haus? ¿Qué Hacer?
-        </a>
-    </div>
-
-    <div class="legal">
-        Al interactuar con esta plataforma, autoriza a Kat Haus el tratamiento de sus datos personales para fines de contacto y cotización, conforme a la Ley Orgánica de Protección de Datos Personales de Ecuador.
-    </div>
-</div>
-
-</div>
-
-<script>
-function irWhatsApp(categoria) {
-    const numero = "593963372269";
-    const mensaje = encodeURIComponent("Hola Kat Haus, quiero iniciar un proyecto categoría " + categoria);
-    window.open("https://wa.me/" + numero + "?text=" + mensaje, '_blank');
-}
-function verAlternativa() {
-    alert("Para presupuestos inferiores a $100, recomendamos buscar opciones fabricadas en materiales económicos como MDF o aglomerado, muy fáciles de encontrar en sitios como Facebook Marketplace. En Kat Haus nos enfocamos exclusivamente en diseño técnico y maderas premium.");
-}
-</script>
-
+    function verAlternativa() {
+        if(typeof fbq === 'function') { fbq('trackCustom', 'Filtro_Presupuesto'); }
+        alert("Para presupuestos inferiores a $100, recomendamos buscar opciones estándar en Marketplace. En Kat Haus nos enfocamos en diseño técnico y maderas premium.");
+    }
+    </script>
 </body>
 </html>
