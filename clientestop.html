@@ -20,46 +20,45 @@
         flex-grow:1;
     ">
 
-        <!-- Tier -->
-        <div class="tier" onclick="seleccionarTier('$150 - $300')" style="background:#fff; border:1px solid #ddd; border-radius:12px; padding:20px; text-align:center; cursor:pointer; transition:0.2s;">
-            <h3>$150 – $300</h3>
-            <p style="font-size:0.85rem; color:#666;">Intervención básica</p>
+        <div onclick="irWhatsApp('Michi Estudiante')" style="background:#fff; border:1px solid #ddd; border-radius:12px; padding:18px; text-align:center; cursor:pointer;">
+            <h3>$100 – $149</h3>
+            <p style="font-size:0.85rem;">Michi Estudiante</p>
         </div>
 
-        <div class="tier" onclick="seleccionarTier('$300 - $600')" style="background:#fff; border:1px solid #ddd; border-radius:12px; padding:20px; text-align:center; cursor:pointer;">
-            <h3>$300 – $600</h3>
-            <p style="font-size:0.85rem; color:#666;">Recorrido funcional</p>
+        <div onclick="irWhatsApp('Michi Oficinista')" style="background:#fff; border:1px solid #ddd; border-radius:12px; padding:18px; text-align:center; cursor:pointer;">
+            <h3>$150 – $199</h3>
+            <p style="font-size:0.85rem;">Michi Oficinista</p>
         </div>
 
-        <div class="tier" onclick="seleccionarTier('$600 - $1000')" style="background:#fff; border:1px solid #ddd; border-radius:12px; padding:20px; text-align:center; cursor:pointer;">
-            <h3>$600 – $1000</h3>
-            <p style="font-size:0.85rem; color:#666;">Diseño completo</p>
+        <div onclick="irWhatsApp('Michi Aristócrata')" style="background:#fff; border:1px solid #ddd; border-radius:12px; padding:18px; text-align:center; cursor:pointer;">
+            <h3>$200 – $249</h3>
+            <p style="font-size:0.85rem;">Michi Aristócrata</p>
         </div>
 
-        <div class="tier" onclick="seleccionarTier('$1000 - $1500')" style="background:#fff; border:1px solid #ddd; border-radius:12px; padding:20px; text-align:center; cursor:pointer;">
-            <h3>$1000 – $1500</h3>
-            <p style="font-size:0.85rem; color:#666;">Sistema extendido</p>
+        <div onclick="irWhatsApp('Michi Magnate')" style="background:#fff; border:1px solid #ddd; border-radius:12px; padding:18px; text-align:center; cursor:pointer;">
+            <h3>$250 – $299</h3>
+            <p style="font-size:0.85rem;">Michi Magnate</p>
         </div>
 
-        <div class="tier" onclick="seleccionarTier('$1500 - $2500')" style="background:#fff; border:1px solid #ddd; border-radius:12px; padding:20px; text-align:center; cursor:pointer;">
-            <h3>$1500 – $2500</h3>
-            <p style="font-size:0.85rem; color:#666;">Experiencia premium</p>
+        <div onclick="irWhatsApp('Michi Emperador')" style="background:#fff; border:1px solid #ddd; border-radius:12px; padding:18px; text-align:center; cursor:pointer;">
+            <h3>$300 – $350</h3>
+            <p style="font-size:0.85rem;">Michi Emperador</p>
         </div>
 
-        <div class="tier" onclick="seleccionarTier('$2500+')" style="background:#111; color:white; border-radius:12px; padding:20px; text-align:center; cursor:pointer;">
-            <h3>$2500+</h3>
-            <p style="font-size:0.85rem;">Proyecto a medida total</p>
+        <div onclick="irWhatsApp('Michi Deidad')" style="background:#111; color:white; border-radius:12px; padding:18px; text-align:center; cursor:pointer;">
+            <h3>Sin límite</h3>
+            <p style="font-size:0.85rem;">Michi Deidad</p>
         </div>
 
     </div>
 </div>
 
 <script>
-function seleccionarTier(rango) {
-    alert("Seleccionaste: " + rango);
-    // aquí luego puedes:
-    // - redirigir a whatsapp
-    // - guardar en localStorage
-    // - mostrar formulario
+function irWhatsApp(categoria) {
+    const numero = "593963372269";
+    const mensaje = encodeURIComponent("Hola, requiero el diseño y fabricación de un circuito gatuno de categoria " + categoria);
+    const url = "https://wa.me/" + numero + "?text=" + mensaje;
+
+    window.open(url, "_blank");
 }
 </script>
