@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TW42N1MHMF"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-TW42N1MHMF');
+    </script>
+
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-T6CD3NX2');</script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Kat Haus - Inversión</title>
@@ -24,91 +33,36 @@
     </script>
     
     <style>
-        :root { 
-            --gold: #b38e4d; 
-            --dark: #1a1a1a; 
-            --beige-bg: #f9f7f2; 
-            --card-white: #ffffff;
-        }
-        
-        body, html { 
-            margin: 0; padding: 0; width: 100%; 
-            background: var(--beige-bg); 
-            font-family: 'Inter', 'Segoe UI', sans-serif; 
-            color: var(--dark); 
-        }
-        
-        .container { 
-            display: flex; flex-direction: column; align-items: center; 
-            padding: 40px 15px; box-sizing: border-box; 
-        }
-
+        :root { --gold: #b38e4d; --dark: #1a1a1a; --beige-bg: #f9f7f2; --card-white: #ffffff; }
+        body, html { margin: 0; padding: 0; width: 100%; background: var(--beige-bg); font-family: 'Inter', sans-serif; color: var(--dark); }
+        .container { display: flex; flex-direction: column; align-items: center; padding: 40px 15px; box-sizing: border-box; }
         .header { margin-bottom: 30px; text-align: center; max-width: 400px; }
-        .header h1 { 
-            font-size: 26px; font-weight: 900; text-transform: uppercase; 
-            letter-spacing: -1px; margin: 0; line-height: 1; 
-        }
-        
-        .instruccion {
-            text-align: center; margin-bottom: 35px; max-width: 380px;
-        }
+        .header h1 { font-size: 26px; font-weight: 900; text-transform: uppercase; letter-spacing: -1px; margin: 0; line-height: 1; }
+        .instruccion { text-align: center; margin-bottom: 35px; max-width: 380px; }
         .instruccion p { font-size: 14px; line-height: 1.5; color: #555; margin: 0; }
-
-        .grid-tier {
-            display: grid; grid-template-columns: 1fr 1fr;
-            gap: 25px 15px; width: 100%; max-width: 450px;
-        }
-
+        .grid-tier { display: grid; grid-template-columns: 1fr 1fr; gap: 25px 15px; width: 100%; max-width: 450px; }
         .card { position: relative; cursor: pointer; transition: transform 0.2s; }
         .card:active { transform: scale(0.96); }
-
-        .card img {
-            width: 92%; height: auto; border-radius: 12px; display: block;
-            margin: 0 auto; position: relative; z-index: 3;
-            border: 2.5px solid var(--dark); box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-
-        .info-box {
-            margin-top: -35px; padding: 45px 10px 15px 10px;
-            border-radius: 16px; background: var(--card-white);
-            border: 2.5px solid var(--dark); box-shadow: 4px 4px 0px rgba(26,26,26,0.1);
-            text-align: center; min-height: 135px;
-            display: flex; flex-direction: column; justify-content: flex-end; box-sizing: border-box;
-        }
-
+        .card img { width: 92%; height: auto; border-radius: 12px; display: block; margin: 0 auto; position: relative; z-index: 3; border: 2.5px solid var(--dark); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .info-box { margin-top: -35px; padding: 45px 10px 15px 10px; border-radius: 16px; background: var(--card-white); border: 2.5px solid var(--dark); box-shadow: 4px 4px 0px rgba(26,26,26,0.1); text-align: center; min-height: 135px; display: flex; flex-direction: column; justify-content: flex-end; box-sizing: border-box; }
         .card.dark .info-box { background: var(--dark); color: #fff; box-shadow: 5px 5px 0px var(--gold); }
         .card.dark img { border-color: var(--gold); }
         .card.dark .name { color: var(--gold); }
-
         .price { font-size: 19px; font-weight: 800; margin: 0; }
         .name { font-size: 13px; text-transform: uppercase; font-weight: 700; margin: 4px 0; color: #777; }
         .phrase { font-size: 10.5px; opacity: 0.7; line-height: 1.2; }
-
-        .badge {
-            position: absolute; top: 8px; right: -2px; background: var(--gold);
-            color: #fff; font-size: 9px; font-weight: 900; padding: 4px 7px;
-            border-radius: 3px; z-index: 10; text-transform: uppercase; border: 1.5px solid var(--dark);
-        }
-
-        .banner-calidad {
-            background-color: #f0ede5; border: 1.5px solid var(--dark);
-            border-radius: 12px; padding: 25px 20px; margin: 40px auto 20px auto;
-            max-width: 420px; box-sizing: border-box; text-align: center;
-        }
+        .badge { position: absolute; top: 8px; right: -2px; background: var(--gold); color: #fff; font-size: 9px; font-weight: 900; padding: 4px 7px; border-radius: 3px; z-index: 10; text-transform: uppercase; border: 1.5px solid var(--dark); }
+        .banner-calidad { background-color: #f0ede5; border: 1.5px solid var(--dark); border-radius: 12px; padding: 25px 20px; margin: 40px auto 20px auto; max-width: 420px; box-sizing: border-box; text-align: center; }
         .banner-calidad h4 { margin: 0 0 10px 0; font-size: 13px; text-transform: uppercase; letter-spacing: 1.5px; }
         .banner-calidad p { font-size: 12.5px; line-height: 1.5; color: #444; margin-bottom: 20px; }
-
         .btn-filtro { font-size: 11px; color: #888; text-decoration: underline; font-weight: 700; text-transform: uppercase; }
-
-        .legal { 
-            font-size: 10px; color: #a3a19a; margin-top: 35px; line-height: 1.5; 
-            text-align: center; border-top: 1px solid #e0ddd5; padding-top: 20px; width: 100%; max-width: 400px;
-        }
+        .legal { font-size: 10px; color: #a3a19a; margin-top: 35px; line-height: 1.5; text-align: center; border-top: 1px solid #e0ddd5; padding-top: 20px; width: 100%; max-width: 400px; }
     </style>
 </head>
 <body>
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T6CD3NX2"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
     <div class="container">
         <div class="header">
             <h1>Diseño de Autor</h1>
@@ -123,18 +77,14 @@
                 <div class="badge">Elite</div>
                 <img src="06tier.png" alt="Deidad">
                 <div class="info-box">
-                    <p class="price">Sin Límite</p>
-                    <p class="name">Michi Deidad</p>
-                    <p class="phrase">El dinero no es un limitante para mi visión.</p>
+                    <p class="price">Sin Límite</p><p class="name">Michi Deidad</p><p class="phrase">El dinero no es un limitante para mi visión.</p>
                 </div>
             </div>
 
             <div class="card" onclick="irWhatsApp('Michi Emperador', 'vip')">
                 <img src="05tier.png" alt="Emperador">
                 <div class="info-box">
-                    <p class="price">$300 - $350</p>
-                    <p class="name">Michi Emperador</p>
-                    <p class="phrase">Territorio en expansión constante.</p>
+                    <p class="price">$300 - $350</p><p class="name">Michi Emperador</p><p class="phrase">Territorio en expansión constante.</p>
                 </div>
             </div>
 
@@ -142,36 +92,28 @@
                 <div class="badge" style="background: var(--dark);">Más solicitado</div>
                 <img src="04tier.png" alt="Magnate">
                 <div class="info-box">
-                    <p class="price">$250 - $299</p>
-                    <p class="name">Michi Magnate</p>
-                    <p class="phrase">Inversión inteligente en hogares de alto nivel.</p>
+                    <p class="price">$250 - $299</p><p class="name">Michi Magnate</p><p class="phrase">Inversión inteligente en hogares de alto nivel.</p>
                 </div>
             </div>
 
             <div class="card" onclick="irWhatsApp('Michi Aristócrata', 'regular')">
                 <img src="03tier.png" alt="Aristócrata">
                 <div class="info-box">
-                    <p class="price">$200 - $249</p>
-                    <p class="name">Michi Aristócrata</p>
-                    <p class="phrase">El verdadero buen gusto no se compra, se tiene.</p>
+                    <p class="price">$200 - $249</p><p class="name">Michi Aristócrata</p><p class="phrase">El verdadero buen gusto no se compra, se tiene.</p>
                 </div>
             </div>
 
             <div class="card" onclick="irWhatsApp('Michi Oficinista', 'regular')">
                 <img src="02tier.png" alt="Oficinista">
                 <div class="info-box">
-                    <p class="price">$150 - $199</p>
-                    <p class="name">Michi Oficinista</p>
-                    <p class="phrase">Exijo un entorno a la altura de mi cargo.</p>
+                    <p class="price">$150 - $199</p><p class="name">Michi Oficinista</p><p class="phrase">Exijo un entorno a la altura de mi cargo.</p>
                 </div>
             </div>
 
             <div class="card" onclick="irWhatsApp('Michi Estudiante', 'regular')">
                 <img src="01tier.png" alt="Estudiante">
                 <div class="info-box">
-                    <p class="price">$100 - $149</p>
-                    <p class="name">Michi Estudiante</p>
-                    <p class="phrase">Aún no heredo la fortuna, pero tengo el gusto.</p>
+                    <p class="price">$100 - $149</p><p class="name">Michi Estudiante</p><p class="phrase">Aún no heredo la fortuna, pero tengo el gusto.</p>
                 </div>
             </div>
         </div>
@@ -179,7 +121,7 @@
         <div class="banner-calidad">
             <h4>Comprometidos con la excelencia</h4>
             <p>No realizamos intervenciones inferiores a <strong>$100</strong>. La selección de materiales premium exige este estándar para garantizar la durabilidad Kat Haus.</p>
-            <a href="javascript:void(0)" onclick="verAlternativa()" class="btn-filtro">¿Presupuesto insuficiente para Kat-Haus? ¿Qué hacer?</a>
+            <a href="javascript:void(0)" onclick="verAlternativa()" class="btn-filtro">¿Presupuesto insuficiente para Kat-Haus, qué hacer?</a>
         </div>
 
         <div class="legal">
@@ -189,15 +131,19 @@
 
     <script>
     function irWhatsApp(categoria, tipo) {
+        // Enviar a Meta Pixel
         if(typeof fbq === 'function') {
             fbq('trackCustom', 'Lead_Click', { tier: categoria, tipo: tipo });
         }
-        // GTM DataLayer Push (Esto enviará el evento a Google Analytics automáticamente)
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({
-            'event': 'clic_tier',
-            'michi_categoria': categoria
-        });
+        
+        // Enviar a Google Analytics (gtag)
+        if(typeof gtag === 'function') {
+            gtag('event', 'generate_lead', {
+                'event_category': 'Interés_Diseño',
+                'event_label': categoria,
+                'value': (tipo === 'vip' ? 300 : 100)
+            });
+        }
 
         const numero = "593963372269";
         const mensaje = encodeURIComponent("Hola Kat Haus, quiero iniciar mi proyecto " + categoria);
@@ -205,7 +151,9 @@
     }
 
     function verAlternativa() {
-        if(typeof fbq === 'function') { fbq('trackCustom', 'Filtro_Presupuesto'); }
+        if(typeof gtag === 'function') {
+            gtag('event', 'clic_filtro_pobreza', { 'event_category': 'Filtro' });
+        }
         alert("Para presupuestos inferiores a $100, recomendamos buscar opciones estándar en Marketplace. En Kat Haus nos enfocamos en diseño técnico y maderas premium.");
     }
     </script>
