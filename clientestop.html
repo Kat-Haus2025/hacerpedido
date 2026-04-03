@@ -1,11 +1,11 @@
-<div style="height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; font-family:'Segoe UI', sans-serif; padding:20px; box-sizing:border-box;">
+<div style="height:100vh; display:flex; flex-direction:column; justify-content:space-between; font-family:'Segoe UI', sans-serif; padding:20px; box-sizing:border-box;">
 
     <!-- Header -->
-    <div style="text-align:center; margin-bottom:20px; max-width:700px;">
-        <h2 style="margin:0; font-size:1.6rem;">
+    <div style="text-align:center; margin-bottom:10px; max-width:700px; margin-left:auto; margin-right:auto;">
+        <h2 style="margin:0; font-size:1.5rem;">
             Cada proyecto está pensado para hogares que entienden el valor de una solución bien diseñada.
         </h2>
-        <p style="margin-top:10px; color:#666;">
+        <p style="margin-top:8px; color:#666;">
             Selecciona tu rango de inversión para desarrollar una propuesta adaptada a tu espacio.
         </p>
     </div>
@@ -14,49 +14,70 @@
     <div style="
         display:grid;
         grid-template-columns: repeat(3, 1fr);
-        gap:15px;
+        gap:12px;
         width:100%;
         max-width:900px;
-        flex-grow:1;
+        margin:auto;
     ">
 
-        <div onclick="irWhatsApp('Michi Deidad')" style="background:#111; color:white; border-radius:12px; padding:18px; text-align:center; cursor:pointer;">
-            <h3>Sin límite</h3>
-            <p style="font-size:0.9rem; font-weight:bold;">Michi Deidad</p>
-            <p style="font-size:0.8rem; opacity:0.8;">El dinero no es un limitante para mí</p>
+        <!-- DEIDAD -->
+        <div onclick="irWhatsApp('Michi Deidad')" style="background:#111; color:white; border-radius:12px; padding:12px; text-align:center; cursor:pointer;">
+            <img src="deidad.png" style="width:60px; margin-bottom:8px;">
+            <h3 style="margin:5px 0;">Sin límite</h3>
+            <p style="font-weight:bold; margin:0;">Michi Deidad</p>
+            <p style="font-size:0.75rem; opacity:0.8;">El dinero no es un limitante para mí</p>
         </div>
 
-        <div onclick="irWhatsApp('Michi Emperador')" style="background:#fff; border:1px solid #ddd; border-radius:12px; padding:18px; text-align:center; cursor:pointer;">
+        <!-- EMPERADOR -->
+        <div onclick="irWhatsApp('Michi Emperador')" style="background:#fff; border:1px solid #ddd; border-radius:12px; padding:12px; text-align:center; cursor:pointer;">
+            <img src="emperador.png" style="width:60px; margin-bottom:8px;">
             <h3>$300 – $350</h3>
-            <p style="font-size:0.9rem; font-weight:bold;">Michi Emperador</p>
-            <p style="font-size:0.8rem; color:#666;">Quiero lo mejor dentro de un rango definido</p>
+            <p style="font-weight:bold; margin:0;">Michi Emperador</p>
+            <p style="font-size:0.75rem; color:#666;">Quiero lo mejor dentro de un rango definido</p>
         </div>
 
-        <div onclick="irWhatsApp('Michi Magnate')" style="background:#fff; border:1px solid #ddd; border-radius:12px; padding:18px; text-align:center; cursor:pointer;">
+        <!-- MAGNATE -->
+        <div onclick="irWhatsApp('Michi Magnate')" style="background:#fff; border:1px solid #ddd; border-radius:12px; padding:12px; text-align:center; cursor:pointer;">
+            <img src="magnate.png" style="width:60px; margin-bottom:8px;">
             <h3>$250 – $299</h3>
-            <p style="font-size:0.9rem; font-weight:bold;">Michi Magnate</p>
-            <p style="font-size:0.8rem; color:#666;">Busco diseño y funcionalidad bien equilibrados</p>
+            <p style="font-weight:bold; margin:0;">Michi Magnate</p>
+            <p style="font-size:0.75rem; color:#666;">Busco diseño y funcionalidad equilibrados</p>
         </div>
 
-        <div onclick="irWhatsApp('Michi Aristócrata')" style="background:#fff; border:1px solid #ddd; border-radius:12px; padding:18px; text-align:center; cursor:pointer;">
+        <!-- ARISTÓCRATA -->
+        <div onclick="irWhatsApp('Michi Aristócrata')" style="background:#fff; border:1px solid #ddd; border-radius:12px; padding:12px; text-align:center; cursor:pointer;">
+            <img src="aristocrata.png" style="width:60px; margin-bottom:8px;">
             <h3>$200 – $249</h3>
-            <p style="font-size:0.9rem; font-weight:bold;">Michi Aristócrata</p>
-            <p style="font-size:0.8rem; color:#666;">Quiero mejorar el espacio sin excesos</p>
+            <p style="font-weight:bold; margin:0;">Michi Aristócrata</p>
+            <p style="font-size:0.75rem; color:#666;">Quiero mejorar el espacio sin excesos</p>
         </div>
 
-        <div onclick="irWhatsApp('Michi Oficinista')" style="background:#fff; border:1px solid #ddd; border-radius:12px; padding:18px; text-align:center; cursor:pointer;">
+        <!-- OFICINISTA -->
+        <div onclick="irWhatsApp('Michi Oficinista')" style="background:#fff; border:1px solid #ddd; border-radius:12px; padding:12px; text-align:center; cursor:pointer;">
+            <img src="oficinista.png" style="width:60px; margin-bottom:8px;">
             <h3>$150 – $199</h3>
-            <p style="font-size:0.9rem; font-weight:bold;">Michi Oficinista</p>
-            <p style="font-size:0.8rem; color:#666;">Busco una solución funcional y accesible</p>
+            <p style="font-weight:bold; margin:0;">Michi Oficinista</p>
+            <p style="font-size:0.75rem; color:#666;">Busco una solución funcional y accesible</p>
         </div>
 
-        <div onclick="irWhatsApp('Michi Estudiante')" style="background:#fff; border:1px solid #ddd; border-radius:12px; padding:18px; text-align:center; cursor:pointer;">
+        <!-- ESTUDIANTE -->
+        <div onclick="irWhatsApp('Michi Estudiante')" style="background:#fff; border:1px solid #ddd; border-radius:12px; padding:12px; text-align:center; cursor:pointer;">
+            <img src="estudiante.png" style="width:60px; margin-bottom:8px;">
             <h3>$100 – $149</h3>
-            <p style="font-size:0.9rem; font-weight:bold;">Michi Estudiante</p>
-            <p style="font-size:0.8rem; color:#666;">Quiero empezar con lo esencial</p>
+            <p style="font-weight:bold; margin:0;">Michi Estudiante</p>
+            <p style="font-size:0.75rem; color:#666;">Quiero empezar con lo esencial</p>
         </div>
 
     </div>
+
+    <!-- Footer / Disclaimer -->
+    <div style="font-size:0.7rem; color:#777; text-align:center; margin-top:10px; max-width:800px; margin-left:auto; margin-right:auto;">
+        Al continuar, usted autoriza el tratamiento de sus datos personales conforme a la 
+        :contentReference[oaicite:0]{index=0}. 
+        La información proporcionada será utilizada únicamente para contactarlo y brindarle información sobre nuestros servicios. 
+        Puede solicitar la actualización o eliminación de sus datos en cualquier momento a través de nuestros canales oficiales.
+    </div>
+
 </div>
 
 <script>
