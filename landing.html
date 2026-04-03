@@ -5,6 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Kat Haus - Inversión</title>
     <style>
+/* Estilo específico para el Banner de Exclusividad */
+    .banner-calidad {
+        background-color: #f0ede5; /* Un tono más profundo que el beige del fondo */
+        border: 1.5px solid var(--dark);
+        border-radius: 12px;
+        padding: 25px 20px;
+        margin: 40px auto 20px auto;
+        max-width: 420px;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+    .banner-calidad h4 {
+        margin: 0 0 10px 0;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        font-weight: 900;
+        color: var(--dark);
+    }
+
+    .banner-calidad p {
+        font-size: 12.5px;
+        line-height: 1.5;
+        color: #444;
+        margin-bottom: 20px;
+        font-weight: 500;
+    }
+
+    /* Botón de alternativa dentro del banner (más discreto) */
+    .btn-filtro {
+        display: inline-block;
+        font-size: 11px;
+        color: #888;
+        text-decoration: underline;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        transition: color 0.3s;
+    }
+    
+    .btn-filtro:hover {
+        color: var(--dark);
+    }
+        
         /* Paleta Refinada: Beige Hueso, Negro Mate y Oro Viejo */
         :root { 
             --gold: #b38e4d; 
@@ -224,16 +269,23 @@
         </div>
     </div>
 
-    <div class="footer">
-        <p>Calidad Kat Haus garantizada.</p>
-        <a href="javascript:void(0)" onclick="verAlternativa()" class="btn-alt">
-            Ver opciones económicas
-        </a>
+<div class="footer">
+    <div class="banner-calidad">
+        <h4>Comprometidos con la excelencia</h4>
+        <p>
+            No realizamos intervenciones inferiores a <strong>$100</strong>. 
+            La selección de materiales técnicos y maderas tratadas que utilizamos exige este estándar mínimo de inversión para garantizar la durabilidad Kat Haus.
+        </p>
         
-        <div class="legal">
-            Al interactuar con esta plataforma, autoriza a Kat Haus el tratamiento de sus datos personales para fines de contacto y cotización, conforme a la Ley Orgánica de Protección de Datos Personales. Puede revocar este consentimiento en cualquier momento.
-        </div>
+        <a href="javascript:void(0)" onclick="verAlternativa()" class="btn-filtro">
+            ¿Presupuesto insuficiente para Kat Haus?
+        </a>
     </div>
+
+    <div class="legal">
+        Al interactuar con esta plataforma, autoriza a Kat Haus el tratamiento de sus datos personales para fines de contacto y cotización, conforme a la Ley Orgánica de Protección de Datos Personales de Ecuador.
+    </div>
+</div>
 
 </div>
 
