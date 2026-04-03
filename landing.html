@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Kat Haus - Inversión</title>
     <style>
-        :root { --gold: #c5a059; --dark: #111; --gray: #f4f4f4; }
+        :root { --gold: #c5a059; --dark: #111; --gray: #f4f4f4; --grey-text: #888; }
         body, html { margin: 0; padding: 0; width: 100%; background: #fff; font-family: 'Inter', 'Segoe UI', sans-serif; color: var(--dark); }
         
         .container { display: flex; flex-direction: column; align-items: center; padding: 40px 15px; box-sizing: border-box; }
@@ -68,7 +68,7 @@
         .name { font-size: 14px; text-transform: uppercase; font-weight: 700; margin: 4px 0; color: var(--gold); }
         .phrase { font-size: 11px; font-weight: 500; line-height: 1.2; opacity: 0.7; }
 
-        /* Badge de "Más solicitado" */
+        /* Badge */
         .badge {
             position: absolute;
             top: 10px;
@@ -84,21 +84,27 @@
             border: 2px solid var(--dark);
         }
 
-        .footer { margin-top: 50px; text-align: center; padding: 0 20px; }
+        /* FOOTER Y DISCLAIMER */
+        .footer { margin-top: 50px; text-align: center; padding: 0 20px; width: 100%; max-width: 400px; box-sizing: border-box; }
         .footer p { font-size: 13px; font-weight: 600; color: #888; margin-bottom: 20px; }
+        
+        /* Botón de alternativa menos llamativo */
         .btn-alt {
             display: inline-block;
-            padding: 12px 20px;
-            border: 2px solid var(--dark);
+            padding: 8px 16px;
+            border: 1px solid #ccc;
             border-radius: 50px;
-            color: var(--dark);
+            color: #666;
             text-decoration: none;
-            font-weight: 800;
-            font-size: 13px;
+            font-weight: 600;
+            font-size: 12px;
             text-transform: uppercase;
             transition: all 0.3s;
+            background: #f9f9f9;
         }
-        .btn-alt:hover { background: var(--dark); color: #fff; }
+        .btn-alt:hover { background: #eee; border-color: #bbb; color: #333; }
+
+        .legal { font-size: 11px; color: #bbb; margin-top: 30px; line-height: 1.4; text-align: justify; padding: 0 10px; }
     </style>
 </head>
 <body>
@@ -112,7 +118,7 @@
 
     <div class="grid-tier">
         <div class="card dark" onclick="irWhatsApp('Michi Deidad','clientevip')">
-            <div class="badge">Eite</div>
+            <div class="badge">Elite</div>
             <img src="06tier.png" alt="Deidad">
             <div class="info-box">
                 <p class="price">Sin Límite</p>
@@ -131,7 +137,7 @@
         </div>
 
         <div class="card" onclick="irWhatsApp('Michi Magnate','clientevip')">
-            <div class="badge" style="background: var(--dark);">Popular</div>
+            <div class="badge" style="background: var(--dark); font-size: 9px; padding: 4px 6px;">Más solicitado</div>
             <img src="04tier.png" alt="Magnate">
             <div class="info-box">
                 <p class="price">$250 - $299</p>
@@ -140,7 +146,7 @@
             </div>
         </div>
 
-        <div class="card" onclick="irWhatsApp('Michi Aristócrata','clienteregular')">
+        <div class="card" onclick="irWhatsApp('Michi Aristócrata','clientREGULAR')">
             <img src="03tier.png" alt="Aristócrata">
             <div class="info-box">
                 <p class="price">$200 - $249</p>
@@ -149,7 +155,7 @@
             </div>
         </div>
 
-        <div class="card" onclick="irWhatsApp('Michi Oficinista','clienteregular')">
+        <div class="card" onclick="irWhatsApp('Michi Oficinista','clientREGULAR')">
             <img src="02tier.png" alt="Oficinista">
             <div class="info-box">
                 <p class="price">$150 - $199</p>
@@ -158,7 +164,7 @@
             </div>
         </div>
 
-        <div class="card" onclick="irWhatsApp('Michi Estudiante','clienteregular')">
+        <div class="card" onclick="irWhatsApp('Michi Estudiante','clientREGULAR')">
             <img src="01tier.png" alt="Estudiante">
             <div class="info-box">
                 <p class="price">$100 - $149</p>
@@ -169,22 +175,26 @@
     </div>
 
     <div class="footer">
-        <p>Circuitos desde $100. Calidad Kat Haus garantizada.</p>
+        <p>No trabajamos intervenciones menores a $100 ya que nuestros materiales no lo permiten.</p>
         <a href="javascript:void(0)" onclick="verAlternativa()" class="btn-alt">
-            ¿Presupuesto menor?
+            No cuento con el presupuesto suficiente, ¿Qué hacer?
         </a>
+        
+        <div class="legal">
+            Al interactuar con esta plataforma, usted autoriza expresamente a Kat Haus el tratamiento de sus datos personales exclusivamente para fines de contacto, cotización y gestión de servicios, conforme a la normativa vigente de protección de datos personales. Sus datos no serán compartidos con terceros sin su consentimiento previo. Puede ejercer sus derechos de acceso, rectificación o eliminación contactándonos directamente.
+        </div>
     </div>
 
 </div>
 
 <script>
 function irWhatsApp(categoria, tipoCliente) {
-    const numero = "593963372269";
-    const mensaje = encodeURIComponent("Hola Kat Haus, quiero un diseño categoría " + categoria);
+    const numero = "593963372269"; // Asegúrate de que este número sea correcto para Ecuador
+    const mensaje = encodeURIComponent("Hola Kat Haus, quiero iniciar un proyecto categoría " + categoria);
     window.open("https://wa.me/" + numero + "?text=" + mensaje, '_blank');
 }
 function verAlternativa() {
-    alert("Para presupuestos menores a $100, recomendamos buscar opciones estándar en Marketplace. En Kat Haus nos enfocamos exclusivamente en diseño técnico y maderas premium.");
+    alert("Para presupuestos inferiores a $100, recomendamos buscar opciones fabricadas en materiales de menor calidad como el MDF o el cartón prensado, muy fáciles de encontrar en sitios como Facebook Marketplace. En Kat Haus nos enfocamos exclusivamente en diseño técnico de autor y maderas premium.");
 }
 </script>
 
