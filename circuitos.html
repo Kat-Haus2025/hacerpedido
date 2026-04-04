@@ -7,7 +7,6 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 
-<!-- META PIXEL PRO -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -21,13 +20,11 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 fbq('init', '649645208209657');
 fbq('track', 'PageView');
 </script>
-<!-- END META PIXEL -->
-
 <style>
 
 html {
     background: #0f3f44 url("background.png") center center / cover no-repeat fixed;
-    min-height: 200%;
+    min-height: 100%;
 }
 
 @media (max-width: 768px) {
@@ -40,6 +37,7 @@ body {
     margin: 0;
     padding: 0;
     background: transparent;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .footer-container {
@@ -47,55 +45,64 @@ body {
     margin-top: 20px;
 }
 
-.footer-text {
-    font-family: 'Cinzel', serif;
-    font-size: 28px;
-    letter-spacing: 2px;
-}
-
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
     padding: 40px;
     max-width: 1200px;
     margin: auto;
 }
 
-.card { text-align:center; }
+.card { 
+    text-align:center; 
+    display: flex;
+    flex-direction: column;
+}
 
 .grid img {
     width: 100%;
     border-radius: 16px;
     cursor: pointer;
     box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+    transition: 0.3s;
 }
+
 .circuito {
-margin-top: 14px;
-padding-left: 20px;
-text-align: center;
-font-size: 22px;
-color: #e89d49;
-line-height: 1.6;
-font-weight: 700;
+    margin-top: 18px;
+    text-align: center;
+    font-size: 22px;
+    color: #e89d49;
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
 }
+
+/* ESTILO DE BANNER PARA DESCRIPCIÓN */
 .descripcion {
-    margin-top: 14px;
-    padding-left: 20px;
+    margin: 15px auto;
+    padding: 15px;
     text-align: left;
-    font-size: 16px;
-    color: #CCCCCC;
+    font-size: 13px;
+    color: #ffffff;
     line-height: 1.6;
+    background: rgba(255, 255, 255, 0.05); /* Fondo sutil */
+    border: 1px solid rgba(232, 157, 73, 0.3); /* Borde color oro suave */
+    border-radius: 12px;
+    width: 90%;
+    backdrop-filter: blur(5px);
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
 }
 
-.descripcion li {
-    margin-bottom: 6px;
+.descripcion br {
+    display: block;
+    margin-bottom: 4px;
+    content: "";
 }
 
+/* ANIMACIONES LATIDO */
 .latido {
     animation: heartbeat 3s infinite cubic-bezier(.4,0,.2,1);
 }
-
 .fuerte { --s1:1.07; --s2:1.12; }
 .medio  { --s1:1.04; --s2:1.07; }
 .suave  { --s1:1.02; --s2:1.04; }
@@ -110,292 +117,252 @@ font-weight: 700;
 }
 
 /* MODAL */
-
 .modal {
     display: none;
     position: fixed;
     z-index: 999;
     left: 0; top: 0;
     width: 100%; height: 100%;
-    background: rgba(0,0,0,0.85);
+    background: rgba(0,0,0,0.9);
     justify-content: center;
     align-items: center;
 }
-#modal-title {
-    color: #ffffff;
-}
 .modal-content {
-    background: #2A2A2A;
-    padding: 35px;
-    border-radius: 18px;
-    max-width: 520px;
-    width: 90%;
+    background: #1a1a1a;
+    padding: 30px;
+    border-radius: 20px;
+    max-width: 450px;
+    width: 85%;
     text-align: center;
-    border: 1px solid #8B5A2B;
+    border: 1px solid #e89d49;
 }
-
-.precio {
-    font-size: 22px;
-    color: #FFD8A8;
-    font-weight: 600;
-    display: block;
-    margin-top: 8px;
-}
-
+#modal-title { color: #e89d49; font-family: 'Cinzel', serif; }
+.precio { font-size: 26px; color: #fff; font-weight: 700; margin: 10px 0; }
 .btn-whatsapp {
     display: block;
-    margin: 18px 0;
-    padding: 16px;
+    margin: 12px 0;
+    padding: 14px;
     background: #25D366;
     color: white;
     text-decoration: none;
-    border-radius: 40px;
+    border-radius: 50px;
     font-weight: 600;
-    transition: 0.3s;
+    font-size: 14px;
 }
 
-.btn-whatsapp:hover {
-    background: #1ebe5d;
-}
+.regresar-link { color: #888; font-size: 12px; text-decoration: none; display: block; margin-top: 15px; }
+
 </style>
 </head>
 
 <body>
 
 <div class="footer-container">
-<center><img src="select.png" width=90%"></center>
+    <center><img src="select.png" style="width: 90%; max-width: 600px; margin-top: 30px;"></center>
 </div>
 
 <div class="grid">
 
-<!-- 1 -->
 <div class="card">
-<img src="c11.png" class="latido fuerte"
-onclick="openCompra('c11.png','Circuito Bauhaus',319)">
-<p class="circuito">Circuito Bauhaus </p>
-    <p class="descripcion"> 
-    -1 Casa Pentagonal con Puente<br>  
-        -2 Postes Rascadores<br> 
-    -2 Sillones Gatunos<br>
-    -4 Repisa 30cms<br> 
-     -1 Puente Brooklyn<br> 
-     -2 Escalera 60 cms<br> 
-    -1 Túnel Felino<br> 
-
+    <img src="c11.png" class="latido fuerte" onclick="openCompra('c11.png','Circuito Bauhaus',319)">
+    <p class="circuito">Circuito Bauhaus</p>
+    <div class="descripcion"> 
+        • 1 Casa Pentagonal con Puente<br>  
+        • 2 Postes Rascadores<br> 
+        • 2 Sillones Gatunos<br>
+        • 4 Repisa 30cms<br> 
+        • 1 Puente Brooklyn<br> 
+        • 2 Escalera 60 cms<br> 
+        • 1 Túnel Felino
+    </div>
 </div>
 
-<!-- 2 -->
 <div class="card">
-<img src="c10.png" class="latido fuerte"
-onclick="openCompra('c10.png','Circuito Leverkusen',285)">
-<p class="circuito">Circuito Leverkusen </p>
-    <p class="descripcion"> 
-    -1 Casa Pentagonal con Puente<br>  
-        -1 Puente Brooklyn<br> 
-    -1 Repisero<br>
-    -2 Repisa 30cms<br> 
-     -1 Poste Rascador<br> 
-    -1 Túnel Felino<br> 
-    -4 Escalera 60cms<br> 
-    -1 Sillón Gatuno </p>
+    <img src="c10.png" class="latido fuerte" onclick="openCompra('c10.png','Circuito Leverkusen',285)">
+    <p class="circuito">Circuito Leverkusen</p>
+    <div class="descripcion"> 
+        • 1 Casa Pentagonal con Puente<br>  
+        • 1 Puente Brooklyn<br> 
+        • 1 Repisero<br>
+        • 2 Repisa 30cms<br> 
+        • 1 Poste Rascador<br> 
+        • 1 Túnel Felino<br> 
+        • 4 Escalera 60cms<br> 
+        • 1 Sillón Gatuno
+    </div>
 </div>
 
-<!-- 3 -->
 <div class="card">
-<img src="c09.png" class="latido medio"
-onclick="openCompra('c09.png','Circuito Heidelberg',249)">
-<p class="circuito">Circuito Heidelberg </p>
-    <p class="descripcion"> 
-    -1 Casa Pentagonal con Puente<br>  
-        -1 Puente Brooklyn<br> 
-    -1 Repisa 30cms<br> 
-    -1 Escalera 60cms<br> 
-    -1 Poste Rascador<br> 
-        -3 Sillón Gatuno </p>
+    <img src="c09.png" class="latido medio" onclick="openCompra('c09.png','Circuito Heidelberg',249)">
+    <p class="circuito">Circuito Heidelberg</p>
+    <div class="descripcion"> 
+        • 1 Casa Pentagonal con Puente<br>  
+        • 1 Puente Brooklyn<br> 
+        • 1 Repisa 30cms<br> 
+        • 1 Escalera 60cms<br> 
+        • 1 Poste Rascador<br> 
+        • 3 Sillón Gatuno
+    </div>
 </div>
 
-<!-- 4 -->
 <div class="card">
-<img src="c08.png" class="latido medio"
-onclick="openCompra('c08.png','Circuito Stuttgart',232)">
-<p class="circuito">Circuito Stuttgart </p>
-    <p class="descripcion"> 
-    -1 Casa Pentagonal con Puente<br>  
-        -1 Puente Brooklyn<br> 
-    -1 Repisa 30cms<br> 
-    -1 Escalera 60cms<br> 
-    -1 Poste Rascador<br> 
-        -3 Sillón Gatuno </p>
+    <img src="c08.png" class="latido medio" onclick="openCompra('c08.png','Circuito Stuttgart',232)">
+    <p class="circuito">Circuito Stuttgart</p>
+    <div class="descripcion"> 
+        • 1 Casa Pentagonal con Puente<br>  
+        • 1 Puente Brooklyn<br> 
+        • 1 Repisa 30cms<br> 
+        • 1 Escalera 60cms<br> 
+        • 1 Poste Rascador<br> 
+        • 3 Sillón Gatuno
+    </div>
 </div>
 
-<!-- 5 -->
 <div class="card">
-<img src="c07.png" class="latido medio"
-onclick="openCompra('c07.png','Circuito Dresden',215)">
-<p class="circuito">Circuito Dresden </p>
-    <p class="descripcion"> 
-    -1 Casa Pentagonal con Puente<br>  
-        -1 Túnel Felino<br> 
-    -3 Repisa 30cms<br> 
-    -1 Escalera 60cms<br> 
-    -1 Poste Rascador<br> 
-    -1 Puente colgante<br> 
-    -2 Sillón Gatuno </p>
+    <img src="c07.png" class="latido medio" onclick="openCompra('c07.png','Circuito Dresden',215)">
+    <p class="circuito">Circuito Dresden</p>
+    <div class="descripcion"> 
+        • 1 Casa Pentagonal con Puente<br>  
+        • 1 Túnel Felino<br> 
+        • 3 Repisa 30cms<br> 
+        • 1 Escalera 60cms<br> 
+        • 1 Poste Rascador<br> 
+        • 1 Puente colgante<br> 
+        • 2 Sillón Gatuno
+    </div>
 </div>
 
-<!-- 6 -->
 <div class="card">
-<img src="c06.png" class="latido suave"
-onclick="openCompra('c06.png','Circuito Düsseldorf',199)">
-<p class="circuito">Circuito Düsseldorf </p>
-    <p class="descripcion"> 
-    -1 Casa Pentagonal con Puente<br>  
-        -1 Repisero<br> 
-    -3 Repisa 30cms<br> 
-    -1 Escalera 60cms<br> 
-    -1 Poste Rascador<br> 
-    -2 Sillón Gatuno </p>
+    <img src="c06.png" class="latido suave" onclick="openCompra('c06.png','Circuito Düsseldorf',199)">
+    <p class="circuito">Circuito Düsseldorf</p>
+    <div class="descripcion"> 
+        • 1 Casa Pentagonal con Puente<br>  
+        • 1 Repisero<br> 
+        • 3 Repisa 30cms<br> 
+        • 1 Escalera 60cms<br> 
+        • 1 Poste Rascador<br> 
+        • 2 Sillón Gatuno
+    </div>
 </div>
 
-<!-- 7 -->
 <div class="card">
-<img src="c05.png" class="latido suave"
-onclick="openCompra('c05.png','Circuito München',185)">
-<p class="circuito">Circuito Múnchen </p>
-    <p class="descripcion"> 
-    -1 Casa Pentagonal con Puente<br>  
-        -1 Puente Colgante<br> 
-    -2 Repisa 30cms<br> 
-    -2 Escalera 60cms<br> 
-    -1 Poste Rascador<br> 
-    -2 Sillón Gatuno </p>
+    <img src="c05.png" class="latido suave" onclick="openCompra('c05.png','Circuito München',185)">
+    <p class="circuito">Circuito München</p>
+    <div class="descripcion"> 
+        • 1 Casa Pentagonal con Puente<br>  
+        • 1 Puente Colgante<br> 
+        • 2 Repisa 30cms<br> 
+        • 2 Escalera 60cms<br> 
+        • 1 Poste Rascador<br> 
+        • 2 Sillón Gatuno
+    </div>
 </div>
 
-<!-- 8 -->
 <div class="card">
-<img src="c04.png" class="latido suave"
-onclick="openCompra('c04.png','Circuito Berlín',163)">
-<p class="circuito">Circuito Berlín </p>
-    <p class="descripcion"> 
-    -1 Casa Pentagonal con Puente<br>  
-        -1 Puente Brooklyn<br> 
-    -2 Repisa 30cms<br> 
-    -2 Escalera 60cms<br> 
-    -1 Sillón Gatuno </p>
+    <img src="c04.png" class="latido suave" onclick="openCompra('c04.png','Circuito Berlín',163)">
+    <p class="circuito">Circuito Berlín</p>
+    <div class="descripcion"> 
+        • 1 Casa Pentagonal con Puente<br>  
+        • 1 Puente Brooklyn<br> 
+        • 2 Repisa 30cms<br> 
+        • 2 Escalera 60cms<br> 
+        • 1 Sillón Gatuno
+    </div>
 </div>
 
-<!-- 9 -->
 <div class="card">
-<img src="c03.png" class="latido suave"
-onclick="openCompra('c03.png','Circuito Hannover',142)">
-<p class="circuito">Circuito Hannover </p>
-    <p class="descripcion"> 
-    -2 Escalera 60cms<br>  
-    -1 Repisa 30cms<br> 
-    -1 Puente Brooklyn<br> 
-    -1 Sillón Gatuno<br> 
-    -Casa Pentagonal con Puente</p>
+    <img src="c03.png" class="latido suave" onclick="openCompra('c03.png','Circuito Hannover',142)">
+    <p class="circuito">Circuito Hannover</p>
+    <div class="descripcion"> 
+        • 2 Escalera 60cms<br>  
+        • 1 Repisa 30cms<br> 
+        • 1 Puente Brooklyn<br> 
+        • 1 Sillón Gatuno<br> 
+        • Casa Pentagonal con Puente
+    </div>
 </div>
 
-<!-- 10 -->
 <div class="card">
-<img src="c02.png" class="latido suave"
-onclick="openCompra('c02.png','Circuito Lizt',119)">
-<p class="circuito">Circuito Lizt </p>
-    <p class="descripcion"> 
-    -1 Escalera 60cms<br>  
-    -1 Repisero múltiple<br> 
- -1 Repisa 30cms <br> 
-    -Casa Pentagonal con Puente</p>
+    <img src="c02.png" class="latido suave" onclick="openCompra('c02.png','Circuito Lizt',119)">
+    <p class="circuito">Circuito Lizt</p>
+    <div class="descripcion"> 
+        • 1 Escalera 60cms<br>  
+        • 1 Repisero múltiple<br> 
+        • 1 Repisa 30cms<br> 
+        • Casa Pentagonal con Puente
+    </div>
 </div>
 
-<!-- 11 -->
 <div class="card">
-<img src="C01.png" class="latido suave"
-onclick="openCompra('C01.png','Circuito Viena',99)">
-<p class="circuito">Circuito Viena </p>
-    <p class="descripcion"> 
-    -1 Escalera 60cms<br>  
-    -1 Repisero<br> 
-    -1 Repisa 30cms<br> 
-    -Sillón Gatuno</p>
+    <img src="C01.png" class="latido suave" onclick="openCompra('C01.png','Circuito Viena',99)">
+    <p class="circuito">Circuito Viena</p>
+    <div class="descripcion"> 
+        • 1 Escalera 60cms<br>  
+        • 1 Repisero<br> 
+        • 1 Repisa 30cms<br> 
+        • Sillón Gatuno
+    </div>
 </div>
 
 </div>
-
-<!-- MODAL -->
 
 <div class="modal" id="modal">
-<div class="modal-content">
-<img id="modal-img" style="width:180px;border-radius:16px;margin-bottom:15px;">
-<h2 id="modal-title"></h2>
-<span id="modal-price" class="precio"></span>
+    <div class="modal-content">
+        <img id="modal-img" style="width:180px;border-radius:16px;margin-bottom:15px;">
+        <h2 id="modal-title"></h2>
+        <span id="modal-price" class="precio"></span>
 
-<a id="btn-envio" class="btn-whatsapp" target="_blank">
-Solicitar Fabricación, con Envío GRATIS
-</a>
-
-<a id="btn-instalacion" class="btn-whatsapp" target="_blank">
-Fabricación con Instalación En Quito o Guayaquil(+$20)
-</a>
-<a href="https://kathaus.shop/circuitos.html" class="regresar-link">
-Regresar a la galería
-</a>
-</div>
+        <a id="btn-envio" class="btn-whatsapp" target="_blank">Solicitar Fabricación, con Envío GRATIS</a>
+        <a id="btn-instalacion" class="btn-whatsapp" target="_blank">Fabricación con Instalación En Quito o Guayaquil(+$20)</a>
+        
+        <a href="javascript:void(0)" onclick="closeModal()" class="regresar-link">Cerrar ventana</a>
+    </div>
 </div>
 
 <script>
-
 let productoNombre = "";
 let productoPrecio = 0;
 
 function openCompra(img,nombre,precio){
+    productoNombre = nombre;
+    productoPrecio = precio;
+    document.getElementById("modal").style.display="flex";
+    document.getElementById("modal-img").src = img;
+    document.getElementById("modal-title").innerText = nombre;
+    document.getElementById("modal-price").innerText = "$"+precio+".00";
 
-productoNombre = nombre;
-productoPrecio = precio;
+    let mensajeEnvio = encodeURIComponent("Hola Ale 💕 quiero el "+nombre+" con Envío Gratis.");
+    let mensajeInstalacion = encodeURIComponent("Hola Ale 💕 quiero el "+nombre+" con Instalación (+$20).");
 
-document.getElementById("modal").style.display="flex";
-document.getElementById("modal-img").src = img;
-document.getElementById("modal-title").innerText = nombre;
-document.getElementById("modal-price").innerText = "$"+precio+".00";
+    document.getElementById("btn-envio").href = "https://wa.me/593963372269?text="+mensajeEnvio;
+    document.getElementById("btn-instalacion").href = "https://wa.me/593963372269?text="+mensajeInstalacion;
 
-let mensajeEnvio = encodeURIComponent(
-"Hola Ale 💕 quiero el "+nombre+" con Envío Gratis."
-);
+    fbq('track','ViewContent',{ content_name: nombre, value: precio, currency: 'USD' });
+}
 
-let mensajeInstalacion = encodeURIComponent(
-"Hola Ale 💕 quiero el "+nombre+" con Instalación (+$20)."
-);
+function closeModal(){
+    document.getElementById("modal").style.display="none";
+}
 
-document.getElementById("btn-envio").href =
-"https://wa.me/593963372269?text="+mensajeEnvio;
-
-document.getElementById("btn-instalacion").href =
-"https://wa.me/593963372269?text="+mensajeInstalacion;
-
-fbq('track','ViewContent',{
-content_name: nombre,
-value: precio,
-currency: 'USD'
-});
-
+window.onclick = function(event) {
+    if (event.target == document.getElementById("modal")) {
+        closeModal();
+    }
 }
 
 document.addEventListener("click",function(e){
-if(e.target.classList.contains("btn-whatsapp")){
-fbq('track','Lead',{
-content_name: productoNombre,
-value: productoPrecio,
-currency: 'USD'
+    if(e.target.classList.contains("btn-whatsapp")){
+        fbq('track','Lead',{ content_name: productoNombre, value: productoPrecio, currency: 'USD' });
+    }
 });
-}
-});
-
 </script>
-<img src="footer.png" width=100%>
-   
-    <p class="circuito"> 
+
+<img src="footer.png" width="100%">
+<div style="text-align: center; padding-bottom: 40px;">
+    <p class="circuito" style="font-size: 14px; color: #888;"> 
     ®Kat-Haus / Quito-Ecuador 2026 <br>
-        Made with Blender
+    Made with Blender
+    </p>
+</div>
 </body>
 </html>
