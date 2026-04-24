@@ -31,7 +31,7 @@
         }
 
         nav {
-            padding: 20px 5%;
+            padding: 15px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -42,27 +42,46 @@
             z-index: 1000;
         }
 
-        .logo { font-weight: bold; font-size: 1.5rem; letter-spacing: 2px; }
+        .logo { font-weight: bold; font-size: 1.3rem; letter-spacing: 2px; }
 
+        /* --- HERO AJUSTADO PARA EVITAR FALSA TERMINACIÓN --- */
         .hero {
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            padding: 60px 5%;
+            padding: 40px 5%;
             background-color: var(--gris-claro);
+            min-height: calc(100vh - 70px); /* Ocupa casi toda la pantalla pero deja ver el inicio de la siguiente */
+            position: relative;
         }
 
-        .hero-image { flex: 1; min-width: 300px; padding: 20px; }
-        .hero-image img { width: 100%; border-radius: 8px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .hero-image { flex: 1; min-width: 300px; padding: 10px; text-align: center; }
+        .hero-image img { width: 90%; max-width: 500px; border-radius: 8px; box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
 
-        .hero-text { flex: 1; min-width: 300px; padding: 40px; }
-        .hero-text h1 { font-size: 2.8rem; line-height: 1.1; margin-bottom: 20px; text-transform: uppercase; }
-        .hero-text p { font-size: 1.2rem; margin-bottom: 30px; color: var(--texto-suave); }
+        .hero-text { flex: 1; min-width: 300px; padding: 20px; }
+        .hero-text h1 { font-size: 2.5rem; line-height: 1.1; margin-bottom: 15px; text-transform: uppercase; }
+        .hero-text p { font-size: 1.1rem; margin-bottom: 25px; color: var(--texto-suave); }
 
-        .authority {
-            padding: 80px 5%;
-            text-align: center;
+        /* INDICADOR DE SCROLL ANIMADO */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            color: var(--primario);
+            font-size: 1.5rem;
+            cursor: pointer;
         }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0) translateX(-50%);}
+            40% {transform: translateY(-10px) translateX(-50%);}
+            60% {transform: translateY(-5px) translateX(-50%);}
+        }
+
+        /* --- SECCIONES SIGUIENTES --- */
+        .authority { padding: 80px 5%; text-align: center; }
 
         .grid {
             display: grid;
@@ -71,12 +90,7 @@
             margin-top: 40px;
         }
 
-        .card {
-            padding: 25px;
-            border: 1px solid #eee;
-            border-radius: 8px;
-            text-align: left;
-        }
+        .card { padding: 25px; border: 1px solid #eee; border-radius: 8px; text-align: left; }
 
         .media-container {
             width: 100%;
@@ -90,71 +104,45 @@
             justify-content: center;
         }
 
-        .media-container video, .media-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
+        .media-container video, .media-container img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-        .card h3 { margin-bottom: 12px; font-size: 1.4rem; }
-        .card p { font-size: 0.95rem; color: var(--texto-suave); }
-
-        .wellbeing {
-            background-color: var(--oscuro);
-            color: var(--blanco);
-            padding: 80px 5%;
-        }
-
+        .wellbeing { background-color: var(--oscuro); color: var(--blanco); padding: 80px 5%; }
         .wellbeing h2 { text-align: center; margin-bottom: 50px; font-size: 2.2rem; }
 
-        /* --- BOTÓN DE ALTO IMPACTO (FILTRO DE CALIDAD) --- */
-        .cta-container {
-            text-align: center;
-            padding: 120px 5%;
-            background: var(--blanco);
-        }
+        /* --- CTA DE ALTO IMPACTO --- */
+        .cta-container { text-align: center; padding: 120px 5%; background: var(--blanco); }
 
         .btn-premium {
             display: inline-block;
-            padding: 25px 60px;
-            background-color: var(--primario); /* Ahora es sólido para llamar la atención */
+            padding: 22px 50px;
+            background-color: var(--primario);
             color: white;
             text-decoration: none;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 800;
             letter-spacing: 1.5px;
-            border-radius: 50px; /* Forma de píldora, más moderna y llamativa */
+            border-radius: 50px;
             transition: all 0.4s ease;
             text-transform: uppercase;
-            box-shadow: 0 15px 30px rgba(241, 123, 33, 0.4); /* Sombra intensa para resaltar */
+            box-shadow: 0 15px 30px rgba(241, 123, 33, 0.4);
         }
 
-        .btn-premium:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 20px 40px rgba(241, 123, 33, 0.6);
-            background-color: #d86a1a;
-        }
+        .btn-premium:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(241, 123, 33, 0.6); }
 
-        .price-filter {
-            margin-bottom: 25px;
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: var(--oscuro);
-            display: block;
-        }
+        .price-filter { margin-bottom: 25px; font-size: 1.3rem; font-weight: bold; color: var(--oscuro); display: block; }
 
-        footer {
-            padding: 60px 5%;
-            text-align: center;
-            background: var(--gris-claro);
-            font-size: 0.8rem;
-            color: #777;
-        }
+        footer { padding: 60px 5%; text-align: center; background: var(--gris-claro); font-size: 0.8rem; color: #777; }
 
+        /* AJUSTES MÓVILES ESPECÍFICOS */
         @media (max-width: 768px) {
-            .hero-text h1 { font-size: 2rem; }
-            .hero { padding: 40px 20px; }
+            .hero { 
+                min-height: 90vh; /* Obliga a que la siguiente sección "asome" un poco */
+                flex-direction: column-reverse; /* En móvil, primero el texto luego la imagen para que lean la promesa primero */
+                justify-content: center;
+            }
+            .hero-text h1 { font-size: 1.8rem; text-align: center; }
+            .hero-text p { font-size: 1rem; text-align: center; }
+            .hero-image img { width: 70%; }
             .grid { grid-template-columns: 1fr; }
         }
     </style>
@@ -163,21 +151,25 @@
 
     <nav>
         <div class="logo">KAT HAUS</div>
-        <div style="font-size: 0.8rem; letter-spacing: 1px;">QUITO, ECUADOR</div>
+        <div style="font-size: 0.7rem; letter-spacing: 1px;">QUITO, ECUADOR</div>
     </nav>
 
     <section class="hero">
+        <div class="hero-text">
+            <h1>¿Tienes un minino destructor?</h1>
+            <p>Un gato sin territorio es un gato estresado. En <strong>Kat-Haus</strong> enriquecemos su ambiente para salvar tu diseño interior.</p>
+        </div>
         <div class="hero-image">
             <img src="Problema.png" alt="Mueble dañado por aburrimiento felino">
         </div>
-        <div class="hero-text">
-            <h1>¿Tienes un minino destructor?</h1>
-            <p>Un gato sin territorio es un gato estresado. En <strong>Kat-Haus</strong> enriquecemos su ambiente para devolverle su instinto y salvar tu diseño interior.</p>
+        
+        <div class="scroll-indicator">
+            <span>↓</span>
         </div>
     </section>
 
     <section class="authority">
-        <h2 style="text-transform: uppercase; letter-spacing: 2px;">Ingeniería aplicada al Bienestar</h2>
+        <h2 style="text-transform: uppercase; letter-spacing: 2px; font-size: 1.5rem;">Ingeniería aplicada al Bienestar</h2>
         
         <div class="grid">
             <div class="card">
@@ -187,7 +179,7 @@
                     </video>
                 </div>
                 <h3>Precisión 3D</h3>
-                <p>Modelamos cada circuito en <strong>Blender</strong> antes de la fabricación. Cero improvisación, encaje milimétrico adaptado a tu pared.</p>
+                <p>Modelamos cada circuito en <strong>Blender</strong>. Cero improvisación, encaje milimétrico adaptado a tu pared.</p>
             </div>
 
             <div class="card">
@@ -197,7 +189,7 @@
                     </video>
                 </div>
                 <h3>Implementación Real</h3>
-                <p>Convertimos los renders en soluciones físicas tangibles. Instalaciones técnicas que garantizan seguridad total.</p>
+                <p>Convertimos renders en soluciones físicas tangibles con instalaciones técnicas de alta seguridad.</p>
             </div>
 
             <div class="card">
@@ -205,22 +197,22 @@
                     <img src="wood.png" alt="Madera sólida Kat Haus">
                 </div>
                 <h3>Materiales de Autor</h3>
-                <p>Trabajamos exclusivamente con madera real tratada. Ofrecemos <strong>3 años de garantía</strong>. Sin aglomerados, sin cartón.</p>
+                <p>Madera real tratada con <strong>3 años de garantía</strong>. Sin aglomerados, sin cartón.</p>
             </div>
         </div>
     </section>
 
     <section class="wellbeing">
         <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-            <h2>Más que muebles: Salud felina.</h2>
+            <h2>Más que muebles, es salud</h2>
             <div class="grid" style="text-align: left; border: none;">
-                <div style="padding: 20px;">
+                <div style="padding: 10px;">
                     <h4 style="color:var(--primario); margin-bottom: 10px;">Reducción de Estrés</h4>
                     <p style="font-size: 0.9rem; color: #ccc;">La altura proporciona seguridad, reduciendo drásticamente la ansiedad conductual.</p>
                 </div>
-                <div style="padding: 20px;">
+                <div style="padding: 10px;">
                     <h4 style="color:var(--primario); margin-bottom: 10px;">Actividad Física</h4>
-                    <p style="font-size: 0.9rem; color: #ccc;">Fomentamos el ejercicio vertical para combatir el sedentarismo en departamentos.</p>
+                    <p style="font-size: 0.9rem; color: #ccc;">Combatimos el sedentarismo mediante el ejercicio vertical técnico.</p>
                 </div>
             </div>
         </div>
@@ -229,9 +221,9 @@
     <section class="cta-container">
         <span class="price-filter">Proyectos de autor desde $150 USD</span>
         <a href="https://wa.me/593963372269?text=Deseo%20iniciar%20un%20estudio%20de%20espacio%20para%20mi%20gato." class="btn-premium">
-            INICIAR MI PROYECTO
+            CONTRATAR ESTUDIO TÉCNICO
         </a>
-        <p style="margin-top: 25px; font-size: 0.9rem; color: #999; max-width: 500px; margin-left: auto; margin-right: auto;">
+        <p style="margin-top: 25px; font-size: 0.8rem; color: #999; max-width: 400px; margin: 25px auto 0;">
             Solo para dueños que buscan excelencia en diseño y bienestar felino.
         </p>
     </section>
