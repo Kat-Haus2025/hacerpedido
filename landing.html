@@ -6,6 +6,10 @@
 <title>Kat Haus</title>
 
 <style>
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -13,19 +17,19 @@ body {
   color: #fff;
 }
 
+/* HERO */
 .hero {
-  display: flex;
+  position: relative;
   min-height: 100vh;
+  background: url('problema.png') center/cover no-repeat;
+  display: flex;
+  align-items: center;
 }
 
-.left {
-  flex: 1;
-  background: linear-gradient(to right, #000 70%, transparent),
-              url('sofa-gato.jpg') center/cover no-repeat;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.overlay {
+  background: linear-gradient(to right, rgba(0,0,0,0.85) 40%, rgba(0,0,0,0.3) 70%, transparent);
   padding: 60px;
+  max-width: 600px;
 }
 
 h1 {
@@ -42,27 +46,15 @@ p {
   line-height: 1.5;
 }
 
-.section {
-  padding: 80px 20px;
-  text-align: center;
-  background: #fff;
-  color: #000;
-}
-
-.section.dark {
-  background: #111;
-  color: #fff;
-}
-
 .cta {
   display: inline-block;
-  margin-top: 20px;
+  margin-top: 25px;
   padding: 15px 30px;
   background: #f5a623;
   color: #000;
   font-weight: bold;
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: 6px;
   transition: 0.3s;
 }
 
@@ -70,11 +62,29 @@ p {
   background: #ffbb33;
 }
 
+/* SECTIONS */
+.section {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.section.dark {
+  background: #111;
+  color: #fff;
+}
+
+.section.light {
+  background: #fff;
+  color: #000;
+}
+
+/* GRID */
 .grid {
   display: flex;
   gap: 20px;
   justify-content: center;
   flex-wrap: wrap;
+  margin-top: 30px;
 }
 
 .card {
@@ -82,25 +92,47 @@ p {
   height: 200px;
   background: #ccc;
   border-radius: 10px;
+  overflow: hidden;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  .overlay {
+    padding: 30px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- HERO -->
+<!-- HERO / PROBLEMA -->
 <section class="hero">
-  <div class="left">
+  <div class="overlay">
     <h1>¿Tus muebles se ven así?</h1>
 
     <p>
       No es culpa de tu gato,<br>
       <span class="highlight">el culpable es su aburrimiento.</span>
     </p>
+
+    <a href="https://wa.me/593XXXXXXXXX" class="cta">
+      Quiero dejar de destruir mis muebles
+    </a>
   </div>
 </section>
 
-<!-- PROBLEMA -->
+<!-- REENCUADRE -->
 <section class="section dark">
   <h2>Tu gato no está portándose mal</h2>
   <p>
@@ -110,7 +142,7 @@ p {
 </section>
 
 <!-- SOLUCIÓN -->
-<section class="section">
+<section class="section light">
   <h2>Diseñamos circuitos que sí usa</h2>
   <p>
     En Kat Haus creamos espacios pensados para tu gato,<br>
@@ -123,20 +155,22 @@ p {
   <h2>Así se ve cuando tu casa también es de tu gato</h2>
 
   <div class="grid">
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
+    <div class="card"><img src="render1.jpg"></div>
+    <div class="card"><img src="render2.jpg"></div>
+    <div class="card"><img src="render3.jpg"></div>
   </div>
 </section>
 
 <!-- PRECIO + CTA -->
-<section class="section">
-  <h2>Proyectos desde $120</h2>
+<section class="section light">
+  <h2>Proyectos personalizados desde $120</h2>
 
-  <a href="#" class="cta">Quiero ver mi circuito en 3D</a>
+  <a href="https://wa.me/593XXXXXXXXX" class="cta">
+    Quiero ver mi circuito en mi casa
+  </a>
 
   <p style="margin-top:10px; font-size:0.9rem;">
-    Te mostramos cómo quedaría en tu casa antes de fabricar
+    Te mostramos cómo quedaría antes de fabricar
   </p>
 </section>
 
