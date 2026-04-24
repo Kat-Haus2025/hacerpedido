@@ -162,24 +162,51 @@
             <p>Un gato sin territorio es un gato estresado. En <strong>Kat-Haus</strong> Gatificamos tu hogar para devolverle su instinto y salvar tu diseño interior.</p>
         </div>
     </section>
+<style>
+    /* Estilo específico para el contenedor de video dentro de la tarjeta */
+    .video-container {
+        width: 100%;
+        border-radius: 4px;
+        overflow: hidden;
+        margin-bottom: 15px;
+        background: #000; /* Fondo negro mientras carga */
+        line-height: 0; /* Elimina espacios extra debajo del video */
+    }
 
-    <section class="authority">
-        <span class="priming-tags">Ciencia • Arquitectura • Bienestar</span>
-        <h2>Ingeniería aplicada al hogar multiespecie</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>Precisión 3D</h3>
-                <p>Modelamos cada circuito en Blender antes de la fabricación. Cero improvisación, encaje milimétrico.</p>
-            </div>
-            <div class="card">
-                <h3>Psicología Felina</h3>
-                <p>Diseños basados en el comportamiento natural: rutas de escape, puntos de altura y zonas de rascado.</p>
-            </div>
-            <div class="card">
-                <h3>Materiales de Autor</h3>
-                <p>Madera tratada y acabados premium. Estética que eleva tu sala mientras satisface sus garras.</p>
-            </div>
+    .video-container video {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+</style>
+
+<div class="grid">
+    <div class="card">
+        <div class="video-container">
+            <video 
+                autoplay 
+                muted 
+                loop 
+                playsinline 
+                poster="miniatura-video.jpg">
+                <source src="modelo3d.mp4" type="video/mp4">
+                Tu navegador no soporta videos.
+            </video>
         </div>
+        <h3>Precisión 3D</h3>
+        <p>Modelamos cada circuito en Blender antes de la fabricación. Cero improvisación, encaje milimétrico.</p>
+    </div>
+
+    <div class="card">
+        <h3>Psicología Felina</h3>
+        <p>Diseños basados en el comportamiento natural: rutas de escape, puntos de altura y zonas de rascado.</p>
+    </div>
+
+    <div class="card">
+        <h3>Materiales de Autor</h3>
+        <p>Madera tratada y acabados premium. Estética que eleva tu sala mientras satisface sus garras.</p>
+    </div>
+</div>
     </section>
 
     <section class="wellbeing">
