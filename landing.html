@@ -109,6 +109,51 @@
             <small class="cta-subtext">Diseños desde $150 USD adaptados a tu espacio.</small>
         </div>
     </section>
+<style>
+    .authority-section {
+        padding: 60px 5%;
+        text-align: center;
+        background: #fff;
+    }
+    .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
+    }
+    .feature-card {
+        padding: 30px;
+        border: 1px solid #eee;
+        border-radius: 15px;
+        transition: 0.3s;
+    }
+    .feature-card:hover {
+        border-color: var(--primario);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    }
+    .feature-card h3 { color: var(--primario); margin-bottom: 15px; }
+    .feature-icon { font-size: 2.5rem; margin-bottom: 15px; }
+</style>
 
+<section class="authority-section">
+    <h2>Por qué Kat Haus no es solo una carpintería</h2>
+    <div class="features">
+        <div class="feature-card">
+            <div class="feature-icon">📐</div>
+            <h3>Diseño 3D a Medida</h3>
+            <p>Visualiza tu circuito con renders realistas antes de la fabricación. Ajustamos cada centímetro a tu espacio.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🐾</div>
+            <h3>Bienestar Animal</h3>
+            <p>Basamos nuestras rutas en el comportamiento natural de los gatos: trepar, acechar y descansar en las alturas.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🛠️</div>
+            <h3>Calidad Artesanal</h3>
+            <p>Madera sólida y acabados premium que resisten el juego rudo y complementan la estética de tu hogar.</p>
+        </div>
+    </div>
+</section>
 </body>
 </html>
