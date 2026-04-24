@@ -110,6 +110,75 @@
         </div>
     </section>
 <style>
+    .benefits-section {
+        padding: 80px 10%;
+        background-color: #ffffff;
+    }
+    .benefits-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 40px;
+        margin-top: 50px;
+    }
+    .benefit-item {
+        text-align: left;
+    }
+    .benefit-item h3 {
+        color: var(--primario);
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+    }
+    .benefit-item h3::before {
+        content: '✓';
+        margin-right: 10px;
+        background: var(--primario);
+        color: white;
+        border-radius: 50%;
+        width: 25px;
+        height: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.8rem;
+    }
+    .benefit-item p {
+        line-height: 1.6;
+        color: #666;
+    }
+</style>
+
+<section class="benefits-section">
+    <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+        <h2 style="font-size: 2.2rem;">Un gato que trepa es un gato equilibrado</h2>
+        <p>La gatificación no es un lujo decorativo; es devolverle a tu gato su hábitat natural dentro de cuatro paredes.</p>
+    </div>
+
+    <div class="benefits-grid">
+        <div class="benefit-item">
+            <h3>Adiós al Estrés y la Ansiedad</h3>
+            <p>La falta de actividad física genera frustración. Los circuitos Kat Haus permiten que tu gato libere energía, reduciendo maullidos nocturnos y comportamientos agresivos.</p>
+        </div>
+
+        <div class="benefit-item">
+            <h3>Control de Peso y Salud</h3>
+            <p>El sedentarismo es el peor enemigo de los gatos de departamento. Incentivamos el salto y la escalada, manteniendo sus articulaciones fuertes y su peso bajo control.</p>
+        </div>
+
+        <div class="benefit-item">
+            <h3>Territorialidad y Confianza</h3>
+            <p>Tener un "punto alto" le da seguridad. Un gato que domina su espacio desde las alturas es un gato más sociable, menos asustadizo y mucho más feliz.</p>
+        </div>
+
+        <div class="benefit-item">
+            <h3>Instinto Estimulado</h3>
+            <p>Cazar, trepar y observar. Nuestros diseños replican los desafíos de la naturaleza, manteniendo su mente ágil y despierta.</p>
+        </div>
+    </div>
+</section>
+    
+<style>
     .authority-section {
         padding: 60px 5%;
         text-align: center;
