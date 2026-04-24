@@ -6,7 +6,6 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-TW42N1MHMF');
     </script>
 
@@ -15,7 +14,7 @@
     <title>Kat Haus | Ingeniería de Bienestar Felino</title>
     <style>
         :root {
-            --primario: #f17b21; /* Naranja Kat Haus */
+            --primario: #f17b21; 
             --oscuro: #1a1a1a;
             --texto-suave: #555;
             --blanco: #ffffff;
@@ -31,7 +30,6 @@
             background-color: var(--blanco);
         }
 
-        /* --- NAVEGACIÓN --- */
         nav {
             padding: 20px 5%;
             display: flex;
@@ -46,7 +44,6 @@
 
         .logo { font-weight: bold; font-size: 1.5rem; letter-spacing: 2px; }
 
-        /* --- HERO: EL PROBLEMA --- */
         .hero {
             display: flex;
             flex-wrap: wrap;
@@ -62,7 +59,6 @@
         .hero-text h1 { font-size: 2.8rem; line-height: 1.1; margin-bottom: 20px; text-transform: uppercase; }
         .hero-text p { font-size: 1.2rem; margin-bottom: 30px; color: var(--texto-suave); }
 
-        /* --- SECCIÓN DE AUTORIDAD --- */
         .authority {
             padding: 80px 5%;
             text-align: center;
@@ -79,13 +75,9 @@
             padding: 25px;
             border: 1px solid #eee;
             border-radius: 8px;
-            transition: 0.3s;
             text-align: left;
         }
 
-        .card:hover { border-color: var(--primario); transform: translateY(-5px); }
-
-        /* CONTENEDOR MULTIMEDIA CUADRADO (1:1) */
         .media-container {
             width: 100%;
             aspect-ratio: 1 / 1;
@@ -98,18 +90,16 @@
             justify-content: center;
         }
 
-        .media-container video, 
-        .media-container img {
+        .media-container video, .media-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
         }
 
-        .card h3 { margin-bottom: 12px; font-size: 1.4rem; color: var(--oscuro); }
+        .card h3 { margin-bottom: 12px; font-size: 1.4rem; }
         .card p { font-size: 0.95rem; color: var(--texto-suave); }
 
-        /* --- SECCIÓN BIENESTAR --- */
         .wellbeing {
             background-color: var(--oscuro);
             color: var(--blanco);
@@ -118,51 +108,50 @@
 
         .wellbeing h2 { text-align: center; margin-bottom: 50px; font-size: 2.2rem; }
 
-        /* --- BOTÓN PREMIUM (CTA) --- */
+        /* --- BOTÓN DE ALTO IMPACTO (FILTRO DE CALIDAD) --- */
         .cta-container {
             text-align: center;
-            padding: 100px 5%;
+            padding: 120px 5%;
             background: var(--blanco);
         }
 
         .btn-premium {
             display: inline-block;
-            padding: 22px 45px;
-            border: 2px solid var(--primario);
-            color: var(--oscuro);
+            padding: 25px 60px;
+            background-color: var(--primario); /* Ahora es sólido para llamar la atención */
+            color: white;
             text-decoration: none;
-            font-weight: bold;
-            letter-spacing: 1px;
-            transition: all 0.3s;
+            font-size: 1.2rem;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            border-radius: 50px; /* Forma de píldora, más moderna y llamativa */
+            transition: all 0.4s ease;
             text-transform: uppercase;
+            box-shadow: 0 15px 30px rgba(241, 123, 33, 0.4); /* Sombra intensa para resaltar */
         }
 
         .btn-premium:hover {
-            background: var(--primario);
-            color: var(--blanco);
-            box-shadow: 0 10px 20px rgba(241, 123, 33, 0.3);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(241, 123, 33, 0.6);
+            background-color: #d86a1a;
         }
 
-        /* --- WHATSAPP FLOAT --- */
-        .wa-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: #25d366;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            z-index: 1000;
-            transition: 0.3s;
+        .price-filter {
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--oscuro);
+            display: block;
         }
-        .wa-float:hover { transform: scale(1.1); }
 
-        /* --- RESPONSIVO --- */
+        footer {
+            padding: 60px 5%;
+            text-align: center;
+            background: var(--gris-claro);
+            font-size: 0.8rem;
+            color: #777;
+        }
+
         @media (max-width: 768px) {
             .hero-text h1 { font-size: 2rem; }
             .hero { padding: 40px 20px; }
@@ -223,7 +212,7 @@
 
     <section class="wellbeing">
         <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-            <h2>Más que muebles, salud felina.</h2>
+            <h2>Más que muebles: Salud felina.</h2>
             <div class="grid" style="text-align: left; border: none;">
                 <div style="padding: 20px;">
                     <h4 style="color:var(--primario); margin-bottom: 10px;">Reducción de Estrés</h4>
@@ -238,18 +227,16 @@
     </section>
 
     <section class="cta-container">
-        <p style="margin-bottom: 20px; color: var(--texto-suave); font-weight: bold;">Proyectos personalizados desde $150 USD</p>
+        <span class="price-filter">Proyectos de autor desde $150 USD</span>
         <a href="https://wa.me/593963372269?text=Deseo%20iniciar%20un%20estudio%20de%20espacio%20para%20mi%20gato." class="btn-premium">
-            INICIAR PROYECTO TÉCNICO
+            INICIAR MI PROYECTO
         </a>
-        <p style="margin-top: 20px; font-size: 0.8rem; color: #999;">Análisis de espacio basado en comportamiento felino.</p>
+        <p style="margin-top: 25px; font-size: 0.9rem; color: #999; max-width: 500px; margin-left: auto; margin-right: auto;">
+            Solo para dueños que buscan excelencia en diseño y bienestar felino.
+        </p>
     </section>
 
-    <a href="https://wa.me/593963372269" class="wa-float" target="_blank">
-        <span style="font-size: 30px; color: white;">💬</span>
-    </a>
-
-    <footer style="padding: 60px 5%; text-align: center; background: var(--gris-claro); font-size: 0.8rem; color: #777;">
+    <footer>
         <p><strong>KAT HAUS</strong> - Gatificando el Ecuador desde 2022</p>
         <p>Quito, Ecuador • Carpintería de Autor y Diseño Industrial</p>
     </footer>
