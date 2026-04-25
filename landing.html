@@ -21,19 +21,12 @@
     fbq('init', '649645208209657');
     fbq('track', 'PageView');
 
-    // EVENTOS PERSONALIZADOS KAT HAUS
+    // Función para trackear Leads según presupuesto
     function trackLead(priceRange) {
         fbq('track', 'Lead', {
             content_name: 'Consulta Presupuesto',
-            content_category: 'Chat WhatsApp',
             value: priceRange,
             currency: 'USD'
-        });
-    }
-    
-    function trackPortfolioView() {
-        fbq('trackCustom', 'PortfolioEngagement', {
-            event_detail: 'Usuario exploró galería de proyectos'
         });
     }
     </script>
@@ -43,6 +36,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kat Haus | Ingeniería de Bienestar Felino</title>
+    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Lexend:wght@300;600;800&display=swap');
 
@@ -90,59 +84,64 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 15px 5% 60px; 
+            padding: 40px 5% 80px; 
             background-color: var(--gris-claro);
-            min-height: 75vh; 
+            min-height: 80vh; 
             position: relative;
         }
 
-        .hero-image { width: 100%; max-width: 400px; margin-bottom: 15px; }
-        .hero-image img { width: 100%; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .hero-text h1 { font-size: 1.7rem; line-height: 1.1; margin-bottom: 8px; text-transform: uppercase; }
-        .hero-text p { font-size: 1rem; color: var(--texto-suave); max-width: 500px; margin: 0 auto; }
+        .hero-image { width: 100%; max-width: 450px; margin-bottom: 20px; }
+        .hero-image img { width: 100%; border-radius: 18px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .hero-text h1 { font-size: 1.8rem; line-height: 1.1; margin-bottom: 15px; text-transform: uppercase; }
+        .hero-text p { font-size: 1.1rem; color: var(--texto-suave); max-width: 600px; margin: 0 auto; }
 
         .scroll-hint {
             position: absolute;
-            bottom: 20px;
+            bottom: 30px;
             font-size: 0.75rem;
             font-weight: 600;
             color: var(--primario);
             text-transform: uppercase;
+            letter-spacing: 1px;
             animation: pulseHint 2s infinite;
         }
 
         @keyframes pulseHint {
-            0%, 100% { opacity: 0.4; transform: translateY(0); }
-            50% { opacity: 1; transform: translateY(5px); }
+            0%, 100% { opacity: 0.3; transform: translateY(0); }
+            50% { opacity: 1; transform: translateY(8px); }
         }
 
-        /* --- SECCIONES --- */
-        .authority { padding: 50px 5%; text-align: center; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 30px; }
-        .card { padding: 20px; border: 1px solid #eee; border-radius: 10px; text-align: justify; }
-        .media-container { width: 100%; aspect-ratio: 1/1; border-radius: 6px; overflow: hidden; margin-bottom: 15px; background: #000; }
+        /* --- SECCIÓN AUTORIDAD --- */
+        .authority { padding: 80px 5%; text-align: center; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+        .card { padding: 30px; border: 1px solid #eee; border-radius: 15px; text-align: justify; transition: 0.3s; }
+        .card:hover { border-color: var(--primario); }
+        .media-container { width: 100%; aspect-ratio: 1/1; border-radius: 12px; overflow: hidden; margin-bottom: 20px; background: #000; }
         .media-container video, .media-container img { width: 100%; height: 100%; object-fit: cover; }
 
-        .banner-info { background-color: var(--oscuro); color: var(--blanco); padding: 60px 5%; text-align: center; }
-        .banner-info h2 { font-size: 1.5rem; margin-bottom: 20px; }
+        /* --- BANNER INFO --- */
+        .banner-info { background-color: var(--oscuro); color: var(--blanco); padding: 80px 5%; text-align: center; }
+        .banner-info h2 { font-size: 1.6rem; margin-bottom: 30px; }
 
-        /* --- PORTAFOLIO INFINITO --- */
+        /* --- PORTAFOLIO INFINITO CONTINUO --- */
         .portfolio-wrapper { padding: 80px 0; background-color: var(--blanco); overflow: hidden; border-top: 1px solid #eee; }
-        .portfolio-wrapper h2 { text-align: center; font-size: 0.8rem; text-transform: uppercase; color: var(--texto-suave); margin-bottom: 40px; letter-spacing: 2px; }
-        .portfolio-overflow { display: flex; width: max-content; gap: 20px; animation: scroll-infinite 40s linear infinite; will-change: transform; }
-        .portfolio-overflow img { height: 280px; width: auto; border-radius: 22px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-
+        .portfolio-wrapper h2 { text-align: center; font-size: 0.85rem; text-transform: uppercase; color: var(--texto-suave); margin-bottom: 40px; letter-spacing: 2px; }
+        .portfolio-overflow { display: flex; width: max-content; gap: 20px; animation: scroll-infinite 40s linear infinite; }
+        .portfolio-overflow img { height: 300px; width: auto; border-radius: 22px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+        
         @keyframes scroll-infinite {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
         }
 
-        /* --- CTA --- */
-        .cta-container { text-align: center; padding: 80px 5%; background: var(--blanco); }
-        .price-anchor { display: block; font-weight: 800; font-size: 1.2rem; margin-bottom: 15px; }
+        .portfolio-wrapper:hover .portfolio-overflow { animation-play-state: paused; }
+
+        /* --- CTA FINAL --- */
+        .cta-container { text-align: center; padding: 100px 5%; background: var(--gris-claro); }
+        .price-anchor { display: block; font-weight: 800; font-size: 1.3rem; margin-bottom: 20px; color: var(--oscuro); }
         .btn-premium {
             display: inline-block;
-            padding: 20px 45px;
+            padding: 22px 50px;
             background-color: var(--primario);
             color: white;
             text-decoration: none;
@@ -150,106 +149,122 @@
             font-weight: 800;
             border-radius: 50px;
             text-transform: uppercase;
-            box-shadow: 0 10px 25px rgba(241, 123, 33, 0.3);
-            animation: heartbeat 2.5s infinite;
+            box-shadow: 0 15px 30px rgba(241, 123, 33, 0.3);
+            animation: heartbeat 3s infinite;
         }
 
         @keyframes heartbeat {
             0% { transform: scale(1); }
-            10% { transform: scale(1.05); }
+            5% { transform: scale(1.05); }
+            10% { transform: scale(1); }
+            15% { transform: scale(1.05); }
             20% { transform: scale(1); }
-            30% { transform: scale(1.05); }
-            40% { transform: scale(1); }
         }
 
-        .filter-phrase { display: block; margin-top: 20px; font-size: 0.85rem; color: var(--texto-suave); font-style: italic; }
+        .filter-phrase { display: block; margin-top: 25px; font-size: 0.9rem; color: var(--texto-suave); font-style: italic; }
 
-        /* --- CHAT --- */
-        .chat-filter-container { position: fixed; bottom: 20px; right: 20px; z-index: 2000; display: flex; flex-direction: column; align-items: flex-end; }
-        .chat-menu { background: white; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); padding: 18px; margin-bottom: 12px; display: none; width: 320px; border: 1px solid var(--primario); }
-        .chat-section-title { font-size: 0.7rem; color: var(--primario); text-transform: uppercase; font-weight: 900; margin: 10px 0 5px; }
-        .chat-option { display: block; background: var(--gris-claro); color: var(--oscuro); text-decoration: none; padding: 10px; border-radius: 6px; font-size: 0.75rem; margin-bottom: 6px; border-left: 3px solid var(--primario); font-weight: 600; }
-        .chat-toggle { background: var(--oscuro); color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 22px; }
+        /* --- CHAT INTELIGENTE --- */
+        .chat-filter-container { position: fixed; bottom: 25px; right: 25px; z-index: 2000; display: flex; flex-direction: column; align-items: flex-end; }
+        .chat-menu { background: white; border-radius: 16px; box-shadow: 0 15px 40px rgba(0,0,0,0.15); padding: 20px; margin-bottom: 15px; display: none; width: 320px; border: 1px solid #eee; }
+        .chat-section-title { font-size: 0.7rem; color: var(--primario); text-transform: uppercase; font-weight: 900; margin: 15px 0 8px; border-bottom: 1px solid #f0f0f0; padding-bottom: 4px; }
+        .chat-option { display: block; background: var(--gris-claro); color: var(--oscuro); text-decoration: none; padding: 12px; border-radius: 8px; font-size: 0.8rem; margin-bottom: 8px; border-left: 4px solid var(--primario); font-weight: 600; transition: 0.2s; }
+        .chat-option:hover { background: #e8e8ed; }
+        .chat-toggle { background: var(--oscuro); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 24px; box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
 
-        footer { padding: 40px 5%; text-align: center; font-size: 0.75rem; color: #999; }
+        footer { padding: 50px 5%; text-align: center; font-size: 0.8rem; color: #aaa; background: #fafafa; border-top: 1px solid #eee; }
 
         @media (min-width: 769px) {
-            .hero { flex-direction: row; text-align: left; padding: 40px 10%; }
-            .hero-text { flex: 1; padding-left: 5%; }
-            .hero-image { flex: 1; }
+            .hero { flex-direction: row; text-align: left; padding: 60px 10%; }
+            .hero-text { flex: 1; padding-left: 50px; }
+            .hero-image { flex: 1; max-width: 500px; }
+            .hero-text h1 { font-size: 2.5rem; }
         }
     </style>
 </head>
-<body onscroll="trackPortfolioViewOnce()">
+<body>
 
     <nav>
         <div class="nav-logo">KAT HAUS</div>
-        <div style="font-size: 0.7rem; color: #888; font-weight: bold;">QUITO, ECUADOR</div>
+        <div style="font-size: 0.7rem; color: #888; font-weight: bold; letter-spacing: 1px;">QUITO, ECUADOR</div>
     </nav>
 
     <section class="hero">
         <div class="hero-image">
-            <img src="Problema.png" alt="Bienestar felino">
+            <img src="Problema.png" alt="Ingeniería Felina Kat Haus">
         </div>
         <div class="hero-text">
             <h1>¿Tienes un minino destructor?</h1>
             <p>No es mala conducta: es falta de enriquecimiento ambiental. En <strong>Kat-Haus</strong> diseñamos soluciones técnicas para su instinto y tu hogar.</p>
         </div>
-        <div class="scroll-hint">Desliza para saber más ↓</div>
+        <div class="scroll-hint">Desliza para explorar ↓</div>
     </section>
 
     <section class="authority">
-        <h2 style="font-size: 1.3rem; text-transform: uppercase;">Ingeniería aplicada al hogar</h2>
+        <h2 style="font-size: 1.4rem; text-transform: uppercase; margin-bottom: 10px;">Ingeniería aplicada al bienestar</h2>
+        <p style="color: var(--texto-suave);">Donde el diseño industrial se encuentra con el amor felino.</p>
+        
         <div class="grid">
             <div class="card">
                 <div class="media-container"><video autoplay muted loop playsinline><source src="blender.mp4" type="video/mp4"></video></div>
                 <h3>Precisión 3D</h3>
-                <p>Diseñamos tu circuito en Blender 3D según tu espacio y presupuesto. Lo ves antes de construirlo.</p>
+                <p>Diseñamos tu circuito en <strong>Blender 3D</strong> ajustado a tu espacio real. Lo ves y lo apruebas digitalmente antes de cualquier corte en madera.</p>
             </div>
             <div class="card">
                 <div class="media-container"><video autoplay muted loop playsinline><source src="real.mp4" type="video/mp4"></video></div>
-                <h3>Implementación</h3>
-                <p>Fabricación precisa e instalación en sitio, convertido en una solución funcional y duradera.</p>
+                <h3>Implementación Real</h3>
+                <p>Llevamos el diseño de la pantalla a tus paredes. Fabricación milimétrica e instalación técnica para garantizar seguridad total.</p>
             </div>
             <div class="card">
-                <div class="media-container"><img src="wood.png" alt="Madera"></div>
+                <div class="media-container"><img src="wood.png" alt="Madera Sólida Kat Haus"></div>
                 <h3>Materiales Élite</h3>
-                <p>Fabricamos en madera real con Garantía de 3 años. <strong>No empleamos</strong> aglomerados.</p>
+                <p>Madera sólida con <strong>Garantía de 3 años</strong>. Rechazamos el uso de aglomerados, cartón o materiales de baja densidad.</p>
             </div>
         </div>
     </section>
 
     <section class="banner-info">
-        <h2>Más que muebles: Salud Felina</h2>
-        <div class="media-container" style="max-width: 600px; margin: 0 auto 20px;"><video autoplay muted loop playsinline><source src="wishina.mp4" type="video/mp4"></video></div>
-        <p>Un gato con territorio vertical es un gato sin ansiedad.</p>
+        <h2>Más que muebles: Salud Mental Felina</h2>
+        <div class="media-container" style="max-width: 700px; margin: 0 auto 30px; aspect-ratio: 16/9;">
+            <video autoplay muted loop playsinline style="object-fit: cover;"><source src="wishina.mp4" type="video/mp4"></video>
+        </div>
+        <p style="max-width: 700px; margin: 0 auto; opacity: 0.9;">Un gato con territorio vertical es un gato sin estrés, sin ansiedad y con un instinto equilibrado.</p>
     </section>
 
-    <section class="portfolio-wrapper" id="portfolioWrapper">
-        <h2>Galería de Ingeniería Felina</h2>
-        <div class="portfolio-overflow" id="portfolioTrack">
-            <img src="s1.png"><img src="s2.png"><img src="s3.png"><img src="s4.png"><img src="s5.png"><img src="s6.png"><img src="s7.png"><img src="s8.png"><img src="s9.png"><img src="s10.png"><img src="s11.png">
-            <img src="s1.png"><img src="s2.png"><img src="s3.png"><img src="s4.png"><img src="s5.png"><img src="s6.png"><img src="s7.png"><img src="s8.png"><img src="s9.png"><img src="s10.png"><img src="s11.png">
+    <section class="portfolio-wrapper">
+        <h2>Clientes Satisfechos</h2>
+        <div class="portfolio-overflow">
+            <img src="s1.png"><img src="s2.png"><img src="s3.png"><img src="s4.png"><img src="s5.png">
+            <img src="s6.png"><img src="s7.png"><img src="s8.png"><img src="s9.png"><img src="s10.png"><img src="s11.png">
+            <img src="s1.png"><img src="s2.png"><img src="s3.png"><img src="s4.png"><img src="s5.png">
+            <img src="s6.png"><img src="s7.png"><img src="s8.png"><img src="s9.png"><img src="s10.png"><img src="s11.png">
         </div>
     </section>
 
     <section class="cta-container">
-        <span class="price-anchor">Proyectos Funcionales a Partir de $150.00</span>
-        <a href="https://wa.me/593963372269?text=Deseo%20iniciar%20mi%20estudio%20técnico." class="btn-premium" onclick="fbq('track', 'Contact');">
-            INICIAR MI PROYECTO
+        <span class="price-anchor">Proyectos Funcionales desde $150.00</span>
+        <a href="https://wa.me/593963372269?text=Hola%20Kat%20Haus,%20deseo%20iniciar%20mi%20estudio%20técnico." 
+           class="btn-premium" 
+           onclick="fbq('track', 'Contact');">
+            ¡INICIAR MI PROYECTO!
         </a>
-        <span class="filter-phrase">Calidad premium para dueños exigentes.</span>
+        <span class="filter-phrase">Diseño exclusivo para hogares que no comprometen la calidad.</span>
     </section>
 
     <div class="chat-filter-container">
         <div class="chat-menu" id="chatMenu">
-            <p>Consultoría Kat Haus 🐾</p>
-            <div class="chat-section-title">Presupuesto Ideal</div>
-            <a href="https://wa.me/593963372269?text=Consulta:%20$150-$250" class="chat-option" onclick="trackLead(200)">$150 - $250: Departamentos o Estudios.</a>
-            <a href="https://wa.me/593963372269?text=Consulta:%20$250-$350" class="chat-option" onclick="trackLead(300)">$250 - $350: Hogares con varios mininos.</a>
-            <a href="https://wa.me/593963372269?text=Consulta:%20$350-$500" class="chat-option" onclick="trackLead(450)">$350 - $500: Proyectos Premium.</a>
-            <div class="chat-section-title">Garantía</div>
-            <div style="font-size: 0.7rem; padding: 5px; color: #555;">3 años de garantía en materiales. Excluye desgaste por rascado.</div>
+            <p style="font-weight: 800; font-size: 0.9rem; margin-bottom: 10px;">Consultoría Kat Haus 🐾</p>
+            
+            <div class="chat-section-title">Presupuesto Estimado</div>
+            <a href="https://wa.me/593963372269?text=Consulta:%20Presupuesto%20$150-$250" class="chat-option" onclick="trackLead(200)">$150 - $250: Estudios o Departamentos.</a>
+            <a href="https://wa.me/593963372269?text=Consulta:%20Presupuesto%20$250-$350" class="chat-option" onclick="trackLead(300)">$250 - $350: Hogares multi-gato.</a>
+            <a href="https://wa.me/593963372269?text=Consulta:%20Presupuesto%20$350+" class="chat-option" onclick="trackLead(500)">$350 en adelante: Proyectos Premium.</a>
+
+            <div class="chat-section-title">Garantía y Cobertura</div>
+            <div style="font-size: 0.7rem; color: #666; line-height: 1.3; padding: 5px;">
+                • 3 años contra defectos de fábrica.<br>
+                • Instalación en Quito y Guayaquil.<br>
+                • Envíos a todo el Ecuador.
+            </div>
         </div>
         <div class="chat-toggle" onclick="toggleChat()">💬</div>
     </div>
@@ -259,32 +274,11 @@
             var menu = document.getElementById("chatMenu");
             menu.style.display = (menu.style.display === "block") ? "none" : "block";
         }
-
-        // Inercia responsiva del portafolio
-        const track = document.getElementById('portfolioTrack');
-        let lastScrollY = window.scrollY;
-        window.addEventListener('scroll', () => {
-            const currentScrollY = window.scrollY;
-            const delta = Math.abs(currentScrollY - lastScrollY);
-            let speed = 1 + (delta * 0.15);
-            track.style.animationDuration = `${40 / speed}s`;
-            lastScrollY = currentScrollY;
-            clearTimeout(window.scrollTimeout);
-            window.scrollTimeout = setTimeout(() => { track.style.animationDuration = '40s'; }, 150);
-        });
-
-        // Evento único de vista de portafolio para no saturar el Pixel
-        let portfolioTracked = false;
-        function trackPortfolioViewOnce() {
-            if (!portfolioTracked && window.scrollY > 1000) {
-                trackPortfolioView();
-                portfolioTracked = true;
-            }
-        }
     </script>
 
     <footer>
-        <p>© 2026 <strong>KAT HAUS</strong> · Quito, Ecuador · Desde 2022</p>
+        <p>© 2026 <strong>KAT HAUS</strong> | Ingeniería de Bienestar Felino</p>
+        <p style="margin-top: 10px; font-size: 0.7rem;">Quito, Ecuador · Desde 2022</p>
     </footer>
 
 </body>
