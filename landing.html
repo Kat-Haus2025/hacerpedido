@@ -243,6 +243,78 @@ Quedan excluidos los elementos diseñados para el rascado, por ser componentes d
     <footer>
     <p>© 2026 <strong>KAT HAUS</strong> · Diseño y fabricación para hogares exigentes · Quito, Ecuador · Desde 2022</p>
 </footer>
+<style>
+    /* Estilos para el Reel de Portafolio Reactivo */
+    .portfolio-container {
+        padding: 60px 0;
+        background-color: var(--blanco);
+        overflow: hidden;
+        border-top: 1px solid #eee;
+    }
 
+    .portfolio-container h2 {
+        text-align: center;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        color: var(--texto-suave);
+        margin-bottom: 30px;
+        letter-spacing: 2px;
+    }
+
+    .portfolio-track {
+        display: flex;
+        gap: 20px;
+        padding: 0 5%;
+        will-change: transform;
+    }
+
+    .portfolio-track img {
+        height: 250px;
+        width: auto;
+        border-radius: 18px;
+        background-color: var(--gris-claro);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        transition: transform 0.3s ease;
+    }
+
+    .portfolio-track img:hover {
+        transform: scale(1.02);
+    }
+
+    @media (max-width: 768px) {
+        .portfolio-track img { height: 180px; }
+    }
+</style>
+
+<section class="portfolio-container">
+    <h2>Nuestros Proyectos</h2>
+    <div class="portfolio-track" id="track">
+        <img src="s1.png" alt="Proyecto Kat Haus">
+        <img src="s2.png" alt="Proyecto Kat Haus">
+        <img src="s3.png" alt="Proyecto Kat Haus">
+        <img src="s4.png" alt="Proyecto Kat Haus">
+        <img src="s5.png" alt="Proyecto Kat Haus">
+        <img src="s6.png" alt="Proyecto Kat Haus">
+        <img src="s7.png" alt="Proyecto Kat Haus">
+        <img src="s8.png" alt="Proyecto Kat Haus">
+        <img src="s9.png" alt="Proyecto Kat Haus">
+        <img src="s10.png" alt="Proyecto Kat Haus">
+        <img src="s11.png" alt="Proyecto Kat Haus">
+    </div>
+</section>
+
+<script>
+    // Lógica para el scroll horizontal reactivo
+    window.addEventListener('scroll', () => {
+        const track = document.getElementById('track');
+        const scrollPosition = window.scrollY;
+        // Ajusta el valor '0.2' para hacer el movimiento más rápido o lento
+        const moveAmount = scrollPosition * 0.3; 
+        
+        // Aplicamos la transformación. Usamos translateX para el movimiento horizontal.
+        // Restamos el valor para que se mueva hacia la izquierda al bajar.
+        track.style.transform = `translateX(-${moveAmount}px)`;
+    });
+</script>
 </body>
 </html>
