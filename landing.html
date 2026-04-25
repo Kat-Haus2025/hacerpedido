@@ -240,78 +240,114 @@ Quedan excluidos los elementos diseñados para el rascado, por ser componentes d
         }
     </script>
 
-  
 <style>
-    /* Estilos para el Reel de Portafolio Reactivo */
-    .portfolio-container {
-        padding: 60px 0;
+    /* 1. Contenedor principal */
+    .portfolio-wrapper {
+        padding: 80px 0;
         background-color: var(--blanco);
         overflow: hidden;
         border-top: 1px solid #eee;
+        cursor: grab;
     }
 
-    .portfolio-container h2 {
+    .portfolio-wrapper h2 {
         text-align: center;
-        font-size: 0.9rem;
+        font-size: 0.8rem;
         text-transform: uppercase;
         color: var(--texto-suave);
-        margin-bottom: 30px;
+        margin-bottom: 40px;
         letter-spacing: 2px;
+        font-family: var(--fuente-titulos);
     }
 
-    .portfolio-track {
+    /* 2. El carrusel infinito */
+    .portfolio-overflow {
         display: flex;
+        width: max-content;
         gap: 20px;
-        padding: 0 5%;
+        /* El scroll infinito base */
+        animation: scroll-infinite 40s linear infinite;
         will-change: transform;
     }
 
-    .portfolio-track img {
-        height: 250px;
-        width: auto;
-        border-radius: 18px;
-        background-color: var(--gris-claro);
-        box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-        transition: transform 0.3s ease;
+    /* Pausar al poner el mouse encima para inspeccionar detalles */
+    .portfolio-wrapper:hover .portfolio-overflow {
+        animation-play-state: paused;
     }
 
-    .portfolio-track img:hover {
-        transform: scale(1.02);
+    .portfolio-overflow img {
+        height: 280px;
+        width: auto;
+        border-radius: 22px;
+        background-color: var(--gris-claro);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        -webkit-user-drag: none;
+    }
+
+    /* 3. Animación de desplazamiento base */
+    @keyframes scroll-infinite {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); } /* Se mueve hasta la mitad para el bucle */
     }
 
     @media (max-width: 768px) {
-        .portfolio-track img { height: 180px; }
+        .portfolio-overflow img { height: 200px; }
+        .portfolio-wrapper { padding: 40px 0; }
     }
 </style>
 
-<section class="portfolio-container">
+<section class="portfolio-wrapper" id="portfolioWrapper">
     <h2>Clientes Satisfechos</h2>
-    <div class="portfolio-track" id="track">
-        <img src="s1.png" alt="Proyecto Kat Haus">
-        <img src="s2.png" alt="Proyecto Kat Haus">
-        <img src="s3.png" alt="Proyecto Kat Haus">
-        <img src="s4.png" alt="Proyecto Kat Haus">
-        <img src="s5.png" alt="Proyecto Kat Haus">
-        <img src="s6.png" alt="Proyecto Kat Haus">
-        <img src="s7.png" alt="Proyecto Kat Haus">
-        <img src="s8.png" alt="Proyecto Kat Haus">
-        <img src="s9.png" alt="Proyecto Kat Haus">
-        <img src="s10.png" alt="Proyecto Kat Haus">
-        <img src="s11.png" alt="Proyecto Kat Haus">
+    <div class="portfolio-overflow" id="portfolioTrack">
+        <img src="s1.png" alt="Kat Haus Design">
+        <img src="s2.png" alt="Kat Haus Design">
+        <img src="s3.png" alt="Kat Haus Design">
+        <img src="s4.png" alt="Kat Haus Design">
+        <img src="s5.png" alt="Kat Haus Design">
+        <img src="s6.png" alt="Kat Haus Design">
+        <img src="s7.png" alt="Kat Haus Design">
+        <img src="s8.png" alt="Kat Haus Design">
+        <img src="s9.png" alt="Kat Haus Design">
+        <img src="s10.png" alt="Kat Haus Design">
+        <img src="s11.png" alt="Kat Haus Design">
+        
+        <img src="s1.png" alt="Kat Haus Design">
+        <img src="s2.png" alt="Kat Haus Design">
+        <img src="s3.png" alt="Kat Haus Design">
+        <img src="s4.png" alt="Kat Haus Design">
+        <img src="s5.png" alt="Kat Haus Design">
+        <img src="s6.png" alt="Kat Haus Design">
+        <img src="s7.png" alt="Kat Haus Design">
+        <img src="s8.png" alt="Kat Haus Design">
+        <img src="s9.png" alt="Kat Haus Design">
+        <img src="s10.png" alt="Kat Haus Design">
+        <img src="s11.png" alt="Kat Haus Design">
     </div>
 </section>
 
 <script>
-    // Lógica para el scroll horizontal reactivo
+    const track = document.getElementById('portfolioTrack');
+    let scrollSpeed = 1; 
+    let baseSpeed = 1;
+    let lastScrollY = window.scrollY;
+
     window.addEventListener('scroll', () => {
-        const track = document.getElementById('track');
-        const scrollPosition = window.scrollY;
-        // Ajusta el valor '0.2' para hacer el movimiento más rápido o lento
-        const moveAmount = scrollPosition * 0.3; 
+        const currentScrollY = window.scrollY;
+        // Calculamos la fuerza del scroll (inercia)
+        const delta = Math.abs(currentScrollY - lastScrollY);
         
-        // Aplicamos la transformación. Usamos translateX para el movimiento horizontal.
-        // Restamos el valor para que se mueva hacia la izquierda al bajar.
-        track.style.transform = `translateX(-${moveAmount}px)`;
+        // Aumentamos la velocidad de la animación temporalmente
+        scrollSpeed = baseSpeed + (delta * 0.15);
+        track.style.animationDuration = `${40 / scrollSpeed}s`;
+
+        lastScrollY = currentScrollY;
+
+        // Suavizado: devolvemos la velocidad a la base poco a poco
+        clearTimeout(window.scrollTimeout);
+        window.scrollTimeout = setTimeout(() => {
+            track.style.animationDuration = '40s';
+        }, 150);
     });
 </script>
       <footer>
