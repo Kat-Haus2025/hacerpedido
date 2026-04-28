@@ -114,7 +114,11 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 25%; /* O el tamaño que prefieras */
+  width: 25%;
+  min-width: 300px; /* Evita que en móviles se vea como una hormiga */
+  max-width: 100%;  /* Evita que se salga del borde en pantallas muy pequeñas */
+  border-radius: 8px; /* Opcional: un toque elegante para las esquinas */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Opcional: le da profundidad */
 }
         /* --- SECCIÓN AUTORIDAD --- */
         .authority { padding: 80px 5%; text-align: center; }
