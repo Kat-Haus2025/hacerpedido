@@ -110,16 +110,20 @@
             0%, 100% { opacity: 0.3; transform: translateY(0); }
             50% { opacity: 1; transform: translateY(8px); }
         }
-.imagencentre {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 25%;
-  min-width: 300px; /* Evita que en móviles se vea como una hormiga */
-  max-width: 100%;  /* Evita que se salga del borde en pantallas muy pequeñas */
-  border-radius: 8px; /* Opcional: un toque elegante para las esquinas */
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Opcional: le da profundidad */
-}
+
+        .imagencentre {
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+          width: 25%;
+          min-width: 300px; 
+          max-width: 100%;  
+          border-radius: 8px;
+          box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+          margin-top: 20px;
+          margin-bottom: 20px;
+        }
+
         /* --- SECCIÓN AUTORIDAD --- */
         .authority { padding: 80px 5%; text-align: center; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
@@ -209,15 +213,12 @@
     </section>
       
     <section>
-    <div class="imagencentre" align="center">
-    <img src="nocatalogo.png" alt="Ingeniería Felina Kat Haus">
-</div>
-        </section>
+        <img src="nocatalogo.png" class="imagencentre" alt="Ingeniería Felina Kat Haus">
+    </section>
 
     
     <section class="authority">
 
- 
           
         <h2 style="font-size: 1.4rem; text-transform: uppercase; margin-bottom: 10px;">Ingeniería aplicada al bienestar</h2>
         <p style="color: var(--texto-suave);">Donde el diseño industrial se encuentra con el amor felino.</p>
@@ -261,6 +262,11 @@
         </div>
     </section>
 
+    <section>
+        <img src="entry.png" class="imagencentre" alt="Proyecto inicial">
+        <img src="expanded.png" class="imagencentre" alt="Proyecto expandido">
+    </section>
+
     <section class="cta-container">
         <span class="price-anchor">Proyectos Funcionales desde $150.00</span>
         <a href="https://wa.me/593963372269?text=Hola%20Kat%20Haus,%20deseo%20iniciar%20mi%20estudio%20técnico." 
@@ -269,9 +275,9 @@
             ¡GATIFIQUEMOS MI HOGAR!
         </a>
         <span class="filter-phrase">Diseño exclusivo para hogares que no comprometen la calidad.</span>
-   <div align="center">
-  <img src="garantia.png" alt="3 años de garantía Kat Haus" width="220">
-</div>
+        <div align="center" style="margin-top: 20px;">
+            <img src="garantia.png" alt="3 años de garantía Kat Haus" width="220">
+        </div>
     
     </section>
 
