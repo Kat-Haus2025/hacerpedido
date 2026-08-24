@@ -14,6 +14,7 @@
             --text-muted: #6e5f52;      /* Texto secundario en tono topo / gris cálido */
             --border-color: #e3d2c3;    /* Bordes suaves y cálidos */
             --input-bg: #ffffff;        /* Fondo de los campos de formulario */
+            --dark-banner: #1f1915;     /* Tono oscuro para el banner superior */
         }
 
         * {
@@ -27,13 +28,26 @@
             background-color: var(--bg-color);
             color: var(--text-main);
             line-height: 1.6;
-            padding: 20px;
+            padding-bottom: 20px;
+        }
+
+        /* Top Dark Banner */
+        .top-banner {
+            background-color: var(--dark-banner);
+            color: #f7f1eb;
+            text-align: center;
+            padding: 12px 20px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            margin-bottom: 20px;
         }
 
         .container {
             max-width: 800px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 20px 20px 40px 20px;
         }
 
         /* Header / Hero Section */
@@ -274,7 +288,7 @@
 
         button[type="submit"]:hover {
             background-color: #b0460e;
-            animation: none; /* Pausa el latido al pasar el cursor para priorizar el efecto hover */
+            animation: none;
             transform: translateY(-2px);
         }
 
@@ -287,6 +301,11 @@
     </style>
 </head>
 <body>
+
+    <!-- Banner Superior Oscuro -->
+    <div class="top-banner">
+        Kat-Haus, Gatificando el Ecuador desde 2021
+    </div>
 
     <div class="container">
         <!-- Cabecera / Imagen Problema -->
@@ -368,7 +387,13 @@
 
                 <div class="form-group">
                     <label for="mininos">¿Cuántos mininos van a utilizar el circuito? *</label>
-                    <input type="text" id="mininos" name="mininos" required placeholder="Ej. 2 mininos">
+                    <select id="mininos" name="mininos" required>
+                        <option value="" disabled selected>Selecciona la cantidad de mininos</option>
+                        <option value="1 gato">1 gato</option>
+                        <option value="2 gatos">2 gatos</option>
+                        <option value="3 gatos">3 gatos</option>
+                        <option value="más de 4 gatos">más de 4 gatos</option>
+                    </select>
                 </div>
 
                 <div class="form-group">
@@ -462,7 +487,7 @@
 
             const nombre = document.getElementById('nombre').value.trim();
             const ubicacion = document.getElementById('ubicacion').value.trim();
-            const mininos = document.getElementById('mininos').value.trim();
+            const mininos = document.getElementById('mininos').value;
             const presupuesto = document.getElementById('presupuesto').value;
 
             const mensaje = `Hola, mi nombre es *${nombre}*.\n\n` +
