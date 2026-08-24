@@ -240,6 +240,22 @@
             box-shadow: 0 0 0 3px rgba(200, 83, 17, 0.15);
         }
 
+        /* Animación de latido (Pulsate) */
+        @keyframes heartbeat {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(200, 83, 17, 0.4);
+            }
+            50% {
+                transform: scale(1.03);
+                box-shadow: 0 0 0 10px rgba(200, 83, 17, 0);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(200, 83, 17, 0);
+            }
+        }
+
         button[type="submit"] {
             background-color: var(--ochre-box);
             color: #ffffff;
@@ -249,15 +265,17 @@
             font-size: 1.05rem;
             font-weight: 800;
             cursor: pointer;
-            transition: all 0.2s;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-top: 10px;
+            animation: heartbeat 2s infinite ease-in-out;
+            transition: background-color 0.2s, transform 0.2s;
         }
 
         button[type="submit"]:hover {
             background-color: #b0460e;
-            transform: translateY(-1px);
+            animation: none; /* Pausa el latido al pasar el cursor para priorizar el efecto hover */
+            transform: translateY(-2px);
         }
 
         footer {
@@ -312,7 +330,6 @@
                 <button class="carousel-btn next" onclick="moveSlide(1)">&#10095;</button>
             </div>
             <div class="carousel-indicators" id="carouselIndicators">
-                <!-- Se generan dinámicamente o de forma estática para los 17 elementos -->
                 <button class="indicator active" onclick="currentSlide(0)"></button>
                 <button class="indicator" onclick="currentSlide(1)"></button>
                 <button class="indicator" onclick="currentSlide(2)"></button>
@@ -400,7 +417,6 @@
             currentIndex += direction;
             updateCarousel(true);
 
-            // Manejo de bucle infinito impecable
             setTimeout(() => {
                 if (currentIndex >= totalSlides) {
                     currentIndex = 0;
@@ -409,7 +425,7 @@
                     currentIndex = totalSlides - 1;
                     updateCarousel(false);
                 }
-            }, 400); // Coincide con la duración de la transición CSS
+            }, 400);
 
             resetAutoPlay();
         }
@@ -420,7 +436,6 @@
             resetAutoPlay();
         }
 
-        // Auto-play cada 5 segundos
         function startAutoPlay() {
             autoPlayInterval = setInterval(() => {
                 currentIndex++;
