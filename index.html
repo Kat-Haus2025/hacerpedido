@@ -160,24 +160,26 @@
         .carousel-indicators {
             display: flex;
             justify-content: center;
-            gap: 8px;
-            padding: 15px 0;
+            gap: 6px;
+            padding: 15px 10px;
             background: var(--card-bg);
             border-top: 1px solid var(--border-color);
+            flex-wrap: wrap;
         }
 
         .indicator {
-            width: 10px;
-            height: 10px;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
             background: var(--border-color);
             border: none;
             cursor: pointer;
-            transition: background 0.2s;
+            transition: background 0.2s, transform 0.2s;
         }
 
         .indicator.active {
             background: var(--ochre-box);
+            transform: scale(1.2);
         }
 
         /* Manifest Section */
@@ -201,35 +203,6 @@
         .section p {
             color: var(--text-muted);
             margin-bottom: 15px;
-        }
-
-        .pricing-list {
-            list-style: none;
-            margin-top: 15px;
-        }
-
-        .pricing-list li {
-            padding: 12px 0;
-            border-bottom: 1px solid #eee4db;
-            color: var(--text-muted);
-        }
-
-        .pricing-list li:last-child {
-            border-bottom: none;
-        }
-
-        .pricing-list strong {
-            color: var(--text-main);
-        }
-
-        .warning-box {
-            background: rgba(200, 83, 17, 0.08);
-            border: 1px solid rgba(200, 83, 17, 0.25);
-            padding: 18px;
-            border-radius: 8px;
-            color: #943a07;
-            font-size: 0.95rem;
-            margin-top: 20px;
         }
 
         /* Form Styling */
@@ -313,28 +286,50 @@
             </div>
         </div>
 
-        <!-- Carrusel de Trabajos / Proyectos -->
+        <!-- Carrusel Infinito con las 17 imágenes -->
         <div class="carousel-section">
-            <div class="carousel-container">
+            <div class="carousel-container" id="carouselContainer">
                 <button class="carousel-btn prev" onclick="moveSlide(-1)">&#10094;</button>
                 <div class="carousel-track" id="carouselTrack">
-                    <!-- Reemplaza o añade tus imágenes de proyectos aquí -->
-                    <div class="carousel-slide">
-                        <img src="s1.png" alt="Circuito felino Kat Haus 1">
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="s2.png" alt="Circuito felino Kat Haus 2">
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="s3.png" alt="Circuito felino Kat Haus 3">
-                    </div>
+                    <div class="carousel-slide"><img src="s1.png" alt="Kat Haus s1"></div>
+                    <div class="carousel-slide"><img src="s2.png" alt="Kat Haus s2"></div>
+                    <div class="carousel-slide"><img src="s3.png" alt="Kat Haus s3"></div>
+                    <div class="carousel-slide"><img src="s4.png" alt="Kat Haus s4"></div>
+                    <div class="carousel-slide"><img src="s5.png" alt="Kat Haus s5"></div>
+                    <div class="carousel-slide"><img src="s6.png" alt="Kat Haus s6"></div>
+                    <div class="carousel-slide"><img src="s7.png" alt="Kat Haus s7"></div>
+                    <div class="carousel-slide"><img src="s8.png" alt="Kat Haus s8"></div>
+                    <div class="carousel-slide"><img src="s9.png" alt="Kat Haus s9"></div>
+                    <div class="carousel-slide"><img src="s10.png" alt="Kat Haus s10"></div>
+                    <div class="carousel-slide"><img src="s11.png" alt="Kat Haus s11"></div>
+                    <div class="carousel-slide"><img src="s12.png" alt="Kat Haus s12"></div>
+                    <div class="carousel-slide"><img src="s13.png" alt="Kat Haus s13"></div>
+                    <div class="carousel-slide"><img src="s14.png" alt="Kat Haus s14"></div>
+                    <div class="carousel-slide"><img src="s15.png" alt="Kat Haus s15"></div>
+                    <div class="carousel-slide"><img src="s16.png" alt="Kat Haus s16"></div>
+                    <div class="carousel-slide"><img src="s17.png" alt="Kat Haus s17"></div>
                 </div>
                 <button class="carousel-btn next" onclick="moveSlide(1)">&#10095;</button>
             </div>
             <div class="carousel-indicators" id="carouselIndicators">
+                <!-- Se generan dinámicamente o de forma estática para los 17 elementos -->
                 <button class="indicator active" onclick="currentSlide(0)"></button>
                 <button class="indicator" onclick="currentSlide(1)"></button>
                 <button class="indicator" onclick="currentSlide(2)"></button>
+                <button class="indicator" onclick="currentSlide(3)"></button>
+                <button class="indicator" onclick="currentSlide(4)"></button>
+                <button class="indicator" onclick="currentSlide(5)"></button>
+                <button class="indicator" onclick="currentSlide(6)"></button>
+                <button class="indicator" onclick="currentSlide(7)"></button>
+                <button class="indicator" onclick="currentSlide(8)"></button>
+                <button class="indicator" onclick="currentSlide(9)"></button>
+                <button class="indicator" onclick="currentSlide(10)"></button>
+                <button class="indicator" onclick="currentSlide(11)"></button>
+                <button class="indicator" onclick="currentSlide(12)"></button>
+                <button class="indicator" onclick="currentSlide(13)"></button>
+                <button class="indicator" onclick="currentSlide(14)"></button>
+                <button class="indicator" onclick="currentSlide(15)"></button>
+                <button class="indicator" onclick="currentSlide(16)"></button>
             </div>
         </div>
 
@@ -380,57 +375,90 @@
     </div>
 
     <script>
-        // Lógica del Carrusel
+        // Lógica de Carrusel Infinito
         let currentIndex = 0;
         const track = document.getElementById('carouselTrack');
         const slides = document.querySelectorAll('.carousel-slide');
         const indicators = document.querySelectorAll('.indicator');
         const totalSlides = slides.length;
+        let autoPlayInterval;
 
-        function updateCarousel() {
+        function updateCarousel(withTransition = true) {
+            if (withTransition) {
+                track.style.transition = 'transform 0.4s ease-in-out';
+            } else {
+                track.style.transition = 'none';
+            }
             track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
             indicators.forEach((ind, index) => {
                 ind.classList.toggle('active', index === currentIndex);
             });
         }
 
         function moveSlide(direction) {
-            currentIndex = (currentIndex + direction + totalSlides) % totalSlides;
-            updateCarousel();
+            currentIndex += direction;
+            updateCarousel(true);
+
+            // Manejo de bucle infinito impecable
+            setTimeout(() => {
+                if (currentIndex >= totalSlides) {
+                    currentIndex = 0;
+                    updateCarousel(false);
+                } else if (currentIndex < 0) {
+                    currentIndex = totalSlides - 1;
+                    updateCarousel(false);
+                }
+            }, 400); // Coincide con la duración de la transición CSS
+
+            resetAutoPlay();
         }
 
         function currentSlide(index) {
             currentIndex = index;
-            updateCarousel();
+            updateCarousel(true);
+            resetAutoPlay();
         }
 
-        // Opcional: Auto-play cada 5 segundos
-        setInterval(() => {
-            moveSlide(1);
-        }, 5000);
+        // Auto-play cada 5 segundos
+        function startAutoPlay() {
+            autoPlayInterval = setInterval(() => {
+                currentIndex++;
+                updateCarousel(true);
+                setTimeout(() => {
+                    if (currentIndex >= totalSlides) {
+                        currentIndex = 0;
+                        updateCarousel(false);
+                    }
+                }, 400);
+            }, 5000);
+        }
+
+        function resetAutoPlay() {
+            clearInterval(autoPlayInterval);
+            startAutoPlay();
+        }
+
+        startAutoPlay();
 
         // Lógica del Formulario a WhatsApp
         document.getElementById('projectForm').addEventListener('submit', function(e) {
             e.preventDefault();
 
-            // Capturar valores
             const nombre = document.getElementById('nombre').value.trim();
             const ubicacion = document.getElementById('ubicacion').value.trim();
             const mininos = document.getElementById('mininos').value.trim();
             const presupuesto = document.getElementById('presupuesto').value;
 
-            // Formatear el mensaje para WhatsApp
             const mensaje = `Hola, mi nombre es *${nombre}*.\n\n` +
                             `Deseo un circuito felino de Kat Haus:\n` +
                             `- *Ubicación:* ${ubicacion}\n` +
                             `- *Mininos:* ${mininos}\n` +
                             `- *Presupuesto:* ${presupuesto}`;
 
-            // Codificar el mensaje para URL
             const telefono = '593963372269';
             const urlWhatsApp = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
 
-            // Abrir WhatsApp
             window.location.href = urlWhatsApp;
         });
     </script>
