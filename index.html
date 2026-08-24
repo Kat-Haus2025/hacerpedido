@@ -6,12 +6,14 @@
     <title>Kat Haus | Arquitectura Felina a Medida</title>
     <style>
         :root {
-            --bg-color: #0f0f0f;
-            --card-bg: #181818;
-            --accent: #e53935;
+            --bg-color: #0b0b0b;
+            --card-bg: #141414;
+            --ochre-box: #ec9955;      /* Color ocre de los carteles de tu imagen */
+            --forest-green: #2c4b22;   /* Verde bosque de los textos principales en tu imagen */
+            --burnt-orange: #c85311;   /* Naranja quemado / acento secundario */
             --text-main: #f5f5f5;
-            --text-muted: #aaaaaa;
-            --border-color: #333333;
+            --text-muted: #d0c8b8;
+            --border-color: #33261a;
         }
 
         * {
@@ -49,50 +51,52 @@
         }
 
         .hero h1 span {
-            color: var(--accent);
+            color: var(--ochre-box);
         }
 
         /* Comparison Image Box */
         .comparison-box {
             background: var(--card-bg);
-            border: 2px solid var(--border-color);
-            border-radius: 8px;
+            border: 2px solid var(--ochre-box);
+            border-radius: 12px;
             overflow: hidden;
             margin-bottom: 40px;
             text-align: center;
+            box-shadow: 0 10px 30px rgba(236, 153, 85, 0.15);
         }
 
         .comparison-img-container {
-            background: #222;
-            height: 320px;
+            background: #111;
+            width: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-bottom: 1px solid var(--border-color);
             overflow: hidden;
         }
 
         .comparison-img-container img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: auto;
+            display: block;
         }
 
         .comparison-caption {
             padding: 20px;
-            font-size: 1.05rem;
-            color: var(--text-muted);
+            font-size: 1.1rem;
+            color: var(--text-main);
+            background: rgba(236, 153, 85, 0.08);
+            border-top: 1px solid rgba(236, 153, 85, 0.2);
         }
 
         .comparison-caption strong {
-            color: var(--text-main);
+            color: var(--ochre-box);
         }
 
         /* Manifest Section */
         .section {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
-            border-radius: 8px;
+            border-radius: 12px;
             padding: 30px;
             margin-bottom: 30px;
         }
@@ -100,8 +104,8 @@
         .section h2 {
             font-size: 1.4rem;
             margin-bottom: 15px;
-            color: #ffffff;
-            border-left: 4px solid var(--accent);
+            color: var(--ochre-box);
+            border-left: 4px solid var(--ochre-box);
             padding-left: 12px;
         }
 
@@ -116,8 +120,8 @@
         }
 
         .pricing-list li {
-            padding: 10px 0;
-            border-bottom: 1px solid var(--border-color);
+            padding: 12px 0;
+            border-bottom: 1px solid #221c16;
             color: var(--text-muted);
         }
 
@@ -126,15 +130,15 @@
         }
 
         .pricing-list strong {
-            color: var(--text-main);
+            color: #ffffff;
         }
 
         .warning-box {
-            background: rgba(229, 57, 53, 0.1);
-            border: 1px solid rgba(229, 57, 53, 0.3);
-            padding: 15px;
-            border-radius: 6px;
-            color: #ff8a80;
+            background: rgba(200, 83, 17, 0.12);
+            border: 1px solid rgba(200, 83, 17, 0.35);
+            padding: 18px;
+            border-radius: 8px;
+            color: #ffb088;
             font-size: 0.95rem;
             margin-top: 20px;
         }
@@ -160,42 +164,44 @@
         }
 
         input, textarea, select {
-            background: #111;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 12px;
+            background: #0a0a0a;
+            border: 1px solid #33261a;
+            border-radius: 8px;
+            padding: 14px;
             color: var(--text-main);
             font-size: 1rem;
         }
 
         input:focus, textarea:focus, select:focus {
             outline: none;
-            border-color: var(--accent);
+            border-color: var(--ochre-box);
+            box-shadow: 0 0 0 2px rgba(236, 153, 85, 0.2);
         }
 
         button {
-            background-color: var(--accent);
-            color: #ffffff;
+            background-color: var(--ochre-box);
+            color: #0b0b0b;
             border: none;
-            border-radius: 6px;
+            border-radius: 8px;
             padding: 16px;
-            font-size: 1rem;
-            font-weight: 700;
+            font-size: 1.05rem;
+            font-weight: 800;
             cursor: pointer;
-            transition: background 0.2s;
+            transition: all 0.2s;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-top: 10px;
         }
 
         button:hover {
-            background-color: #c62828;
+            background-color: #f0a868;
+            transform: translateY(-1px);
         }
 
         footer {
             text-align: center;
             margin-top: 40px;
-            color: #666;
+            color: #776a5c;
             font-size: 0.85rem;
         }
     </style>
@@ -208,10 +214,10 @@
             <h1>Estás a punto de convertir tu hogar en un <span>Paraíso Felino</span>.</h1>
         </header>
 
-        <!-- Bloque Visual de Contraste con nohacemos.png -->
+        <!-- Bloque Visual con tu imagen de esquema -->
         <div class="comparison-box">
             <div class="comparison-img-container">
-                <img src="nohacemos.png" alt="Lo que no hacemos en Kat Haus">
+                <img src="nohacemos.jpg" alt="Lo que no hacemos en Kat Haus vs Soluciones Integrales">
             </div>
             <div class="comparison-caption">
                 <strong>Diseño real, ingeniería y madera.</strong> Si buscas algo desechable o de baja calidad, este no es tu lugar.
@@ -221,13 +227,13 @@
         <!-- Manifiesto -->
         <section class="section">
             <h2>¿Qué hacemos?</h2>
-            <p>Creamos espacios de enriquecimiento ambiental profesionales para gatos en Quito. Trabajamos con madera seleccionada, diseño estructural 3D y componentes de ingeniería propia para soportar peso real y uso intensivo sin afear tu hogar.</p>
+            <p>Creamos espacios de enriquecimiento ambiental profesionales para gatos en Quito y Ecuador. Trabajamos con madera seleccionada, diseño estructural 3D y componentes de ingeniería propia para soportar peso real y uso intensivo sin afear tu hogar.</p>
         </section>
 
         <!-- Filtro de Inversión -->
         <section class="section">
             <h2>Inversión y Estándares</h2>
-            <p>Nuestros proyectos implican diseño personalizado, materiales de primera y mano de obra especializada.</p>
+            <p>Nuestros proyectos implican diseño personalizado, materiales de primera, ingeniería y mano de obra especializada.</p>
             <ul class="pricing-list">
                 <li>• Proyectos modulares básicos: <strong>Desde $100</strong></li>
                 <li>• Circuitos integrados completos: <strong>Varían según metraje y complejidad de pared</strong></li>
@@ -237,10 +243,10 @@
             </div>
         </section>
 
-        <!-- Formulario de Calificación Actualizado -->
+        <!-- Formulario de Calificación con tus preguntas exactas -->
         <section class="section">
             <h2>Evaluación de Proyecto</h2>
-            <p>Para que nuestro equipo pueda diseñar el circuito perfecto para tus necesidades necesitaremos que respondas las siguientes preguntas:</p>
+            <p>Para recibir una cotización, completa estrictamente los siguientes datos. Las solicitudes incompletas o sin presupuesto adecuado no serán atendidas.</p>
             
             <form action="#" method="POST">
                 <div class="form-group">
@@ -255,13 +261,13 @@
 
                 <div class="form-group">
                     <label for="mininos">¿Cuántos mininos van a utilizar el circuito? *</label>
-                    <input type="text" id="mininos" name="mininos" required placeholder="Ej. 2 mininos">
+                    <input type="text" id="mininos" name="mininos" required placeholder="Ej. 2 mininos y sus pesos aproximados">
                 </div>
 
                 <div class="form-group">
                     <label for="presupuesto">¿Cuál es el presupuesto destinado al proyecto? *</label>
                     <select id="presupuesto" name="presupuesto" required>
-                        <option value="" disabled selected>Selecciona una opción</option>
+                        <option value="" disabled selected>Selecciona una opción de inversión</option>
                         <option value="100-150">$100 - $150</option>
                         <option value="151-200">$151 - $200</option>
                         <option value="201-250">$201 - $250</option>
