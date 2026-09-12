@@ -43,8 +43,18 @@
         p.subtitle {
             text-align: center;
             color: var(--text-muted);
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             font-size: 0.95rem;
+        }
+
+        /* Imagen adaptativa */
+        .banner-img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+            margin-bottom: 25px;
+            object-fit: cover;
         }
 
         .service-group {
@@ -123,7 +133,7 @@
             display: block;
             width: 100%;
             margin-top: 20px;
-            background-color: var(--primary);
+            background-color: #22c55e; /* Color verde WhatsApp */
             color: white;
             border: none;
             padding: 14px;
@@ -137,7 +147,7 @@
         }
 
         .btn-submit:hover {
-            background-color: var(--primary-dark);
+            background-color: #16a34a;
         }
     </style>
 </head>
@@ -146,7 +156,10 @@
 <div class="container">
     <h1>Solicita tu Servicio de Limpieza Profesional</h1>
     <p class="subtitle">Selecciona los servicios que necesitas y calcula tu precio al instante.</p>
-<img src="wisholimpio.jpg"> <br>
+    
+    <!-- Imagen adaptada a pantalla -->
+    <img src="wisholimpio.jpg" alt="Limpieza Profesional Kat Haus" class="banner-img">
+
     <form id="cotizadorForm">
         
         <!-- Opción 1: Juego de Sala -->
@@ -184,7 +197,7 @@
         </div>
 
         <!-- Botón de Acción -->
-        <button type="button" class="btn-submit" onclick="reservarCupo()">Reservar cupo</button>
+        <button type="button" class="btn-submit" onclick="reservarCupo()">💬 Reservar por WhatsApp</button>
     </form>
 </div>
 
@@ -195,7 +208,7 @@
             subOptions.classList.add('active');
         } else {
             subOptions.classList.remove('active');
-            document.getElementById('extraPuestos').value = 0; // Resetear puestos extra si desmarca
+            document.getElementById('extraPuestos').value = 0; 
         }
         calcularTotal();
     }
@@ -203,7 +216,6 @@
     function calcularTotal() {
         let total = 0;
 
-        // Sala (Base 35 + 5 por cada puesto extra)
         const checkSala = document.getElementById('checkSala');
         if (checkSala.checked) {
             let baseSala = 35;
@@ -211,13 +223,11 @@
             total += baseSala + (extraPuestos * 5);
         }
 
-        // Colchón 2 Plazas
         const checkColchon2P = document.getElementById('checkColchon2P');
         if (checkColchon2P.checked) {
             total += parseInt(checkColchon2P.value);
         }
 
-        // Colchón King
         const checkColchonKing = document.getElementById('checkColchonKing');
         if (checkColchonKing.checked) {
             total += parseInt(checkColchonKing.value);
@@ -233,10 +243,42 @@
             return;
         }
         
-        // Aquí puedes redirigir a WhatsApp pasando el total o abrir un modal de pago/reserva
-        alert('¡Excelente! Tu cotización es de ' + total + '. Redirigiendo para coordinar la visita...');
-        // Ejemplo para conectar a WhatsApp (descomenta y cambia el número):
-        // window.location.href = `https://wa.me/593963372269?text=Hola,%20quiero%20reservar%20el%20servicio%20por%20un%20total%20de%20${total}`;
+        // Construir detalle de ítems seleccionados
+        let detalleItems = [];
+        
+        const checkSala = document.getElementById('checkSala');
+        if (checkSala.checked) {
+            let extraPuestos = parseInt(document.getElementById('extraPuestos').value) || 0;
+            let descSala = "- Juego de Sala (Base 7 puestos)";
+            if (extraPuestos > 0) {
+                descSala += ` con ${extraPuestos} puesto(s) adicional(es)`;
+            }
+            detalleItems.push(descSala);
+        }
+
+        const checkColchon2P = document.getElementById('checkColchon2P');
+        if (checkColchon2P.checked) {
+            detalleItems.push("- Colchón de 2 Plazas ($22)");
+        }
+
+        const checkColchonKing = document.getElementById('checkColchonKing');
+        if (checkColchonKing.checked) {
+            detalleItems.push("- Colchón King Size ($32)");
+        }
+
+        // Crear el texto estructurado para WhatsApp
+        let mensaje = `Hola! Quiero reservar el servicio de limpieza con los siguientes detalles:\n\n` +
+                      detalleItems.join('\n') + `\n\n` +
+                      `*Precio Estimado Total: ${total}*`;
+
+        // Codificar el texto para la URL de WhatsApp
+        let mensajeCodificado = encodeURIComponent(mensaje);
+        
+        // Reemplaza el número de teléfono con el tuyo (incluyendo código de país, ej: 593...)
+        let numeroWhatsApp = "593963372269"; 
+
+        // Redirigir a WhatsApp
+        window.location.href = `https://wa.me/${numeroWhatsApp}?text=${mensajeCodificado}`;
     }
 </script>
 
