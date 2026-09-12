@@ -86,7 +86,6 @@
 
         .sub-options {
             margin-top: 12px;
-            padding-left: 0;
             border-top: 1px dashed var(--border-color);
             padding-top: 10px;
             display: none;
@@ -252,7 +251,7 @@
         
         const checkSala = document.getElementById('checkSala');
         if (checkSala.checked) {
-            let extraPuestos = parseInt(document.getElementById('extraPuestos').value)효 || parseInt(document.getElementById('extraPuestos').value) || 0;
+            let extraPuestos = parseInt(document.getElementById('extraPuestos').value) || 0;
             let descSala = "- Juego de Sala (Base 7 puestos)";
             if (extraPuestos > 0) {
                 descSala += ` con ${extraPuestos} puesto(s) adicional(es)`;
