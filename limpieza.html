@@ -20,22 +20,24 @@
             background-color: var(--bg-color);
             color: var(--text-main);
             margin: 0;
-            padding: 20px;
+            padding: 15px;
             line-height: 1.5;
         }
 
         .container {
+            width: 100%;
             max-width: 600px;
-            margin: 40px auto;
+            margin: 20px auto;
             background: var(--card-bg);
-            padding: 30px;
+            padding: 20px;
             border-radius: 12px;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            box-sizing: border-box;
         }
 
         h1 {
             text-align: center;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             margin-bottom: 8px;
             color: var(--text-main);
         }
@@ -44,29 +46,25 @@
             text-align: center;
             color: var(--text-muted);
             margin-bottom: 20px;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
 
-        /* Imagen adaptativa */
+        /* Imagen adaptativa para móviles */
         .banner-img {
             width: 100%;
             height: auto;
             border-radius: 8px;
             display: block;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             object-fit: cover;
         }
 
         .service-group {
-            margin-bottom: 20px;
-            padding: 15px;
+            margin-bottom: 15px;
+            padding: 12px;
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            transition: border-color 0.2s;
-        }
-
-        .service-group:hover {
-            border-color: var(--primary);
+            background-color: #fff;
         }
 
         .service-checkbox {
@@ -75,17 +73,22 @@
             justify-content: space-between;
             cursor: pointer;
             font-weight: bold;
+            font-size: 0.95rem;
+            gap: 10px;
         }
 
         .service-checkbox input {
-            width: 18px;
-            height: 18px;
+            width: 20px;
+            height: 20px;
             accent-color: var(--primary);
+            flex-shrink: 0;
         }
 
         .sub-options {
             margin-top: 12px;
-            padding-left: 28px;
+            padding-left: 0;
+            border-top: 1px dashed var(--border-color);
+            padding-top: 10px;
             display: none;
         }
 
@@ -94,23 +97,25 @@
         }
 
         .sub-options label {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--text-muted);
             display: block;
             margin-bottom: 5px;
         }
 
-        .sub-options select, .sub-options input[type="number"] {
+        .sub-options input[type="number"] {
             width: 100%;
-            padding: 8px;
+            padding: 10px;
             border: 1px solid var(--border-color);
             border-radius: 6px;
-            font-size: 0.95rem;
+            font-size: 1rem;
+            box-sizing: border-box;
+            background-color: #f8fafc;
         }
 
         .total-box {
-            margin-top: 30px;
-            padding: 20px;
+            margin-top: 25px;
+            padding: 15px;
             background-color: #f1f5f9;
             border-radius: 8px;
             text-align: center;
@@ -118,12 +123,12 @@
 
         .total-box h3 {
             margin: 0;
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: var(--text-muted);
         }
 
         .total-price {
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-weight: bold;
             color: var(--primary);
             margin: 5px 0 0 0;
@@ -133,7 +138,7 @@
             display: block;
             width: 100%;
             margin-top: 20px;
-            background-color: #22c55e; /* Color verde WhatsApp */
+            background-color: #22c55e;
             color: white;
             border: none;
             padding: 14px;
@@ -141,9 +146,9 @@
             font-weight: bold;
             border-radius: 8px;
             cursor: pointer;
-            transition: background-color 0.2s;
             text-align: center;
             text-decoration: none;
+            box-sizing: border-box;
         }
 
         .btn-submit:hover {
@@ -157,7 +162,7 @@
     <h1>Solicita tu Servicio de Limpieza Profesional</h1>
     <p class="subtitle">Selecciona los servicios que necesitas y calcula tu precio al instante.</p>
     
-    <!-- Imagen adaptada a pantalla -->
+    <!-- Imagen adaptada -->
     <img src="wisholimpio.jpg" alt="Limpieza Profesional Kat Haus" class="banner-img">
 
     <form id="cotizadorForm">
@@ -243,12 +248,11 @@
             return;
         }
         
-        // Construir detalle de ítems seleccionados
         let detalleItems = [];
         
         const checkSala = document.getElementById('checkSala');
         if (checkSala.checked) {
-            let extraPuestos = parseInt(document.getElementById('extraPuestos').value) || 0;
+            let extraPuestos = parseInt(document.getElementById('extraPuestos').value)효 || parseInt(document.getElementById('extraPuestos').value) || 0;
             let descSala = "- Juego de Sala (Base 7 puestos)";
             if (extraPuestos > 0) {
                 descSala += ` con ${extraPuestos} puesto(s) adicional(es)`;
@@ -266,18 +270,13 @@
             detalleItems.push("- Colchón King Size ($32)");
         }
 
-        // Crear el texto estructurado para WhatsApp
         let mensaje = `Hola! Quiero reservar el servicio de limpieza con los siguientes detalles:\n\n` +
                       detalleItems.join('\n') + `\n\n` +
                       `*Precio Estimado Total: ${total}*`;
 
-        // Codificar el texto para la URL de WhatsApp
         let mensajeCodificado = encodeURIComponent(mensaje);
-        
-        // Reemplaza el número de teléfono con el tuyo (incluyendo código de país, ej: 593...)
         let numeroWhatsApp = "593963372269"; 
 
-        // Redirigir a WhatsApp
         window.location.href = `https://wa.me/${numeroWhatsApp}?text=${mensajeCodificado}`;
     }
 </script>
