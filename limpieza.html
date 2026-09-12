@@ -182,6 +182,14 @@
         .btn-submit:active {
             transform: scale(0.99);
         }
+
+        .disclaimer {
+            text-align: center;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-top: 16px;
+            line-height: 1.4;
+        }
     </style>
 </head>
 <body>
@@ -230,7 +238,12 @@
         </div>
 
         <!-- Botón de Acción -->
-        <button type="button" class="btn-submit" onclick="reservarCupo()">Reservar por WhatsApp</button>
+        <button type="button" class="btn-submit" onclick="reservarCupo()">📅Reservar vía WhatsApp</button>
+        
+        <!-- Disclaimer de disponibilidad -->
+        <p class="disclaimer">
+            * Los cupos se asignarán de acuerdo con la disponibilidad de agenda vigente.
+        </p>
     </form>
 </div>
 
