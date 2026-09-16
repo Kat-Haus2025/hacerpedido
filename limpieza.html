@@ -215,7 +215,15 @@
             </div>
         </div>
 
-        <!-- Opción 2: Colchón 2 Plazas -->
+        <!-- Opción 2: Juego de Sillas -->
+        <div class="service-group">
+            <label class="service-checkbox">
+                <span>🪑 Juego de Sillas (Hasta 6 puestos) — $25</span>
+                <input type="checkbox" id="checkSillas" value="25" onchange="calcularTotal()">
+            </label>
+        </div>
+
+        <!-- Opción 3: Colchón 2 Plazas -->
         <div class="service-group">
             <label class="service-checkbox">
                 <span>🛏️ Colchón de 2 Plazas — $22</span>
@@ -223,7 +231,7 @@
             </label>
         </div>
 
-        <!-- Opción 3: Colchón King Size -->
+        <!-- Opción 4: Colchón King Size -->
         <div class="service-group">
             <label class="service-checkbox">
                 <span>🛏️ Colchón King Size — $32</span>
@@ -238,7 +246,7 @@
         </div>
 
         <!-- Botón de Acción -->
-        <button type="button" class="btn-submit" onclick="reservarCupo()">📅Reservar vía WhatsApp</button>
+        <button type="button" class="btn-submit" onclick="reservarCupo()">📅 Reservar vía WhatsApp</button>
         
         <!-- Disclaimer de disponibilidad -->
         <p class="disclaimer">
@@ -267,6 +275,11 @@
             let baseSala = 35;
             let extraPuestos = parseInt(document.getElementById('extraPuestos').value) || 0;
             total += baseSala + (extraPuestos * 5);
+        }
+
+        const checkSillas = document.getElementById('checkSillas');
+        if (checkSillas.checked) {
+            total += parseInt(checkSillas.value);
         }
 
         const checkColchon2P = document.getElementById('checkColchon2P');
@@ -301,6 +314,11 @@
             detalleItems.push(descSala);
         }
 
+        const checkSillas = document.getElementById('checkSillas');
+        if (checkSillas.checked) {
+            detalleItems.push("- Juego de Sillas (Hasta 6 puestos) ($25)");
+        }
+
         const checkColchon2P = document.getElementById('checkColchon2P');
         if (checkColchon2P.checked) {
             detalleItems.push("- Colchón de 2 Plazas ($22)");
@@ -312,8 +330,8 @@
         }
 
         let mensaje = `Hola! Quiero reservar el servicio de Sauber-Haus con los siguientes detalles:\n\n` +
-                      detalleItems.join('\n') + `\n\n` +
-                      `*Precio Estimado Total: ${total}*`;
+                    detalleItems.join('\n') + `\n\n` +
+                    `*Precio Estimado Total: ${total}*`;
 
         let mensajeCodificado = encodeURIComponent(mensaje);
         let numeroWhatsApp = "593963372269"; 
